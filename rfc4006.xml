@@ -4659,7 +4659,820 @@
 
 <section anchor="app-a" title="Credit-Control Sequences">
   <section anchor="app-a1" title="Flow I">
-    <t>TODO...</t>
+    <figure anchor="flow1" title="Flow I">
+    <artwork><![CDATA[
+                               NAS
+   End User          (CC Client)         AAA Server           CC Server
+      |(1)User Logon      |(2)AA Request (CC AVPs)                  |
+      |------------------>|------------------->|                    |
+      |                   |                    |(3)CCR(initial, CC AVPs)
+      |                   |                    |------------------->|
+      |                   |                    | (4)CCA(Granted-Units)
+      |                   |                    |<-------------------|
+      |                   |(5)AA Answer(Granted-Units)              |
+      |(6)Access granted  |<-------------------|                    |
+      |<----------------->|                    |                    |
+      |                   |                    |                    |
+      :                   :                    :                    :
+      |                   |(7)CCR(update,Used-Units)                |
+      |                   |------------------->|(8)CCR              |
+      |                   |                    |   (update,Used-Units)
+      |                   |                    |------------------->|
+      |                   |                    |(9)CCA(Granted-Units)
+      |                   |(10)CCA(Granted-Units)<------------------|
+      |                   |<-------------------|                    |
+      :                   :                    :                    :
+      |         (Auth. lifetime expires)       |                    |
+      |                   |(11) AAR (CC AVP)   |                    |
+      |                   |------------------->|                    |
+      |                   |          (12) AAA  |                    |
+      |                   |<-------------------|                    |
+      :                   :                    :                    :
+      :                   :                    :                    :
+      |(13) User logoff   |                    |                    |
+      |------------------>|(14)CCR(term.,Used-Units)                |
+      |                   |------------------->|(15)CCR             |
+      |                   |                    |   (term.,Used-Units)
+      |                   |                    |------------------->|
+      |                   |                    |            (16)CCA |
+      |                   |            (17)CCA |<-------------------|
+      |                   |<-------------------|                    |
+      |                   |(18)STR             |                    |
+      |                   |------------------->|                    |
+      |                   |            (19)STA |                    |
+      |                   |<-------------------|                    |
+    ]]></artwork>
+    </figure>
+<t>A credit-control flow for Network Access Services prepaid is shown in
+   Figure A.1.  The Diameter [NASREQ] is implemented in the Network
+   Access Server (NAS).  The focus of this flow is in the credit
+   authorization.
+</t>
+<t>
+   The user logs on to the network (1).  The Diameter NAS sends a
+   Diameter AA-Request (AAR) to the home Diameter AAA server.  The
+   credit-control client populates the AAR with the Credit-Control AVP
+   set to CREDIT_AUTHORIZATION, and service-specific AVPs are included,
+   as usual [NASREQ].  The home Diameter AAA server performs service-
+   specific Authentication and Authorization, as usual.  The home
+   Diameter AAA server determines that the user is a prepaid user and
+   notices from the Credit-Control AVP that the NAS has credit-control
+   capabilities.  It sends a Diameter Credit-Control-Request with CC-
+   Request-Type set to INITIAL_REQUEST to the Diameter credit-control
+   server to perform credit authorization (3) and to establish a
+   credit-control session.  (The home Diameter AAA server may forward
+   service-specific AVPs received from the NAS as input for the rating
+   process.)  The Diameter credit-control server checks the end user's
+   account balance, rates the service, and reserves credit from the end
+   user's account.  The reserved quota is returned to the home Diameter
+   AAA server in the Diameter Credit-Control-Answer (4).  The home
+   Diameter AAA server sends the reserved quota to the NAS in the
+   Diameter AA-Answer (AAA).  Upon successful AAA, the NAS starts the
+   credit-control session and starts monitoring the granted units (5).
+   The NAS grants access to the end user (6).  At the expiry of the
+   allocated quota, the NAS sends a Diameter Credit-Control-Request with
+   CC-Request-Type set to UPDATE_REQUEST to the Home Diameter AAA server
+   (7).  This message contains the units used thus far.  The home
+   Diameter AAA server forwards the CCR to the Diameter credit-control
+   server (8).  The Diameter credit-control server debits the used units
+   from the end user's account and allocates a new quota that is
+   returned to the home Diameter AAA server in the Diameter Credit-
+   Control-Answer (9).  The message is forwarded to the NAS (10).
+   During the ongoing credit-control session, the authorization lifetime
+   expires, and the authorization/authentication client in the NAS
+   performs service specific re-authorization to the home Diameter AAA
+   server, as usual.  The credit-control client populates the AAR with
+   the Credit-Control AVP set to RE_AUTHORIZATION, indicating that the
+   credit-control server shall not be contacted, as the credit
+   authorization is controlled by the burning rate of the granted units
+   (11).  The home Diameter AAA server performs service-specific re-
+   authorization as usual and returns the AA-Answer to the NAS (12).
+   The end user logs off from the network (13).  To debit the used units
+   from the end user's account and to stop the credit-control session,
+   the NAS sends a Diameter Credit-Control-Request with CC-Request-Type
+   set to TERMINATION_REQUEST to the home Diameter AAA server (14).  The
+   home Diameter AAA server forwards the CCR to the credit-control
+   server (15).  The Diameter credit-control server acknowledges the
+   session termination by sending a Diameter Credit-Control-Answer to
+   the home Diameter AAA server (16).  The home Diameter AAA server
+   forwards the answer to the NAS (17).  STR/STA takes place between the
+   NAS and home Diameter AAA server, as usual (18-19).
+</t>
+  </section>
+  <section anchor="app-a2" title="Flow II">
+    <figure anchor="flow2" title="Flow II">
+    <artwork><![CDATA[
+              SIP Proxy/Registrar   AAA
+        A           (CC Client)     Server           B        CC Server
+        |(i)  REGISTER |              |              |              |
+        |------------->|(ii)          |              |              |
+        |              |------------->|              |              |
+        |              |authentication &             |              |
+        |              |authorization |              |              |
+        |              |<-------------|              |              |
+        |(iii)200 OK   |                             |              |
+        |<-------------|                             |              |
+        :              :                             :              :
+        |(1)  INVITE   |                                            :
+        |------------->|
+        |              |(2)  CCR (Initial, SIP specific AVP)        |
+        |              |------------------------------------------->|
+        |              |(3)  CCA (Granted-Units)                    |
+        |              |<-------------------------------------------|
+        |              |(4)  INVITE                  |              |
+        |              |---------------------------->|              |
+        :              :                             :              :
+        |              |(5)  CCR (update, Used-Units)               |
+        |              |------------------------------------------->|
+        |              |(6)  CCA (Granted-Units)                    |
+        |              |<-------------------------------------------|
+        :              :                             :              :
+        |(7)  BYE      |                             |              |
+        |------------->|                             |              |
+        |              |(8)  BYE                     |              |
+        |              |---------------------------->|              |
+        |              |(9)  CCR (termination, Used-Units)          |
+        |              |------------------------------------------->|
+        |              |(10) CCA ()                                 |
+        |              |<-------------------------------------------|
+        |              |                             |              |
+    ]]></artwork>
+    </figure>
+<t>
+   This is an example of Diameter credit-control for SIP sessions.
+   Although the flow focuses on illustrating the usage of credit-control
+   messages, the SIP signaling is inaccurate, and the diagram is not by
+   any means an attempt to define a service provider's SIP network.
+   However, for the sake of this example, some assumptions are made
+   below.
+</t>
+<t>
+   Typically, prepaid services based, for example, on time usage for SIP
+   session require an entity in the service provider network to
+   intercept all the requests within the SIP dialog in order to detect
+   events, such as session establishment and session release, that are
+   essential to perform credit-control operations with the credit-
+   control server.  Therefore, in this example, it is assumed that the
+   SIP Proxy adds a Record-Route header in the initial SIP INVITE to
+   make sure that all the future requests in the created dialog traverse
+   through it (for the definitions of 'Record-Route' and 'dialog' please
+   refer to [SIP]).  Finally, the degree of credit-control measuring of
+   the media by the proxy depends on the business model design used in
+   setting up the end system and proxies in the SIP network.
+</t>
+<t>
+   The end user (SIP User Agent A) sends REGISTER with credentials (i).
+   The SIP Proxy sends a request to the home AAA server to perform
+   Multimedia authentication and authorization by using, for instance,
+   Diameter Multimedia application (ii).  The home AAA server checks
+   that the credentials are correct and checks the user profile.
+   Eventually, 200 OK response (iii) is sent to the UA.  Note that the
+   Authentication and Authorization is valid for the registration
+   validity period duration (i.e., until re-registration is performed).
+   Several SIP sessions may be established without re-authorization.
+</t>
+<t>
+   UA A sends an INVITE (1).  The SIP Proxy sends a Diameter Credit-
+   Control-Request (INITIAL_REQUEST) to the Diameter credit-control
+   server (2).  The Credit-Control-Request contains information obtained
+   from the SIP signaling describing the requested service (e.g.,
+   calling party, called party, Session Description Protocol
+   attributes).  The Diameter credit-control server checks the end
+   user's account balance, rates the service, and reserves credit from
+   the end user's account.  The reserved quota is returned to the SIP
+   Proxy in the Diameter Credit-Control-Answer (3).  The SIP Proxy
+   forwards the SIP INVITE to UA B (4).  B's phone rings, and B answers.
+   The media flows between them, and the SIP Proxy starts measuring the
+   quota.  At the expiry of the allocated quota, the SIP Proxy sends a
+   Diameter Credit-Control-Request (UPDATE_REQUEST) to the Diameter
+   credit-control server (5).  This message contains the units used thus
+   far.  The Diameter credit-control server debits the used units from
+   the end user's account and allocates new credit that is returned to
+   the SIP Proxy in the Diameter Credit-Control-Answer (6).  The end
+   user terminates the service by sending a BYE (7).  The SIP Proxy
+   forwards the BYE message to UA B (8) and sends a Diameter Credit-
+   Control-Request (TERMINATION_REQUEST) to the credit-control server
+   (9).  The Diameter credit-control server acknowledges the session
+   termination by sending a Diameter Credit-Control-Answer to the SIP
+   Proxy (10).
+</t>
+  </section>
+  <section anchor="app-a3" title="Flow III">
+    <figure anchor="flow3" title="Flow III">
+    <artwork><![CDATA[
+                         MMS Server
+             A           (CC Client)           B           CC Server
+             |(1) Send MMS    |                |                |
+             |--------------->|                |                |
+             |                |(2)  CCR (event, DIRECT_DEBITING,|
+             |                |          MMS specific AVP)      |
+             |                |-------------------------------->|
+             |                |(3)  CCA (Granted-Units)         |
+             |                |<--------------------------------|
+             |(4) Send MMS Ack|                |                |
+             |<---------------|                |                |
+             |                |(5) Notify MMS  |                |
+             |                |--------------->|                |
+             :                :                :                :
+             |                |(6) Retrieve MMS|                |
+             |                |<---------------|                |
+             |                |(7) Retrieve MMS|                |
+             |                |    Ack         |                |
+             |                |--------------->|                |
+             |                |                |                |
+    ]]></artwork>
+      </figure>
+<t>
+   A credit-control flow for Multimedia Messaging Services is shown in
+   Figure A.3.  The sender is charged as soon as the messaging server
+   successfully stores the message.
+</t>
+<t>
+   The end user A sends a Multimedia Message (MMS) to the MMS server
+   (1).  The MMS server stores the message and sends a Diameter Credit-
+   Control-Request (EVENT_REQUEST with Requested-Action DIRECT_DEBITING)
+   to the Diameter credit-control server (2).  The Credit-Control-
+   Request contains information about the MMS message (e.g., size,
+   recipient address, image coding type).  The Diameter credit-control
+   server checks the end user's account balance, rates the service, and
+   debits the service from the end user's account.  The granted quota is
+   returned to the MMS server in the Diameter Credit-Control-Answer (3).
+   The MMS server acknowledges the successful reception of the MMS
+   message (4).  The MMS Server notifies the recipient about the new MMS
+   (5), and end user B retrieves the message from the MMS message store
+   (6),(7).
+</t>
+  </section>
+  <section anchor="app-a4" title="Flow IV">
+    <figure anchor="flow4" title="Flow IV">
+    <artwork><![CDATA[
+                          MMS Server
+      Content Server     (CC Client)           B           CC Server
+             |(1) Send MMS    |                |                |
+             |--------------->|                |                |
+             |                |(2)  CCR (event, CHECK_BALANCE,  |
+             |                |          MMS specific AVP)      |
+             |                |-------------------------------->|
+             |                |(3)  CCA (ENOUGH_CREDIT)         |
+             |                |<--------------------------------|
+             |(4) Send MMS Ack|                |                |
+             |<---------------|                |                |
+             |                |(5) Notify MMS  |                |
+             |                |--------------->|                |
+             :                :                :                :
+             |                |(6) Retrieve MMS|                |
+             |                |<---------------|                |
+             |                |(7)  CCR (event, DIRECT_DEBITING,|
+             |                |          MMS specific AVP)      |
+             |                |-------------------------------->|
+             |                |(8)  CCA (Granted-Units)         |
+             |                |<--------------------------------|
+             |                |(9) Retrieve MMS|                |
+             |                |    Ack         |                |
+             |                |--------------->|                |
+             |                |                |                |
+    ]]></artwork>
+    </figure>
+<t>
+   This is an example of Diameter credit-control for direct debiting
+   using the Multimedia Messaging Service environment.  Although the
+   flow focuses on illustrating the usage of credit-control messages,
+   the MMS signaling is inaccurate, and the diagram is not by any means
+   an attempt to define any service provider's MMS configuration or
+   billing model.
+</t>
+<t>
+   A credit-control flow for Multimedia Messaging Service is shown in
+   Figure A.4.  The recipient is charged at the message delivery.
+</t>
+<t>
+  A content server sends a Multimedia Message (MMS) to the MMS server
+   (1) that stores the message.  The message recipient will be charged
+   for the MMS message in this case.  As there can be a substantially
+   long time between the receipt of the message at the MMS server and
+   the actual retrieval of the message, the MMS server does not
+   establish any credit-control session to the Diameter credit-control
+   server but performs first only a balance check (without any credit
+   reservation) by sending a Diameter Credit-Control-Request
+   (EVENT_REQUEST with Requested-Action CHECK_BALANCE) to verify that
+   end user B can cover the cost for the MMS (2).  The Diameter credit-
+   control server checks the end user's account balance and returns the
+   answer to the MMS server in the Diameter Credit-Control-Answer (3).
+   The MMS server acknowledges the successful reception of the MMS
+   message (4).  The MMS server notifies the recipient of the new MMS
+   (5), and after some time end user B retrieves the message from the
+   MMS message store (6).  The MMS server sends a Diameter Credit-
+   Control-Request (EVENT_REQUEST with Requested-Action:
+   DIRECT_DEBITING) to the Diameter credit-control server (7).  The
+   Credit-Control-Request contains information about the MMS message
+   (e.g., size, recipient address, coding type).  The Diameter credit-
+   control server checks the end user's account balance, rates the
+   service, and debits the service from the end user's account.  The
+   granted quota is returned to the MMS server in the Diameter Credit-
+   Control-Request (8).  The MMS is transferred to end user B (9).
+</t>
+<t>
+   Note that the transfer of the MMS message can take an extended time
+   and can fail, in which case a recovery action is needed.  The MMS
+   server should return the already debited units to the user's account
+   by using the REFUND action described in section 6.4.
+</t>
+   </section>
+  <section anchor="app-a5" title="Flow V">
+    <figure anchor="flow5" title="Flow V">
+    <artwork><![CDATA[
+                        SIP Controller
+             A           (CC Client)           B           CC Server
+             |(1)INVITE B(SDP)|                |                |
+             |--------------->|                |                |
+             |                |(2)  CCR (event, PRICE_ENQUIRY,  |
+             |                |          SIP specific AVPs)     |
+             |                |-------------------------------->|
+             |                |(3)  CCA (Cost-Information)      |
+             |                |<--------------------------------|
+             | (4)MESSAGE(URL)|                |                |
+             |<---------------|                |                |
+             |(5)HTTP GET     |                |                |
+             |--------------->|                |                |
+             |(6)HTTP POST    |                |                |
+             |--------------->|(7)INVITE(SDP)  |                |
+             |                |--------------->|                |
+             |                |      (8)200 OK |                |
+             |      (9)200 OK |<---------------|                |
+             |<---------------|                |                |
+    ]]></artwork>
+    </figure>
+<t>
+   This is an example of Diameter credit-control for SIP sessions.
+   Although the flow focuses on illustrating the usage of credit-control
+   messages, the SIP signaling is inaccurate, and the diagram is not by
+   any means an attempt to define a service provider's SIP network.
+</t>
+<t>
+   Figure A.5 is an example of Advice of Charge (AoC) service for SIP
+   call.  User A can be either a postpaid or prepaid subscriber using
+   the AoC service.  It is assumed that the SIP controller also has HTTP
+   capabilities and delivers an interactive AoC web page with, for
+   instance, the cost information, the details of the call derived from
+   the SDP, and a button to accept/not accept the charges.  (There may
+   be many other ways to deliver AoC information; however, this flow
+   focuses on the use of the credit-control messages.)  The user has
+   been authenticated and authorized prior to initiating the call and
+   subscribed to AoC service.
+</t>
+<t>
+   UA A sends an INVITE with SDP to B (1).  The SIP controller
+   determines that the user is subscribed to AoC service and sends a
+   Diameter Credit-Control-Request (EVENT_REQUEST with Requested-Action:
+   PRICE_ENQUIRY) to the Diameter credit-control server (2).  The
+   Credit-Control-Request contains SIP specific AVPs derived from the
+   SIP signaling, describing the requested service (e.g., calling party,
+   called party, Session Description Protocol attributes).  The Diameter
+   credit-control server determines the cost of the service and returns
+   the Credit-Control-Answer including the Cost-Information AVP (3).
+   The SIP controller manufactures the AoC web page with information
+   received in SIP signaling and with the cost information received from
+   the credit-control server.  Then it sends a SIP MESSAGE that contains
+   a URL pointing to the AoC information web page (4).  At the receipt
+   of the SIP MESSAGE, A's UA automatically invokes the web browser that
+   retrieves the AoC information (5).  The user clicks on a proper
+   button and accepts the charges (6).  The SIP controller continues the
+   session and sends the INVITE to the B party, which accepts the call
+   (7,8,9).
+</t>
+  </section>
+  <section anchor="app-a6" title="Flow VI">
+    <figure anchor="flow6" title="Flow VI">
+    <artwork><![CDATA[
+                             Gaming Server
+      End User                (CC Client)              CC Server
+         |  (1)Service Delivery   |                        |
+         |<---------------------->|                        |
+         :                        :                        :
+         :                        :                        :
+         |                        |(2)CCR(event,REFUND,Requested-
+         |                        |Service-Unit,Service-Parameter-Info)
+         |                        |----------------------->|
+         |                        |  (3)CCA(Cost-Information)
+         |                        |<-----------------------|
+         |        (4)Notification |                        |
+         |<-----------------------|                        |
+    ]]></artwork>
+    </figure>
+<t>
+   Figure A.6 illustrates a credit-control flow for the REFUND case.  It
+   is assumed that there is a trusted relationship and secure connection
+   between the Gaming server and the Diameter credit-control server.
+   The end user may be a prepaid subscriber or a postpaid subscriber.
+</t>
+<t>
+   While the end user is playing the game (1), she enters a new level
+   that entitles her to a bonus.  The Gaming server sends a Diameter
+   Credit-Control-Request (EVENT_REQUEST with Requested-Action:
+   REFUND_ACCOUNT) to the Diameter credit-control server (2).  The
+   Credit-Control-Request Request contains the Requested-Service-Unit
+   AVP with the CC-Service-Specific-Units containing the number of
+   points the user just won.  The Service-Parameter-Info AVP is also
+   included in the request and specifies the service event to be rated
+   (e.g., Tetris Bonus).  From information received, the Diameter
+   credit-control server determines the amount to be credited, refunds
+   the user's account, and returns the Credit-Control-Answer, including
+   the Cost-Information AVP (3).  The Cost-Information indicates the
+   credited amount.  At the first opportunity, the Gaming server
+   notifies the end user of the credited amount (4).
+</t>
+  </section>
+  <section anchor="app-a7" title="Flow VII">
+    <figure anchor="flow7" title="Flow VII">
+    <artwork><![CDATA[
+
+    ]]></artwork>
+    </figure>
+<t>
+   Figure A.7 is an example of the graceful service termination for a
+   SIP call.  It is assumed that the call is set up so that the
+   controller is in the call as a B2BUA (Back to Back User Agent)
+   performing third-party call control (3PCC).  Note that the SIP
+   signaling is inaccurate, as the focus of this flow is in the graceful
+   service termination and credit-control authorization.  The best
+   practice for 3PCC is defined in [RFC3725].
+</t>
+<t>
+   The call is ongoing between users A and B; user A has a prepaid
+   subscription.  At the expiry of the allocated quota, the SIP
+   controller sends a Diameter Credit-Control-Request (UPDATE_REQUEST)
+   to the Diameter credit-control server (1).  This message contains the
+   units used thus far.  The Diameter credit-control server debits the
+   used units from the end user's account and allocates the final quota
+   returned to the SIP controller in the Diameter Credit-Control-Answer
+   (2).  This message contains the Final-Unit-Indication AVP with the
+   Final-Unit-Action set to REDIRECT, the Redirect-Address-Type set to
+   SIP URI, and the Redirect-Server-Address set to the Top-up server
+   name (e.g., sip:sip-topup-server@domain.com).  At the expiry of the
+   final allocated quota, the SIP controller sends a Diameter Credit-
+   Control-Request (UPDATE_REQUEST) to the Diameter credit-control
+   server (3) and places the called party on "hold" by sending an INVITE
+   with the appropriate connection address in the SDP (3a).  The
+   Credit-Control-Request message contains the units used thus far.  The
+   Diameter credit-control server debits the used units from the end
+   user's account but does not make any credit reservation.  The
+   Credit-Control-Answer message, which contains the Validity-Time to
+   supervise the graceful service termination, is returned to the SIP
+   controller (4).  The SIP controller establishes a SIP session between
+   the prepaid user and the Top-up server (5, 6).  The Top-up server
+   plays an announcement and prompts the user to enter a credit card
+   number and the amount of money to be used to replenish the account
+   (7).  The Top-up server validates the credit card number and
+   replenishes the user's account (using some means outside the scope of
+   this specification) and releases the SIP session (8).  The SIP
+   controller can now assume that communication between the prepaid user
+   and the Top-up server took place.  It sends a spontaneous Credit-
+   Control-Request (UPDATE_REQUEST) to the Diameter credit-control
+   server to check whether the account has been replenished (9).  The
+   Diameter credit-control server reserves credit from the end user's
+   account and returns the reserved quota to the SIP controller in the
+   Credit-Control-Answer (10).  At this point, the SIP controller re-
+   connects the caller and the called party (11,12).
+</t>
+  </section>
+  <section anchor="app-a8" title="Flow VIII">
+    <figure anchor="flow8" title="Flow VIII">
+    <artwork><![CDATA[
+                         NAS                           Top-up      CC
+   End-User         (CC Client)          AAA Server    Server    Server
+     |(1)User Logon      |(2)AA Request (CC AVPs)        |         |
+     |------------------>|------------------->|          |         |
+     |                   |                    |(3)CCR(initial, CC AVPs)
+     |                   |                    |------------------->|
+     |                   |                    |(4)CCA(Final-Unit,  |
+     |                   |                    |      Validity-Time)|
+     |                   |                    |<-------------------|
+     |                   |(5)AA Answer(Final-Unit,Validity-Time)   |
+     |(6)Limited Access  |<-------------------|          |         |
+     |      granted      |                    |          |         |
+     |<----------------->|                    |          |         |
+     |                   |                    |          |         |
+     |   (7)TCP/HTTP     |        (8)TCP/HTTP            |         |
+     |<----------------->|<----------------------------->|         |
+     |                 (9) Replenish account             |         |
+     |<------------------------------------------------->|         |
+     |                   |                    |            (10)RAR |
+     |                   |<-------------------|<-------------------|
+     |                   | (11) RAA           |                    |
+     |                   |------------------->|------------------->|
+     |                   |(12)CCR(update)     |                    |
+     |                   |------------------->|(13)CCR(Update)     |
+     |                   |                    |------------------->|
+     |                   |                    |(14)CCA(Granted-Units)
+     |                   |(15)CCA(Granted-Units)<------------------|
+     |                   |<-------------------|                    |
+
+    ]]></artwork>
+    </figure>
+<t>
+   Figure A.8 is an example of the graceful service termination
+   initiated when the first interrogation takes place because the user's
+   account is empty.  In this example, the credit-control server
+   supports the server-initiated credit re-authorization.  The Diameter
+   [NASREQ] is implemented in the Network Access Server (NAS).
+</t>
+<t>
+   The user logs on to the network (1).  The Diameter NAS sends a
+   Diameter AA-Request to the home Diameter AAA server.  The credit-
+   control client populates the AAR with the Credit-Control AVP set to
+   CREDIT_AUTHORIZATION, and service specific AVPs are included, as
+   usual [NASREQ].  The home Diameter AAA server performs service
+   specific Authentication and Authorization, as usual.  The home
+   Diameter AAA server determines that the user has a prepaid
+   subscription and notices from the Credit-Control AVP that the NAS has
+   credit-control capabilities.  It sends a Diameter Credit-Control-
+   Request with CC-Request-Type set to INITIAL_REQUEST to the Diameter
+   credit-control server to perform credit authorization (3) and to
+   establish a credit-control session.  (The home Diameter AAA server
+   may forward service specific AVPs received from the NAS as input for
+   the rating process.)  The Diameter credit-control server checks the
+   end user's account balance, determines that the account cannot cover
+   the cost of the service, and initiates the graceful service
+   termination.  The Credit-Control-Answer is returned to the home
+   Diameter AAA server (4).  This message contains the Final-Unit-
+   Indication AVP and the Validity-Time AVP set to a reasonable amount
+   of time to give the user a chance to replenish his/her account (e.g.,
+   10 minutes).  The Final-Unit-Indication AVP includes the Final-Unit-
+   Action set to REDIRECT, the Redirect-Address-Type set to URL, and the
+   Redirect-Server-Address set to the HTTP Top-up server name.  The home
+   Diameter AAA server sends the received credit-control AVPs to the NAS
+   in the Diameter AA-Answer (5).  Upon successful AAA, the NAS starts
+   the credit-control session and immediately starts the graceful
+   service termination, as instructed by the server.  The NAS grants
+   limited access to the user (6).  The HTTP client software running in
+   the user's device opens the transport connection redirected by the
+   NAS to the Top-up server (7,8).  The user is displayed an appropriate
+   web page on which to enter the credit card number, and the amount of
+   money to be used to replenish the account, and with a notification
+   message that she is granted unlimited access if the replenishment
+   operation will be successfully executed within the next, for example,
+   10 minutes.  The Top-up server validates the credit card number and
+   replenishes the user's account (using some means outside the scope of
+   this specification)(9).  After successful account top-up, the
+   credit-control server sends a Re-Auth-Request message to the NAS
+   (10).  The NAS acknowledges the request by returning the Re-Auth-
+   Answer message (11) and initiates the credit re-authorization by
+   sending a Credit-Control-request (UPDATE_REQUEST) to the Diameter
+   credit-control server (12,13).
+</t>
+<t>
+   The Diameter credit-control server reserves credit from the end
+   user's account and returns the reserved quota to the NAS via the home
+   Diameter AAA server in the Credit-Control-Answer (14,15).  The NAS
+   removes the restriction placed by the graceful service termination
+   and starts monitoring the granted units.
+</t>
+  </section>
+<t>
+   The Diameter credit-control application defines the Multiple-
+   Services-Credit-Control AVP that can be used to support independent
+   credit-control of multiple services in a single credit-control (sub-)
+   session for service elements that have such capabilities.  It is
+   possible to request and allocate resources as a credit pool that is
+   shared between services or rating groups.
+</t>
+<t>
+   The flow example hereafter illustrates a usage scenario where the
+   credit-control client and server support independent credit-control
+   of multiple services, as defined in section 5.1.2.  It is assumed
+   that Service-Identifiers, Rating-Groups, and their associated
+   parameters (e.g., IP 5-tuple) are locally configured in the service
+   element or provisioned by an entity other than the credit-control
+   server.
+</t>
+  <section anchor="app-a9" title="Flow IX">
+    <figure anchor="flow9" title="Flow example independent credit-control of multiple services in a  credit-control (sub-)Session">
+    <artwork><![CDATA[
+   End User         Service Element                           CC Server
+                       (CC client)
+      |(1)User logon      |                                         |
+      |------------------>|(2)CCR(initial, Service-Id access,       |
+      |                   |        Access specific AVPs,            |
+      |                   |        Multiple-Service-Indicator)      |
+      |                   |---------------------------------------->|
+      |                   |(3)CCA(Multiple-Services-CC (            |
+      |                   |        Granted-Units(Total-Octets),     |
+      |                   |        Service-Id access,               |
+      |                   |        Validity-time,                   |
+      |                   |        G-S-U-Pool-Reference(Pool-Id 1,  |
+      |                   |          Multiplier 10)))               |
+      |                   |<----------------------------------------|
+      :                   :                                         :
+      |(4)Service-Request (Service 1)                               |
+      |------------------>|(5)CCR(update, Multiple-Services-CC(     |
+      |                   |        Requested-Units(), Service-Id 1, |
+      |                   |        Rating-Group 1))                 |
+      |                   |---------------------------------------->|
+      |                   |(6)CCA(Multiple-Services-CC (            |
+      |                   |        Granted-Units(Time),             |
+      |                   |        Rating-Group 1,                  |
+      |                   |        G-S-U-Pool-Reference(Pool-Id 1,  |
+      |                   |          Multiplier 1)))                |
+      |                   |<----------------------------------------|
+      :                   :                                         :
+      |(7)Service-Request (Service 2)                               |
+      |------------------>|                                         |
+      :                   :                                         :
+      :                   :                                         :
+      |(8)Service-Request (Service 3&4)                             |
+      |------------------>|(9)CCR(update, Multiple-Services-CC (    |
+      |                   |        Requested-Units(), Service-Id 3, |
+      |                   |        Rating-Group 2),                 |
+      |                   |        Multiple-Services-CC (           |
+      |                   |        Requested-Units(), Service-Id 4, |
+      |                   |        Rating-Group 3))                 |
+      |                   |---------------------------------------->|
+      |                   |(10)CCA(Multiple-Services-CC (           |
+      |                   |        Granted-Units(Total-Octets),     |
+      |                   |        Service-Id 3, Rating-Group 2,    |
+      |                   |        Validity-time,                   |
+      |                   |        G-S-U-Pool-Reference(Pool-Id 2,  |
+      |                   |          Multiplier 2)),                |
+      |                   |        Multiple-Services-CC (           |
+      |                   |        Granted-Units(Total-Octets),     |
+      |                   |        Service-Id 4, Rating-Group 3     |
+      |                   |        Validity-Time,                   |
+      |                   |        Final-Unit-Ind.(Terminate),      |
+      |                   |        G-S-U-Pool-Reference(Pool-Id 2,  |
+      |                   |          Multiplier 5)))                |
+      |                   |<----------------------------------------|
+      :                   :                                         :
+      :                   :                                         :
+      | +--------------+  |                                         |
+      | |Validity time |  |(11)CCR(update,                          |
+      | |expires for   |  |        Multiple-Services-CC (           |
+      | |Service-Id    |  |        Requested-Unit(),                |
+      | | access       |  |        Used-Units(In-Octets,Out-Octets),|
+      | +--------------+  |        Service-Id access))              |
+      |                   |---------------------------------------->|
+      |                   |(12)CCA(Multiple-Services-CC (           |
+      |                   |        Granted-Units(Total-Octets),     |
+      |                   |        Service-Id access,               |
+      |                   |        Validity-Time,                   |
+      |                   |        G-S-U-Pool-Reference(Pool-Id 1,  |
+      |                   |          Multiplier 10)))               |
+      |                   |<----------------------------------------|
+      :                   :                                         :
+      :                   :                                         :
+      | +--------------+  |                                         |
+      | |Total Quota   |  |(13)CCR(update,                          |
+      | |elapses for   |  |       Multiple-Services-CC (            |
+      | |pool 2:       |  |        Requested-Unit(),                |
+      | |service 4 not |  |        Used-Units(In-Octets,Out-Octets),|
+      | |allowed,      |  |        Service-Id 3, Rating-group 2),   |
+      | |service 3 cont|  |       Multiple-Services-CC (            |
+      | +--------------+  |        Used-Units(In-Octets,Out-Octets),|
+      |                   |        Service-Id 4, Rating-Group 3))   |
+      |                   |---------------------------------------->|
+      |                   |(14)CCA(Multiple-Services-CC (           |
+      |                   |        Result-Code 4011,                |
+      |                   |        Service-Id 3))                   |
+      |                   |<----------------------------------------|
+      :                   :                                         :
+      :                   :                                         :
+      |(15) User logoff   |                                         |
+      |------------------>|(16)CCR(term,                            |
+      |                   |       Multiple-Services-CC (            |
+      |                   |        Used-Units(In-Octets,Out-Octets),|
+      |                   |        Service-Id access),              |
+      |                   |       Multiple-Services-CC (            |
+      |                   |        Used-Units(Time),                |
+      |                   |        Service-Id 1, Rating-Group 1),   |
+      |                   |       Multiple-Services-CC (            |
+      |                   |        Used-Units(Time),                |
+      |                   |        Service-Id 2, Rating-Group 1))   |
+      |                   |---------------------------------------->|
+      |                   |(17)CCA(term)                            |
+      |                   |<----------------------------------------|
+    ]]></artwork>
+    </figure>
+<t>
+   The user logs on to the network (1).  The service element sends a
+   Diameter Credit-Control-Request with CC-Request-Type set to
+   INITIAL_REQUEST to the Diameter credit-control server to perform
+   credit authorization for the bearer service (e.g., Internet access
+   service) and to establish a credit-control session (2).  In this
+   message, the credit-control client indicates support for independent
+   credit-control of multiple services within the session by including
+   the Multiple-Service-Indicator AVP.  The Diameter credit-control
+   server checks the end user's account balance, with rating information
+   received from the client (i.e., Service-Id and access specific AVPs),
+   rates the request, and reserves credit from the end user's account.
+   Suppose that the server reserves $5 and determines that the cost is
+   $1/MB.  It then returns to the service element a Credit-Control-
+   Answer message that includes the Multiple-Services-Credit-Control AVP
+   with a quota of 5MB associated to the Service-Id (access), to a
+   multiplier value of 10, and to the Pool-Id 1 (3).
+</t>
+<t>
+   The user uses Service 1 (4).  The service element sends a Diameter
+   Credit-Control-Request with CC-Request-Type set to UPDATE_REQUEST to
+   the credit-control server to perform credit authorization for service
+   1 (5).  This message includes the Multiple-Services-Credit-Control
+   AVP to request service units for Service 1 that belong to Rating-
+   Group 1.  The Diameter credit-control server determines that Service
+   1 draws credit resources from the same account as the access service
+   (i.e., pool 1).  It rates the request according to Service-
+   Id/Rating-Group and updates the existing reservation by requesting
+   more credit.  Suppose that the server reserves $5 more (now the
+   reservation is $10) and determines that the cost is $0.1/minute.  The
+   server authorizes the whole Rating-Group.  It then returns to the
+   service element a Credit-Control-Answer message that includes the
+   Multiple-Services-Credit-Control AVP with a quota of 50min.
+   associated to the Rating-Group 1, to a multiplier value of 1, and to
+   the Pool-Id 1 (6).  The client adjusts the total amount of resources
+   for pool 1 according the received quota, which gives S for Pool 1 =
+   100.
+</t>
+<t>
+   The user uses Service 2, which belongs to the authorized Rating-
+   Group, 1 (7).  Resources are then consumed from the pool 1.
+</t>
+<t>
+   The user now requests Services 3 and 4 as well, which are not
+   authorized (8).  The service element sends a Diameter Credit-
+   Control-Request with CC-Request-Type set to UPDATE_REQUEST to the
+   credit-control server in order to perform credit authorization for
+   Services 3 and 4 (9).  This message includes two instances of the
+   Multiple-Services-Credit-Control AVP to request service units for
+   Service 3 that belong to Rating-Group 2 and for Service 4 that belong
+   to Rating-Group 3.  The Diameter credit-control server determines
+   that Services 3 and 4 draw credit resources from another account
+   (i.e., pool 2).  It checks the end user's account balance and,
+   according to Service-Ids/Rating-Groups information, rates the
+   request.  Then it reserves credit from pool 2.
+</t>
+<t>
+   For example, the server reserves $5 and determines that Service 3
+   costs $0.2/MB and Service 4 costs $0.5/MB.  The server authorizes
+   only Services 3 and 4.  It returns to the service element a Credit-
+   Control-Answer message that includes two instances of the Multiple-
+   Services-Credit-Control AVP (10).  One instance grants a quota of
+   12.5MB associated to the Service-Id 3 to a multiplier value of 2 and
+   to the Pool-Id 2.  The other instance grants a quota of 5 MB
+   associated to the Service-Id 4 to a multiplier value of 5 and to the
+   Pool-Id 2.
+</t>
+<t>
+   The server also determines that pool 2 is exhausted and Service 4 is
+   not allowed to continue after these units will be consumed.
+   Therefore the Final-Unit-Indication AVP with action TERMINATE is
+   associated to the Service-Id 4.  The client calculates the total
+   amount of resources that can be used for pool 2 according the
+   received quotas and multipliers, which gives S for Pool 2 = 50.
+</t>
+<t>
+   The Validity-Time for the access service expires.  The service
+   element sends a Credit-Control-Request message to the server in order
+   to perform credit re-authorization for Service-Id (access) (11).
+   This message carries one instance of the Multiple-Services-Credit-
+   Control AVP that includes the units used by this service.  Suppose
+   that the total amount of used units is 4MB.  The client adjusts the
+   total amount of resources for pool 1 accordingly, which gives S for
+   Pool 1 = 60.
+</t>
+<t>
+   The server deducts $4 from the user's account and updates the
+   reservation by requesting more credit.  Suppose that the server
+   reserves $5 more (now the reservation is $11) and already knows the
+   cost of the Service-Id (access), which is $1/MB.  It then returns to
+   the service element a Credit-Control-Answer message that includes the
+   Multiple-Services-Credit-Control AVP with a quota of 5 MB associated
+   to the Service-Id (access), to a multiplier value of 10, and to the
+   Pool-Id 1 (12).  The client adjusts the total amount of resources for
+   pool 1 according the received quota, which gives S for Pool 1 = 110.
+</t>
+<t>
+   Services 3 and 4 consume the total amount of pool 2 credit resources
+   (i.e., C1*2 + C2*5 >= S).  The service element immediately starts the
+   TERMINATE action concerning Service 4 and sends a Credit-Control-
+   Request message with CC-Request-Type set to UPDATE_REQUEST to the
+   credit-control server in order to perform credit re-authorization for
+   Service 3 (13).  This message contains two instances of the
+   Multiple-Services-Credit-Control AVP to report the units used by
+   Services 3 and 4.  The server deducts the last $5 from the user's
+   account (pool 2) and returns the answer with Result-Code 4011 in the
+   Multiple-Services-Credit-Control AVP to indicate that Service 3 can
+   continue without credit-control (14).
+</t>
+<t>
+   The end user logs off from the network (15).  To debit the used units
+   from the end user's account and to stop the credit-control session,
+   the service element sends a Diameter Credit-Control-Request with CC-
+   Request-Type set to TERMINATION_REQUEST to the credit-control server
+   (16).  This message contains the units consumed by each of the used
+   services in multiple instances of the Multiple-Services-Credit-
+   Control AVP.  The used units are associated with the relevant
+   Service-Identifier and Rating-Group.  The Diameter credit-control
+   server debits the used units to the user's account (Pool 1) and
+   acknowledges the session termination by sending a Diameter Credit-
+   Control-Answer to the service element (17).
+</t>
   </section>
 </section>
 
