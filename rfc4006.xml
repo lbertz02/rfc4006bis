@@ -27,11 +27,11 @@
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 
-<rfc category="std" docName="RFC 4006" ipr="trust200902">
+<rfc category="std" docName="draft-bertz-dime-rfc4006bis-00" ipr="trust200902">
 
 
  <front>
-   <title abbrev="Abbreviated Title">Diameter Credit-Control Application</title>
+   <title>Diameter Credit-Control Application</title>
 
    <author fullname="Harri Hakala" initials="H." surname="Hakala">
      <organization>Oy L M Ericsson Ab</organization>
@@ -107,8 +107,7 @@
      </address>
    </author>
 
-   <date year="2005"
-     month="August" />
+   <date year="2016"/>
 
    <area>General</area>
 
