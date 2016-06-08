@@ -126,7 +126,6 @@
  </front>
 
  <middle>
- <section title="What section is this">
    <section title="Introduction" anchor="intro">
 	<t>
 	   This document specifies a Diameter application that can be used to
@@ -179,7 +178,6 @@
        described in <xref target="RFC2119">RFC 2119</xref>.
        </t>
      </section>
-   </section>
 
 	<section anchor="terms" title="  Terminology">
 	  <t>
@@ -3002,7 +3000,7 @@
    requested service.
 </t><t>
    It is defined as follows (per the grouped-avp-def of
-   <xref target="rfc3588.html">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
+   <xref target="RFC3588">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
     <figure>
         <artwork><![CDATA[
@@ -3025,7 +3023,7 @@
    to zero.
 </t><t>
    It is defined as follows (per the grouped-avp-def of
-   <xref target="rfc3588.html">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
+   <xref target="RFC3588">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3230,7 +3228,7 @@
    Control AVP as an invalid AVP.
 </t><t>
    The Multiple-Services-Control AVP is defined as follows (per the
-   grouped-avp-def of <xref target="rfc3588.html">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
+   grouped-avp-def of <xref target="RFC3588">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3263,7 +3261,7 @@
    DIAMETER_BAD_ANSWER.
 </t><t>
    The Granted-Service-Unit AVP is defined as follows (per the grouped-
-   avp-def of <xref target="rfc3588.html">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
+   avp-def of <xref target="RFC3588">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3289,7 +3287,7 @@
    invalid AVPs.
 </t><t>
    The Requested-Service-Unit AVP is defined as follows (per the
-   grouped-avp-def of <xref target="rfc3588.html">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
+   grouped-avp-def of <xref target="RFC3588">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3313,7 +3311,7 @@
    the session, from the point when the previous measurement ended.
 </t><t>
    The Used-Service-Unit AVP is defined as follows (per the grouped-
-   avp-def of <xref target="rfc3588.html">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
+   avp-def of <xref target="RFC3588">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3359,7 +3357,7 @@
    The CC-Money AVP (AVP Code 413) is of type Grouped and specifies the
    monetary amount in the given currency.  The Currency-Code AVP SHOULD
    be included.  It is defined as follows (per the grouped-avp-def of
-   <xref target="rfc3588.html">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
+   <xref target="RFC3588">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3487,7 +3485,7 @@
    rating group associated with the same pool).
 </t><t>
    The G-S-U-Pool-Reference AVP is defined as follows (per the grouped-
-   avp-def of <xref target="rfc3588.html">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
+   avp-def of <xref target="RFC3588">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3587,7 +3585,7 @@
    locally configured or configured by another entity.
 </t><t>
    The Final-Unit-Indication AVP is defined as follows (per the
-   grouped-avp-def of <xref target="rfc3588.html">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
+   grouped-avp-def of <xref target="RFC3588">RFC 3588</xref> <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3651,7 +3649,7 @@
    connected when the account cannot cover the service cost.  It MUST be
    present when the Final-Unit-Action AVP is set to REDIRECT.
 </t><t>
-   It is defined as follows (per the grouped-avp-def of <xref target="rfc3588.html">RFC 3588</xref>
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC3588">RFC 3588</xref>
    <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
@@ -3821,7 +3819,7 @@
    with this error MUST contain one or more Failed-AVP AVPs containing
    the Service-Parameter-Info AVPs that caused the failure.
 </t><t>
-   It is defined as follows (per the grouped-avp-def of <xref target="rfc3588.html">RFC 3588</xref>
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC3588">RFC 3588</xref>
    <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
@@ -3860,7 +3858,7 @@
    includes a Subscription-Id-Data AVP that holds the identifier and a
    Subscription-Id-Type AVP that defines the identifier type.
 </t><t>
-   It is defined as follows (per the grouped-avp-def of <xref target="rfc3588.html">RFC 3588</xref>
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC3588">RFC 3588</xref>
    <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
 <figure>
@@ -3925,7 +3923,7 @@
    capability of the terminal the subscriber is using for the connection
    to network.
 </t><t>
-   It is defined as follows (per the grouped-avp-def of <xref target="rfc3588.html">RFC 3588</xref>
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC3588">RFC 3588</xref>
    <xref target="RFC3588">[DIAMBASE]</xref>):
 </t>
       <figure>
@@ -4572,6 +4570,7 @@
        <front>
          <title>Complement to ITU-T Recommendation E.164 (05/1997):"List
                of ITU-T Recommendation E.164 assigned country codes"</title>
+         <author></author>
          <date year="June 2000" />
        </front>
      </reference>
@@ -4581,6 +4580,7 @@
          <title>Recommendation E.212 (11/98): The international
                identification plan for mobile terminals and mobile
                users.</title>
+         <author></author>
          <date year="1998" />
        </front>
      </reference>
@@ -4589,6 +4589,7 @@
        <front>
          <title>Complement to ITU-T Recommendation E.212 (11/1997):" List
                of mobile country or geographical area codes"</title>
+         <author></author>
          <date year="February 1999" />
        </front>
      </reference>
@@ -4605,6 +4606,7 @@
        <front>
          <title>Codes for the representation of currencies and funds,
                International Standard ISO 4217</title>
+         <author></author>
          <date year="2001" />
        </front>
      </reference>
