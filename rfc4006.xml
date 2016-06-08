@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!ENTITY RFC791 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.791.xml">
+<!ENTITY RFC791 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0791.xml">
 <!ENTITY RFC1738 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.1738.xml">
 <!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
 <!ENTITY RFC2629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2629.xml">
@@ -27,14 +27,13 @@
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 
-<rfc category="standards track" docName="RFC 4006" ipr="trust200902">
+<rfc category="std" docName="RFC 4006" ipr="trust200902">
 
 
  <front>
    <title abbrev="Abbreviated Title">Diameter Credit-Control Application</title>
 
-   <author fullname="Harri Hakala" initials="H." role="author"
-           surname="Hakala">
+   <author fullname="Harri Hakala" initials="H." surname="Hakala">
      <organization>Oy L M Ericsson Ab</organization>
      <address>
        <postal>
@@ -48,8 +47,7 @@
      </address>
    </author>
 
-  <author fullname="Leena Mattila" initials="L." role="author"
-           surname="Mattila">
+  <author fullname="Leena Mattila" initials="L." surname="Mattila">
      <organization>Oy L M Ericsson Ab</organization>
      <address>
        <postal>
@@ -63,7 +61,7 @@
      </address>
    </author>
 
-   <author fullname="Juha-Pekka Koskinen" initials="J-P." role="author"
+   <author fullname="Juha-Pekka Koskinen" initials="J-P." 
            surname="Koskinen">
      <organization>Nokia Networks</organization>
      <address>
@@ -79,7 +77,7 @@
      </address>
    </author>
 
-   <author fullname="Marco Stura" initials="M." role="author"
+   <author fullname="Marco Stura" initials="M." 
            surname="Stura">
      <organization>Nokia Networks</organization>
      <address>
@@ -94,7 +92,7 @@
      </address>
    </author>
 
-   <author fullname="John Loughney" initials="J." role="author"
+   <author fullname="John Loughney" initials="J." 
            surname="Loughney">
      <organization>Nokia Research Center</organization>
      <address>
@@ -128,7 +126,7 @@
  </front>
 
  <middle>
- <section>
+ <section title="What section is this">
    <section title="Introduction" anchor="intro">
 	<t>
 	   This document specifies a Diameter application that can be used to
@@ -264,7 +262,7 @@
       </t>
     </section>
 
-	<section anchor="appsupport" title="  Advertising Application Support">
+	<section anchor="sec-1.3" title="  Advertising Application Support">
 	<t>
 	   Diameter nodes conforming to this specification MUST advertise
 	   support by including the value of 4 in the Auth-Application-Id of the
@@ -533,7 +531,7 @@
    final interrogation.  For session based credit-control, both the
    credit control client and the credit-control server are required to
    maintain credit-control session state.  Session based credit-control
-   is described in more detail, with more variations, in <xref target="#sec-5">section 5</xref>.
+   is described in more detail, with more variations, in <xref target="sec-5">section 5</xref>.
 </t>
   <t>
    In contrast, credit authorization with direct debiting is a single
@@ -636,7 +634,7 @@
    BER).  This method can be used to avoid unnecessary conversions from
    an existing data format to an AVP format.  In this case, the rating
    input is embedded in the Service-Parameter-Info AVP as defined in
-   <xref target="#sec-8.43">section 8.43</xref>.
+   <xref target="sec-8.43">section 8.43</xref>.
 </t>
   <t>
    New service applications SHOULD favor the use of explicitly defined
@@ -766,7 +764,7 @@
    granted service units.  If the Validity-Time is used, its value
    SHOULD be given as input to set the session supervision timer Tcc
    (the session supervision timer MAY be set to two times the value of
-   the Validity-Time, as defined in <xref target="#sec-13">section 13</xref>).  Since credit-control
+   the Validity-Time, as defined in <xref target="sec-13">section 13</xref>).  Since credit-control
    update requests are also produced at the expiry of granted service
    units and/or for mid-session service events, the omission of
    Validity-Time does not mean that intermediate interrogation for the
@@ -928,16 +926,20 @@
    Cn are the used resources within the session, then the pool credit is
    exhausted and re-authorization MUST be sought when:
 </t>
+<figure>
 <artwork><![CDATA[
          C1*M1 + C2*M2 + ... + Cn*Mn >= S
 ]]></artwork>
+</figure>
 <t>
    The total credit in the pool, S, is calculated from the quotas, which
    are currently allocated to the pool as follows:
 </t>
+<figure>
 <artwork><![CDATA[
          S = Q1*M1 + Q2*M2 + ... + Qn*Mn
 ]]></artwork>
+</figure>
 <t>
    If services or rating groups are added to or removed from the pool,
    then the total credit is adjusted appropriately.  Note that when the
@@ -951,9 +953,9 @@
    or the Validity-Time expires.
 </t>
 <t>
-   Where multiple G-S-U-Pool-Reference AVPs (<xref target="#sec-8.30">section 8.30</xref>) with the same
+   Where multiple G-S-U-Pool-Reference AVPs (<xref target="sec-8.30">section 8.30</xref>) with the same
    G-S-U-Pool-Identifier are provided within a Multiple-Services-
-   Credit-Control AVP (<xref target="#sec-8.16">section 8.16</xref>) along with the Granted-Service-Unit
+   Credit-Control AVP (<xref target="sec-8.16">section 8.16</xref>) along with the Granted-Service-Unit
    AVP, then these MUST have different CC-Unit-Type values, and they all
    draw from the credit pool separately.  For instance, if one
    multiplier for time (M1t) and one multiplier for volume (M1v) are
@@ -969,7 +971,7 @@
 <t>
    The credit pool concept is an optimal tool to avoid the over-
    reservation effect of the basic single quota tariff time change
-   mechanism (the mechanism described in <xref target="#sec-5.1.1">section 5.1.1</xref>).  Therefore,
+   mechanism (the mechanism described in <xref target="sec-5.1.1">section 5.1.1</xref>).  Therefore,
    Diameter credit-control clients and servers implementing the
    independent credit-control of multiple services SHOULD leverage the
    credit pool concept when supporting the tariff time change.  The
@@ -987,19 +989,19 @@
 </t>
 <t>
    The failure handling for credit-control sessions is defined in
-   <xref target="#sec-5.7">section 5.7</xref> and reflected in the basic credit-control state machine
-   in <xref target="#sec-7">section 7</xref>.  Credit-control clients and servers implementing the
+   <xref target="sec-5.7">section 5.7</xref> and reflected in the basic credit-control state machine
+   in <xref target="sec-7">section 7</xref>.  Credit-control clients and servers implementing the
    independent credit-control of multiple services in a (sub-)session
    functionality MUST ensure failure handling and general behavior fully
    consistent with the above mentioned sections, while maintaining the
    ability to handle parallel ongoing credit re-authorization within a
    (sub-)session.  Therefore, it is RECOMMENDED that Diameter credit-
    control clients maintain a PendingU message queue and restart the Tx
-   timer (<xref target="#sec-13">section 13</xref>) every time a CCR message with the value
+   timer (<xref target="sec-13">section 13</xref>) every time a CCR message with the value
    UPDATE_REQUEST is sent while they are in PendingU state.  When
    answers to all pending messages are received, the state machine moves
    to OPEN state, and Tx is stopped.  Naturally, the action performed
-   when a problem for the session is detected according to <xref target="#sec-5.7">section 5.7</xref>
+   when a problem for the session is detected according to <xref target="sec-5.7">section 5.7</xref>
    affects all the ongoing services (e.g., failover to a backup server
    if possible affect all the CCR messages with the value UPDATE_REQUEST
    in the PendingU queue).
@@ -1093,7 +1095,7 @@
    Indication AVP to indicate that the answer message contains the final
    units for the service.  After the end user has consumed these units,
    the Diameter credit-control-client MUST behave as described in
-   <xref target="#sec-5.6">section 5.6</xref>.
+   <xref target="sec-5.6">section 5.6</xref>.
 </t>
 <t>
    This document defines two different approaches to perform the first
@@ -1258,7 +1260,7 @@
    credit-control request, as required by using credit-control commands.
    The CC-Request-Number of the first UPDATE_REQUEST MUST be set to 1
    (for how to produce unique value for the CC-Request-Number AVP, see
-   <xref target="#sec-8.2">section 8.2</xref>).
+   <xref target="sec-8.2">section 8.2</xref>).
 </t>
 <t>
    If service specific re-authorization is performed (i.e.,
@@ -1391,7 +1393,7 @@
    Indication AVP to indicate that the answer message contains the final
    units for the service.  After the end user has consumed these units,
    the Diameter credit-control-client MUST behave as described in
-   <xref target="#sec-5.6">section 5.6</xref>.
+   <xref target="sec-5.6">section 5.6</xref>.
 </t><t>
    There can be several intermediate interrogations within a session.
 </t>
@@ -1399,7 +1401,7 @@
 <section anchor="sec-5.4" title="  Final Interrogation">
 <t>
    When the end user terminates the service session, or when the
-   graceful service termination described in <xref target="#sec-5.6">section 5.6</xref> takes place,
+   graceful service termination described in <xref target="sec-5.6">section 5.6</xref> takes place,
    the Diameter credit-control client MUST send a final Credit-Control-
    Request message to the credit-control server.  The CC-Request-Type
    AVP is set to the value TERMINATION_REQUEST.  The Service-Context-Id
@@ -1476,11 +1478,11 @@
    Credit Control, and the Re-Auth-Request-Type is set to
    AUTHORIZE_ONLY.
 </t><t>
-   <xref target="#sec-5.1.2">Section 5.1.2</xref> defines the feature to enable credit-control for
+   <xref target="sec-5.1.2">Section 5.1.2</xref> defines the feature to enable credit-control for
    multiple services within a single (sub-)session where the server can
    authorize credit usage at a different level of granularity.  Further,
    the server may provide credit resources to multiple services or
-   rating groups as a pool (see <xref target="#sec-5.1.2">section 5.1.2</xref> for details and
+   rating groups as a pool (see <xref target="sec-5.1.2">section 5.1.2</xref> for details and
    definitions).  Therefore, the server, based on its service logic and
    its knowledge of the ongoing session, can decide to request credit
    re-authorization for a whole (sub-)session, a single credit pool, a
@@ -1698,7 +1700,7 @@
    An entity other than the credit-control server may provision the
    access device with appropriate IP packet filters to be used in
    conjunction with the Diameter credit-control application.  This case
-   is considered in <xref target="#sec-5.6.3">section 5.6.3</xref>.
+   is considered in <xref target="sec-5.6.3">section 5.6.3</xref>.
 </t><t>
    When the final granted units have been consumed, the credit-control
    client MUST perform an intermediate interrogation.  The purpose of
@@ -1733,7 +1735,7 @@
    home service provider policy (note: the latter option implies that
    the service element should not remove the restriction filters upon
    termination of the credit-control).  The server will return the
-   appropriate Result-Code (see <xref target="#sec-9.1">section 9.1</xref>) in the Credit-Control-
+   appropriate Result-Code (see <xref target="sec-9.1">section 9.1</xref>) in the Credit-Control-
    Answer message in order to implement the policy-defined action.
    Otherwise, new quota will be returned, the service element MUST
    remove all the possible restrictions activated by the graceful
@@ -1808,7 +1810,7 @@
    be removed immediately and unlimited service' access to be resumed.
    For the best user experience, the credit-control server
    implementation MAY support the server-initiated credit re-
-   authorization (see <xref target="#sec-5.5">section 5.5</xref>).  In such a case, upon the successful
+   authorization (see <xref target="sec-5.5">section 5.5</xref>).  In such a case, upon the successful
    account top-up, the credit-control server sends the Re-Auth-Request
    (RAR) message to solicit the credit re-authorization.  The credit-
    control client initiates the credit re-authorization by sending the
@@ -1868,7 +1870,7 @@
    consequence, the credit-control server might receive duplicate
    messages.  These duplicates or out of sequence messages can be
    detected in the credit-control server based on the credit-control
-   server session state machine (<xref target="#sec-7">section 7</xref>), Session-Id AVP, and CC-
+   server session state machine (<xref target="sec-7">section 7</xref>), Session-Id AVP, and CC-
    Request-Number AVP.
 </t><t>
    If a failure occurs during an ongoing credit-control session, the
@@ -1904,7 +1906,7 @@
    network in a reasonable time.  Thus, the Diameter credit-control
    client will react faster than would the underlying base protocol.
    Therefore this specification defines the timer Tx that is used by the
-   credit-control client (as defined in <xref target="#sec-13">section 13</xref>) to supervise the
+   credit-control client (as defined in <xref target="sec-13">section 13</xref>) to supervise the
    communication with the credit-control server.  When the timer Tx
    elapses, the credit-control client takes an action to the end user
    according to the Credit-Control-Failure-Handling AVP.
@@ -1948,7 +1950,7 @@
    credit-control session, it will terminate the credit-control session
    and return the reserved units back to the end user's account.
 </t><t>
-   The supervision session timer Tcc (as defined in <xref target="#sec-13">section 13</xref>) is used
+   The supervision session timer Tcc (as defined in <xref target="sec-13">section 13</xref>) is used
    in the credit-control server to supervise the credit-control session.
 </t><t>
    In order to support failover between credit-control servers,
@@ -2161,7 +2163,7 @@
 <t>
    When the credit-control client detects a communication failure with
    the credit-control server, its behavior depends on the requested
-   action.  The timer Tx (as defined in <xref target="#sec-13">section 13</xref>) is used in the
+   action.  The timer Tx (as defined in <xref target="sec-13">section 13</xref>) is used in the
    credit-control client to supervise the communication with the
    credit-control server.
 </t>
@@ -2197,7 +2199,7 @@
    server successfully processes the request.)  The credit-control
    client MUST mark these request messages as possible duplicates by
    setting the T-flag in the command header as described in <xref target="RFC3588">[DIAMBASE]</xref>,
-   <xref target="#sec-3">section 3</xref>.
+   <xref target="sec-3">section 3</xref>.
 </t>
 <t>
    If the Direct-Debiting-Failure-Handling AVP is set to CONTINUE, the
@@ -2223,7 +2225,7 @@
    volatile storage in case of temporary failure.  The credit-control
    client MUST mark the re-transmitted request message as a possible
    duplicate by setting the T-flag in the command header as described in
-   <xref target="RFC3588">[DIAMBASE]</xref>, <xref target="#sec-3">section 3</xref>.
+   <xref target="RFC3588">[DIAMBASE]</xref>, <xref target="sec-3">section 3</xref>.
 </t>
 <t>
    For stored requests, the implementation may choose to limit the
@@ -2253,7 +2255,7 @@
    authorization/authentication process.  The second describes the
    session-based credit-control when the first interrogation is executed
    after the authorization/authentication process.  The requirements as
-   to what state machines have to be supported are discussed in <xref target="#sec-5.2">section
+   to what state machines have to be supported are discussed in <xref target="sec-5.2">section
     5.2</xref>.
 </t>
 <t>
@@ -2336,11 +2338,11 @@
    server upon 'Temporary error' or 'Failure to send' is not explicitly
    described.  Moving an ongoing credit-control message stream to an
    alternative server is, however, possible if the CC-Session-Failover
-   AVP is set to FAILOVER_SUPPORTED, as described in <xref target="#sec-5.7">section 5.7</xref>.
+   AVP is set to FAILOVER_SUPPORTED, as described in <xref target="sec-5.7">section 5.7</xref>.
 </t>
 <t>
    Re-sending a credit-control event to an alternative server is
-   supported as described in <xref target="#sec-6.5">section 6.5</xref>.
+   supported as described in <xref target="sec-6.5">section 6.5</xref>.
 </t>
 <t>
 </t>
@@ -2743,20 +2745,21 @@
    authorization commands defined in authorization-specific
    applications, such as <xref target="RFC4005">[NASREQ]</xref> and <xref target="RFC4004">[DIAMMIP]</xref>, if the first
    interrogation is performed as part of the
-   authorization/authentication process, as described in <xref target="#sec-5.2">section 5.2</xref>.
+   authorization/authentication process, as described in <xref target="sec-5.2">section 5.2</xref>.
 </t>
 <t>
    The Diameter AVP rules are defined in the Diameter Base <xref target="RFC3588">[DIAMBASE]</xref>,
-   <xref target="#sec-4">section 4</xref>.  These AVP rules are observed in AVPs defined in this
+   <xref target="sec-4">section 4</xref>.  These AVP rules are observed in AVPs defined in this
    section.
 </t>
 <t>
    The following table describes the Diameter AVPs defined in the
    credit-control application, their AVP Code values, types, possible
    flag values, and whether the AVP MAY be encrypted.  The Diameter base
-   <xref target="RFC3588">[DIAMBASE]</xref> specifies the AVP Flag rules for AVPs in <xref target="#sec-4.5">section 4.5</xref>.
+   <xref target="RFC3588">[DIAMBASE]</xref> specifies the AVP Flag rules for AVPs in section 4.5.
 </t>
 
+<figure>
 <artwork align="left"><![CDATA[
                                             +--------------------+
                                             |    AVP Flag rules  |
@@ -2842,7 +2845,7 @@
      -Info-Value                            |    |     |    |    |    |
    Value-Digits      447  8.10   Integer64  | M  |  P  |    |  V | Y  |
    Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
-]]></artwork>
+]]></artwork></figure>
 <section anchor="sec-8.1" title="  CC-Correlation-Id AVP">
 <t>
    The CC-Correlation-Id AVP (AVP Code 411) is of type OctetString and
@@ -3114,7 +3117,7 @@
       the service MUST only be granted for as long as there is a
       connection to the credit-control server.  If the credit-control
       client does not receive any Credit-Control-Answer message within
-      the Tx timer (as defined in <xref target="#sec-13">section 13</xref>), the credit-control
+      the Tx timer (as defined in <xref target="sec-13">section 13</xref>), the credit-control
       request is regarded as failed, and the end user's service session
       is terminated.
 </t><t>
@@ -3157,14 +3160,14 @@
       TERMINATE_OR_BUFFER, the service MUST be granted for as long as
       there is a connection to the credit-control server.  If the
       credit-control client does not receive any Credit-Control-Answer
-      message within the Tx timer (as defined in <xref target="#sec-13">section 13</xref>) the
+      message within the Tx timer (as defined in <xref target="sec-13">section 13</xref>) the
       credit-control request is regarded as failed.  The client SHOULD
       terminate the service if it can determine from the failed answer
       that units have not been debited.  Otherwise the credit-control
       client SHOULD grant the service, store the request in application
       level non-volatile storage, and try to re-send the request.  These
       requests MUST be marked as possible duplicates by setting the T-
-      flag in the command header as described in <xref target="RFC3588">[DIAMBASE]</xref> <xref target="#sec-3">section 3</xref>.
+      flag in the command header as described in <xref target="RFC3588">[DIAMBASE]</xref> <xref target="sec-3">section 3</xref>.
       This is the default behavior if the AVP isn't included in the
       reply from the authorization server.
 </t><t>
@@ -3217,7 +3220,7 @@
    Multiple-Services-Credit-Control AVP with the Granted-Service-Unit
    AVP associated to the same service-identifier and/or rating-group.
    Where the two quotas are associated to the same pool or to different
-   pools, the credit pooling mechanism defined in <xref target="#sec-5.1.2">section 5.1.2</xref> applies.
+   pools, the credit pooling mechanism defined in <xref target="sec-5.1.2">section 5.1.2</xref> applies.
    The Tariff-Change-Usage AVP MUST NOT be included in request commands
    to report used units before, and after tariff time change the Used-
    Service-Unit AVP MUST be used.
@@ -3335,7 +3338,7 @@
    be changed.
 </t><t>
    The tariff change mechanism is optional for the client and server,
-   and it is not used for time-based services defined in <xref target="#sec-5">section 5</xref>.  If
+   and it is not used for time-based services defined in <xref target="sec-5">section 5</xref>.  If
    a client does not support the tariff time change mechanism, it MUST
    treat Tariff-Time-Change AVP in the answer message as an incorrect
    CCA answer.  In this case, the client terminates the credit-control
@@ -3532,7 +3535,7 @@
    seconds.
 </t><t>
    The Validity-Time AVP is also used for the graceful service
-   termination (see <xref target="#sec-5.6">section 5.6</xref>) to indicate to the credit-control
+   termination (see <xref target="sec-5.6">section 5.6</xref>) to indicate to the credit-control
    client how long the subscriber is allowed to use network resources
    after the specified action (i.e., REDIRECT or RESTRICT_ACCESS)
    started.  When the Validity-Time elapses, a new intermediate
@@ -3546,7 +3549,7 @@
    Answer, or in the AA answer, contains the final units for the
    service.  After these units have expired, the Diameter credit-control
    client is responsible for executing the action indicated in the
-   Final-Unit-Action AVP (see <xref target="#sec-5.6">section 5.6</xref>).
+   Final-Unit-Action AVP (see <xref target="sec-5.6">section 5.6</xref>).
 </t><t>
    If more than one unit type is received in the Credit-Control-Answer,
    the unit type that first expired SHOULD cause the credit-control
@@ -3558,7 +3561,7 @@
    the AA answer.  This indicates to the Diameter credit-control client
    to execute the specified action immediately.  If the home service
    provider policy is to terminate the service, naturally, the server
-   SHOULD return the appropriate transient failure (see <xref target="#sec-9.1">section 9.1</xref>) in
+   SHOULD return the appropriate transient failure (see <xref target="sec-9.1">section 9.1</xref>) in
    order to implement the policy-defined action.
 </t><t>
    The Final-Unit-Action AVP defines the behavior of the service element
@@ -3617,7 +3620,7 @@
 </t><t>
       The service element MUST redirect the user to the address
       specified in the Redirect-Server-Address AVP.  The redirect action
-      is defined in <xref target="#sec-5.6.2">section 5.6.2</xref>.
+      is defined in <xref target="sec-5.6.2">section 5.6.2</xref>.
 </t><t>
    RESTRICT_ACCESS                 2
 </t><t>
@@ -3625,7 +3628,7 @@
       IP packet filters defined in the Restriction-Filter-Rule AVP or
       according to the IP packet filters identified by the Filter-Id
       AVP.  All the packets not matching the filters MUST be dropped
-      (see <xref target="#sec-5.6.3">section 5.6.3</xref>).
+      (see <xref target="sec-5.6.3">section 5.6.3</xref>).
 </t>
 </section>
 <section anchor="sec-8.36" title="  Restriction-Filter-Rule AVP">
@@ -3877,7 +3880,7 @@
 </t><t>
    This specification defines the following subscription identifiers.
    However, new Subscription-Id-Type values can be assigned by an IANA
-   designated expert, as defined in <xref target="#sec-12">section 12</xref>.  A server MUST implement
+   designated expert, as defined in <xref target="sec-12">section 12</xref>.  A server MUST implement
    all the Subscription-Id-Types required to perform credit
    authorization for the services it supports, including possible future
    values.  Unknown or unsupported Subscription-Id-Types MUST be treated
@@ -3942,7 +3945,7 @@
 </t><t>
    This specification defines the following user equipment types.
    However, new User-Equipment-Info-Type values can be assigned by an
-   IANA designated expert, as defined in <xref target="#sec-12">section 12</xref>.
+   IANA designated expert, as defined in <xref target="sec-12">section 12</xref>.
 </t><t>
    IMEISV                          0
 </t><t>
@@ -4062,7 +4065,7 @@
    applications specific AVPs defined in this document are to be present
    in the credit-control messages.
 </t>
-<artwork align="left"><![CDATA[
+<figure><artwork align="left"><![CDATA[
                                        +-----------+
                                        |  Command  |
                                        |   Code    |
@@ -4113,7 +4116,7 @@
          User-Name                     | 0-1 | 0-1 |
          Validity-Time                 | 0   | 0-1 |
          ------------------------------|-----+-----+
-]]></artwork>
+]]></artwork></figure>
 </section>
 <section anchor="sec-10.2" title="  Re-Auth-Request/Answer AVP Table">
 <t>
@@ -4124,6 +4127,7 @@
    Re-Auth-Request/Answer command MAY include the following additional
    AVPs:
 </t>
+<figure>
 <artwork align="left"><![CDATA[
                                        +---------------+
                                        | Command Code  |
@@ -4136,6 +4140,7 @@
          Rating-Group                  |  0-1  |  0-1  |
          ------------------------------+-------+-------+
 ]]></artwork>
+</figure>
 </section>
 </section>
 <section anchor="sec-11" title="  RADIUS/Diameter Credit-Control Interworking Model">
@@ -4278,7 +4283,7 @@
 <t>
    This specification assigns the value 4, 'Diameter Credit Control', to
    the Application Identifier namespace defined in <xref target="RFC3588">[DIAMBASE]</xref>.  See
-   <xref target="#sec-1.3">section 1.3</xref> for more information.
+   <xref target="sec-1.3">section 1.3</xref> for more information.
 </t>
 </section>
 <section anchor="sec-12.2" title="  Command Codes">
@@ -4291,7 +4296,7 @@
 <section anchor="sec-12.3" title="  AVP Codes">
 <t>
    This specification assigns the values 411 - 461 from the AVP code
-   namespace defined in <xref target="RFC3588">[DIAMBASE]</xref>.  See <xref target="#sec-8">section 8</xref> for the assignment of
+   namespace defined in <xref target="RFC3588">[DIAMBASE]</xref>.  See <xref target="sec-8">section 8</xref> for the assignment of
    the namespace in this specification.
 </t>
 </section>
@@ -4299,12 +4304,12 @@
 <t>
    This specification assigns the values 4010, 4011, 4012, 5030, 5031
    from the Result-Code AVP value namespace defined in <xref target="RFC3588">[DIAMBASE]</xref>.  See
-   <xref target="#sec-9">section 9</xref> for the assignment of the namespace in this specification.
+   <xref target="sec-9">section 9</xref> for the assignment of the namespace in this specification.
 </t>
 </section>
 <section anchor="sec-12.5" title="  CC-Request-Type AVP">
 <t>
-   As defined in <xref target="#sec-8.3">section 8.3</xref>, the CC-Request-Type AVP includes
+   As defined in <xref target="sec-8.3">section 8.3</xref>, the CC-Request-Type AVP includes
    Enumerated type values 1 - 4.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
    assignment by a Designated Expert [IANA].
@@ -4312,7 +4317,7 @@
 </section>
 <section anchor="sec-12.6" title="  CC-Session-Failover AVP">
 <t>
-   As defined in <xref target="#sec-8.4">section 8.4</xref>, the CC-Failover-Supported AVP includes
+   As defined in <xref target="sec-8.4">section 8.4</xref>, the CC-Failover-Supported AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
    assignment by a Designated Expert [IANA].
@@ -4320,7 +4325,7 @@
 </section>
 <section anchor="sec-12.7" title="  CC-Unit-Type AVP">
 <t>
-   As defined in <xref target="#sec-8.32">section 8.32</xref>, the CC-Unit-Type AVP includes Enumerated
+   As defined in <xref target="sec-8.32">section 8.32</xref>, the CC-Unit-Type AVP includes Enumerated
    type values 0 - 5.  IANA has created and is maintaining a namespace
    for this AVP.  All remaining values are available for assignment by a
    Designated Expert [IANA].
@@ -4328,7 +4333,7 @@
 </section>
 <section anchor="sec-12.8" title="  Check-Balance-Result AVP">
 <t>
-   As defined in <xref target="#sec-8.6">section 8.6</xref>, the Check-Balance-Result AVP includes
+   As defined in <xref target="sec-8.6">section 8.6</xref>, the Check-Balance-Result AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
    assignment by a Designated Expert [IANA].
@@ -4336,7 +4341,7 @@
 </section>
 <section anchor="sec-12.9" title="  Credit-Control AVP">
 <t>
-   As defined in <xref target="#sec-8.13">section 8.13</xref>, the Credit-Control AVP includes
+   As defined in <xref target="sec-8.13">section 8.13</xref>, the Credit-Control AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
    assignment by a Designated Expert [IANA].
@@ -4344,7 +4349,7 @@
 </section>
 <section anchor="sec-12.10" title="  Credit-Control-Failure-Handling AVP">
 <t>
-   As defined in <xref target="#sec-8.14">section 8.14</xref>, the Credit-Control-Failure-Handling AVP
+   As defined in <xref target="sec-8.14">section 8.14</xref>, the Credit-Control-Failure-Handling AVP
    includes Enumerated type values 0 - 2.  IANA has created and is
    maintaining a namespace for this AVP.  All remaining values are
    available for assignment by a Designated Expert [IANA].
@@ -4352,7 +4357,7 @@
 </section>
 <section anchor="sec-12.11" title="  Direct-Debiting-Failure-Handling AVP">
 <t>
-   As defined in <xref target="#sec-8.15">section 8.15</xref>, the Direct-Debiting-Failure-Handling AVP
+   As defined in <xref target="sec-8.15">section 8.15</xref>, the Direct-Debiting-Failure-Handling AVP
    includes Enumerated type values 0 - 1.  IANA has created and is
    maintaining a namespace for this AVP.  All remaining values are
    available for assignment by a Designated Expert [IANA].
@@ -4360,7 +4365,7 @@
 </section>
 <section anchor="sec-12.12" title="  Final-Unit-Action AVP">
 <t>
-   As defined in <xref target="#sec-8.35">section 8.35</xref>, the Final-Unit-Action AVP includes
+   As defined in <xref target="sec-8.35">section 8.35</xref>, the Final-Unit-Action AVP includes
    Enumerated type values 0 - 2.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
    assignment by a Designated Expert [IANA].
@@ -4368,7 +4373,7 @@
 </section>
 <section anchor="sec-12.13" title="  Multiple-Services-Indicator AVP">
 <t>
-   As defined in <xref target="#sec-8.40">section 8.40</xref>, the Multiple-Services-Indicator AVP
+   As defined in <xref target="sec-8.40">section 8.40</xref>, the Multiple-Services-Indicator AVP
    includes Enumerated type values 0 - 1.  IANA has created and is
    maintaining a namespace for this AVP.  All remaining values are
    available for assignment by a Designated Expert [IANA].
@@ -4376,7 +4381,7 @@
 </section>
 <section anchor="sec-12.14" title="  Redirect-Address-Type AVP">
 <t>
-   As defined in <xref target="#sec-8.38">section 8.38</xref>, the Redirect-Address-Type AVP includes
+   As defined in <xref target="sec-8.38">section 8.38</xref>, the Redirect-Address-Type AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
    assignment by a Designated Expert [IANA].
@@ -4384,7 +4389,7 @@
 </section>
 <section anchor="sec-12.15" title="  Requested-Action AVP">
 <t>
-   As defined in <xref target="#sec-8.41">section 8.41</xref>, the Requested-Action AVP includes
+   As defined in <xref target="sec-8.41">section 8.41</xref>, the Requested-Action AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
    assignment by a Designated Expert [IANA].
@@ -4392,7 +4397,7 @@
 </section>
 <section anchor="sec-12.16" title="  Subscription-Id-Type AVP">
 <t>
-   As defined in <xref target="#sec-8.47">section 8.47</xref>, the Subscription-Id-Type AVP  includes
+   As defined in <xref target="sec-8.47">section 8.47</xref>, the Subscription-Id-Type AVP  includes
    Enumerated type values 0 - 4.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
    assignment by a Designated Expert [IANA].
@@ -4400,7 +4405,7 @@
 </section>
 <section anchor="sec-12.17" title="   Tariff-Change-Usage AVP">
 <t>
-   As defined in <xref target="#sec-8.27">section 8.27</xref>, the Tariff-Change-Usage AVP includes
+   As defined in <xref target="sec-8.27">section 8.27</xref>, the Tariff-Change-Usage AVP includes
    Enumerated type values 0 - 2.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
    assignment by a Designated Expert [IANA].
@@ -4408,7 +4413,7 @@
 </section>
 <section anchor="sec-12.18" title="   User-Equipment-Info-Type AVP">
 <t>
-   As defined in <xref target="#sec-8.50">section 8.50</xref>, the User-Equipment-Info-Type AVP includes
+   As defined in <xref target="sec-8.50">section 8.50</xref>, the User-Equipment-Info-Type AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
    assignment by a Designated Expert [IANA].
@@ -4445,8 +4450,8 @@
 </t><t>
       Client implementations may offer the possibility of locally
       configuring these AVPs.  In such a case their value and behavior
-      is defined in <xref target="#sec-5.7">section 5.7</xref> for the Credit-Control-Failure-Handling
-      and in <xref target="#sec-6.5">section 6.5</xref> for the Direct-Debiting-Failure-Handling.
+      is defined in <xref target="sec-5.7">section 5.7</xref> for the Credit-Control-Failure-Handling
+      and in <xref target="sec-6.5">section 6.5</xref> for the Direct-Debiting-Failure-Handling.
 </t>
 </section>
 <section anchor="sec-14" title="  Security Considerations">
@@ -4505,7 +4510,7 @@
    between it and the end user's Diameter credit-control server are
    reliable.  In this case, the Diameter credit-control agent doesn't
    have a routing entry in its Diameter Routing Table (defined in
-   <xref target="RFC3588">[DIAMBASE]</xref>, <xref target="#sec-2.7">section 2.7</xref>) for the realm of the credit-control server
+   <xref target="RFC3588">[DIAMBASE]</xref>, section 2.7) for the realm of the credit-control server
    in the end user's home domain.  The Diameter credit-control agent can
    have a default route configured to a local Redirect agent, and it
    redirects the CCR message to the redirect agent.  The local Redirect
@@ -4524,7 +4529,7 @@
    There are some authorization issues even with redirects.  There may
    be attacks toward nodes that have been properly authorized, but that
    abuse their authorization or have been compromised.  These issues are
-   discussed more widely in [DIAMEAP], <xref target="#sec-8">section 8</xref>.
+   discussed more widely in [DIAMEAP], <xref target="sec-8">section 8</xref>.
 </t>
 </section>
 </section>
@@ -4538,12 +4543,13 @@
      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"?-->
      &RFC3588;
 
-     <reference anchor="3GPPCHARG">
+     <reference anchor="_3GPPCHARG">
        <front>
-         <title>3rd Generation Partnership Project; Technical
+         <title>Technical
                Specification Group Services and System Aspects, Service
                aspects; Charging and Billing, (release 5), 3GPP TS
                22.115 v. 5.2.1</title>
+         <author><organization>3rd Generation Partnership Project</organization></author>
 
          <date year="2002-03" />
        </front>
@@ -4557,6 +4563,7 @@
        <front>
          <title>Recommendation E.164/I.331 (05/97): The International
                Public Telecommunication Numbering Plan.</title>
+         <author></author>
          <date year="1997" />
        </front>
      </reference>
@@ -4612,17 +4619,19 @@
 
     <reference anchor="EUI64" target="http://standards.ieee.org/regauth/oui/tutorials/EUI64.html ">
        <front>
-         <title>IEEE, "Guidelines for 64-bit Global Identifier (EUI-64)
+         <title>"Guidelines for 64-bit Global Identifier (EUI-64)
                Registration Authority"</title>
+         <author><organization>IEEE</organization></author>
          <date year="March 1997" />
        </front>
      </reference>
 
-    <reference anchor="3GPPIMEI">
+    <reference anchor="_3GPPIMEI">
        <front>
-         <title>3rd Generation Partnership Project; Technical
+         <title>Technical
                Specification Group Core Network, Numbering, addressing
                and identification, (release 5), 3GPP TS 23.003 v. 5.8.0</title>
+         <author><organization>3rd Generation Partnership Project</organization></author>
          <date year="2003-12" />
        </front>
      </reference>
@@ -5228,6 +5237,7 @@
    and starts monitoring the granted units.
 </t>
   </section>
+  <section anchor="app-a9" title="Flow IX">
 <t>
    The Diameter credit-control application defines the Multiple-
    Services-Credit-Control AVP that can be used to support independent
@@ -5245,7 +5255,6 @@
    element or provisioned by an entity other than the credit-control
    server.
 </t>
-  <section anchor="app-a9" title="Flow IX">
     <figure anchor="flow9" title="Flow example independent credit-control of multiple services in a  credit-control (sub-)Session">
     <artwork><![CDATA[
    End User         Service Element                           CC Server
