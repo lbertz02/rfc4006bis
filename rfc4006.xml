@@ -5486,6 +5486,14 @@
   </section>
 </section>
 
+<section title="Changes relative to RFC4006">
+  <t>The following changes were made relative to RFC4006:
+  <list>
+    <t>First item...</t>
+  </list>
+  </t>
+</section>
+
    <!-- Change Log
 
 v00 2016-06-07  LTB   Initial version
