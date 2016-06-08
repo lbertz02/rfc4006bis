@@ -61,7 +61,7 @@
      </address>
    </author>
 
-   <author fullname="Juha-Pekka Koskinen" initials="J-P." 
+   <author fullname="Juha-Pekka Koskinen" initials="J-P."
            surname="Koskinen">
      <organization>Nokia Networks</organization>
      <address>
@@ -77,7 +77,7 @@
      </address>
    </author>
 
-   <author fullname="Marco Stura" initials="M." 
+   <author fullname="Marco Stura" initials="M."
            surname="Stura">
      <organization>Nokia Networks</organization>
      <address>
@@ -92,7 +92,7 @@
      </address>
    </author>
 
-   <author fullname="John Loughney" initials="J." 
+   <author fullname="John Loughney" initials="J."
            surname="Loughney">
      <organization>Nokia Research Center</organization>
      <address>
@@ -379,7 +379,7 @@
    MUST be supported by all Diameter implementations that conform to
    this specification.  The Command Codes are as follows:
 </t>
-<texttable anchor="table_command_codes">
+<texttable anchor="table_command_codes" title="Credit-Control Commands">
   <ttcol align="left">Command-Name</ttcol>
   <ttcol align="left">Abrrev.</ttcol>
   <ttcol align="left">Code</ttcol>
@@ -392,8 +392,6 @@
    ABNF specification.  These formats are observed in Credit-Control
    messages.
 </t>
-  <!-- Did not include the section reference as a link because 3588 does not have an
-    XML version wiht a section tag -->
 <section anchor="sec-3.1" title="  Credit-Control-Request (CCR) Command">
 <t>
    The Credit-Control-Request message (CCR) is indicated by the
