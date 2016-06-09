@@ -4444,8 +4444,8 @@ Service Element         Translation Agent
 </section>
 <section anchor="sec-14" title="  Security Considerations">
 <t>
-   The Diameter base protocol <xref target="RFC3588">[DIAMBASE]</xref> requires that each Diameter
-   implementation use underlying security; i.e., IPsec or TLS.  These
+   The Diameter base protocol <xref target="RFC6733">[DIAMBASE]</xref> requires that each Diameter
+   implementation use underlying security; i.e., TLS/TCP, DTLS/SCTP or IPsec.  These
    mechanisms are believed to provide sufficient protection under the
    normal Internet threat model; that is, assuming that the authorized
    nodes engaging in the protocol have not been compromised, but that
@@ -4457,7 +4457,7 @@ Service Element         Translation Agent
    Request-Number, which is specified in this document.  The Diameter
    credit-control application is often used within one domain, and there
    may be a single hop between the peers.  In these environments, the
-   use of TLS or IPsec is sufficient.  The details of TLS and IPsec
+   use of TLS/TCP, DTLS/SCTP or IPsec is sufficient.  The details of TLS/TCP, DTLS/SCTP or IPsec
    related security considerations are discussed in the <xref target="RFC6733">[DIAMBASE]</xref>.
 </t><t>
    Because this application handles monetary transactions (directly or
@@ -5507,6 +5507,7 @@ End User         Service Element                           CC Server
   <list>
     <t>Update references to obsolete RFC 3588 to refer to RFC 6733.</t>
     <t>Update references to obsolete RFC 4005 to refer to RFC 7155.</t>
+    <t>Update reference to "IPsec or TLS" to be "TLS/TCP, DTLS/SCTP or IPsec"</t>
   </list>
   </t>
 </section>
