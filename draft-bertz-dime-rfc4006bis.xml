@@ -305,7 +305,7 @@
    rendered.
 </t>
   <t>
-   Figure 1 illustrates the typical credit-control architecture, which
+   <xref target="fig-typical-cca"/> illustrates the typical credit-control architecture, which
    consists of a Service Element with an embedded Diameter credit-
    control client, a Diameter credit-control server, and an AAA server.
    A Business Support System is usually deployed; it includes at least
@@ -326,7 +326,7 @@
    infrastructure, authenticates and authorizes the user with the user's
    home network.
 </t>
-  <figure title="Typical credit-control architecture" anchor="typical-cca">
+  <figure title="Typical credit-control architecture" anchor="fig-typical-cca">
   <artwork><![CDATA[
                Service Element   AAA and CC
 +----------+      +---------+     Protocols+-----------+  +--------+
@@ -1428,7 +1428,7 @@ End User          (CC Client)           AAA Server          CC Server
    unit indication causes user logoff according to local policy), the
    service element, according to application specific policy, may send a
    Session-Termination-Request (STR) to the home Diameter AAA server as
-  usual <xref target="RFC6733"/>.  <xref target="disconnect">Figure 5</xref> illustrates the case when the final-unit
+  usual <xref target="RFC6733"/>.  <xref target="disconnect"/> illustrates the case when the final-unit
    indication causes user logoff upon consumption of the final granted
    units and the generation of STR.
 </t>
