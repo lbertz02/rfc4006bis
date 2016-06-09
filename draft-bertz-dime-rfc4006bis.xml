@@ -175,7 +175,7 @@
      <section title="Requirements Language">
        <t>In this document, the key words "MAY", "MUST", "MUST NOT", "OPTIONAL",
        "RECOMMENDED", "SHOULD", and "SHOULD NOT", are to be interpreted as
-       described in <xref target="RFC2119">RFC 2119</xref>.
+       described in <xref target="RFC2119"/>.
        </t>
      </section>
 
@@ -188,12 +188,12 @@
          <t hangText="AA answer">
          AA answer generically refers to a service specific authorization and
          authentication answer.  AA answer commands are defined in service
-           specific authorization applications, e.g., <xref target="RFC7155">[NASREQ]</xref> and <xref target="RFC4004">[DIAMMIP]</xref>.
+           specific authorization applications, e.g., <xref target="RFC7155"/> and <xref target="RFC4004">[DIAMMIP]</xref>.
          </t>
          <t hangText="AA request">
          AA request generically refers to a service specific authorization and
          authentication request.  AA request commands are defined in service
-         specific authorization applications e.g., <xref target="RFC7155">[NASREQ]</xref> and <xref target="RFC4004">[DIAMMIP]</xref>.
+         specific authorization applications e.g., <xref target="RFC7155"/> and <xref target="RFC4004">[DIAMMIP]</xref>.
          </t>
          <t hangText="Credit-control">
          Credit-control is a mechanism that directly interacts in real-time
@@ -276,7 +276,7 @@
    <xref target="RFC2866">[RFC2866]</xref> and Diameter base <xref target="RFC6733">[DIAMBASE]</xref> are not sufficient for real-
    time credit-control, where credit-worthiness is to be determined
    prior to service initiation.  Also, the existing Diameter
-   authorization applications, <xref target="RFC7155">[NASREQ]</xref> and <xref target="RFC4004">[DIAMMIP]</xref>, only provide
+   authorization applications, <xref target="RFC7155"/> and <xref target="RFC4004">[DIAMMIP]</xref>, only provide
    service authorization, but do not provide credit authorization for
    prepaid users.  In order to support real-time credit-control, a new
    type of server is needed in the AAA infrastructure: Diameter credit-
@@ -603,7 +603,8 @@
 </t>
   <t>
    1a. The service SHOULD re-use existing AVPs if it can use AVPs
-   defined in existing Diameter applications (e.g., NASREQ for network
+   defined in existing Diameter applications (e.g., <xref target="RFC7155"/>
+   for network
    access services).  Re-use of existing AVPs is strongly recommended in
    <xref target="RFC6733">[DIAMBASE]</xref>.
 </t>
@@ -693,7 +694,7 @@
 <t>
    When service specific documents include RADIUS vendor specific
    attributes that could be used as input in the rating process, the
-   rules described in <xref target="RFC7155">[NASREQ]</xref> for formatting the Diameter AVP MUST be
+   rules described in <xref target="RFC7155"/> for formatting the Diameter AVP MUST be
    followed.
 </t>
   <t>
@@ -1203,7 +1204,7 @@ End User        Service Element        AAA Server         CC Server
    interrogation toward the home Diameter AAA server.  The Auth-
    Application-Id is set to the appropriate value, as defined in the
    relevant service specific authorization/authentication application
-   document (e.g., <xref target="RFC7155">[NASREQ]</xref>, <xref target="RFC4004">[DIAMMIP]</xref>).  The home Diameter AAA server
+   document (e.g., <xref target="RFC7155"/>, <xref target="RFC4004"/>).  The home Diameter AAA server
    authenticates/authorizes the subscriber and determines whether
    credit-control is required.
 </t>
@@ -1239,7 +1240,7 @@ End User        Service Element        AAA Server         CC Server
    control server, the home Diameter AAA server will populate the AA
    answer with the received credit-control AVPs and with the appropriate
    service attributes according to the authorization/authentication
-   specific application (e.g., <xref target="RFC7155">[NASREQ]</xref>, <xref target="RFC4004">[DIAMMIP]</xref>).  It will then
+   specific application (e.g., <xref target="RFC7155"/>, <xref target="RFC4004"/>).  It will then
    forward the packet to the credit-control client.  If the home
    Diameter AAA server receives a credit-control reject message, it will
    simply generate an appropriate authorization reject message to the
@@ -2738,7 +2739,7 @@ End User        Service Element        AAA Server        CC Server
 <t>
    The AVPs defined in this section MAY also be included in
    authorization commands defined in authorization-specific
-   applications, such as <xref target="RFC7155">[NASREQ]</xref> and <xref target="RFC4004">[DIAMMIP]</xref>, if the first
+   applications, such as <xref target="RFC7155"/> and <xref target="RFC4004"/>, if the first
    interrogation is performed as part of the
    authorization/authentication process, as described in <xref target="sec-5.2">section 5.2</xref>.
 </t>
@@ -3576,7 +3577,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    If the Final-Unit-Action AVP is set to RESTRICT_ACCESS, either the
    Restriction-Filter-Rule AVP or the Filter-Id AVP SHOULD be present.
 </t><t>
-   The Filter-Id AVP is defined in <xref target="RFC7155">[NASREQ]</xref>.  The Filter-Id AVP can be
+   The Filter-Id AVP is defined in <xref target="RFC7155"/>.  The Filter-Id AVP can be
    used to reference an IP filter list installed in the access device by
    means other than the Diameter credit-control application, e.g.,
    locally configured or configured by another entity.
@@ -4705,7 +4706,7 @@ End User          (CC Client)         AAA Server           CC Server
 ]]></artwork>
     </figure>
 <t>A credit-control flow for Network Access Services prepaid is shown in
-   Figure A.1.  The Diameter [NASREQ] is implemented in the Network
+   Figure A.1.  The Diameter <xref target="RFC7155"/> is implemented in the Network
    Access Server (NAS).  The focus of this flow is in the credit
    authorization.
 </t>
@@ -4714,7 +4715,7 @@ End User          (CC Client)         AAA Server           CC Server
    Diameter AA-Request (AAR) to the home Diameter AAA server.  The
    credit-control client populates the AAR with the Credit-Control AVP
    set to CREDIT_AUTHORIZATION, and service-specific AVPs are included,
-   as usual [NASREQ].  The home Diameter AAA server performs service-
+   as usual <xref target="RFC7155"/>.  The home Diameter AAA server performs service-
    specific Authentication and Authorization, as usual.  The home
    Diameter AAA server determines that the user is a prepaid user and
    notices from the Credit-Control AVP that the NAS has credit-control
@@ -5200,14 +5201,14 @@ End-User         (CC Client)          AAA Server    Server    Server
    initiated when the first interrogation takes place because the user's
    account is empty.  In this example, the credit-control server
    supports the server-initiated credit re-authorization.  The Diameter
-   [NASREQ] is implemented in the Network Access Server (NAS).
+   <xref target="RFC7155"/> is implemented in the Network Access Server (NAS).
 </t>
 <t>
    The user logs on to the network (1).  The Diameter NAS sends a
    Diameter AA-Request to the home Diameter AAA server.  The credit-
    control client populates the AAR with the Credit-Control AVP set to
    CREDIT_AUTHORIZATION, and service specific AVPs are included, as
-   usual [NASREQ].  The home Diameter AAA server performs service
+   usual <xref target="RFC7155"/>.  The home Diameter AAA server performs service
    specific Authentication and Authorization, as usual.  The home
    Diameter AAA server determines that the user has a prepaid
    subscription and notices from the Credit-Control AVP that the NAS has
