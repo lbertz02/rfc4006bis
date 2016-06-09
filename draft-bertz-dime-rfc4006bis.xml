@@ -852,7 +852,8 @@
    representation of the relationship between service-identifiers,
    rating-groups, credit pools, and credit-control (sub-)session.
 </t>
-<figure><artwork><![CDATA[
+<figure title="Multiple-Service (sub)-Session Example" anchor="multiservice">
+<artwork><![CDATA[
                         DCC (Sub-)Session
                                 |
       +------------+-----------+-------------+--------------- +
@@ -1148,7 +1149,7 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
    messages directly to the credit-control server.  More credit-control
    sequence examples are given in Annex A.
 </t>
-<figure align="center" title="Figure 2: Protocol example with first interrogation after user's authorization/authentication"
+<figure align="center" title="Protocol example with first interrogation after user's authorization/authentication"
         anchor="first_interrogation">
 <artwork><![CDATA[
                                            Diameter
@@ -1279,7 +1280,7 @@ End User        Service Element        AAA Server         CC Server
    interrogation.  The parallel accounting stream is not shown in the
    figure.
 </t>
-<figure title="Figure 3: Protocol example with use of the authorization messages for the first interrogation"
+<figure title="Protocol example with use of the authorization messages for the first interrogation"
         anchor="first_interrogation_auth">
   <artwork><![CDATA[
                 Service Element         Diameter
@@ -1425,11 +1426,11 @@ End User          (CC Client)           AAA Server          CC Server
    unit indication causes user logoff according to local policy), the
    service element, according to application specific policy, may send a
    Session-Termination-Request (STR) to the home Diameter AAA server as
-   usual <xref target="RFC3588">[DIAMBASE]</xref>.  Figure 4 illustrates the case when the final-unit
+  usual <xref target="RFC3588">[DIAMBASE]</xref>.  <xref target="disconnect">Figure 5</xref> illustrates the case when the final-unit
    indication causes user logoff upon consumption of the final granted
    units and the generation of STR.
 </t>
-<figure title="Figure 4: User disconnected due to exhausted account" anchor="disconnect">
+<figure title="User disconnected due to exhausted account" anchor="disconnect">
   <artwork><![CDATA[
                Service Element        AAA Server        CC Server
 End User         (CC Client)
@@ -1598,7 +1599,7 @@ End User         (CC Client)
    A following figure illustrates the graceful service termination
    procedure described in the following sub-sections.
 </t>
-<figure title="Figure 5: Optional graceful service termination procedure" anchor="graceful_termination">
+<figure title="Optional graceful service termination procedure" anchor="graceful_termination">
   <artwork><![CDATA[
                                         Diameter
 End User        Service Element         AAA Server          CC Server
@@ -1969,9 +1970,9 @@ End User        Service Element         AAA Server          CC Server
    to know the cost of the service event or to check the account balance
    without any credit-reservation.  It can also be used for refunding
    service units on the user's account or for direct debiting withouts
-   any credit-reservation.  The one time event is shown in Figure 6.
+  any credit-reservation.  The one time event is shown in <xref target="onetimeevent" format="default"></xref>.
 </t>
-  <figure title="Figure 6: One time event">
+  <figure title="One time event" anchor="onetimeevent">
   <artwork><![CDATA[
                                        Diameter
 End User        Service Element        AAA Server        CC Server
@@ -4155,16 +4156,16 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    Diameter credit control for instance, RADIUS prepaid.  In this case,
    the home AAA server contacts the Diameter credit-control server as
    part of the authorization process.  The interworking architecture is
-</t><t>
-   illustrated in Figure 7, and interworking flow in Figure 8.  In a
+   illustrated <xref target="se_with_translation" format="default"></xref>, and interworking flow in <xref target="diam_rad_prepaid_flow" format="default"></xref>.  In a
    roaming situation the service element (e.g., the NAS) may be located
    in the visited network, and a visited AAA server is usually
    contacted.  The visited AAA server connects then to the home AAA
    server.
 </t>
-<figure title="Figure 7: Credit-control architecture with service element
+<figure title="Credit-control architecture with service element
                   containing translation agent, translating RADIUS
-                  prepaid to Diameter credit-control protocol">
+                  prepaid to Diameter credit-control protocol"
+        anchor="se_with_translation">
 <artwork><![CDATA[
                                RADIUS Prepaid
 +--------+       +---------+   protocol +------------+  +--------+
@@ -4219,7 +4220,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    A following diagram illustrates a RADIUS prepaid - Diameter credit-
    control interworking sequence.
 </t>
-<figure title="Figure 8: Message flow example with RADIUS prepaid - Diameter credit-control interworking">
+<figure title="Message flow example with RADIUS prepaid - Diameter credit-control interworking"
+        anchor="diam_rad_prepaid_flow">
 <artwork><![CDATA[
 Service Element         Translation Agent
   (e.g., NAS)               (CC Client)             CC Server
