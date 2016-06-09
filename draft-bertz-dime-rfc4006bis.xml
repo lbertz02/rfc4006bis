@@ -188,12 +188,12 @@
          <t hangText="AA answer">
          AA answer generically refers to a service specific authorization and
          authentication answer.  AA answer commands are defined in service
-           specific authorization applications, e.g., <xref target="RFC7155"/> and <xref target="RFC4004">[DIAMMIP]</xref>.
+           specific authorization applications, e.g., <xref target="RFC7155"/> and <xref target="RFC4004"/>.
          </t>
          <t hangText="AA request">
          AA request generically refers to a service specific authorization and
          authentication request.  AA request commands are defined in service
-         specific authorization applications e.g., <xref target="RFC7155"/> and <xref target="RFC4004">[DIAMMIP]</xref>.
+         specific authorization applications e.g., <xref target="RFC7155"/> and <xref target="RFC4004"/>.
          </t>
          <t hangText="Credit-control">
          Credit-control is a mechanism that directly interacts in real-time
@@ -265,7 +265,7 @@
 	   Diameter nodes conforming to this specification MUST advertise
 	   support by including the value of 4 in the Auth-Application-Id of the
 	   Capabilities-Exchange-Request and Capabilities-Exchange-Answer
-    command <xref target="RFC6733">[DIAMBASE]</xref>.
+    command <xref target="RFC6733"/>.
 	</t>
 	</section>
 </section>
@@ -273,10 +273,10 @@
 <section anchor="sec-2" title="  Architecture Models">
 <t>
    The current accounting models specified in the Radius Accounting
-   <xref target="RFC2866">[RFC2866]</xref> and Diameter base <xref target="RFC6733">[DIAMBASE]</xref> are not sufficient for real-
+   <xref target="RFC2866">[RFC2866]</xref> and Diameter base <xref target="RFC6733"/> are not sufficient for real-
    time credit-control, where credit-worthiness is to be determined
    prior to service initiation.  Also, the existing Diameter
-   authorization applications, <xref target="RFC7155"/> and <xref target="RFC4004">[DIAMMIP]</xref>, only provide
+   authorization applications, <xref target="RFC7155"/> and <xref target="RFC4004"/>, only provide
    service authorization, but do not provide credit authorization for
    prepaid users.  In order to support real-time credit-control, a new
    type of server is needed in the AAA infrastructure: Diameter credit-
@@ -363,7 +363,7 @@
    and allow them to communicate directly can exist.  These agents
    transparently support the Diameter credit-control application.  The
    different roles of Diameter Agents are defined in Diameter base
-   <xref target="RFC6733">[DIAMBASE]</xref>, section 2.8.
+   <xref target="RFC6733"/>, section 2.8.
 </t>
   <!-- Did not include the section reference as a link because 3588 does not have an
     XML version wiht a section tag -->
@@ -389,7 +389,7 @@
   <c>Credit-Control-Answer</c><c>CCA</c><c>272</c><c>3.2</c>
 </texttable>
 <t>
-   Diameter Base <xref target="RFC6733">[DIAMBASE]</xref> defines in the section 3.2 the Command Code
+   Diameter Base <xref target="RFC6733"/> defines in the section 3.2 the Command Code
    format specification.  These formats are observed in Credit-Control
    messages.
 </t>
@@ -606,24 +606,24 @@
    defined in existing Diameter applications (e.g., <xref target="RFC7155"/>
    for network
    access services).  Re-use of existing AVPs is strongly recommended in
-   <xref target="RFC6733">[DIAMBASE]</xref>.
+   <xref target="RFC6733"/>.
 </t>
   <t>
    For AVPs of type Enumerated, the service may require a new value to
    be defined.  Allocation of new AVP values is done as specified in
-   <xref target="RFC6733">[DIAMBASE]</xref>, section 1.3.
+   <xref target="RFC6733"/>, section 1.3.
 </t>
     <!-- Did not include the section reference as a link because 3588 does not have an
     XML version wiht a section tag -->
   <t>
    1b. New AVPs can be defined if the existing AVPs do not provide
    sufficient rating information.  In this case, the procedures defined
-   in <xref target="RFC6733">[DIAMBASE]</xref> for creating new AVPs MUST be followed.
+   in <xref target="RFC6733"/> for creating new AVPs MUST be followed.
 </t><t>
    1c. For services specific only to one vendor's implementation, a
    Vendor-Specific AVP code for Private use can be used.  Where a
    Vendor-Specific AVP is implemented by more than one vendor,
-   allocation of global AVPs is encouraged instead; refer to <xref target="RFC6733">[DIAMBASE]</xref>.
+   allocation of global AVPs is encouraged instead; refer to <xref target="RFC6733"/>.
 </t>
   <t>
    legacy rating information in its original encoded form (e.g., ASN.1
@@ -675,7 +675,7 @@
    Diameter credit-control implementations are required to support the
    Mandatory rating AVPs defined in service specific documentation of
    the services they support, according to the 'M' bit rules in
-   <xref target="RFC6733">[DIAMBASE]</xref>.
+   <xref target="RFC6733"/>.
 </t>
   <t>
    If a rating input required for the rating process is incorrect in the
@@ -722,7 +722,7 @@
 </t>
 <t>
    Each credit-control session MUST have a globally unique Session-Id as
-   defined in <xref target="RFC6733">[DIAMBASE]</xref>, which MUST NOT be
+   defined in <xref target="RFC6733"/>, which MUST NOT be
    changed during the lifetime of a credit-control session.
 </t>
 <t>
@@ -1428,7 +1428,7 @@ End User          (CC Client)           AAA Server          CC Server
    unit indication causes user logoff according to local policy), the
    service element, according to application specific policy, may send a
    Session-Termination-Request (STR) to the home Diameter AAA server as
-  usual <xref target="RFC6733">[DIAMBASE]</xref>.  <xref target="disconnect">Figure 5</xref> illustrates the case when the final-unit
+  usual <xref target="RFC6733"/>.  <xref target="disconnect">Figure 5</xref> illustrates the case when the final-unit
    indication causes user logoff upon consumption of the final granted
    units and the generation of STR.
 </t>
@@ -1469,7 +1469,7 @@ End User         (CC Client)
    The Diameter credit-control application supports server-initiated
    re-authorization.  The credit-control server MAY optionally initiate
    the credit re-authorization by issuing a Re-Auth-Request (RAR) as
-   defined in the Diameter base protocol <xref target="RFC6733">[DIAMBASE]</xref>.  The Auth-
+   defined in the Diameter base protocol <xref target="RFC6733"/>.  The Auth-
    Application-Id in the RAR message is set to 4 to indicate Diameter
    Credit Control, and the Re-Auth-Request-Type is set to
    AUTHORIZE_ONLY.
@@ -1836,7 +1836,7 @@ End User        Service Element         AAA Server          CC Server
    The authorization server MAY include the Accounting-Realtime-Required
    AVP to determine what to do if the sending of accounting records to
    the accounting server has been temporarily prevented, as defined in
-   <xref target="RFC6733">[DIAMBASE]</xref>.  It is RECOMMENDED that the client complement the
+   <xref target="RFC6733"/>.  It is RECOMMENDED that the client complement the
    credit-control failure procedures with backup accounting flow toward
    an accounting server.  By using different combinations of
    Accounting-Realtime-Required and Credit-Control-Failure-Handling
@@ -1862,7 +1862,7 @@ End User        Service Element         AAA Server          CC Server
    depends on the value of the CC-Session-Failover AVP.  However,
    failover may occur at any point in the path between the credit-
    control client and the credit-control server if a transport failure
-   is detected with a peer, as described in <xref target="RFC6733">[DIAMBASE]</xref>.  As a
+   is detected with a peer, as described in <xref target="RFC6733"/>.  As a
    consequence, the credit-control server might receive duplicate
    messages.  These duplicates or out of sequence messages can be
    detected in the credit-control server based on the credit-control
@@ -2150,11 +2150,11 @@ End User        Service Element        AAA Server        CC Server
    control proxies between the credit-control client and credit-control
    server.  Failover may occur at any point in the path between the
    credit-control client and the credit-control server if a transport
-   failure is detected with a peer, as described in <xref target="RFC6733">[DIAMBASE]</xref>.  Because
+   failure is detected with a peer, as described in <xref target="RFC6733"/>.  Because
    there can be duplicate requests for various reasons, the credit-
    control server is responsible for real time duplicate detection.
    Implementation issues for duplicate detection are discussed in
-   <xref target="RFC6733">[DIAMBASE]</xref>, Appendix C.
+   <xref target="RFC6733"/>, Appendix C.
 </t>
 <t>
    When the credit-control client detects a communication failure with
@@ -2194,7 +2194,7 @@ End User        Service Element        AAA Server        CC Server
    service will be debited, as the user's account may be empty when the
    server successfully processes the request.)  The credit-control
    client MUST mark these request messages as possible duplicates by
-   setting the T-flag in the command header as described in <xref target="RFC6733">[DIAMBASE]</xref>,
+   setting the T-flag in the command header as described in <xref target="RFC6733"/>,
    <xref target="sec-3">section 3</xref>.
 </t>
 <t>
@@ -2221,7 +2221,7 @@ End User        Service Element        AAA Server        CC Server
    volatile storage in case of temporary failure.  The credit-control
    client MUST mark the re-transmitted request message as a possible
    duplicate by setting the T-flag in the command header as described in
-   <xref target="RFC6733">[DIAMBASE]</xref>, <xref target="sec-3">section 3</xref>.
+   <xref target="RFC6733"/>, <xref target="sec-3">section 3</xref>.
 </t>
 <t>
    For stored requests, the implementation may choose to limit the
@@ -2303,13 +2303,13 @@ End User        Service Element        AAA Server        CC Server
 <t>
    The event 'Not successfully processed' means that the credit-control
    server could not process the message; e.g., due to an unknown end
-   user, account being empty, or errors defined in <xref target="RFC6733">[DIAMBASE]</xref>.
+   user, account being empty, or errors defined in <xref target="RFC6733"/>.
 </t>
 <t>
    The event 'User service terminated' can be triggered by various
    reasons, e.g., normal user termination, network failure, and ASR
    (Abort-Session-Request).  The Termination-Cause AVP contains
-   information about the termination reason, as specified in <xref target="RFC6733">[DIAMBASE]</xref>.
+   information about the termination reason, as specified in <xref target="RFC6733"/>.
 </t>
 <t>
    The Tx timer, which is used to control the waiting time in the
@@ -2744,7 +2744,7 @@ End User        Service Element        AAA Server        CC Server
    authorization/authentication process, as described in <xref target="sec-5.2">section 5.2</xref>.
 </t>
 <t>
-   The Diameter AVP rules are defined in the Diameter Base <xref target="RFC6733">[DIAMBASE]</xref>,
+   The Diameter AVP rules are defined in the Diameter Base <xref target="RFC6733"/>,
    <xref target="sec-4">section 4</xref>.  These AVP rules are observed in AVPs defined in this
    section.
 </t>
@@ -2752,7 +2752,7 @@ End User        Service Element        AAA Server        CC Server
    The following table describes the Diameter AVPs defined in the
    credit-control application, their AVP Code values, types, possible
    flag values, and whether the AVP MAY be encrypted.  The Diameter base
-   <xref target="RFC6733">[DIAMBASE]</xref> specifies the AVP Flag rules for AVPs in section 4.5.
+   <xref target="RFC6733"/> specifies the AVP Flag rules for AVPs in section 4.5.
 </t>
 
 <figure>
@@ -2998,7 +2998,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    requested service.
 </t><t>
    It is defined as follows (per the grouped-avp-def of
-   <xref target="RFC6733">[DIAMBASE]</xref>):
+   <xref target="RFC6733"/>):
 </t>
     <figure>
         <artwork><![CDATA[
@@ -3021,7 +3021,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    to zero.
 </t><t>
    It is defined as follows (per the grouped-avp-def of
-   <xref target="RFC6733">[DIAMBASE]</xref>):
+   <xref target="RFC6733"/>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3163,7 +3163,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
       client SHOULD grant the service, store the request in application
       level non-volatile storage, and try to re-send the request.  These
       requests MUST be marked as possible duplicates by setting the T-
-      flag in the command header as described in <xref target="RFC6733">[DIAMBASE]</xref> section 3.
+      flag in the command header as described in <xref target="RFC6733"/> section 3.
       This is the default behavior if the AVP isn't included in the
       reply from the authorization server.
 </t><t>
@@ -3226,7 +3226,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    Control AVP as an invalid AVP.
 </t><t>
    The Multiple-Services-Control AVP is defined as follows (per the
-   grouped-avp-def of <xref target="RFC6733">[DIAMBASE]</xref>):
+   grouped-avp-def of <xref target="RFC6733"/>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3259,7 +3259,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    DIAMETER_BAD_ANSWER.
 </t><t>
    The Granted-Service-Unit AVP is defined as follows (per the grouped-
-   avp-def of <xref target="RFC6733">[DIAMBASE]</xref>):
+   avp-def of <xref target="RFC6733"/>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3285,7 +3285,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    invalid AVPs.
 </t><t>
    The Requested-Service-Unit AVP is defined as follows (per the
-   grouped-avp-def of <xref target="RFC6733">[DIAMBASE]</xref>):
+   grouped-avp-def of <xref target="RFC6733"/>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3309,7 +3309,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    the session, from the point when the previous measurement ended.
 </t><t>
    The Used-Service-Unit AVP is defined as follows (per the grouped-
-   avp-def of <xref target="RFC6733">[DIAMBASE]</xref>):
+   avp-def of <xref target="RFC6733"/>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3355,7 +3355,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    The CC-Money AVP (AVP Code 413) is of type Grouped and specifies the
    monetary amount in the given currency.  The Currency-Code AVP SHOULD
    be included.  It is defined as follows (per the grouped-avp-def of
-   <xref target="RFC6733">[DIAMBASE]</xref>):
+   <xref target="RFC6733"/>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3483,7 +3483,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    rating group associated with the same pool).
 </t><t>
    The G-S-U-Pool-Reference AVP is defined as follows (per the grouped-
-   avp-def of <xref target="RFC6733">[DIAMBASE]</xref>):
+   avp-def of <xref target="RFC6733"/>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3583,7 +3583,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    locally configured or configured by another entity.
 </t><t>
    The Final-Unit-Indication AVP is defined as follows (per the
-   grouped-avp-def of <xref target="RFC6733">[DIAMBASE]</xref>):
+   grouped-avp-def of <xref target="RFC6733"/>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3647,7 +3647,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    connected when the account cannot cover the service cost.  It MUST be
    present when the Final-Unit-Action AVP is set to REDIRECT.
 </t><t>
-   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733">[DIAMBASE]</xref>):
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3816,7 +3816,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    with this error MUST contain one or more Failed-AVP AVPs containing
    the Service-Parameter-Info AVPs that caused the failure.
 </t><t>
-   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733">[DIAMBASE]</xref>):
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
 </t>
 <figure>
         <artwork><![CDATA[
@@ -3854,7 +3854,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    includes a Subscription-Id-Data AVP that holds the identifier and a
    Subscription-Id-Type AVP that defines the identifier type.
 </t><t>
-   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733">[DIAMBASE]</xref>):
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
 </t>
 <figure>
 <artwork><![CDATA[
@@ -3877,7 +3877,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    all the Subscription-Id-Types required to perform credit
    authorization for the services it supports, including possible future
    values.  Unknown or unsupported Subscription-Id-Types MUST be treated
-   according to the 'M' flag rule, as defined in <xref target="RFC6733">[DIAMBASE]</xref>.
+   according to the 'M' flag rule, as defined in <xref target="RFC6733"/>.
 </t><t>
    END_USER_E164                   0
 </t><t>
@@ -3918,7 +3918,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    capability of the terminal the subscriber is using for the connection
    to network.
 </t><t>
-   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733">[DIAMBASE]</xref>):
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
 </t>
       <figure>
 <artwork><![CDATA[
@@ -3973,7 +3973,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
 </section>
 <section anchor="sec-9" title="  Result Code AVP Values">
 <t>
-   This section defines new Result-Code AVP <xref target="RFC6733">[DIAMBASE]</xref> values that must
+   This section defines new Result-Code AVP <xref target="RFC6733"/> values that must
    be supported by all Diameter implementations that conform to this
    specification.
 </t><t>
@@ -4114,7 +4114,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
 <t>
    This section defines AVPs that are specific to the Diameter credit-
    control application and that MAY be included in the Diameter Re-
-   Auth-Request/Answer (RAR/RAA) message <xref target="RFC6733">[DIAMBASE]</xref>.
+   Auth-Request/Answer (RAR/RAA) message <xref target="RFC6733"/>.
 </t><t>
    Re-Auth-Request/Answer command MAY include the following additional
    AVPs:
@@ -4271,28 +4271,28 @@ Service Element         Translation Agent
 <section anchor="sec-12.1" title="  Application Identifier">
 <t>
    This specification assigns the value 4, 'Diameter Credit Control', to
-   the Application Identifier namespace defined in <xref target="RFC6733">[DIAMBASE]</xref>.  See
+   the Application Identifier namespace defined in <xref target="RFC6733"/>.  See
    <xref target="sec-1.3">section 1.3</xref> for more information.
 </t>
 </section>
 <section anchor="sec-12.2" title="  Command Codes">
 <t>
    This specification uses the value 272 from the Command code namespace
-   defined in <xref target="RFC6733">[DIAMBASE]</xref> for the Credit-Control-Request (CCR) and
+   defined in <xref target="RFC6733"/> for the Credit-Control-Request (CCR) and
    Credit-Control-Answer (CCA) commands.
 </t>
 </section>
 <section anchor="sec-12.3" title="  AVP Codes">
 <t>
    This specification assigns the values 411 - 461 from the AVP code
-   namespace defined in <xref target="RFC6733">[DIAMBASE]</xref>.  See <xref target="sec-8">section 8</xref> for the assignment of
+   namespace defined in <xref target="RFC6733"/>.  See <xref target="sec-8">section 8</xref> for the assignment of
    the namespace in this specification.
 </t>
 </section>
 <section anchor="sec-12.4" title="  Result-Code AVP Values">
 <t>
    This specification assigns the values 4010, 4011, 4012, 5030, 5031
-   from the Result-Code AVP value namespace defined in <xref target="RFC6733">[DIAMBASE]</xref>.  See
+   from the Result-Code AVP value namespace defined in <xref target="RFC6733"/>.  See
    <xref target="sec-9">section 9</xref> for the assignment of the namespace in this specification.
 </t>
 </section>
@@ -4445,7 +4445,7 @@ Service Element         Translation Agent
 </section>
 <section anchor="sec-14" title="  Security Considerations">
 <t>
-   The Diameter base protocol <xref target="RFC6733">[DIAMBASE]</xref> requires that each Diameter
+   The Diameter base protocol <xref target="RFC6733"/> requires that each Diameter
    implementation use underlying security; i.e., TLS/TCP, DTLS/SCTP or IPsec.  These
    mechanisms are believed to provide sufficient protection under the
    normal Internet threat model; that is, assuming that the authorized
@@ -4454,12 +4454,12 @@ Service Element         Translation Agent
    between them.  This includes eavesdropping, message modification,
    insertion, and man-in-the-middle and replay attacks.  Note also that
    this application includes a mechanism for application layer replay
-   protection by means of the Session-Id from <xref target="RFC6733">[DIAMBASE]</xref> and CC-
+   protection by means of the Session-Id from <xref target="RFC6733"/> and CC-
    Request-Number, which is specified in this document.  The Diameter
    credit-control application is often used within one domain, and there
    may be a single hop between the peers.  In these environments, the
    use of TLS/TCP, DTLS/SCTP or IPsec is sufficient.  The details of TLS/TCP, DTLS/SCTP or IPsec
-   related security considerations are discussed in the <xref target="RFC6733">[DIAMBASE]</xref>.
+   related security considerations are discussed in the <xref target="RFC6733"/>.
 </t><t>
    Because this application handles monetary transactions (directly or
    indirectly), it increases the interest for various security attacks.
@@ -4499,7 +4499,7 @@ Service Element         Translation Agent
    between it and the end user's Diameter credit-control server are
    reliable.  In this case, the Diameter credit-control agent doesn't
    have a routing entry in its Diameter Routing Table (defined in
-   <xref target="RFC6733">[DIAMBASE]</xref>, section 2.7) for the realm of the credit-control server
+   <xref target="RFC6733"/>, section 2.7) for the realm of the credit-control server
    in the end user's home domain.  The Diameter credit-control agent can
    have a default route configured to a local Redirect agent, and it
    redirects the CCR message to the redirect agent.  The local Redirect
