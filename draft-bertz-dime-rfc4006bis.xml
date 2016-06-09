@@ -327,20 +327,20 @@
 </t>
   <figure title="Typical credit-control architecture" anchor="typical-cca">
   <artwork><![CDATA[
-                   Service Element   AAA and CC
-   +----------+      +---------+     Protocols+-----------+  +--------+
-   |  End     |<---->|+-------+|<------------>|    AAA    |  |Business|
-   |  User    |   +->|| CC    ||              |   Server  |->|Support |
-   |          |   |  || Client||<-----+       |           |  |System  |
-   +----------+   |  |+-------+|      |       +-----------+  |        |
-                  |  +---------+      |             ^        +--------+
-   +----------+   |                   | CC Protocol |             ^
-   |  End     |<--+                   |       +-----v----+        |
-   |  User    |                       +------>|Credit-   |        |
-   +----------+                Credit-Control |Control   |--------+
-                               Protocol       |Server    |
-                                              +----------+
-  ]]>
+               Service Element   AAA and CC
++----------+      +---------+     Protocols+-----------+  +--------+
+|  End     |<---->|+-------+|<------------>|    AAA    |  |Business|
+|  User    |   +->|| CC    ||              |   Server  |->|Support |
+|          |   |  || Client||<-----+       |           |  |System  |
++----------+   |  |+-------+|      |       +-----------+  |        |
+              |  +---------+      |             ^        +--------+
++----------+   |                   | CC Protocol |             ^
+|  End     |<--+                   |       +-----v----+        |
+|  User    |                       +------>|Credit-   |        |
++----------+                Credit-Control |Control   |--------+
+                            Protocol       |Server    |
+                                           +----------+
+]]>
   </artwork>
   </figure>
 <t>
@@ -407,37 +407,36 @@
   <t>
    Message Format
 </t>
-<figure>
-<artwork><![CDATA[
-      <Credit-Control-Request> ::= < Diameter Header: 272, REQ, PXY >
-                                   < Session-Id >
-                                   { Origin-Host }
-                                   { Origin-Realm }
-                                   { Destination-Realm }
-                                   { Auth-Application-Id }
-                                   { Service-Context-Id }
-                                   { CC-Request-Type }
-                                   { CC-Request-Number }
-                                   [ Destination-Host ]
-                                   [ User-Name ]
-                                   [ CC-Sub-Session-Id ]
-                                   [ Acct-Multi-Session-Id ]
-                                   [ Origin-State-Id ]
-                                   [ Event-Timestamp ]
-                                  *[ Subscription-Id ]
-                                   [ Service-Identifier ]
-                                   [ Termination-Cause ]
-                                   [ Requested-Service-Unit ]
-                                   [ Requested-Action ]
-                                  *[ Used-Service-Unit ]
-                                   [ Multiple-Services-Indicator ]
-                                  *[ Multiple-Services-Credit-Control ]
-                                  *[ Service-Parameter-Info ]
-                                   [ CC-Correlation-Id ]
-                                   [ User-Equipment-Info ]
-                                  *[ Proxy-Info ]
-                                  *[ Route-Record ]
-                                  *[ AVP ]
+<figure><artwork><![CDATA[
+<Credit-Control-Request> ::= < Diameter Header: 272, REQ, PXY >
+                             < Session-Id >
+                             { Origin-Host }
+                             { Origin-Realm }
+                             { Destination-Realm }
+                             { Auth-Application-Id }
+                             { Service-Context-Id }
+                             { CC-Request-Type }
+                                 { CC-Request-Number }
+                                 [ Destination-Host ]
+                                 [ User-Name ]
+                                 [ CC-Sub-Session-Id ]
+                                 [ Acct-Multi-Session-Id ]
+                                 [ Origin-State-Id ]
+                                 [ Event-Timestamp ]
+                                *[ Subscription-Id ]
+                                 [ Service-Identifier ]
+                                 [ Termination-Cause ]
+                                 [ Requested-Service-Unit ]
+                                 [ Requested-Action ]
+                                *[ Used-Service-Unit ]
+                                 [ Multiple-Services-Indicator ]
+                                *[ Multiple-Services-Credit-Control ]
+                                *[ Service-Parameter-Info ]
+                                 [ CC-Correlation-Id ]
+                                 [ User-Equipment-Info ]
+                                *[ Proxy-Info ]
+                                *[ Route-Record ]
+                                *[ AVP ]
 ]]>
         </artwork>
       </figure>
@@ -455,35 +454,35 @@
 </t>
 <figure>
 <artwork><![CDATA[
-      <Credit-Control-Answer> ::= < Diameter Header: 272, PXY >
-                                  < Session-Id >
-                                  { Result-Code }
-                                  { Origin-Host }
-                                  { Origin-Realm }
-                                  { Auth-Application-Id }
-                                  { CC-Request-Type }
-                                  { CC-Request-Number }
-                                  [ User-Name ]
-                                  [ CC-Session-Failover ]
-                                  [ CC-Sub-Session-Id ]
-                                  [ Acct-Multi-Session-Id ]
-                                  [ Origin-State-Id ]
-                                  [ Event-Timestamp ]
-                                  [ Granted-Service-Unit ]
-                                 *[ Multiple-Services-Credit-Control ]
-                                  [ Cost-Information]
-                                  [ Final-Unit-Indication ]
-                                  [ Check-Balance-Result ]
-                                  [ Credit-Control-Failure-Handling ]
-                                  [ Direct-Debiting-Failure-Handling ]
-                                  [ Validity-Time]
-                                 *[ Redirect-Host]
-                                  [ Redirect-Host-Usage ]
-                                  [ Redirect-Max-Cache-Time ]
-                                 *[ Proxy-Info ]
-                                 *[ Route-Record ]
-                                 *[ Failed-AVP ]
-                                 *[ AVP ]
+     <Credit-Control-Answer> ::= < Diameter Header: 272, PXY >
+                                 < Session-Id >
+                                 { Result-Code }
+                                 { Origin-Host }
+                                 { Origin-Realm }
+                                 { Auth-Application-Id }
+                                 { CC-Request-Type }
+                                 { CC-Request-Number }
+                                 [ User-Name ]
+                                 [ CC-Session-Failover ]
+                                 [ CC-Sub-Session-Id ]
+                                 [ Acct-Multi-Session-Id ]
+                                 [ Origin-State-Id ]
+                                 [ Event-Timestamp ]
+                                 [ Granted-Service-Unit ]
+                                *[ Multiple-Services-Credit-Control ]
+                                 [ Cost-Information]
+                                 [ Final-Unit-Indication ]
+                                 [ Check-Balance-Result ]
+                                 [ Credit-Control-Failure-Handling ]
+                                 [ Direct-Debiting-Failure-Handling ]
+                                 [ Validity-Time]
+                                *[ Redirect-Host]
+                                 [ Redirect-Host-Usage ]
+                                 [ Redirect-Max-Cache-Time ]
+                                *[ Proxy-Info ]
+                                *[ Route-Record ]
+                                *[ Failed-AVP ]
+                                *[ AVP ]
 ]]>
       </artwork>
   </figure>
@@ -853,21 +852,20 @@
    representation of the relationship between service-identifiers,
    rating-groups, credit pools, and credit-control (sub-)session.
 </t>
-<figure>
-      <artwork><![CDATA[
-                          DCC (Sub-)Session
-                                  |
-         +------------+-----------+-------------+--------------- +
-         |            |           |             |                |
-   Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
-        \        /                 \         /                /
-         \      /                   \       /                /
-          \    /                  Rating-Group 1.......Rating-Group n
-           \  /                         |                    |
-          Quota       ---------------Quota                 Quota
-            |        /                                       |
-            |       /                                        |
-         Credit-Pool                                    Credit-Pool
+<figure><artwork><![CDATA[
+                        DCC (Sub-)Session
+                                |
+      +------------+-----------+-------------+--------------- +
+      |            |           |             |                |
+Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
+      \        /                 \         /                /
+       \      /                   \       /                /
+        \    /                  Rating-Group 1.......Rating-Group n
+         \  /                         |                    |
+        Quota       ---------------Quota                 Quota
+          |        /                                       |
+          |       /                                        |
+       Credit-Pool                                    Credit-Pool
 ]]>
       </artwork>
 </figure>
@@ -1154,40 +1152,40 @@
         anchor="first_interrogation">
 <artwork><![CDATA[
                                            Diameter
-   End User        Service Element        AAA Server         CC Server
-                     (CC Client)
-      | Registration      | AA request/answer(accounting,cc or both)|
-      |<----------------->|<------------------>|                    |
-      |        :          |                    |                    |
-      |        :          |                    |                    |
-      | Service Request   |                    |                    |
-      |------------------>|                    |                    |
-      |                   | CCR(Initial,Credit-Control AVPs)        |
-      |                  +|---------------------------------------->|
-      |         CC stream||                    |  CCA(Granted-Units)|
-      |                  +|<----------------------------------------|
-      | Service Delivery  |                    |                    |
-      |<----------------->| ACR(start,Accounting AVPs)              |
-      |         :         |------------------->|+                   |
-      |         :         |                ACA || Accounting stream |
-      |                   |<-------------------|+                   |
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      |                   | CCR(Update,Used-Units)                  |
-      |                   |---------------------------------------->|
-      |                   |                    |  CCA(Granted-Units)|
-      |                   |<----------------------------------------|
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      | End of Service    |                    |                    |
-      |------------------>| CCR(Termination, Used-Units)            |
-      |                   |---------------------------------------->|
-      |                   |                    |               CCA  |
-      |                   |<----------------------------------------|
-      |                   | ACR(stop)          |                    |
-      |                   |------------------->|                    |
-      |                   |                ACA |                    |
-      |                   |<-------------------|                    |
+End User        Service Element        AAA Server         CC Server
+                   (CC Client)
+    | Registration      | AA request/answer(accounting,cc or both)|
+    |<----------------->|<------------------>|                    |
+    |        :          |                    |                    |
+    |        :          |                    |                    |
+    | Service Request   |                    |                    |
+    |------------------>|                    |                    |
+    |                   | CCR(Initial,Credit-Control AVPs)        |
+    |                  +|---------------------------------------->|
+    |         CC stream||                    |  CCA(Granted-Units)|
+    |                  +|<----------------------------------------|
+    | Service Delivery  |                    |                    |
+    |<----------------->| ACR(start,Accounting AVPs)              |
+    |         :         |------------------->|+                   |
+    |         :         |                ACA || Accounting stream |
+    |                   |<-------------------|+                   |
+    |         :         |                    |                    |
+    |         :         |                    |                    |
+    |                   | CCR(Update,Used-Units)                  |
+    |                   |---------------------------------------->|
+    |                   |                    |  CCA(Granted-Units)|
+    |                   |<----------------------------------------|
+    |         :         |                    |                    |
+    |         :         |                    |                    |
+    | End of Service    |                    |                    |
+    |------------------>| CCR(Termination, Used-Units)            |
+    |                   |---------------------------------------->|
+    |                   |                    |               CCA  |
+    |                   |<----------------------------------------|
+    |                   | ACR(stop)          |                    |
+    |                   |------------------->|                    |
+    |                   |                ACA |                    |
+    |                   |<-------------------|                    |
   ]]></artwork>
 </figure>
 </section>
@@ -1284,36 +1282,36 @@
 <figure title="Figure 3: Protocol example with use of the authorization messages for the first interrogation"
         anchor="first_interrogation_auth">
   <artwork><![CDATA[
-                    Service Element         Diameter
-   End User          (CC Client)           AAA Server          CC Server
-      | Service Request   | AA Request (CC AVPs)                    |
-      |------------------>|------------------->|                    |
-      |                   |                    | CCR(Initial, CC AVPs)
-      |                   |                    |------------------->|
-      |                   |                    |    CCA(Granted-Units)
-      |                   |                    |<-------------------|
-      |                   | AA Answer(Granted-Units)                |
-      | Service Delivery  |<-------------------|                    |
-      |<----------------->|                    |                    |
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      |                   |                    |                    |
-      |                   | CCR(Update,Used-Units)                  |
-      |                   |------------------->| CCR(Update,Used-Units)
-      |                   |                    |------------------->|
-      |                   |                    |  CCA(Granted-Units)|
-      |                   |  CCA(Granted-Units)|<-------------------|
-      |                   |<-------------------|                    |
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      | End of Service    |                    |                    |
-      |------------------>| CCR(Termination,Used-Units)             |
-      |                   |------------------->| CCR(Term.,Used-Units)
-      |                   |                    |------------------->|
-      |                   |                    |                CCA |
-      |                   |                CCA |<-------------------|
-      |                   |<-------------------|                    |
+                Service Element         Diameter
+End User          (CC Client)           AAA Server          CC Server
+  | Service Request   | AA Request (CC AVPs)                    |
+  |------------------>|------------------->|                    |
+  |                   |                    | CCR(Initial, CC AVPs)
+  |                   |                    |------------------->|
+  |                   |                    |    CCA(Granted-Units)
+  |                   |                    |<-------------------|
+  |                   | AA Answer(Granted-Units)                |
+  | Service Delivery  |<-------------------|                    |
+  |<----------------->|                    |                    |
+  |         :         |                    |                    |
+  |         :         |                    |                    |
+  |         :         |                    |                    |
+  |                   |                    |                    |
+  |                   | CCR(Update,Used-Units)                  |
+  |                   |------------------->| CCR(Update,Used-Units)
+  |                   |                    |------------------->|
+  |                   |                    |  CCA(Granted-Units)|
+  |                   |  CCA(Granted-Units)|<-------------------|
+  |                   |<-------------------|                    |
+  |         :         |                    |                    |
+  |         :         |                    |                    |
+  | End of Service    |                    |                    |
+  |------------------>| CCR(Termination,Used-Units)             |
+  |                   |------------------->| CCR(Term.,Used-Units)
+  |                   |                    |------------------->|
+  |                   |                    |                CCA |
+  |                   |                CCA |<-------------------|
+  |                   |<-------------------|                    |
   ]]></artwork>
 </figure>
   </section>
@@ -1433,33 +1431,33 @@
 </t>
 <figure title="Figure 4: User disconnected due to exhausted account" anchor="disconnect">
   <artwork><![CDATA[
-                   Service Element        AAA Server        CC Server
-   End User         (CC Client)
-      | Service Delivery  |                    |                    |
-      |<----------------->|                    |                    |
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      |                   |                    |                    |
-      |                   | CCR(Update,Used-Units)                  |
-      |                   |------------------->| CCR(Update,Used-Units)
-      |                   |                    |------------------->|
-      |                   |                  CCA(Final-Unit, Terminate)
-      |              CCA(Final-Unit, Terminate)|<-------------------|
-      |                   |<-------------------|                    |
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      |  Disconnect user  |                    |                    |
-      |<------------------| CCR(Termination,Used-Units)             |
-      |                   |------------------->| CCR(Term.,Used-Units)
-      |                   |                    |------------------->|
-      |                   |                    |                CCA |
-      |                   |                CCA |<-------------------|
-      |                   |<-------------------|                    |
-      |                   | STR                |                    |
-      |                   |------------------->|                    |
-      |                   |               STA  |                    |
-      |                   |<-------------------|                    |
+               Service Element        AAA Server        CC Server
+End User         (CC Client)
+  | Service Delivery  |                    |                    |
+  |<----------------->|                    |                    |
+  |         :         |                    |                    |
+  |         :         |                    |                    |
+  |         :         |                    |                    |
+  |                   |                    |                    |
+  |                   | CCR(Update,Used-Units)                  |
+  |                   |------------------->| CCR(Update,Used-Units)
+  |                   |                    |------------------->|
+  |                   |                  CCA(Final-Unit, Terminate)
+  |              CCA(Final-Unit, Terminate)|<-------------------|
+  |                   |<-------------------|                    |
+  |         :         |                    |                    |
+  |         :         |                    |                    |
+  |  Disconnect user  |                    |                    |
+  |<------------------| CCR(Termination,Used-Units)             |
+  |                   |------------------->| CCR(Term.,Used-Units)
+  |                   |                    |------------------->|
+  |                   |                    |                CCA |
+  |                   |                CCA |<-------------------|
+  |                   |<-------------------|                    |
+  |                   | STR                |                    |
+  |                   |------------------->|                    |
+  |                   |               STA  |                    |
+  |                   |<-------------------|                    |
   ]]></artwork>
 </figure>
 </section>
@@ -1602,53 +1600,53 @@
 </t>
 <figure title="Figure 5: Optional graceful service termination procedure" anchor="graceful_termination">
   <artwork><![CDATA[
-                                            Diameter
-   End User        Service Element         AAA Server          CC Server
-                    (CC Client)
-      |  Service Delivery |                    |                    |
-      |<----------------->|                    |                    |
-      |                   |CCR(Update,Used-Units)                   |
-      |                   |------------------->|CCR(Update,Used-Units)
-      |         :         |                    |------------------->|
-      |         :         |                    |CCA(Final-Unit,Action)
-      |         :         |                    |<-------------------|
-      |                   |CCA(Final-Unit,Action)                   |
-      |                   |<-------------------|                    |
-      |                   |                    |                    |
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      | ///////////////   |CCR(Update,Used-Units)                   |
-      |/Final Units End/->|------------------->|CCR(Update,Used-Units)
-      |/Action and    //  |                    |------------------->|
-      |/Restrictions //   |                    |  CCA(Validity-Time)|
-      |/Start       //    |  CCA(Validity-Time)|<-------------------|
-      | /////////////     |<-------------------|                    |
-      |         :         |                    |                    |
-      |         :         |                    |                    |
-      |                 Replenish Account            +-------+      |
-      |<-------------------------------------------->|Account|      |
-      |                   |                    |     +-------+      |
-      |                   |                    |                RAR |
-      |                 + |                RAR |<===================|
-      |                 | |<===================|                    |
-      |                 | | RAA                |                    |
-      |  /////////////  | |===================>| RAA                |
-      | /If supported / | | CCR(Update)        |===================>|
-      | /by CC Server/  | |===================>| CCR(Update)        |
-      | /////////////   | |                    |===================>|
-      |                 | |                    |   CCA(Granted-Unit)|
-      |                 | |   CCA(Granted-Unit)|<===================|
-      |  Restrictions ->+ |<===================|                    |
-      |  removed          |                    |                    |
-      |         :         |                    |                    |
-      |        OR         | CCR(Update)        |                    |
-      |   Validity-Time ->|------------------->| CCR(Update)        |
-      |   expires         |                    |------------------->|
-      |                   |                    |   CCA(Granted-Unit)|
-      |                   |   CCA(Granted-Unit)|<-------------------|
-      |    Restrictions ->|<-------------------|                    |
-      |    removed        |                    |                    |
+                                        Diameter
+End User        Service Element         AAA Server          CC Server
+                (CC Client)
+  |  Service Delivery |                    |                    |
+  |<----------------->|                    |                    |
+  |                   |CCR(Update,Used-Units)                   |
+  |                   |------------------->|CCR(Update,Used-Units)
+  |         :         |                    |------------------->|
+  |         :         |                    |CCA(Final-Unit,Action)
+  |         :         |                    |<-------------------|
+  |                   |CCA(Final-Unit,Action)                   |
+  |                   |<-------------------|                    |
+  |                   |                    |                    |
+  |         :         |                    |                    |
+  |         :         |                    |                    |
+  |         :         |                    |                    |
+  | ///////////////   |CCR(Update,Used-Units)                   |
+  |/Final Units End/->|------------------->|CCR(Update,Used-Units)
+  |/Action and    //  |                    |------------------->|
+  |/Restrictions //   |                    |  CCA(Validity-Time)|
+  |/Start       //    |  CCA(Validity-Time)|<-------------------|
+  | /////////////     |<-------------------|                    |
+  |         :         |                    |                    |
+  |         :         |                    |                    |
+  |                 Replenish Account            +-------+      |
+  |<-------------------------------------------->|Account|      |
+  |                   |                    |     +-------+      |
+  |                   |                    |                RAR |
+  |                 + |                RAR |<===================|
+  |                 | |<===================|                    |
+  |                 | | RAA                |                    |
+  |  /////////////  | |===================>| RAA                |
+  | /If supported / | | CCR(Update)        |===================>|
+  | /by CC Server/  | |===================>| CCR(Update)        |
+  | /////////////   | |                    |===================>|
+  |                 | |                    |   CCA(Granted-Unit)|
+  |                 | |   CCA(Granted-Unit)|<===================|
+  |  Restrictions ->+ |<===================|                    |
+  |  removed          |                    |                    |
+  |         :         |                    |                    |
+  |        OR         | CCR(Update)        |                    |
+  |   Validity-Time ->|------------------->| CCR(Update)        |
+  |   expires         |                    |------------------->|
+  |                   |                    |   CCA(Granted-Unit)|
+  |                   |   CCA(Granted-Unit)|<-------------------|
+  |    Restrictions ->|<-------------------|                    |
+  |    removed        |                    |                    |
   ]]></artwork>
 </figure>
 <section anchor="sec-5.6.1" title="  Terminate Action">
@@ -1975,19 +1973,19 @@
 </t>
   <figure title="Figure 6: One time event">
   <artwork><![CDATA[
-                                           Diameter
-   End User        Service Element        AAA Server        CC Server
+                                       Diameter
+End User        Service Element        AAA Server        CC Server
                      (CC Client)
-      | Service Request   |                    |                    |
-      |------------------>|                    |                    |
-      |                   | CCR(Event)         |                    |
-      |                   |------------------->| CCR(Event)         |
-      |                   |                    |------------------->|
-      |                   |                    |  CCA(Granted-Units)|
-      |                   |  CCA(Granted-Units)|<-------------------|
-      |  Service Delivery |<-------------------|                    |
-      |<----------------->|                    |                    |
-    ]]>
+  | Service Request   |                    |                    |
+  |------------------>|                    |                    |
+  |                   | CCR(Event)         |                    |
+  |                   |------------------->| CCR(Event)         |
+  |                   |                    |------------------->|
+  |                   |                    |  CCA(Granted-Units)|
+  |                   |  CCA(Granted-Units)|<-------------------|
+  |  Service Delivery |<-------------------|                    |
+  |<----------------->|                    |                    |
+]]>
     </artwork>
     </figure>
 <t>
@@ -2756,90 +2754,90 @@
 
 <figure>
 <artwork align="left"><![CDATA[
-                                            +--------------------+
-                                            |    AVP Flag rules  |
-                                            |----+-----+----+----|----+
-                     AVP  Section           |    |     |SHLD|MUST|    |
-   Attribute Name    Code Defined Data Type |MUST| MAY | NOT|NOT |Encr|
-   -----------------------------------------|----+-----+----+----|----|
-   CC-Correlation-Id 411  8.1    OctetString|    | P,M |    |  V | Y  |
-   CC-Input-Octets   412  8.24   Unsigned64 | M  |  P  |    |  V | Y  |
-   CC-Money          413  8.22   Grouped    | M  |  P  |    |  V | Y  |
-   CC-Output-Octets  414  8.25   Unsigned64 | M  |  P  |    |  V | Y  |
-   CC-Request-Number 415  8.2    Unsigned32 | M  |  P  |    |  V | Y  |
-   CC-Request-Type   416  8.3    Enumerated | M  |  P  |    |  V | Y  |
-   CC-Service-       417  8.26   Unsigned64 | M  |  P  |    |  V | Y  |
-     Specific-Units                         |    |     |    |    |    |
-   CC-Session-       418  8.4    Enumerated | M  |  P  |    |  V | Y  |
-     Failover                               |    |     |    |    |    |
-   CC-Sub-Session-Id 419  8.5    Unsigned64 | M  |  P  |    |  V | Y  |
-   CC-Time           420  8.21   Unsigned32 | M  |  P  |    |  V | Y  |
-   CC-Total-Octets   421  8.23   Unsigned64 | M  |  P  |    |  V | Y  |
-   CC-Unit-Type      454  8.32   Enumerated | M  |  P  |    |  V | Y  |
-   Check-Balance-    422  8.6    Enumerated | M  |  P  |    |  V | Y  |
-     Result                                 |    |     |    |    |    |
-   Cost-Information  423  8.7    Grouped    | M  |  P  |    |  V | Y  |
-   Cost-Unit         424  8.12   UTF8String | M  |  P  |    |  V | Y  |
-   Credit-Control    426  8.13   Enumerated | M  |  P  |    |  V | Y  |
-   Credit-Control-   427  8.14   Enumerated | M  |  P  |    |  V | Y  |
-     Failure-Handling                       |    |     |    |    |    |
-   Currency-Code     425  8.11   Unsigned32 | M  |  P  |    |  V | Y  |
-   Direct-Debiting-  428  8.15   Enumerated | M  |  P  |    |  V | Y  |
-     Failure-Handling                       |    |     |    |    |    |
-   Exponent          429  8.9    Integer32  | M  |  P  |    |  V | Y  |
-   Final-Unit-Action 449  8.35   Enumerated | M  |  P  |    |  V | Y  |
-   Final-Unit-       430  8.34   Grouped    | M  |  P  |    |  V | Y  |
-     Indication                             |    |     |    |    |    |
-   Granted-Service-  431  8.17   Grouped    | M  |  P  |    |  V | Y  |
-     Unit                                   |    |     |    |    |    |
-   G-S-U-Pool-       453  8.31   Unsigned32 | M  |  P  |    |  V | Y  |
-     Identifier                             |    |     |    |    |    |
-   G-S-U-Pool-       457  8.30   Grouped    | M  |  P  |    |  V | Y  |
-     Reference                              |    |     |    |    |    |
-   Multiple-Services 456  8.16   Grouped    | M  |  P  |    |  V | Y  |
-    -Credit-Control                         |    |     |    |    |    |
-   Multiple-Services 455  8.40   Enumerated | M  |  P  |    |  V | Y  |
-    -Indicator                              |    |     |    |    |    |
-   Rating-Group      432  8.29   Unsigned32 | M  |  P  |    |  V | Y  |
-   Redirect-Address  433  8.38   Enumerated | M  |  P  |    |  V | Y  |
-     -Type                                  |    |     |    |    |    |
-   Redirect-Server   434  8.37   Grouped    | M  |  P  |    |  V | Y  |
-   Redirect-Server   435  8.39   UTF8String | M  |  P  |    |  V | Y  |
-     -Address                               |    |     |    |    |    |
-   Requested-Action  436  8.41   Enumerated | M  |  P  |    |  V | Y  |
-   Requested-Service 437  8.18   Grouped    | M  |  P  |    |  V | Y  |
-     -Unit                                  |    |     |    |    |    |
-   Restriction       438  8.36   IPFiltrRule| M  |  P  |    |  V | Y  |
-     -Filter-Rule                           |    |     |    |    |    |
-   Service-Context   461  8.42   UTF8String | M  |  P  |    |  V | Y  |
-     -Id                                    |    |     |    |    |    |
-   Service-          439  8.28   Unsigned32 | M  |  P  |    |  V | Y  |
-     Identifier                             |    |     |    |    |    |
-   Service-Parameter 440  8.43   Grouped    |    | P,M |    |  V | Y  |
-     -Info                                  |    |     |    |    |    |
-   Service-          441  8.44   Unsigned32 |    | P,M |    |  V | Y  |
-     Parameter-Type                         |    |     |    |    |    |
-   Service-          442  8.45   OctetString|    | P,M |    |  V | Y  |
-     Parameter-Value                        |    |     |    |    |    |
-   Subscription-Id   443  8.46   Grouped    | M  |  P  |    |  V | Y  |
-   Subscription-Id   444  8.48   UTF8String | M  |  P  |    |  V | Y  |
-     -Data                                  |    |     |    |    |    |
-   Subscription-Id   450  8.47   Enumerated | M  |  P  |    |  V | Y  |
-     -Type                                  |    |     |    |    |    |
-   Tariff-Change     452  8.27   Enumerated | M  |  P  |    |  V | Y  |
-     -Usage                                 |    |     |    |    |    |
-   Tariff-Time       451  8.20   Time       | M  |  P  |    |  V | Y  |
-     -Change                                |    |     |    |    |    |
-   Unit-Value        445  8.8    Grouped    | M  |  P  |    |  V | Y  |
-   Used-Service-Unit 446  8.19   Grouped    | M  |  P  |    |  V | Y  |
-   User-Equipment    458  8.49   Grouped    |    | P,M |    |  V | Y  |
-     -Info                                  |    |     |    |    |    |
-   User-Equipment    459  8.50   Enumerated |    | P,M |    |  V | Y  |
-     -Info-Type                             |    |     |    |    |    |
-   User-Equipment    460  8.51   OctetString|    | P,M |    |  V | Y  |
-     -Info-Value                            |    |     |    |    |    |
-   Value-Digits      447  8.10   Integer64  | M  |  P  |    |  V | Y  |
-   Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
+                                         +--------------------+
+                                         |    AVP Flag rules  |
+                                         |----+-----+----+----|----+
+                  AVP  Section           |    |     |SHLD|MUST|    |
+Attribute Name    Code Defined Data Type |MUST| MAY | NOT|NOT |Encr|
+-----------------------------------------|----+-----+----+----|----|
+CC-Correlation-Id 411  8.1    OctetString|    | P,M |    |  V | Y  |
+CC-Input-Octets   412  8.24   Unsigned64 | M  |  P  |    |  V | Y  |
+CC-Money          413  8.22   Grouped    | M  |  P  |    |  V | Y  |
+CC-Output-Octets  414  8.25   Unsigned64 | M  |  P  |    |  V | Y  |
+CC-Request-Number 415  8.2    Unsigned32 | M  |  P  |    |  V | Y  |
+CC-Request-Type   416  8.3    Enumerated | M  |  P  |    |  V | Y  |
+CC-Service-       417  8.26   Unsigned64 | M  |  P  |    |  V | Y  |
+  Specific-Units                         |    |     |    |    |    |
+CC-Session-       418  8.4    Enumerated | M  |  P  |    |  V | Y  |
+  Failover                               |    |     |    |    |    |
+CC-Sub-Session-Id 419  8.5    Unsigned64 | M  |  P  |    |  V | Y  |
+CC-Time           420  8.21   Unsigned32 | M  |  P  |    |  V | Y  |
+CC-Total-Octets   421  8.23   Unsigned64 | M  |  P  |    |  V | Y  |
+CC-Unit-Type      454  8.32   Enumerated | M  |  P  |    |  V | Y  |
+Check-Balance-    422  8.6    Enumerated | M  |  P  |    |  V | Y  |
+  Result                                 |    |     |    |    |    |
+Cost-Information  423  8.7    Grouped    | M  |  P  |    |  V | Y  |
+Cost-Unit         424  8.12   UTF8String | M  |  P  |    |  V | Y  |
+Credit-Control    426  8.13   Enumerated | M  |  P  |    |  V | Y  |
+Credit-Control-   427  8.14   Enumerated | M  |  P  |    |  V | Y  |
+  Failure-Handling                       |    |     |    |    |    |
+Currency-Code     425  8.11   Unsigned32 | M  |  P  |    |  V | Y  |
+Direct-Debiting-  428  8.15   Enumerated | M  |  P  |    |  V | Y  |
+  Failure-Handling                       |    |     |    |    |    |
+Exponent          429  8.9    Integer32  | M  |  P  |    |  V | Y  |
+Final-Unit-Action 449  8.35   Enumerated | M  |  P  |    |  V | Y  |
+Final-Unit-       430  8.34   Grouped    | M  |  P  |    |  V | Y  |
+  Indication                             |    |     |    |    |    |
+Granted-Service-  431  8.17   Grouped    | M  |  P  |    |  V | Y  |
+  Unit                                   |    |     |    |    |    |
+G-S-U-Pool-       453  8.31   Unsigned32 | M  |  P  |    |  V | Y  |
+  Identifier                             |    |     |    |    |    |
+G-S-U-Pool-       457  8.30   Grouped    | M  |  P  |    |  V | Y  |
+  Reference                              |    |     |    |    |    |
+Multiple-Services 456  8.16   Grouped    | M  |  P  |    |  V | Y  |
+ -Credit-Control                         |    |     |    |    |    |
+Multiple-Services 455  8.40   Enumerated | M  |  P  |    |  V | Y  |
+ -Indicator                              |    |     |    |    |    |
+Rating-Group      432  8.29   Unsigned32 | M  |  P  |    |  V | Y  |
+Redirect-Address  433  8.38   Enumerated | M  |  P  |    |  V | Y  |
+  -Type                                  |    |     |    |    |    |
+Redirect-Server   434  8.37   Grouped    | M  |  P  |    |  V | Y  |
+Redirect-Server   435  8.39   UTF8String | M  |  P  |    |  V | Y  |
+  -Address                               |    |     |    |    |    |
+Requested-Action  436  8.41   Enumerated | M  |  P  |    |  V | Y  |
+Requested-Service 437  8.18   Grouped    | M  |  P  |    |  V | Y  |
+  -Unit                                  |    |     |    |    |    |
+Restriction       438  8.36   IPFiltrRule| M  |  P  |    |  V | Y  |
+  -Filter-Rule                           |    |     |    |    |    |
+Service-Context   461  8.42   UTF8String | M  |  P  |    |  V | Y  |
+  -Id                                    |    |     |    |    |    |
+Service-          439  8.28   Unsigned32 | M  |  P  |    |  V | Y  |
+  Identifier                             |    |     |    |    |    |
+Service-Parameter 440  8.43   Grouped    |    | P,M |    |  V | Y  |
+  -Info                                  |    |     |    |    |    |
+Service-          441  8.44   Unsigned32 |    | P,M |    |  V | Y  |
+  Parameter-Type                         |    |     |    |    |    |
+Service-          442  8.45   OctetString|    | P,M |    |  V | Y  |
+  Parameter-Value                        |    |     |    |    |    |
+Subscription-Id   443  8.46   Grouped    | M  |  P  |    |  V | Y  |
+Subscription-Id   444  8.48   UTF8String | M  |  P  |    |  V | Y  |
+  -Data                                  |    |     |    |    |    |
+Subscription-Id   450  8.47   Enumerated | M  |  P  |    |  V | Y  |
+  -Type                                  |    |     |    |    |    |
+Tariff-Change     452  8.27   Enumerated | M  |  P  |    |  V | Y  |
+  -Usage                                 |    |     |    |    |    |
+Tariff-Time       451  8.20   Time       | M  |  P  |    |  V | Y  |
+  -Change                                |    |     |    |    |    |
+Unit-Value        445  8.8    Grouped    | M  |  P  |    |  V | Y  |
+Used-Service-Unit 446  8.19   Grouped    | M  |  P  |    |  V | Y  |
+User-Equipment    458  8.49   Grouped    |    | P,M |    |  V | Y  |
+  -Info                                  |    |     |    |    |    |
+User-Equipment    459  8.50   Enumerated |    | P,M |    |  V | Y  |
+  -Info-Type                             |    |     |    |    |    |
+User-Equipment    460  8.51   OctetString|    | P,M |    |  V | Y  |
+  -Info-Value                            |    |     |    |    |    |
+Value-Digits      447  8.10   Integer64  | M  |  P  |    |  V | Y  |
+Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
 ]]></artwork></figure>
 <section anchor="sec-8.1" title="  CC-Correlation-Id AVP">
 <t>
@@ -4164,27 +4162,25 @@
    contacted.  The visited AAA server connects then to the home AAA
    server.
 </t>
-      <figure title="Figure 7: Credit-control architecture with service element
+<figure title="Figure 7: Credit-control architecture with service element
                   containing translation agent, translating RADIUS
                   prepaid to Diameter credit-control protocol">
 <artwork><![CDATA[
-                                  RADIUS Prepaid
-   +--------+       +---------+   protocol +------------+  +--------+
-   |  End   |<----->| Service |<---------->| Home AAA   |  |Business|
-   |  User  |       | Element |            |  Server    |  |Support |
-   +--------+   +-->|         |            |+----------+|->|System  |
-                |   +---------+            ||CC Client ||  |        |
-                |                          |+----------+|  |        |
-   +--------+   |                          +------^-----+  +----^---+
-   |  End   |<--+                Credit-Control   |             |
-   |  User  |                          Protocol   |             |
-   +--------+                             +-------V--------+    |
-                                          |Credit-Control  |----+
-                                          |   Server       |
-                                          +----------------+
-]]>
-        </artwork>
-      </figure>
+                               RADIUS Prepaid
++--------+       +---------+   protocol +------------+  +--------+
+|  End   |<----->| Service |<---------->| Home AAA   |  |Business|
+|  User  |       | Element |            |  Server    |  |Support |
++--------+   +-->|         |            |+----------+|->|System  |
+             |   +---------+            ||CC Client ||  |        |
+             |                          |+----------+|  |        |
++--------+   |                          +------^-----+  +----^---+
+|  End   |<--+                Credit-Control   |             |
+|  User  |                          Protocol   |             |
++--------+                             +-------V--------+    |
+                                       |Credit-Control  |----+
+                                       |   Server       |
+                                       +----------------+
+]]></artwork></figure>
 <t>
    When the AAA server acting as a Translation Agent receives an initial
    RADIUS Access-Request message from service element (e.g., NAS
@@ -4223,45 +4219,43 @@
    A following diagram illustrates a RADIUS prepaid - Diameter credit-
    control interworking sequence.
 </t>
-      <figure title="Figure 8: Message flow example with RADIUS prepaid - Diameter credit-control interworking">
+<figure title="Figure 8: Message flow example with RADIUS prepaid - Diameter credit-control interworking">
 <artwork><![CDATA[
-      Service Element         Translation Agent
-        (e.g., NAS)               (CC Client)             CC Server
-            |     Access-Request     |                        |
-            |----------------------->|                        |
-            |                        |    CCR (initial)       |
-            |                        |----------------------->|
-            |                        |    CCA (Granted-Units) |
-            |                        |<-----------------------|
-            |     Access-Accept      |                        |
-            |     (Granted-Units)    |                        |
-            |<-----------------------|                        |
-            :                        :                        :
-            |     Access-Request     |                        |
-            |     (Used-Units)       |                        |
-            |----------------------->|                        |
-            |                        |    CCR (update,        |
-            |                        |         Used-Units)    |
-            |                        |----------------------->|
-            |                        |    CCA (Granted-Units) |
-            |                        |<-----------------------|
-            |     Access-Accept      |                        |
-            |     (Granted-Units)    |                        |
-            |<-----------------------|                        |
-            :                        :                        :
-            |     Access-Request     |                        |
-            |----------------------->|                        |
-            |                        |     CCR (terminate,    |
-            |                        |          Used-Units)   |
-            |                        |----------------------->|
-            |                        |     CCA                |
-            |                        |<-----------------------|
-            |     Access-Accept      |                        |
-            |<-----------------------|                        |
-            |                        |                        |
-]]>
-        </artwork>
-      </figure>
+Service Element         Translation Agent
+  (e.g., NAS)               (CC Client)             CC Server
+      |     Access-Request     |                        |
+      |----------------------->|                        |
+      |                        |    CCR (initial)       |
+      |                        |----------------------->|
+      |                        |    CCA (Granted-Units) |
+      |                        |<-----------------------|
+      |     Access-Accept      |                        |
+      |     (Granted-Units)    |                        |
+      |<-----------------------|                        |
+      :                        :                        :
+      |     Access-Request     |                        |
+      |     (Used-Units)       |                        |
+      |----------------------->|                        |
+      |                        |    CCR (update,        |
+      |                        |         Used-Units)    |
+      |                        |----------------------->|
+      |                        |    CCA (Granted-Units) |
+      |                        |<-----------------------|
+      |     Access-Accept      |                        |
+      |     (Granted-Units)    |                        |
+      |<-----------------------|                        |
+      :                        :                        :
+      |     Access-Request     |                        |
+      |----------------------->|                        |
+      |                        |     CCR (terminate,    |
+      |                        |          Used-Units)   |
+      |                        |----------------------->|
+      |                        |     CCA                |
+      |                        |<-----------------------|
+      |     Access-Accept      |                        |
+      |<-----------------------|                        |
+      |                        |                        |
+]]></artwork></figure>
 </section>
 <section anchor="sec-12" title="  IANA Considerations">
 <t>
@@ -4667,49 +4661,49 @@
 
 <section anchor="app-a" title="Credit-Control Sequences">
   <section anchor="app-a1" title="Flow I">
-    <figure anchor="flow1" title="Flow I">
-    <artwork><![CDATA[
-                               NAS
-   End User          (CC Client)         AAA Server           CC Server
-      |(1)User Logon      |(2)AA Request (CC AVPs)                  |
-      |------------------>|------------------->|                    |
-      |                   |                    |(3)CCR(initial, CC AVPs)
-      |                   |                    |------------------->|
-      |                   |                    | (4)CCA(Granted-Units)
-      |                   |                    |<-------------------|
-      |                   |(5)AA Answer(Granted-Units)              |
-      |(6)Access granted  |<-------------------|                    |
-      |<----------------->|                    |                    |
-      |                   |                    |                    |
-      :                   :                    :                    :
-      |                   |(7)CCR(update,Used-Units)                |
-      |                   |------------------->|(8)CCR              |
-      |                   |                    |   (update,Used-Units)
-      |                   |                    |------------------->|
-      |                   |                    |(9)CCA(Granted-Units)
-      |                   |(10)CCA(Granted-Units)<------------------|
-      |                   |<-------------------|                    |
-      :                   :                    :                    :
-      |         (Auth. lifetime expires)       |                    |
-      |                   |(11) AAR (CC AVP)   |                    |
-      |                   |------------------->|                    |
-      |                   |          (12) AAA  |                    |
-      |                   |<-------------------|                    |
-      :                   :                    :                    :
-      :                   :                    :                    :
-      |(13) User logoff   |                    |                    |
-      |------------------>|(14)CCR(term.,Used-Units)                |
-      |                   |------------------->|(15)CCR             |
-      |                   |                    |   (term.,Used-Units)
-      |                   |                    |------------------->|
-      |                   |                    |            (16)CCA |
-      |                   |            (17)CCA |<-------------------|
-      |                   |<-------------------|                    |
-      |                   |(18)STR             |                    |
-      |                   |------------------->|                    |
-      |                   |            (19)STA |                    |
-      |                   |<-------------------|                    |
-    ]]></artwork>
+   <figure anchor="flow1" title="Flow I">
+<artwork><![CDATA[
+                           NAS
+End User          (CC Client)         AAA Server           CC Server
+  |(1)User Logon      |(2)AA Request (CC AVPs)                  |
+  |------------------>|------------------->|                    |
+  |                   |                    |(3)CCR(initial, CC AVPs)
+  |                   |                    |------------------->|
+  |                   |                    | (4)CCA(Granted-Units)
+  |                   |                    |<-------------------|
+  |                   |(5)AA Answer(Granted-Units)              |
+  |(6)Access granted  |<-------------------|                    |
+  |<----------------->|                    |                    |
+  |                   |                    |                    |
+  :                   :                    :                    :
+  |                   |(7)CCR(update,Used-Units)                |
+  |                   |------------------->|(8)CCR              |
+  |                   |                    |   (update,Used-Units)
+  |                   |                    |------------------->|
+  |                   |                    |(9)CCA(Granted-Units)
+  |                   |(10)CCA(Granted-Units)<------------------|
+  |                   |<-------------------|                    |
+  :                   :                    :                    :
+  |         (Auth. lifetime expires)       |                    |
+  |                   |(11) AAR (CC AVP)   |                    |
+  |                   |------------------->|                    |
+  |                   |          (12) AAA  |                    |
+  |                   |<-------------------|                    |
+  :                   :                    :                    :
+  :                   :                    :                    :
+  |(13) User logoff   |                    |                    |
+  |------------------>|(14)CCR(term.,Used-Units)                |
+  |                   |------------------->|(15)CCR             |
+  |                   |                    |   (term.,Used-Units)
+  |                   |                    |------------------->|
+  |                   |                    |            (16)CCA |
+  |                   |            (17)CCA |<-------------------|
+  |                   |<-------------------|                    |
+  |                   |(18)STR             |                    |
+  |                   |------------------->|                    |
+  |                   |            (19)STA |                    |
+  |                   |<-------------------|                    |
+]]></artwork>
     </figure>
 <t>A credit-control flow for Network Access Services prepaid is shown in
    Figure A.1.  The Diameter [NASREQ] is implemented in the Network
@@ -4769,42 +4763,42 @@
   </section>
   <section anchor="app-a2" title="Flow II">
     <figure anchor="flow2" title="Flow II">
-    <artwork><![CDATA[
-              SIP Proxy/Registrar   AAA
-        A           (CC Client)     Server           B        CC Server
-        |(i)  REGISTER |              |              |              |
-        |------------->|(ii)          |              |              |
-        |              |------------->|              |              |
-        |              |authentication &             |              |
-        |              |authorization |              |              |
-        |              |<-------------|              |              |
-        |(iii)200 OK   |                             |              |
-        |<-------------|                             |              |
-        :              :                             :              :
-        |(1)  INVITE   |                                            :
-        |------------->|
-        |              |(2)  CCR (Initial, SIP specific AVP)        |
-        |              |------------------------------------------->|
-        |              |(3)  CCA (Granted-Units)                    |
-        |              |<-------------------------------------------|
-        |              |(4)  INVITE                  |              |
-        |              |---------------------------->|              |
-        :              :                             :              :
-        |              |(5)  CCR (update, Used-Units)               |
-        |              |------------------------------------------->|
-        |              |(6)  CCA (Granted-Units)                    |
-        |              |<-------------------------------------------|
-        :              :                             :              :
-        |(7)  BYE      |                             |              |
-        |------------->|                             |              |
-        |              |(8)  BYE                     |              |
-        |              |---------------------------->|              |
-        |              |(9)  CCR (termination, Used-Units)          |
-        |              |------------------------------------------->|
-        |              |(10) CCA ()                                 |
-        |              |<-------------------------------------------|
-        |              |                             |              |
-    ]]></artwork>
+<artwork><![CDATA[
+      SIP Proxy/Registrar   AAA
+A           (CC Client)     Server           B        CC Server
+|(i)  REGISTER |              |              |              |
+|------------->|(ii)          |              |              |
+|              |------------->|              |              |
+|              |authentication &             |              |
+|              |authorization |              |              |
+|              |<-------------|              |              |
+|(iii)200 OK   |                             |              |
+|<-------------|                             |              |
+:              :                             :              :
+|(1)  INVITE   |                                            :
+|------------->|
+|              |(2)  CCR (Initial, SIP specific AVP)        |
+|              |------------------------------------------->|
+|              |(3)  CCA (Granted-Units)                    |
+|              |<-------------------------------------------|
+|              |(4)  INVITE                  |              |
+|              |---------------------------->|              |
+:              :                             :              :
+|              |(5)  CCR (update, Used-Units)               |
+|              |------------------------------------------->|
+|              |(6)  CCA (Granted-Units)                    |
+|              |<-------------------------------------------|
+:              :                             :              :
+|(7)  BYE      |                             |              |
+|------------->|                             |              |
+|              |(8)  BYE                     |              |
+|              |---------------------------->|              |
+|              |(9)  CCR (termination, Used-Units)          |
+|              |------------------------------------------->|
+|              |(10) CCA ()                                 |
+|              |<-------------------------------------------|
+|              |                             |              |
+]]></artwork>
     </figure>
 <t>
    This is an example of Diameter credit-control for SIP sessions.
@@ -5052,19 +5046,19 @@
   <section anchor="app-a6" title="Flow VI">
     <figure anchor="flow6" title="Flow VI">
     <artwork><![CDATA[
-                             Gaming Server
-      End User                (CC Client)              CC Server
-         |  (1)Service Delivery   |                        |
-         |<---------------------->|                        |
-         :                        :                        :
-         :                        :                        :
-         |                        |(2)CCR(event,REFUND,Requested-
-         |                        |Service-Unit,Service-Parameter-Info)
-         |                        |----------------------->|
-         |                        |  (3)CCA(Cost-Information)
-         |                        |<-----------------------|
-         |        (4)Notification |                        |
-         |<-----------------------|                        |
+                       Gaming Server
+End User                (CC Client)              CC Server
+   |  (1)Service Delivery   |                        |
+   |<---------------------->|                        |
+   :                        :                        :
+   :                        :                        :
+   |                        |(2)CCR(event,REFUND,Requested-
+   |                        |Service-Unit,Service-Parameter-Info)
+   |                        |----------------------->|
+   |                        |  (3)CCA(Cost-Information)
+   |                        |<-----------------------|
+   |        (4)Notification |                        |
+   |<-----------------------|                        |
     ]]></artwork>
     </figure>
 <t>
@@ -5093,7 +5087,33 @@
   <section anchor="app-a7" title="Flow VII">
     <figure anchor="flow7" title="Flow VII">
     <artwork><![CDATA[
-
+          SIP Controller    Top-Up
+A          (CC Client)      Server           B      CC Server
+|               |              |             |              |
+|               | (1) CCR(Update,Used-Unit)  |              |
+|               |------------------------------------------>|
+|               |              (2) CCA(Final-Unit, Redirect)|
+|               |<------------------------------------------|
+:               :              :             :              :
+:               :              :             :              :
+|               | (3) CCR(Update, Used-Units)|              |
+|               |------------------------------------------>|
+|               | (3a)INVITE("hold")         |              |
+|               |--------------------------->|              |
+|               |              |      (4) CCA(Validity-Time)|
+|               |<------------------------------------------|
+|     (5)INVITE | (6)INVITE    |             |              |
+|<--------------|------------->|             |              |
+|            (7)RTP            |             |              |
+|..............................|             |              |
+|               |       (8)BYE |             |              |
+|               |<-------------|             |              |
+|               | (9)CCR(Update)             |              |
+|               |------------------------------------------>|
+|               |                     (10)CCA(Granted-Unit) |
+|               |<------------------------------------------|
+|    (12)INVITE | (11)INVITE                 |              |
+|<--------------|--------------------------->|              |
     ]]></artwork>
     </figure>
 <t>
@@ -5146,35 +5166,34 @@
   <section anchor="app-a8" title="Flow VIII">
     <figure anchor="flow8" title="Flow VIII">
     <artwork><![CDATA[
-                         NAS                           Top-up      CC
-   End-User         (CC Client)          AAA Server    Server    Server
-     |(1)User Logon      |(2)AA Request (CC AVPs)        |         |
-     |------------------>|------------------->|          |         |
-     |                   |                    |(3)CCR(initial, CC AVPs)
-     |                   |                    |------------------->|
-     |                   |                    |(4)CCA(Final-Unit,  |
-     |                   |                    |      Validity-Time)|
-     |                   |                    |<-------------------|
-     |                   |(5)AA Answer(Final-Unit,Validity-Time)   |
-     |(6)Limited Access  |<-------------------|          |         |
-     |      granted      |                    |          |         |
-     |<----------------->|                    |          |         |
-     |                   |                    |          |         |
-     |   (7)TCP/HTTP     |        (8)TCP/HTTP            |         |
-     |<----------------->|<----------------------------->|         |
-     |                 (9) Replenish account             |         |
-     |<------------------------------------------------->|         |
-     |                   |                    |            (10)RAR |
-     |                   |<-------------------|<-------------------|
-     |                   | (11) RAA           |                    |
-     |                   |------------------->|------------------->|
-     |                   |(12)CCR(update)     |                    |
-     |                   |------------------->|(13)CCR(Update)     |
-     |                   |                    |------------------->|
-     |                   |                    |(14)CCA(Granted-Units)
-     |                   |(15)CCA(Granted-Units)<------------------|
-     |                   |<-------------------|                    |
-
+                       NAS                           Top-up      CC
+End-User         (CC Client)          AAA Server    Server    Server
+   |(1)User Logon      |(2)AA Request (CC AVPs)        |         |
+   |------------------>|------------------->|          |         |
+   |                   |                    |(3)CCR(initial, CC AVPs)
+   |                   |                    |------------------->|
+   |                   |                    |(4)CCA(Final-Unit,  |
+   |                   |                    |      Validity-Time)|
+   |                   |                    |<-------------------|
+   |                   |(5)AA Answer(Final-Unit,Validity-Time)   |
+   |(6)Limited Access  |<-------------------|          |         |
+   |      granted      |                    |          |         |
+   |<----------------->|                    |          |         |
+   |                   |                    |          |         |
+   |   (7)TCP/HTTP     |        (8)TCP/HTTP            |         |
+   |<----------------->|<----------------------------->|         |
+   |                 (9) Replenish account             |         |
+   |<------------------------------------------------->|         |
+   |                   |                    |            (10)RAR |
+   |                   |<-------------------|<-------------------|
+   |                   | (11) RAA           |                    |
+   |                   |------------------->|------------------->|
+   |                   |(12)CCR(update)     |                    |
+   |                   |------------------->|(13)CCR(Update)     |
+   |                   |                    |------------------->|
+   |                   |                    |(14)CCA(Granted-Units)
+   |                   |(15)CCA(Granted-Units)<------------------|
+   |                   |<-------------------|                    |
     ]]></artwork>
     </figure>
 <t>
@@ -5254,110 +5273,110 @@
    element or provisioned by an entity other than the credit-control
    server.
 </t>
-    <figure anchor="flow9" title="Flow example independent credit-control of multiple services in a  credit-control (sub-)Session">
-    <artwork><![CDATA[
-   End User         Service Element                           CC Server
-                       (CC client)
-      |(1)User logon      |                                         |
-      |------------------>|(2)CCR(initial, Service-Id access,       |
-      |                   |        Access specific AVPs,            |
-      |                   |        Multiple-Service-Indicator)      |
-      |                   |---------------------------------------->|
-      |                   |(3)CCA(Multiple-Services-CC (            |
-      |                   |        Granted-Units(Total-Octets),     |
-      |                   |        Service-Id access,               |
-      |                   |        Validity-time,                   |
-      |                   |        G-S-U-Pool-Reference(Pool-Id 1,  |
-      |                   |          Multiplier 10)))               |
-      |                   |<----------------------------------------|
-      :                   :                                         :
-      |(4)Service-Request (Service 1)                               |
-      |------------------>|(5)CCR(update, Multiple-Services-CC(     |
-      |                   |        Requested-Units(), Service-Id 1, |
-      |                   |        Rating-Group 1))                 |
-      |                   |---------------------------------------->|
-      |                   |(6)CCA(Multiple-Services-CC (            |
-      |                   |        Granted-Units(Time),             |
-      |                   |        Rating-Group 1,                  |
-      |                   |        G-S-U-Pool-Reference(Pool-Id 1,  |
-      |                   |          Multiplier 1)))                |
-      |                   |<----------------------------------------|
-      :                   :                                         :
-      |(7)Service-Request (Service 2)                               |
-      |------------------>|                                         |
-      :                   :                                         :
-      :                   :                                         :
-      |(8)Service-Request (Service 3&4)                             |
-      |------------------>|(9)CCR(update, Multiple-Services-CC (    |
-      |                   |        Requested-Units(), Service-Id 3, |
-      |                   |        Rating-Group 2),                 |
-      |                   |        Multiple-Services-CC (           |
-      |                   |        Requested-Units(), Service-Id 4, |
-      |                   |        Rating-Group 3))                 |
-      |                   |---------------------------------------->|
-      |                   |(10)CCA(Multiple-Services-CC (           |
-      |                   |        Granted-Units(Total-Octets),     |
-      |                   |        Service-Id 3, Rating-Group 2,    |
-      |                   |        Validity-time,                   |
-      |                   |        G-S-U-Pool-Reference(Pool-Id 2,  |
-      |                   |          Multiplier 2)),                |
-      |                   |        Multiple-Services-CC (           |
-      |                   |        Granted-Units(Total-Octets),     |
-      |                   |        Service-Id 4, Rating-Group 3     |
-      |                   |        Validity-Time,                   |
-      |                   |        Final-Unit-Ind.(Terminate),      |
-      |                   |        G-S-U-Pool-Reference(Pool-Id 2,  |
-      |                   |          Multiplier 5)))                |
-      |                   |<----------------------------------------|
-      :                   :                                         :
-      :                   :                                         :
-      | +--------------+  |                                         |
-      | |Validity time |  |(11)CCR(update,                          |
-      | |expires for   |  |        Multiple-Services-CC (           |
-      | |Service-Id    |  |        Requested-Unit(),                |
-      | | access       |  |        Used-Units(In-Octets,Out-Octets),|
-      | +--------------+  |        Service-Id access))              |
-      |                   |---------------------------------------->|
-      |                   |(12)CCA(Multiple-Services-CC (           |
-      |                   |        Granted-Units(Total-Octets),     |
-      |                   |        Service-Id access,               |
-      |                   |        Validity-Time,                   |
-      |                   |        G-S-U-Pool-Reference(Pool-Id 1,  |
-      |                   |          Multiplier 10)))               |
-      |                   |<----------------------------------------|
-      :                   :                                         :
-      :                   :                                         :
-      | +--------------+  |                                         |
-      | |Total Quota   |  |(13)CCR(update,                          |
-      | |elapses for   |  |       Multiple-Services-CC (            |
-      | |pool 2:       |  |        Requested-Unit(),                |
-      | |service 4 not |  |        Used-Units(In-Octets,Out-Octets),|
-      | |allowed,      |  |        Service-Id 3, Rating-group 2),   |
-      | |service 3 cont|  |       Multiple-Services-CC (            |
-      | +--------------+  |        Used-Units(In-Octets,Out-Octets),|
-      |                   |        Service-Id 4, Rating-Group 3))   |
-      |                   |---------------------------------------->|
-      |                   |(14)CCA(Multiple-Services-CC (           |
-      |                   |        Result-Code 4011,                |
-      |                   |        Service-Id 3))                   |
-      |                   |<----------------------------------------|
-      :                   :                                         :
-      :                   :                                         :
-      |(15) User logoff   |                                         |
-      |------------------>|(16)CCR(term,                            |
-      |                   |       Multiple-Services-CC (            |
-      |                   |        Used-Units(In-Octets,Out-Octets),|
-      |                   |        Service-Id access),              |
-      |                   |       Multiple-Services-CC (            |
-      |                   |        Used-Units(Time),                |
-      |                   |        Service-Id 1, Rating-Group 1),   |
-      |                   |       Multiple-Services-CC (            |
-      |                   |        Used-Units(Time),                |
-      |                   |        Service-Id 2, Rating-Group 1))   |
-      |                   |---------------------------------------->|
-      |                   |(17)CCA(term)                            |
-      |                   |<----------------------------------------|
-    ]]></artwork>
+<figure anchor="flow9" title="Flow example independent credit-control of multiple services in a  credit-control (sub-)Session">
+<artwork><![CDATA[
+End User         Service Element                           CC Server
+                   (CC client)
+  |(1)User logon      |                                         |
+  |------------------>|(2)CCR(initial, Service-Id access,       |
+  |                   |        Access specific AVPs,            |
+  |                   |        Multiple-Service-Indicator)      |
+  |                   |---------------------------------------->|
+  |                   |(3)CCA(Multiple-Services-CC (            |
+  |                   |        Granted-Units(Total-Octets),     |
+  |                   |        Service-Id access,               |
+  |                   |        Validity-time,                   |
+  |                   |        G-S-U-Pool-Reference(Pool-Id 1,  |
+  |                   |          Multiplier 10)))               |
+  |                   |<----------------------------------------|
+  :                   :                                         :
+  |(4)Service-Request (Service 1)                               |
+  |------------------>|(5)CCR(update, Multiple-Services-CC(     |
+  |                   |        Requested-Units(), Service-Id 1, |
+  |                   |        Rating-Group 1))                 |
+  |                   |---------------------------------------->|
+  |                   |(6)CCA(Multiple-Services-CC (            |
+  |                   |        Granted-Units(Time),             |
+  |                   |        Rating-Group 1,                  |
+  |                   |        G-S-U-Pool-Reference(Pool-Id 1,  |
+  |                   |          Multiplier 1)))                |
+  |                   |<----------------------------------------|
+  :                   :                                         :
+  |(7)Service-Request (Service 2)                               |
+  |------------------>|                                         |
+  :                   :                                         :
+  :                   :                                         :
+  |(8)Service-Request (Service 3&4)                             |
+  |------------------>|(9)CCR(update, Multiple-Services-CC (    |
+  |                   |        Requested-Units(), Service-Id 3, |
+  |                   |        Rating-Group 2),                 |
+  |                   |        Multiple-Services-CC (           |
+  |                   |        Requested-Units(), Service-Id 4, |
+  |                   |        Rating-Group 3))                 |
+  |                   |---------------------------------------->|
+  |                   |(10)CCA(Multiple-Services-CC (           |
+  |                   |        Granted-Units(Total-Octets),     |
+  |                   |        Service-Id 3, Rating-Group 2,    |
+  |                   |        Validity-time,                   |
+  |                   |        G-S-U-Pool-Reference(Pool-Id 2,  |
+  |                   |          Multiplier 2)),                |
+  |                   |        Multiple-Services-CC (           |
+  |                   |        Granted-Units(Total-Octets),     |
+  |                   |        Service-Id 4, Rating-Group 3     |
+  |                   |        Validity-Time,                   |
+  |                   |        Final-Unit-Ind.(Terminate),      |
+  |                   |        G-S-U-Pool-Reference(Pool-Id 2,  |
+  |                   |          Multiplier 5)))                |
+  |                   |<----------------------------------------|
+  :                   :                                         :
+  :                   :                                         :
+  | +--------------+  |                                         |
+  | |Validity time |  |(11)CCR(update,                          |
+  | |expires for   |  |        Multiple-Services-CC (           |
+  | |Service-Id    |  |        Requested-Unit(),                |
+  | | access       |  |        Used-Units(In-Octets,Out-Octets),|
+  | +--------------+  |        Service-Id access))              |
+  |                   |---------------------------------------->|
+  |                   |(12)CCA(Multiple-Services-CC (           |
+  |                   |        Granted-Units(Total-Octets),     |
+  |                   |        Service-Id access,               |
+  |                   |        Validity-Time,                   |
+  |                   |        G-S-U-Pool-Reference(Pool-Id 1,  |
+  |                   |          Multiplier 10)))               |
+  |                   |<----------------------------------------|
+  :                   :                                         :
+  :                   :                                         :
+  | +--------------+  |                                         |
+  | |Total Quota   |  |(13)CCR(update,                          |
+  | |elapses for   |  |       Multiple-Services-CC (            |
+  | |pool 2:       |  |        Requested-Unit(),                |
+  | |service 4 not |  |        Used-Units(In-Octets,Out-Octets),|
+  | |allowed,      |  |        Service-Id 3, Rating-group 2),   |
+  | |service 3 cont|  |       Multiple-Services-CC (            |
+  | +--------------+  |        Used-Units(In-Octets,Out-Octets),|
+  |                   |        Service-Id 4, Rating-Group 3))   |
+  |                   |---------------------------------------->|
+  |                   |(14)CCA(Multiple-Services-CC (           |
+  |                   |        Result-Code 4011,                |
+  |                   |        Service-Id 3))                   |
+  |                   |<----------------------------------------|
+  :                   :                                         :
+  :                   :                                         :
+  |(15) User logoff   |                                         |
+  |------------------>|(16)CCR(term,                            |
+  |                   |       Multiple-Services-CC (            |
+  |                   |        Used-Units(In-Octets,Out-Octets),|
+  |                   |        Service-Id access),              |
+  |                   |       Multiple-Services-CC (            |
+  |                   |        Used-Units(Time),                |
+  |                   |        Service-Id 1, Rating-Group 1),   |
+  |                   |       Multiple-Services-CC (            |
+  |                   |        Used-Units(Time),                |
+  |                   |        Service-Id 2, Rating-Group 1))   |
+  |                   |---------------------------------------->|
+  |                   |(17)CCA(term)                            |
+  |                   |<----------------------------------------|
+]]></artwork>
     </figure>
 <t>
    The user logs on to the network (1).  The service element sends a
