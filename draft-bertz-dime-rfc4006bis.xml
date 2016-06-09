@@ -144,7 +144,7 @@
   <t>
 	   In next generation wireless networks, additional functionality is
 	   required beyond that specified in the Diameter base protocol.  For
-	   example, the 3GPP Charging and Billing requirements [3GPPCHARG] state
+	   example, the 3GPP Charging and Billing requirements <xref target="TGPPCHARG"/> state
 	   that an application must be able to rate service information in
 	   real-time.  In addition, it is necessary to check that the end user's
 	   account provides coverage for the requested service prior to
@@ -273,7 +273,7 @@
 <section anchor="sec-2" title="  Architecture Models">
 <t>
    The current accounting models specified in the Radius Accounting
-   <xref target="RFC2866">[RFC2866]</xref> and Diameter base <xref target="RFC6733"/> are not sufficient for real-
+   <xref target="RFC2866"/> and Diameter base <xref target="RFC6733"/> are not sufficient for real-
    time credit-control, where credit-worthiness is to be determined
    prior to service initiation.  Also, the existing Diameter
    authorization applications, <xref target="RFC7155"/> and <xref target="RFC4004"/>, only provide
@@ -1885,12 +1885,12 @@ End User        Service Element         AAA Server          CC Server
    credit-control sessions with a possibly available secondary credit-
    control server.
 </t><t>
-   The AAA transport profile [AAATRANS] defines the application layer
+   The AAA transport profile <xref target="RFC3539"/> defines the application layer
    watchdog algorithm that enables failover from a peer that has failed
-   and is controlled by a watchdog timer (Tw) defined in [AAATRANS].
+   and is controlled by a watchdog timer (Tw) defined in <xref target="RFC3539"/>.
    The recommended default initial value for Tw (Twinit) is 30 seconds.
    Twinit may be set as low as 6 seconds; however, according to
-   [AAATRANS], setting too low a value for Twinit is likely to result in
+   <xref target="RFC3539"/>, setting too low a value for Twinit is likely to result in
    an increased probability of duplicates, as well as an increase in
    spurious failover and failback attempts.  The Diameter base protocol
    is common to several different types of Diameter AAA applications
@@ -3054,7 +3054,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    The Currency-Code AVP (AVP Code 425) is of type Unsigned32 and
    contains a currency code that specifies in which currency the values
    of AVPs containing monetary units were given.  It is specified by
-   using the numeric values defined in the ISO 4217 standard [ISO4217].
+   using the numeric values defined in the ISO 4217 standard <xref target="ISO4217"/>.
 </t>
 </section>
 <section anchor="sec-8.12" title="  Cost-Unit AVP">
@@ -3669,25 +3669,25 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    IPv4 Address                    0
 </t><t>
       The address type is in the form of "dotted-decimal" IPv4 address,
-      as defined in [IPv4].
+      as defined in <xref target="RFC0791"/>.
 </t><t>
    IPv6 Address                    1
 </t><t>
       The address type is in the form of IPv6 address, as defined in
-      [IPv6Addr].  The address is a text representation of the address
-      in either the preferred or alternate text form [IPv6Addr].
+      <xref target="RFC3513"/>.  The address is a text representation of the address
+      in either the preferred or alternate text form <xref target="RFC3513"/>.
       Conformant implementations MUST support the preferred form and
       SHOULD support the alternate text form for IPv6 addresses.
 </t><t>
    URL                             2
 </t><t>
       The address type is in the form of Uniform Resource Locator, as
-      defined in [URL].
+      defined in <xref target="RFC1738"/>.
 </t><t>
    SIP URI                         3
 </t><t>
       The address type is in the form of SIP Uniform Resource
-      Identifier, as defined in [SIP].
+      Identifier, as defined in <xref target="RFC3261"/>.
 </t>
 </section>
 <section anchor="sec-8.39" title="  Redirect-Server-Address AVP">
@@ -3882,22 +3882,22 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    END_USER_E164                   0
 </t><t>
       The identifier is in international E.164 format (e.g., MSISDN),
-      according to the ITU-T E.164 numbering plan defined in [E164] and
-      [CE164].
+      according to the ITU-T E.164 numbering plan defined in <xref target="E164"/> and
+      <xref target="CE164"/>.
 </t><t>
    END_USER_IMSI                   1
 </t><t>
       The identifier is in international IMSI format, according to the
-      ITU-T E.212 numbering plan as defined in [E212] and [CE212].
+      ITU-T E.212 numbering plan as defined in <xref target="E212"/> and <xref target="CE212"/>.
 </t><t>
    END_USER_SIP_URI                2
 </t><t>
-      The identifier is in the form of a SIP URI, as defined in [SIP].
+      The identifier is in the form of a SIP URI, as defined in <xref target="RFC3261"/>.
 </t><t>
    END_USER_NAI                    3
 </t><t>
       The identifier is in the form of a Network Access Identifier, as
-      defined in [NAI].
+      defined in <xref target="RFC2486"/>.
 </t><t>
    END_USER_PRIVATE                4
 </t><t>
@@ -3943,22 +3943,22 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
 </t><t>
       The identifier contains the International Mobile Equipment
       Identifier and Software Version in the international IMEISV format
-      according to 3GPP TS 23.003 [3GPPIMEI].
+      according to 3GPP TS 23.003 <xref target="TGPPIMEI"/>.
 </t><t>
    MAC                             1
 </t><t>
-      The 48-bit MAC address is formatted as described in [RAD802.1X].
+      The 48-bit MAC address is formatted as described in <xref target="RFC3580"/>.
 </t><t>
    EUI64                           2
 </t><t>
       The 64-bit identifier used to identify hardware instance of the
-      product, as defined in [EUI64].
+      product, as defined in <xref target="EUI64"/>.
 </t><t>
    MODIFIED_EUI64                  3
 </t><t>
       There are a number of types of terminals that have identifiers
       other than IMEI, IEEE 802 MACs, or EUI-64.  These identifiers can
-      be converted to modified EUI-64 format as described in [IPv6Addr]
+      be converted to modified EUI-64 format as described in <xref target="RFC3513"/>
       or by using some other methods referred to in the service-specific
       documentation.
 </t>
@@ -4301,7 +4301,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.3"/>, the CC-Request-Type AVP includes
    Enumerated type values 1 - 4.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert [IANA].
+   assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.6" title="  CC-Session-Failover AVP">
@@ -4309,7 +4309,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.4"/>, the CC-Failover-Supported AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert [IANA].
+   assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.7" title="  CC-Unit-Type AVP">
@@ -4317,7 +4317,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.32"/>, the CC-Unit-Type AVP includes Enumerated
    type values 0 - 5.  IANA has created and is maintaining a namespace
    for this AVP.  All remaining values are available for assignment by a
-   Designated Expert [IANA].
+   Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.8" title="  Check-Balance-Result AVP">
@@ -4325,7 +4325,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.6"/>, the Check-Balance-Result AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert [IANA].
+   assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.9" title="  Credit-Control AVP">
@@ -4333,7 +4333,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.13"/>, the Credit-Control AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert [IANA].
+   assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.10" title="  Credit-Control-Failure-Handling AVP">
@@ -4341,7 +4341,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.14"/>, the Credit-Control-Failure-Handling AVP
    includes Enumerated type values 0 - 2.  IANA has created and is
    maintaining a namespace for this AVP.  All remaining values are
-   available for assignment by a Designated Expert [IANA].
+   available for assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.11" title="  Direct-Debiting-Failure-Handling AVP">
@@ -4349,7 +4349,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.15"/>, the Direct-Debiting-Failure-Handling AVP
    includes Enumerated type values 0 - 1.  IANA has created and is
    maintaining a namespace for this AVP.  All remaining values are
-   available for assignment by a Designated Expert [IANA].
+   available for assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.12" title="  Final-Unit-Action AVP">
@@ -4357,7 +4357,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.35"/>, the Final-Unit-Action AVP includes
    Enumerated type values 0 - 2.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert [IANA].
+   assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.13" title="  Multiple-Services-Indicator AVP">
@@ -4365,7 +4365,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.40"/>, the Multiple-Services-Indicator AVP
    includes Enumerated type values 0 - 1.  IANA has created and is
    maintaining a namespace for this AVP.  All remaining values are
-   available for assignment by a Designated Expert [IANA].
+   available for assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.14" title="  Redirect-Address-Type AVP">
@@ -4373,7 +4373,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.38"/>, the Redirect-Address-Type AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert [IANA].
+   assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.15" title="  Requested-Action AVP">
@@ -4381,7 +4381,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.41"/>, the Requested-Action AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert [IANA].
+   assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.16" title="  Subscription-Id-Type AVP">
@@ -4389,7 +4389,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.47"/>, the Subscription-Id-Type AVP  includes
    Enumerated type values 0 - 4.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert [IANA].
+   assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.17" title="   Tariff-Change-Usage AVP">
@@ -4397,7 +4397,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.27"/>, the Tariff-Change-Usage AVP includes
    Enumerated type values 0 - 2.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert [IANA].
+   assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 <section anchor="sec-12.18" title="   User-Equipment-Info-Type AVP">
@@ -4405,7 +4405,7 @@ Service Element         Translation Agent
    As defined in <xref target="sec-8.50"/>, the User-Equipment-Info-Type AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
    namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert [IANA].
+   assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
 </section>
@@ -4518,7 +4518,7 @@ Service Element         Translation Agent
    There are some authorization issues even with redirects.  There may
    be attacks toward nodes that have been properly authorized, but that
    abuse their authorization or have been compromised.  These issues are
-   discussed more widely in [DIAMEAP], <xref target="sec-8"/>.
+   discussed more widely in <xref target="DIAMEAP"/>, <xref target="sec-8"/>.
 </t>
 </section>
 </section>
@@ -4532,7 +4532,7 @@ Service Element         Translation Agent
      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"?-->
      &RFC6733;
 
-     <reference anchor="_3GPPCHARG">
+     <reference anchor="TGPPCHARG">
        <front>
          <title>Technical
                Specification Group Services and System Aspects, Service
@@ -4619,7 +4619,7 @@ Service Element         Translation Agent
        </front>
      </reference>
 
-    <reference anchor="_3GPPIMEI">
+    <reference anchor="TGPPIMEI">
        <front>
          <title>Technical
                Specification Group Core Network, Numbering, addressing
@@ -4818,7 +4818,7 @@ A           (CC Client)     Server           B        CC Server
    SIP Proxy adds a Record-Route header in the initial SIP INVITE to
    make sure that all the future requests in the created dialog traverse
    through it (for the definitions of 'Record-Route' and 'dialog' please
-   refer to [SIP]).  Finally, the degree of credit-control measuring of
+   refer to <xref target="RFC3261"/>).  Finally, the degree of credit-control measuring of
    the media by the proxy depends on the business model design used in
    setting up the end system and proxies in the SIP network.
 </t>
@@ -5123,7 +5123,7 @@ A          (CC Client)      Server           B      CC Server
    performing third-party call control (3PCC).  Note that the SIP
    signaling is inaccurate, as the focus of this flow is in the graceful
    service termination and credit-control authorization.  The best
-   practice for 3PCC is defined in [RFC3725].
+   practice for 3PCC is defined in <xref target="RFC3725"/>.
 </t>
 <t>
    The call is ongoing between users A and B; user A has a prepaid
