@@ -34,6 +34,35 @@
  <front>
    <title>Diameter Credit-Control Application</title>
 
+   <author fullname="Lyle Bertz" initials="L." surname="Bertz" role="editor">
+     <organization>Sprint</organization>
+     <address>
+       <postal>
+         <street>6220 Sprint Parkway</street>
+         <city>Overland Park</city>
+         <region>KS</region>
+         <code>66251</code>
+         <country>United States</country>
+       </postal>
+       <email>lbertz551144@gmail.com</email>
+     </address>
+   </author>
+
+   <author fullname="David Dolson" initials="D." surname="Dolson" role="editor">
+     <organization>Sandvine</organization>
+     <address>
+       <postal>
+         <street>408 Albert Street</street>
+         <city>Waterloo</city>
+         <region>ON</region>
+         <code>N2L3V3</code>
+         <country>Canada</country>
+       </postal>
+       <phone>+1 519 880 2400</phone>
+       <email>ddolson@sandvine.com</email>
+     </address>
+   </author>
+
    <author fullname="Harri Hakala" initials="H." surname="Hakala">
      <organization>Oy L M Ericsson Ab</organization>
      <address>
@@ -1474,7 +1503,7 @@ End User         (CC Client)
    Credit Control, and the Re-Auth-Request-Type is set to
    AUTHORIZE_ONLY.
 </t><t>
-   <xref target="sec-5.1.2">Section 5.1.2</xref> defines the feature to enable credit-control for
+   <xref target="sec-5.1.2"/> defines the feature to enable credit-control for
    multiple services within a single (sub-)session where the server can
    authorize credit usage at a different level of granularity.  Further,
    the server may provide credit resources to multiple services or
@@ -1972,7 +2001,7 @@ End User        Service Element         AAA Server          CC Server
    to know the cost of the service event or to check the account balance
    without any credit-reservation.  It can also be used for refunding
    service units on the user's account or for direct debiting withouts
-  any credit-reservation.  The one time event is shown in <xref target="onetimeevent" format="default"></xref>.
+  any credit-reservation.  The one time event is shown in <xref target="onetimeevent" format="default"/>.
 </t>
   <figure title="One time event" anchor="onetimeevent">
   <artwork><![CDATA[
@@ -2221,7 +2250,7 @@ End User        Service Element        AAA Server        CC Server
    volatile storage in case of temporary failure.  The credit-control
    client MUST mark the re-transmitted request message as a possible
    duplicate by setting the T-flag in the command header as described in
-   <xref target="RFC6733"/>, <xref target="sec-3"/>.
+   <xref target="RFC6733"/>, Section 3.
 </t>
 <t>
    For stored requests, the implementation may choose to limit the
@@ -2251,8 +2280,7 @@ End User        Service Element        AAA Server        CC Server
    authorization/authentication process.  The second describes the
    session-based credit-control when the first interrogation is executed
    after the authorization/authentication process.  The requirements as
-   to what state machines have to be supported are discussed in <xref target="sec-5.2">section
-    5.2</xref>.
+   to what state machines have to be supported are discussed in <xref target="sec-5.2"/>.
 </t>
 <t>
    The third state machine describes the session-based credit-control
@@ -2745,7 +2773,7 @@ End User        Service Element        AAA Server        CC Server
 </t>
 <t>
    The Diameter AVP rules are defined in the Diameter Base <xref target="RFC6733"/>,
-   <xref target="sec-4"/>.  These AVP rules are observed in AVPs defined in this
+   Section 4.  These AVP rules are observed in AVPs defined in this
    section.
 </t>
 <t>
@@ -3508,14 +3536,15 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    pool.
 </t><t>
    The following values are defined for the CC-Unit-Type AVP:
-</t><t>
+</t>
+<figure><artwork><![CDATA[
       TIME                         0
       MONEY                        1
       TOTAL-OCTETS                 2
       INPUT-OCTETS                 3
       OUTPUT-OCTETS                4
       SERVICE-SPECIFIC-UNITS       5
-</t>
+]]></artwork></figure>
 </section>
 <section anchor="sec-8.33" title="  Validity-Time AVP">
 <t>
@@ -4154,7 +4183,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    Diameter credit control for instance, RADIUS prepaid.  In this case,
    the home AAA server contacts the Diameter credit-control server as
    part of the authorization process.  The interworking architecture is
-   illustrated <xref target="se_with_translation" format="default"></xref>, and interworking flow in <xref target="diam_rad_prepaid_flow" format="default"></xref>.  In a
+   illustrated <xref target="se_with_translation" format="default"/>, and interworking flow in <xref target="diam_rad_prepaid_flow" format="default"/>.  In a
    roaming situation the service element (e.g., the NAS) may be located
    in the visited network, and a visited AAA server is usually
    contacted.  The visited AAA server connects then to the home AAA
@@ -4518,7 +4547,7 @@ Service Element         Translation Agent
    There are some authorization issues even with redirects.  There may
    be attacks toward nodes that have been properly authorized, but that
    abuse their authorization or have been compromised.  These issues are
-   discussed more widely in <xref target="DIAMEAP"/>, <xref target="sec-8"/>.
+   discussed more widely in <xref target="DIAMEAP"/>, Section 8.
 </t>
 </section>
 </section>
