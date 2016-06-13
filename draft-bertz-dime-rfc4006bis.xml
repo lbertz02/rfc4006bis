@@ -539,8 +539,6 @@
    credit-control server.  The credit-control application defined in
    this specification supports two different credit authorization
    models: credit authorization with money reservation and credit
-</t>
-  <t>
    authorization with direct debiting.  In both models, the credit-
    control client requests credit authorization from the credit-control
    server prior to allowing any service to be delivered to the end user.
@@ -666,6 +664,7 @@
    allocation of global AVPs is encouraged instead; refer to <xref target="RFC6733"/>.
 </t>
   <t>
+   2. The Service-Parameter-Info AVP MAY be used as a container to pass
    legacy rating information in its original encoded form (e.g., ASN.1
    BER).  This method can be used to avoid unnecessary conversions from
    an existing data format to an AVP format.  In this case, the rating
@@ -1884,7 +1883,6 @@ End User        Service Element         AAA Server          CC Server
    a Credit-Control-Failure-Handling AVP equal to CONTINUE for the
    credit-control flow and a Accounting-Realtime-Required AVP equal to
    DELIVER_AND_GRANT for the accounting flow, the service can be granted
-</t><t>
    to the end user even if the connection to the credit-control server
    is down, as long as the accounting server is able to collect the
    accounting information and information exchange is taking place
@@ -3673,7 +3671,6 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    IPFilterRule and provides filter rules corresponding to services that
    are to remain accessible even if there are no more service units
    granted.  The access device has to configure the specified filter
-</t><t>
    rules for the subscriber and MUST drop all the packets not matching
    these filters.  Zero, one, or more such AVPs MAY be present in a
    Credit-Control-Answer message or in an AA answer message.
@@ -4080,7 +4077,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    represented in this table.
 </t><t>
    The table uses the following symbols:
-</t><t>
+</t>
+<figure><artwork><![CDATA[
       0     The AVP MUST NOT be present in the message.
       0+    Zero or more instances of the AVP MAY be present in the
             message.
@@ -4090,7 +4088,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
       1     One instance of the AVP MUST be present in the message.
       1+    At least one instance of the AVP MUST be present in the
             message.
-</t>
+]]></artwork></figure>
 <section anchor="sec-10.1" title="  Credit-Control AVP Table">
 <t>
    The table in this section is used to represent which credit-control
@@ -4244,7 +4242,6 @@ Validity-Time     448  8.33   Unsigned32 | M  |  P  |    |  V | Y  |
    credit-control server debits the used units from the end user's
    account and allocates a new quota that is returned to the home AAA
    server in the Diameter Credit-Control-Answer.  The quota is
-</t><t>
    transferred to the service element in the RADIUS Access-Accept.  When
    the end user terminates the service, or when the entire quota has
    been used, the service element sends a RADIUS Access-Request.  To
