@@ -409,8 +409,6 @@
    different roles of Diameter Agents are defined in Diameter base
    <xref target="RFC6733"/>, section 2.8.
 </t>
-  <!-- Did not include the section reference as a link because 3588 does not have an
-    XML version wiht a section tag -->
   <t>
    If Diameter credit-control proxies exist between the credit-control
    client and the credit-control server, they MUST advertise the
@@ -657,8 +655,6 @@
    be defined.  Allocation of new AVP values is done as specified in
    <xref target="RFC6733"/>, section 1.3.
 </t>
-    <!-- Did not include the section reference as a link because 3588 does not have an
-    XML version wiht a section tag -->
   <t>
    1b. New AVPs can be defined if the existing AVPs do not provide
    sufficient rating information.  In this case, the procedures defined
@@ -2239,7 +2235,7 @@ End User        Service Element        AAA Server        CC Server
    server successfully processes the request.)  The credit-control
    client MUST mark these request messages as possible duplicates by
    setting the T-flag in the command header as described in <xref target="RFC6733"/>,
-   <xref target="sec-3"/>.
+   Section 3.
 </t>
 <t>
    If the Direct-Debiting-Failure-Handling AVP is set to CONTINUE, the
