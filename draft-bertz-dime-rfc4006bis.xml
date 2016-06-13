@@ -5546,14 +5546,9 @@ End User         Service Element                           CC Server
     <t>Update references to obsolete RFC 3588 to refer to RFC 6733.</t>
     <t>Update references to obsolete RFC 4005 to refer to RFC 7155.</t>
     <t>Update reference to "IPsec or TLS" to be "TLS/TCP, DTLS/SCTP or IPsec"</t>
+    <t>Update AVP per Errata ID 3329</t>
   </list>
   </t>
 </section>
-
-   <!-- Change Log
-
-v00 2016-06-07  LTB   Initial version
-
-  -->
  </back>
 </rfc>
