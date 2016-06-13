@@ -1790,7 +1790,7 @@ End User        Service Element         AAA Server          CC Server
    replenish the account and continue the service.  The credit-control
    client receives a Credit-Control-Answer or service specific
    authorization answer with the Final-Unit-Indication and Validity-Time
-   AVPs but no Granted-Service-Unit.  It immediately starts the graceful
+   AVPs but no Granted-Service-Unit AVP.  It immediately starts the graceful
    service termination without sending any message to the server.  An
    example of this case is illustrated in Appendix A.
 </t>
