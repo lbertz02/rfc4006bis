@@ -4573,11 +4573,11 @@ Service Element         Translation Agent
        <front>
          <title>Technical
                Specification Group Services and System Aspects, Service
-               aspects; Charging and Billing, (release 5), 3GPP TS
-               22.115 v. 5.2.1</title>
+               aspects; Charging and Billing, (release 13), 3GPP TS
+               22.115 v. 13.3.0</title>
          <author><organization>3rd Generation Partnership Project</organization></author>
 
-         <date year="2002-03" />
+         <date year="2016-03" />
        </front>
      </reference>
 
@@ -4660,9 +4660,9 @@ Service Element         Translation Agent
        <front>
          <title>Technical
                Specification Group Core Network, Numbering, addressing
-               and identification, (release 5), 3GPP TS 23.003 v. 5.8.0</title>
+               and identification, (release 13), 3GPP TS 23.003 v. 13.5.0</title>
          <author><organization>3rd Generation Partnership Project</organization></author>
-         <date year="2003-12" />
+         <date year="2016-04" />
        </front>
      </reference>
 
