@@ -1805,8 +1805,8 @@ End User        Service Element         AAA Server          CC Server
    filters given in the Restriction-Filter-Rule AVP(s), Filter-Rule AVPs
    <xref target="RFC5777"/> or according to the IP packet filters
    identified by the Filter-Id AVP(s).  The credit-control server
-   SHOULD include either the Restriction-Filter-Rule AVP or the
-   Filter-Id AVP in the Credit-Control-Answer message.
+   SHOULD include either the Restriction-Filter-Rule AVP, Filter-Rule AVP
+   or the Filter-Id AVP in the Credit-Control-Answer message.
 </t><t>
    An entity other than the credit-control server may provision the
    access device with appropriate IP packet filters to be used in
