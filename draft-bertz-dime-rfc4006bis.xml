@@ -3344,6 +3344,9 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    contains the amount of used units measured from the point when the
    service became active or, if interim interrogations are used during
    the session, from the point when the previous measurement ended.
+   Note: The values reported in a Used-Service-Unit AVP does not necessarily 
+   have a relation to the grant provided in a Granted-Service-Unit AVP, 
+   e.g. the value in this AVP may exceed the value in the grant.
 </t><t>
    The Used-Service-Unit AVP is defined as follows (per the grouped-
    avp-def of <xref target="RFC6733"/>):
