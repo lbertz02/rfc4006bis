@@ -3715,9 +3715,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t><t>
       The address type is in the form of IPv6 address, as defined in
       <xref target="RFC4291"/>.  The address is a text representation of the address
-      in either the preferred or alternate text form <xref target="RFC4291"/>.
-      Conformant implementations MUST support the preferred form and
-      SHOULD support the alternate text form for IPv6 addresses.
+      according to <xref target="RFC5952"/>.
 </t><t>
    URL                             2
 </t><t>
