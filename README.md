@@ -1,6 +1,9 @@
 # Overview
 
 This project serves as a basis for RFC 4006 XML file and a proposed BIS.
+The most recent upload to IETF is at
+https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-00 .
+
 
 # Getting Started
 
