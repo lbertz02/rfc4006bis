@@ -2822,8 +2822,8 @@ End User        Service Element        AAA Server        CC Server
 <t>
    The following table describes the Diameter AVPs defined in the
    credit-control application, their AVP Code values, types, and possible
-   flag values.  The Diameter base
-   <xref target="RFC6733"/> specifies the AVP Flag rules for AVPs in section 4.5.
+   flag values.  The AVP Flag rules are explained in
+   the Diameter base <xref target="RFC6733"/>, section 4.1.
 </t>
 
 <figure>
