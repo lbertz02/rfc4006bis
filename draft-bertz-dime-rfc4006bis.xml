@@ -5586,8 +5586,15 @@ End User         Service Element                           CC Server
   <list>
     <t>Update references to obsolete RFC 3588 to refer to RFC 6733.</t>
     <t>Update references to obsolete RFC 4005 to refer to RFC 7155.</t>
-    <t>Update reference to "IPsec or TLS" to be "TLS/TCP, DTLS/SCTP or IPsec"</t>
+    <t>Update references to current 3GPP documents.</t>
     <t>Update AVP per Errata ID 3329</t>
+    <t>Update reference to "IPsec or TLS" to be "TLS/TCP, DTLS/SCTP or IPsec"</t>
+    <t>Clarify Filter-Rule AVP in Restrict Access Action</t>
+    <t>Remove Encr column from AVP flag rules</t>
+    <t>Clarify that RESTRICT_ACCESS action applies after consumption of final granted units (<xref target="sec-5.6.3"/>).</t>
+    <t>Clarify that values in Used-Service-Unit AVP may exceed Granted-Service-Unit AVP (<xref target="sec-8.19"/>).</t>
+    <t>Clarify that IPv6 representation in Redirect-Address-Type AVP conforms to RFC5952 (<xref target="sec-8.38"/>).</t>
+    <t>Describe immediate graceful service termination procedure (in <xref target="sec-5.6"/>).</t>
   </list>
   </t>
 </section>
