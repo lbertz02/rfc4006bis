@@ -1625,8 +1625,8 @@ End User         (CC Client)
    prompts the user to replenish the account.  In this case, the
    credit-control server sends only the address of the top-up server
    where the prepaid user shall be connected after the final granted
-   units have been consumed.  An example of this is given in Appendix A
-   (Flow VII).
+   units have been consumed.  An example of this is given
+   <xref target="app-a7"/>.
 </t><t>
    The credit-control server MAY initiate the graceful service
    termination by including the Final-Unit-Indication AVP in the
@@ -1815,7 +1815,8 @@ End User        Service Element         AAA Server          CC Server
    Validity-Time and may send a spontaneous update (a new Credit-
    Control-Request) if the service element can determine, for instance,
    that communication between the end user and the top-up server took
-   place.  An example of this is given in Appendix A (Figure A.8).
+   place.  An example of this is given in 
+   <xref target="app-a8"/> (<xref target="flow8"/>).
 </t><t>
    Note that the credit-control server may already have initiated the
    above-described process for the first interrogation.  However, the
@@ -1826,7 +1827,7 @@ End User        Service Element         AAA Server          CC Server
    authorization answer with the Final-Unit-Indication and Validity-Time
    AVPs but no Granted-Service-Unit AVP.  It immediately starts the graceful
    service termination without sending any message to the server.  An
-   example of this case is illustrated in Appendix A.
+   example of this case is illustrated in <xref target="immediate_graceful_termination"/>.
 </t>
 </section>
 <section anchor="sec-5.6.3" title="  Restrict Access Action">
@@ -3524,7 +3525,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    request relates to is uniquely identified by the combination of
    Service-Context-Id and Service-Identifier AVPs.
 </t><t>
-   A usage example of this AVP is illustrated in Appendix A (Flow IX).
+   A usage example of this AVP is illustrated in <xref target="app-a9"/>.
 </t>
 </section>
 <section anchor="sec-8.29" title="  Rating-Group AVP">
@@ -3535,7 +3536,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    specific rating group the request relates to is uniquely identified
    by the combination of Service-Context-Id and Rating-Group AVPs.
 </t><t>
-   A usage example of this AVP is illustrated in Appendix A (Flow IX).
+   A usage example of this AVP is illustrated in <xref target="app-a9"/>.
 </t>
 </section>
 <section anchor="sec-8.30" title="  G-S-U-Pool-Reference AVP">
