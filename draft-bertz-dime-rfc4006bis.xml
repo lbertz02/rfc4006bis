@@ -751,7 +751,9 @@
 <t>
    For a session-based credit-control, several interrogations are
    needed: the first, intermediate (optional) and the final
-   interrogations.  This is illustrated in Figures 2 and 3.
+   interrogations.  This is illustrated in 
+   <xref target="first_interrogation"/> and
+   <xref target="first_interrogation_auth"/>.
 </t>
 <t>
    If the credit-control client performs credit-reservation before
@@ -4781,7 +4783,8 @@ End User          (CC Client)         AAA Server           CC Server
 ]]></artwork>
     </figure>
 <t>A credit-control flow for Network Access Services prepaid is shown in
-   Figure A.1.  The Diameter <xref target="RFC7155"/> is implemented in the Network
+   <xref target="flow1"/>.
+   The Diameter <xref target="RFC7155"/> is implemented in the Network
    Access Server (NAS).  The focus of this flow is in the credit
    authorization.
 </t>
@@ -4961,7 +4964,7 @@ A           (CC Client)     Server           B        CC Server
       </figure>
 <t>
    A credit-control flow for Multimedia Messaging Services is shown in
-   Figure A.3.  The sender is charged as soon as the messaging server
+   <xref target="flow3"/>.  The sender is charged as soon as the messaging server
    successfully stores the message.
 </t>
 <t>
@@ -5020,7 +5023,7 @@ A           (CC Client)     Server           B        CC Server
 </t>
 <t>
    A credit-control flow for Multimedia Messaging Service is shown in
-   Figure A.4.  The recipient is charged at the message delivery.
+   <xref target="flow4"/>.  The recipient is charged at the message delivery.
 </t>
 <t>
   A content server sends a Multimedia Message (MMS) to the MMS server
@@ -5086,7 +5089,7 @@ A           (CC Client)     Server           B        CC Server
    any means an attempt to define a service provider's SIP network.
 </t>
 <t>
-   Figure A.5 is an example of Advice of Charge (AoC) service for SIP
+   <xref target="flow5"/> is an example of Advice of Charge (AoC) service for SIP
    call.  User A can be either a postpaid or prepaid subscriber using
    the AoC service.  It is assumed that the SIP controller also has HTTP
    capabilities and delivers an interactive AoC web page with, for
@@ -5137,7 +5140,7 @@ End User                (CC Client)              CC Server
     ]]></artwork>
     </figure>
 <t>
-   Figure A.6 illustrates a credit-control flow for the REFUND case.  It
+   <xref target="flow6"/> illustrates a credit-control flow for the REFUND case.  It
    is assumed that there is a trusted relationship and secure connection
    between the Gaming server and the Diameter credit-control server.
    The end user may be a prepaid subscriber or a postpaid subscriber.
@@ -5192,7 +5195,7 @@ A          (CC Client)      Server           B      CC Server
     ]]></artwork>
     </figure>
 <t>
-   Figure A.7 is an example of the graceful service termination for a
+   <xref target="flow7"/> is an example of the graceful service termination for a
    SIP call.  It is assumed that the call is set up so that the
    controller is in the call as a B2BUA (Back to Back User Agent)
    performing third-party call control (3PCC).  Note that the SIP
@@ -5272,7 +5275,7 @@ End-User         (CC Client)          AAA Server    Server    Server
     ]]></artwork>
     </figure>
 <t>
-   Figure A.8 is an example of the graceful service termination
+   <xref target="flow8"/> is an example of the graceful service termination
    initiated when the first interrogation takes place because the user's
    account is empty.  In this example, the credit-control server
    supports the server-initiated credit re-authorization.  The Diameter
