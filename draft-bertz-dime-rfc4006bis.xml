@@ -478,6 +478,7 @@
                             *[ Service-Parameter-Info ]
                              [ CC-Correlation-Id ]
                              [ User-Equipment-Info ]
+                             [ User-Equipment-Info-Extension ]
                             *[ Proxy-Info ]
                             *[ Route-Record ]
                             *[ AVP ]
@@ -1087,10 +1088,10 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
    contains the time when the service event is requested in the service
    element.  The Subscription-Id AVP SHOULD be included to identify the
    end user in the credit-control server.  The credit-control client MAY
-   include the User-Equipment-Info AVP so that the credit-control server
-   has some indication of the type and capabilities of the end user
-   access device.  How the credit-control server uses this information
-   is outside the scope of this document.
+   include the User-Equipment-Info AVP or User-Equipment-Info-Extension AVP 
+   so that the credit-control server has some indication of the type and
+   capabilities of the end user access device. How the credit-control server
+   uses this information is outside the scope of this document.
 </t>
 <t>
    The credit-control server SHOULD rate the service event and make a
@@ -4045,6 +4046,73 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    identifier is used.
 </t>
 </section>
+<section anchor="sec-8.52" title="  User-Equipment-Info-Extension AVP">
+<t>
+   The User-Equipment-Info-Extension AVP (AVP Code XXX) is of type Grouped and
+   allows the credit-control client to indicate the identity and
+   capability of the terminal the subscriber is using for the connection
+   to network. If the type of the equipment is one of the types covered by the 
+   User-Equipment-Info-Type AVP, then it SHOULD send the information in the 
+   User-Equipment-Info AVP, in addition or instead of the 
+   User-Equipment-Info-Extension AVP. This is in order to preserve backward 
+   compatibility with credit-control servers that support only RFC4006.
+</t><t>
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
+</t>
+      <figure>
+<artwork><![CDATA[
+      User-Equipment-Info-Extension ::= < AVP Header: XXX >
+                                 [ User-Equipment-Info-IMEISV ]
+                                 [ User-Equipment-Info-MAC ]
+                                 [ User-Equipment-Info-EUI64 ]
+                                 [ User-Equipment-Info-ModifiedEUI64 ]
+                                 [ User-Equipment-Info-IMEI ]
+                                 *[ AVP ]
+]]>
+        </artwork>
+      </figure>
+</section>
+<section anchor="sec-8.53" title="  User-Equipment-Info-IMEISV AVP">
+<t>
+   The User-Equipment-Info-IMEISV (AVP Code XXX) is of type
+   OctetString. The User-Equipment-Info-IMEISV AVP contains the International 
+   Mobile Equipment Identifier and Software Version in the international 
+   IMEISV format according to 3GPP TS 23.003 <xref target="TGPPIMEI"/>.
+</t>
+</section>
+<section anchor="sec-8.54" title="  User-Equipment-Info-MAC AVP">
+<t>
+   The User-Equipment-Info-MAC (AVP Code XXX) is of type
+   OctetString. The User-Equipment-Info-MAC AVP contains the 48-bit MAC 
+   address is formatted as described in <xref target="RFC3580"/>.
+</t>
+</section>
+<section anchor="sec-8.55" title="  User-Equipment-Info-EUI64 AVP">
+<t>
+   The User-Equipment-Info-EUI64 (AVP Code XXX) is of type
+   OctetString. The UUser-Equipment-Info-EUI64 AVP contains the 64-bit 
+   identifier used to identify hardware instance of the product, 
+   as defined in <xref target="EUI64"/>.
+</t>
+</section>
+<section anchor="sec-8.56" title="  User-Equipment-Info-ModifiedEUI64 AVP">
+<t>
+   The User-Equipment-Info-ModifiedEUI64 (AVP Code XXX) is of type
+   OctetString. There are a number of types of terminals that have identifiers
+   other than IMEI, IEEE 802 MACs, or EUI-64. These identifiers can be 
+   converted to modified EUI-64 format as described in <xref target="RFC4291"/>
+   or by using some other methods referred to in the service-specific
+   documentation. The User-Equipment-Info-ModifiedEUI64 AVP contains such identifiers.
+</t>
+</section>
+<section anchor="sec-8.57" title="  User-Equipment-Info-IMEI AVP">
+<t>
+   The User-Equipment-Info-IMEI (AVP Code XXX) is of type OctetString. 
+   The User-Equipment-Info-IMEI AVP contains the International Mobile Equipment 
+   Identifier in the international IMEI format 
+   according to 3GPP TS 23.003 <xref target="TGPPIMEI"/>.
+</t>
+</section>
 </section>
 <section anchor="sec-9" title="  Result Code AVP Values">
 <t>
@@ -4180,6 +4248,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
          Subscription-Id               | 0+  | 0   |
          Termination-Cause             | 0-1 | 0   |
          User-Equipment-Info           | 0-1 | 0   |
+         User-Equipment-Info-Extension | 0-1 | 0   |
          Used-Service-Unit             | 0+  | 0   |
          User-Name                     | 0-1 | 0-1 |
          Validity-Time                 | 0   | 0-1 |
