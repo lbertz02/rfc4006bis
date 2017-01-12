@@ -1829,7 +1829,7 @@ End User        Service Element         AAA Server          CC Server
    authorization answer with the Final-Unit-Indication and Validity-Time
    AVPs but no Granted-Service-Unit AVP.  It immediately starts the graceful
    service termination without sending any message to the server.  An
-   example of this case is illustrated in <xref target="immediate_graceful_termination"/>.
+   example of this case is illustrated in <xref target="app-a"/>.
 </t>
 </section>
 <section anchor="sec-5.6.3" title="  Restrict Access Action">
