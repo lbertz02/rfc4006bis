@@ -4235,11 +4235,12 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t>
 <figure>
         <artwork><![CDATA[
-      Redirect-Server ::= < AVP Header: TBD13 >
+      Redirect-Server-Extension ::= < AVP Header: TBD13 >
                           [ Redirect-Address-IPv4Address ]
                           [ Redirect-Address-IPv6Address ]
                           [ Redirect-Address-URL ]
                           [ Redirect-Address-SIP-URI ]
+                         *[ AVP ]
 ]]>
         </artwork>
       </figure>
