@@ -468,6 +468,7 @@
                              [ Origin-State-Id ]
                              [ Event-Timestamp ]
                             *[ Subscription-Id ]
+                            *[ Subscription-Id-Extension ]
                              [ Service-Identifier ]
                              [ Termination-Cause ]
                              [ Requested-Service-Unit ]
@@ -1086,12 +1087,13 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
 <t>
    The Event-Timestamp AVP SHOULD be included in the request and
    contains the time when the service event is requested in the service
-   element.  The Subscription-Id AVP SHOULD be included to identify the
-   end user in the credit-control server.  The credit-control client MAY
-   include the User-Equipment-Info AVP or User-Equipment-Info-Extension AVP 
-   so that the credit-control server has some indication of the type and
-   capabilities of the end user access device. How the credit-control server
-   uses this information is outside the scope of this document.
+   element.  The Subscription-Id AVP or the Subscription-Id-Extension AVP 
+   SHOULD be included to identify the end user in the credit-control server.  
+   The credit-control client MAY include the User-Equipment-Info AVP or 
+   User-Equipment-Info-Extension AVP so that the credit-control server has some 
+   indication of the type and capabilities of the end user access device. 
+   How the credit-control server uses this information is outside the scope 
+   of this document.
 </t>
 <t>
    The credit-control server SHOULD rate the service event and make a
@@ -1397,10 +1399,11 @@ End User          (CC Client)           AAA Server          CC Server
    rating-group, or a pool within the (sub)session.
 </t><t>
    The CC-Request-Type AVP is set to the value UPDATE_REQUEST in the
-   intermediate request message.  The Subscription-Id AVP SHOULD be
-   included in the intermediate message to identify the end user in the
-   credit-control server.  The Service-Context-Id AVP indicates the
-   service specific document applicable to the request.
+   intermediate request message.  The Subscription-Id AVP or 
+   Subscription-Id-Extension AVP SHOULD be included in the intermediate 
+   message to identify the end user in the credit-control server.  
+   The Service-Context-Id AVP indicates the service specific document 
+   applicable to the request.
 </t><t>
    The Requested-Service-Unit AVP MAY contain the new amount of
    requested service units.  Where the Multiple-Services-Credit-Control
@@ -2114,9 +2117,9 @@ End User        Service Element        AAA Server        CC Server
    A Diameter credit-control client requesting the balance check MUST
    set the CC-Request-Type AVP equal to EVENT_REQUEST, include a
    Requested-Action AVP set to CHECK_BALANCE, and include the
-   Subscription-Id AVP in order to identify the end user in the credit-
-   control server.  The Service-Context-Id AVP indicates the service
-   specific document applicable to the request.
+   Subscription-Id AVP or Subscription-Id-Extension AVP in order to identify 
+   the end user in the credit-control server.  The Service-Context-Id AVP 
+   indicates the service specific document applicable to the request.
 </t>
 <t>
    The credit-control server makes the balance check, but it does not
@@ -2143,10 +2146,10 @@ End User        Service Element        AAA Server        CC Server
 <t>
    In the Credit-Control-Request message, the CC-Request-Type is set to
    the value EVENT_REQUEST and the Requested-Action AVP is set to
-   DIRECT_DEBITING.  The Subscription-Id AVP SHOULD be included to
-   identify the end user in the credit-control server.  The Event-
-   Timestamp AVP SHOULD be included in the request and contain the time
-   when the service event is requested in the service element.  The
+   DIRECT_DEBITING.  The Subscription-Id AVP or Subscription-Id-Extension AVP 
+   SHOULD be included to identify the end user in the credit-control server.  
+   The Event-Timestamp AVP SHOULD be included in the request and contain the 
+   time when the service event is requested in the service element.  The
    Service-Context-Id AVP indicates the service specific document
    applicable to the request.
 </t>
@@ -2195,10 +2198,10 @@ End User        Service Element        AAA Server        CC Server
 <t>
    The credit-control client MUST set CC-Request-Type to the value
    EVENT_REQUEST and the Requested-Action AVP to REFUND_ACCOUNT in the
-   Credit-Control-Request message.  The Subscription-Id AVP SHOULD be
-   included to identify the end user in the credit-control server.  The
-   Service-Context-Id AVP indicates the service specific document
-   applicable to the request.
+   Credit-Control-Request message.  The Subscription-Id AVP or 
+   Subscription-Id-Extension AVP SHOULD be included to identify the end user in 
+   the credit-control server.  The Service-Context-Id AVP indicates the service 
+   specific document applicable to the request.
 </t>
 <t>
    The Diameter credit-control client MAY include the monetary amount to
@@ -2902,6 +2905,18 @@ Subscription-Id   444  8.48   UTF8String | M  |     |  V |
   -Data                                  |    |     |    |
 Subscription-Id   450  8.47   Enumerated | M  |     |  V |
   -Type                                  |    |     |    |
+Subscription-Id   XXX  8.58   Grouped    |    |  M  |  V |
+  -Extension                             |    |     |    |
+Subscription-Id   XXX  8.59   UTF8String |    |  M  |  V |
+  -E164                                  |    |     |    |
+Subscription-Id   XXX  8.60   UTF8String |    |  M  |  V |
+  -IMSI                                  |    |     |    |
+Subscription-Id   XXX  8.61   UTF8String |    |  M  |  V |
+  -SIP-URI                               |    |     |    |
+Subscription-Id   XXX  8.62   UTF8String |    |  M  |  V |
+  -NAI                                   |    |     |    |
+Subscription-Id   XXX  8.63   UTF8String |    |  M  |  V |
+  -Private                               |    |     |    |
 Tariff-Change     452  8.27   Enumerated | M  |     |  V |
   -Usage                                 |    |     |    |
 Tariff-Time       451  8.20   Time       | M  |     |  V |
@@ -2914,6 +2929,18 @@ User-Equipment    459  8.50   Enumerated |    |  M  |  V |
   -Info-Type                             |    |     |    |
 User-Equipment    460  8.51   OctetString|    |  M  |  V |
   -Info-Value                            |    |     |    |
+User-Equipment    XXX  8.52   Grouped    |    |  M  |  V |
+  -Info-Extension                        |    |     |    |
+User-Equipment    XXX  8.53   OctetString|    |  M  |  V |
+  -Info-IMEISV                           |    |     |    |
+User-Equipment    XXX  8.54   OctetString|    |  M  |  V |
+  -Info-MAC                              |    |     |    |  
+User-Equipment    XXX  8.55   OctetString|    |  M  |  V |
+  -Info-EUI64                            |    |     |    |  
+User-Equipment    XXX  8.56   OctetString|    |  M  |  V |
+  -Info-ModifiedEUI64                    |    |     |    |
+User-Equipment    XXX  8.57   OctetString|    |  M  |  V |
+  -Info-IMEI                             |    |     |    |
 Value-Digits      447  8.10   Integer64  | M  |     |  V |
 Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 ]]></artwork></figure>
@@ -4051,9 +4078,9 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    The User-Equipment-Info-Extension AVP (AVP Code XXX) is of type Grouped and
    allows the credit-control client to indicate the identity and
    capability of the terminal the subscriber is using for the connection
-   to network. If the type of the equipment is one of the types covered by the 
-   User-Equipment-Info-Type AVP, then it SHOULD send the information in the 
-   User-Equipment-Info AVP, in addition or instead of the 
+   to network. If the type of the equipment is one of the types listed in the 
+   User-Equipment-Info-Type AVP, then the credit-control client SHOULD send the 
+   information in the User-Equipment-Info AVP, in addition to or instead of the 
    User-Equipment-Info-Extension AVP. This is in order to preserve backward 
    compatibility with credit-control servers that support only RFC4006.
 </t><t>
@@ -4067,7 +4094,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
                                  [ User-Equipment-Info-EUI64 ]
                                  [ User-Equipment-Info-ModifiedEUI64 ]
                                  [ User-Equipment-Info-IMEI ]
-                                 *[ AVP ]
+                                *[ AVP ]
 ]]>
         </artwork>
       </figure>
@@ -4111,6 +4138,70 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    The User-Equipment-Info-IMEI AVP contains the International Mobile Equipment 
    Identifier in the international IMEI format 
    according to 3GPP TS 23.003 <xref target="TGPPIMEI"/>.
+</t>
+</section>
+<section anchor="sec-8.58" title="  Subscription-Id-Extension AVP">
+<t>
+   The Subscription-Id-Extension AVP (AVP Code XXX) is used to identify the end
+   user's subscription and is of type Grouped.  The Subscription-Id-Extension 
+   AVP conatins an included AVP holding the subscription identifier itself. 
+   The type of this included AVP indicates the type of the subscription 
+   identifier. If the type of the identifier is one of the types listed in the 
+   Subscription-Id-Type AVP, then the credit-control client SHOULD send the 
+   information in the Subscription-Id AVP, in addition to or instead of the 
+   Subscription-Id-Extension AVP. This is in order to preserve backward 
+   compatibility with credit-control servers that support only RFC4006.
+</t><t>
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
+</t>
+<figure>
+<artwork><![CDATA[
+      Subscription-Id-Extension ::= < AVP Header: XXX >
+                          [ Subscription-Id-E164 ]
+                          [ Subscription-Id-IMSI ]
+                          [ Subscription-Id-SIP-URI ]
+                          [ Subscription-Id-NAI ]
+                          [ Subscription-Id-Private ]
+                         *[ AVP ]
+]]>
+        </artwork>
+      </figure>
+</section>
+<section anchor="sec-8.59" title="  Subscription-Id-E164 AVP">
+<t>
+   The Subscription-Id-E164 (AVP Code XXX) is of type UTF8String. 
+   The Subscription-Id-E164 AVP contains the international E.164 format 
+   (e.g., MSISDN), according to the ITU-T E.164 numbering plan defined in 
+   <xref target="E164"/> and <xref target="CE164"/>.
+</t>
+</section>
+<section anchor="sec-8.60" title="  Subscription-Id-IMSI AVP">
+<t>
+   The Subscription-Id-IMSI (AVP Code XXX) is of type UTF8String. 
+   The Subscription-Id-IMSI AVP contains the international IMSI format, 
+   according to the ITU-T E.212 numbering plan as defined in 
+   <xref target="E212"/> and <xref target="CE212"/>.
+</t>
+</section>
+<section anchor="sec-8.61" title="  Subscription-Id-SIP-URI AVP">
+<t>
+   The Subscription-Id-SIP-URI (AVP Code XXX) is of type UTF8String. 
+   The Subscription-Id-SIP-URI AVP contains the identifier in the form of a SIP 
+   URI, as defined in <xref target="RFC3261"/>.
+</t>
+</section>
+<section anchor="sec-8.62" title="  Subscription-Id-NAI AVP">
+<t>
+   The Subscription-Id-NAI (AVP Code XXX) is of type UTF8String. 
+   The Subscription-Id-NAI AVP contains the identifier in the form of a 
+   Network Access Identifier, as defined in <xref target="RFC2486"/>.
+</t>
+</section>
+<section anchor="sec-8.63" title="  Subscription-Id-Private AVP">
+<t>
+   The Subscription-Id-Private (AVP Code XXX) is of type UTF8String. 
+   The Subscription-Id-Private AVP contains a credit-control server private 
+   identifier.
 </t>
 </section>
 </section>
@@ -4246,6 +4337,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
          Service-Parameter-Info        | 0+  | 0   |
          Session-Id                    | 1   | 1   |
          Subscription-Id               | 0+  | 0   |
+         Subscription-Id-Extension     | 0+  | 0   |
          Termination-Cause             | 0-1 | 0   |
          User-Equipment-Info           | 0-1 | 0   |
          User-Equipment-Info-Extension | 0-1 | 0   |
