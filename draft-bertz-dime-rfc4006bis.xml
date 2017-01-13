@@ -1751,26 +1751,27 @@ End User        Service Element         AAA Server          CC Server
    The Final-Unit-Indication AVP with Final-Unit-Action REDIRECT
    indicates to the service element supporting this action that, upon
    consumption of the final granted units, the user MUST be re-directed
-   to the address specified in the Redirect-Server AVP as follows.
+   to the address specified in the Redirect-Server AVP or 
+   Redirect-Server-Extension AVP as follows.
 </t><t>
-   The credit-control server sends the Redirect-Server AVP in the
-   Credit-Control-Answer message.  In such a case, the service element
-   MUST redirect or connect the user to the destination specified in the
-   Redirect-Server AVP, if possible.  When the end user is redirected
-   (by using protocols others than Diameter) to the specified server or
-   connected to the top-up server, an additional authorization (and
-   possibly authentication) may be needed before the subscriber can
-   replenish the account; however, this is out of the scope of this
-   specification.
+   The credit-control server sends the Redirect-Server AVP or 
+   Redirect-Server-Extension AVP in the Credit-Control-Answer message.  
+   In such a case, the service element MUST redirect or connect the user to the 
+   destination specified in the Redirect-Server AVP or Redirect-Server-Extension
+   AVP, if possible.  When the end user is redirected (by using protocols others
+   than Diameter) to the specified server or connected to the top-up server, 
+   an additional authorization (and possibly authentication) may be needed 
+   before the subscriber can replenish the account; however, 
+   this is out of the scope of this specification.
 </t><t>
-   In addition to the Redirect-Server AVP, the credit-control server MAY
-   include one or more Restriction-Filter-Rule AVPs or one or more
-   Filter-Id AVPs in the Credit-Control-Answer message to enable the
-   user to access other services (for example, zero-rated services).  In
-   such a case, the access device MUST drop all the packets not matching
+   In addition to the Redirect-Server AVP or Redirect-Server-Extension AVP, 
+   the credit-control server MAY include one or more Restriction-Filter-Rule 
+   AVPs or one or more Filter-Id AVPs in the Credit-Control-Answer message to 
+   enable the user to access other services (for example, zero-rated services).
+   In such a case, the access device MUST drop all the packets not matching
    the IP filters specified in the Credit-Control-Answer message and, if
    possible, redirect the user to the destination specified in the
-   Redirect-Server AVP.
+   Redirect-Server AVP or Redirect-Server-Extension AVP.
 </t><t>
    An entity other than the credit-control server may provision the
    access device with appropriate IP packet filters to be used in
@@ -2885,6 +2886,16 @@ Redirect-Address  433  8.38   Enumerated | M  |     |  V |
 Redirect-Server   434  8.37   Grouped    | M  |     |  V |
 Redirect-Server   435  8.39   UTF8String | M  |     |  V |
   -Address                               |    |     |    |
+Redirect-Server   XXX  8.64   Grouped    |    |  M  |  V |
+  -Extension                             |    |     |    |
+Redirect-Address  XXX  8.65   UTF8String |    |  M  |  V |
+  -IPv4Address                           |    |     |    |
+Redirect-Address  XXX  8.66   UTF8String |    |  M  |  V |
+  -IPv6Address                           |    |     |    |
+Redirect-Address  XXX  8.67   UTF8String |    |  M  |  V |
+  -URL                                   |    |     |    |
+Redirect-Address  XXX  8.68   UTF8String |    |  M  |  V |
+  -SIP-URI                               |    |     |    |
 Requested-Action  436  8.41   Enumerated | M  |     |  V |
 Requested-Service 437  8.18   Grouped    | M  |     |  V |
   -Unit                                  |    |     |    |
@@ -3675,10 +3686,11 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    be present.
 </t><t>
    If the Final-Unit-Action AVP is set to REDIRECT at least the
-   Redirect-Server AVP MUST be present.  The Restriction-Filter-Rule AVP
-   or the Filter-Id AVP MAY be present in the Credit-Control-Answer
-   message if the user is also allowed to access other services that are
-   not accessible through the address given in the Redirect-Server AVP.
+   Redirect-Server AVP or Redirect-Server-Extension AVP MUST be present.  
+   The Restriction-Filter-Rule AVP or the Filter-Id AVP MAY be present in the 
+   Credit-Control-Answer message if the user is also allowed to access other 
+   services that are not accessible through the address given in the 
+   Redirect-Server AVP or Redirect-Server-Extension AVP.
 </t><t>
    If the Final-Unit-Action AVP is set to RESTRICT_ACCESS, either the
    Restriction-Filter-Rule AVP or the Filter-Id AVP SHOULD be present.
@@ -3698,6 +3710,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
                                *[ Restriction-Filter-Rule ]
                                *[ Filter-Id ]
                                 [ Redirect-Server ]
+                                [ Redirect-Server-Extension ]
 ]]>
         </artwork>
       </figure>
@@ -3721,7 +3734,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    REDIRECT                        1
 </t><t>
       The service element MUST redirect the user to the address
-      specified in the Redirect-Server-Address AVP.  The redirect action
+      specified in the Redirect-Server-Address AVP or one of the AVPs included 
+      in the Redirect-Server-Extension AVP.  The redirect action
       is defined in <xref target="sec-5.6.2"/>.
 </t><t>
    RESTRICT_ACCESS                 2
@@ -4075,7 +4089,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.52" title="  User-Equipment-Info-Extension AVP">
 <t>
-   The User-Equipment-Info-Extension AVP (AVP Code XXX) is of type Grouped and
+   The User-Equipment-Info-Extension AVP (AVP Code TBD1) is of type Grouped and
    allows the credit-control client to indicate the identity and
    capability of the terminal the subscriber is using for the connection
    to network. If the type of the equipment is one of the types listed in the 
@@ -4088,7 +4102,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t>
       <figure>
 <artwork><![CDATA[
-      User-Equipment-Info-Extension ::= < AVP Header: XXX >
+      User-Equipment-Info-Extension ::= < AVP Header: TBD1 >
                                  [ User-Equipment-Info-IMEISV ]
                                  [ User-Equipment-Info-MAC ]
                                  [ User-Equipment-Info-EUI64 ]
@@ -4101,7 +4115,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.53" title="  User-Equipment-Info-IMEISV AVP">
 <t>
-   The User-Equipment-Info-IMEISV (AVP Code XXX) is of type
+   The User-Equipment-Info-IMEISV (AVP Code TBD2) is of type
    OctetString. The User-Equipment-Info-IMEISV AVP contains the International 
    Mobile Equipment Identifier and Software Version in the international 
    IMEISV format according to 3GPP TS 23.003 <xref target="TGPPIMEI"/>.
@@ -4109,14 +4123,14 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.54" title="  User-Equipment-Info-MAC AVP">
 <t>
-   The User-Equipment-Info-MAC (AVP Code XXX) is of type
+   The User-Equipment-Info-MAC (AVP Code TBD3) is of type
    OctetString. The User-Equipment-Info-MAC AVP contains the 48-bit MAC 
    address is formatted as described in <xref target="RFC3580"/>.
 </t>
 </section>
 <section anchor="sec-8.55" title="  User-Equipment-Info-EUI64 AVP">
 <t>
-   The User-Equipment-Info-EUI64 (AVP Code XXX) is of type
+   The User-Equipment-Info-EUI64 (AVP Code TBD4) is of type
    OctetString. The UUser-Equipment-Info-EUI64 AVP contains the 64-bit 
    identifier used to identify hardware instance of the product, 
    as defined in <xref target="EUI64"/>.
@@ -4124,7 +4138,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.56" title="  User-Equipment-Info-ModifiedEUI64 AVP">
 <t>
-   The User-Equipment-Info-ModifiedEUI64 (AVP Code XXX) is of type
+   The User-Equipment-Info-ModifiedEUI64 (AVP Code TBD5) is of type
    OctetString. There are a number of types of terminals that have identifiers
    other than IMEI, IEEE 802 MACs, or EUI-64. These identifiers can be 
    converted to modified EUI-64 format as described in <xref target="RFC4291"/>
@@ -4134,7 +4148,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.57" title="  User-Equipment-Info-IMEI AVP">
 <t>
-   The User-Equipment-Info-IMEI (AVP Code XXX) is of type OctetString. 
+   The User-Equipment-Info-IMEI (AVP Code TBD6) is of type OctetString. 
    The User-Equipment-Info-IMEI AVP contains the International Mobile Equipment 
    Identifier in the international IMEI format 
    according to 3GPP TS 23.003 <xref target="TGPPIMEI"/>.
@@ -4142,9 +4156,9 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.58" title="  Subscription-Id-Extension AVP">
 <t>
-   The Subscription-Id-Extension AVP (AVP Code XXX) is used to identify the end
+   The Subscription-Id-Extension AVP (AVP Code TBD7) is used to identify the end
    user's subscription and is of type Grouped.  The Subscription-Id-Extension 
-   AVP conatins an included AVP holding the subscription identifier itself. 
+   AVP conatains an included AVP holding the subscription identifier itself. 
    The type of this included AVP indicates the type of the subscription 
    identifier. If the type of the identifier is one of the types listed in the 
    Subscription-Id-Type AVP, then the credit-control client SHOULD send the 
@@ -4156,7 +4170,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t>
 <figure>
 <artwork><![CDATA[
-      Subscription-Id-Extension ::= < AVP Header: XXX >
+      Subscription-Id-Extension ::= < AVP Header: TBD7 >
                           [ Subscription-Id-E164 ]
                           [ Subscription-Id-IMSI ]
                           [ Subscription-Id-SIP-URI ]
@@ -4169,7 +4183,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.59" title="  Subscription-Id-E164 AVP">
 <t>
-   The Subscription-Id-E164 (AVP Code XXX) is of type UTF8String. 
+   The Subscription-Id-E164 (AVP Code TBD8) is of type UTF8String. 
    The Subscription-Id-E164 AVP contains the international E.164 format 
    (e.g., MSISDN), according to the ITU-T E.164 numbering plan defined in 
    <xref target="E164"/> and <xref target="CE164"/>.
@@ -4177,7 +4191,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.60" title="  Subscription-Id-IMSI AVP">
 <t>
-   The Subscription-Id-IMSI (AVP Code XXX) is of type UTF8String. 
+   The Subscription-Id-IMSI (AVP Code TBD9) is of type UTF8String. 
    The Subscription-Id-IMSI AVP contains the international IMSI format, 
    according to the ITU-T E.212 numbering plan as defined in 
    <xref target="E212"/> and <xref target="CE212"/>.
@@ -4185,23 +4199,86 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.61" title="  Subscription-Id-SIP-URI AVP">
 <t>
-   The Subscription-Id-SIP-URI (AVP Code XXX) is of type UTF8String. 
+   The Subscription-Id-SIP-URI (AVP Code TBD10) is of type UTF8String. 
    The Subscription-Id-SIP-URI AVP contains the identifier in the form of a SIP 
    URI, as defined in <xref target="RFC3261"/>.
 </t>
 </section>
 <section anchor="sec-8.62" title="  Subscription-Id-NAI AVP">
 <t>
-   The Subscription-Id-NAI (AVP Code XXX) is of type UTF8String. 
+   The Subscription-Id-NAI (AVP Code TBD11) is of type UTF8String. 
    The Subscription-Id-NAI AVP contains the identifier in the form of a 
    Network Access Identifier, as defined in <xref target="RFC2486"/>.
 </t>
 </section>
 <section anchor="sec-8.63" title="  Subscription-Id-Private AVP">
 <t>
-   The Subscription-Id-Private (AVP Code XXX) is of type UTF8String. 
+   The Subscription-Id-Private (AVP Code TBD12) is of type UTF8String. 
    The Subscription-Id-Private AVP contains a credit-control server private 
    identifier.
+</t>
+</section>
+<section anchor="sec-8.64" title="  Redirect-Server-Extension AVP">
+<t>
+   The Redirect-Server AVP (AVP Code TBD13) is of type Grouped and
+   contains the address information of the redirect server (e.g., HTTP
+   redirect server, SIP Server) with which the end user is to be
+   connected when the account cannot cover the service cost.  It MUST be
+   present when the Final-Unit-Action AVP is set to REDIRECT. If the type of the
+   redirect server is one of the types listed in the Redirect-Address-Type AVP, 
+   then the credit-control client SHOULD send the information in the 
+   Redirect-Server AVP, in addition to or instead of the 
+   Redirect-Server-Extension AVP. This is in order to preserve backward 
+   compatibility with credit-control servers that support only RFC4006.
+</t><t>
+   It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
+</t>
+<figure>
+        <artwork><![CDATA[
+      Redirect-Server ::= < AVP Header: TBD13 >
+                          [ Redirect-Address-IPv4Address ]
+                          [ Redirect-Address-IPv6Address ]
+                          [ Redirect-Address-URL ]
+                          [ Redirect-Address-SIP-URI ]
+]]>
+        </artwork>
+      </figure>
+</section>
+<section anchor="sec-8.65" title="  Redirect-Address-IPv4Address AVP">
+<t>
+   The Redirect-Address-IPv4Address AVP (AVP Code TBD14) is of type UTF8String
+   and defines the address of the redirect server with which the end user is to 
+   be connected when the account cannot cover the service cost. When the address
+   type of the redirect server is in the form of "dotted-decimal" IPv4 address, 
+   as defined in <xref target="RFC0791"/>.
+</t>
+</section>
+<section anchor="sec-8.66" title="  Redirect-Address-IPv6Address AVP">
+<t>
+   The Redirect-Address-IPv6Address AVP (AVP Code TBD15) is of type UTF8String
+   and defines the address of the redirect server with which the end user is to 
+   be connected when the account cannot cover the service cost. When the address
+   type is in the form of IPv6 address, as defined in <xref target="RFC4291"/>.
+   The address is a text representation of the address 
+   according to <xref target="RFC5952"/>.
+</t>
+</section>
+<section anchor="sec-8.67" title="  Redirect-Address-URL AVP">
+<t>
+   The Redirect-Address-URL AVP (AVP Code TBD16) is of type UTF8String
+   and defines the address of the redirect server with which the end user is to 
+   be connected when the account cannot cover the service cost. When the address
+   type is in the form of Uniform Resource Locator, 
+   as defined in <xref target="RFC1738"/>.
+</t>
+</section>
+<section anchor="sec-8.68" title="  Redirect-Address-SIP-URI AVP">
+<t>
+   The Redirect-Address-SIP-URI AVP (AVP Code TBD17) is of type UTF8String
+   and defines the address of the redirect server with which the end user is to 
+   be connected when the account cannot cover the service cost. When the address
+   type is in the form of SIP Uniform Resource Identifier, 
+   as defined in <xref target="RFC3261"/>.
 </t>
 </section>
 </section>
