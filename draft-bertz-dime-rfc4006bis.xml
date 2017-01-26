@@ -3343,7 +3343,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    account but MUST NOT return a new quota in the corresponding answer.
    The Validity-Time, Result-Code, and Final-Unit-Indication  or 
    QoS-Final-Unit-Indication AVPs MAY be present in an answer command as defined
-   in sections 5.1.2 and 5.6 for the graceful service termination.
+   in <xref target="sec-5.1.2"/> and <xref target="sec-5.6"/>
+   for the graceful service termination.
 </t><t>
    When both the Tariff-Time-Change and Tariff-Change-Usage AVPs are
    present, the server MUST include two separate instances of the
@@ -3778,7 +3779,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       IP packet filters defined in the Restriction-Filter-Rule AVP, the 
       Filter-Rule AVP or according to the IP packet filters identified by the 
       Filter-Id AVP.  All the packets not matching the filters MUST be dropped
-      (see section 5.6.3). In the case that Restriction-Filter-Rule AVP is used,
+      (see <xref target="sec-5.6.3"/>). In the case that Restriction-Filter-Rule AVP is used,
       all the packets matching the filters MUST be allowed. In the case that 
       Filter-Rule AVP or Filter-Id AVP are used, other actions 
       (e.g. QoS) may be deployed on the packets matching the filters.
@@ -3924,7 +3925,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    The Service-Context-Id AVP is of type UTF8String (AVP Code 461) and
    contains a unique identifier of the Diameter credit-control service
    specific document that applies to the request (as defined in section
-   4.1.2).  This is an identifier allocated by the service provider, by
+   <xref target="sec-4.1.2"/>).  This is an identifier allocated by the service provider, by
    the service element manufacturer, or by a standardization body, and
    MUST uniquely identify a given Diameter credit-control service
    specific document.  The format of the Service-Context-Id is:
