@@ -225,7 +225,7 @@
        </t>
      </section>
 
-	<section anchor="terms" title="  Terminology">
+	<section anchor="terms" title="Terminology">
 	  <t>
        <list style="hanging">
          <t hangText="AAA">
@@ -305,7 +305,7 @@
       </t>
     </section>
 
-	<section anchor="sec-1.3" title="  Advertising Application Support">
+	<section anchor="sec-1.3" title="Advertising Application Support">
 	<t>
 	   Diameter nodes conforming to this specification MUST advertise
 	   support by including the value of 4 in the Auth-Application-Id of the
@@ -315,7 +315,7 @@
 	</section>
 </section>
 
-<section anchor="sec-2" title="  Architecture Models">
+<section anchor="sec-2" title="Architecture Models">
 <t>
    The current accounting models specified in the Radius Accounting
    <xref target="RFC2866"/> and Diameter base <xref target="RFC6733"/> are not sufficient for
@@ -417,7 +417,7 @@
 </t>
 </section>
 
-<section anchor="sec-3" title="  Credit-Control Messages">
+<section anchor="sec-3" title="Credit-Control Messages">
 <t>
    This section defines new Diameter message Command-Code values that
    MUST be supported by all Diameter implementations that conform to
@@ -436,7 +436,7 @@
    format specification.  These formats are observed in Credit-Control
    messages.
 </t>
-<section anchor="sec-3.1" title="  Credit-Control-Request (CCR) Command">
+<section anchor="sec-3.1" title="Credit-Control-Request (CCR) Command">
 <t>
    The Credit-Control-Request message (CCR) is indicated by the
    command-code field being set to 272 and the 'R' bit being set in the
@@ -487,7 +487,7 @@
         </artwork>
       </figure>
   </section>
-<section anchor="sec-3.2" title="  Credit-Control-Answer (CCA) Command">
+<section anchor="sec-3.2" title="Credit-Control-Answer (CCA) Command">
 <t>
    The Credit-Control-Answer message (CCA) is indicated by the command-code
    field being set to 272 and the 'R' bit being cleared in the
@@ -535,7 +535,7 @@
   </figure>
 </section>
 </section>
-<section anchor="sec-4" title="  Credit-Control Application Overview">
+<section anchor="sec-4" title="Credit-Control Application Overview">
 <t>
    The credit authorization process takes place before and during
    service delivery to the end user and generally requires the user's
@@ -612,7 +612,7 @@
    allows flexibility, as failure handling for the credit-control
    session and one time event direct debiting may be different.
 </t>
-<section anchor="sec-4.1" title="  Service-Specific Rating Input and Interoperability">
+<section anchor="sec-4.1" title="Service-Specific Rating Input and Interoperability">
 <t>
    The Diameter credit-control application defines the framework for
    credit-control; it provides generic credit-control mechanisms
@@ -638,7 +638,7 @@
    services/AVPs could be present in the credit-control message, causing
    the server to reject the request with an appropriate result-code.
 </t>
-<section anchor="sec-4.1.1" title="  Specifying Rating Input AVPs">
+<section anchor="sec-4.1.1" title="Specifying Rating Input AVPs">
 <t>
    There are two ways to provide rating input to the credit-control
    server: either by using AVPs or by including them in the Service-Parameter-Info
@@ -680,7 +680,7 @@
    AVPs as described in items 1a and 1b, to simplify interoperability.
 </t>
 </section>
-<section anchor="sec-4.1.2" title="  Service-Specific Documentation">
+<section anchor="sec-4.1.2" title="Service-Specific Documentation">
 <t>
    The service specific rating input AVPs, the contents of the Service-Parameter-Info
    AVP or Service-Context-Id AVP (defined in <xref target="sec-8.42"/>)
@@ -713,7 +713,7 @@
    Service-Context-Id and Service-Identifier or Rating-Group.
 </t>
 </section>
-<section anchor="sec-4.1.3" title="  Handling of Unsupported/Incorrect Rating Input">
+<section anchor="sec-4.1.3" title="Handling of Unsupported/Incorrect Rating Input">
 <t>
    Diameter credit-control implementations are required to support the
    Mandatory rating AVPs defined in service specific documentation of
@@ -733,7 +733,7 @@
    requests in the future.
 </t>
 </section>
-<section anchor="sec-4.1.4" title="  RADIUS Vendor-Specific Rating Attributes">
+<section anchor="sec-4.1.4" title="RADIUS Vendor-Specific Rating Attributes">
 <t>
    When service specific documents include RADIUS vendor specific
    attributes that could be used as input in the rating process, the
@@ -749,8 +749,8 @@
     </section>
   </section>
 </section>
-<section anchor="sec-5" title="  Session Based Credit-Control">
-<section anchor="sec-5.1" title="  General Principles">
+<section anchor="sec-5" title="Session Based Credit-Control">
+<section anchor="sec-5.1" title="General Principles">
 <t>
    For a session-based credit-control, several interrogations are
    needed: the first, intermediate (optional) and the final
@@ -811,7 +811,7 @@
    Validity-Time does not mean that intermediate interrogation for the
    purpose of credit-control is not performed.
 </t>
-<section anchor="sec-5.1.1" title="  Basic Tariff-Time Change Support">
+<section anchor="sec-5.1.1" title="Basic Tariff-Time Change Support">
 <t>
    The Diameter credit-control server and client MAY optionally support
    a tariff change mechanism.  The Diameter credit-control server may
@@ -852,7 +852,7 @@
    event units MAY be used.
 </t>
 </section>
-<section anchor="sec-5.1.2" title="  Credit-Control for Multiple Services within a (sub-)Session">
+<section anchor="sec-5.1.2" title="Credit-Control for Multiple Services within a (sub-)Session">
 <t>
    When multiple services are used within the same user session and each
    service or group of services is subject to different cost, it is
@@ -1060,7 +1060,7 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
 </t>
   </section>
 </section>
-<section anchor="sec-5.2" title="  First Interrogation">
+<section anchor="sec-5.2" title="First Interrogation">
 <t>
    When session based credit-control is required (e.g., the
    authentication server indicated a prepaid user), the first
@@ -1181,7 +1181,7 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
    Other IETF standards or standards developed by other standardization
    bodies may define the most suitable method in their architectures.
 </t>
-<section anchor="sec-5.2.1" title="  First Interrogation after Authorization and Authentication">
+<section anchor="sec-5.2.1" title="First Interrogation after Authorization and Authentication">
 <t>
    The Diameter credit-control client in the service element may get
    information from the authorization server as to whether credit-control
@@ -1239,7 +1239,7 @@ End User        Service Element        AAA Server         CC Server
   ]]></artwork>
 </figure>
 </section>
-<section anchor="sec-5.2.2" title="  Authorization Messages for First Interrogation">
+<section anchor="sec-5.2.2" title="Authorization Messages for First Interrogation">
 <t>
    The Diameter credit-control client in the service element MUST
    actively co-operate with the authorization/authentication client in
@@ -1366,7 +1366,7 @@ End User          (CC Client)           AAA Server          CC Server
 </figure>
   </section>
 </section>
-<section anchor="sec-5.3" title="  Intermediate Interrogation">
+<section anchor="sec-5.3" title="Intermediate Interrogation">
 <t>
    When all the granted service units for one unit type are spent by the
    end user or the Validity-Time is expired, the Diameter credit-control
@@ -1442,7 +1442,7 @@ End User          (CC Client)           AAA Server          CC Server
    There can be several intermediate interrogations within a session.
 </t>
 </section>
-<section anchor="sec-5.4" title="  Final Interrogation">
+<section anchor="sec-5.4" title="Final Interrogation">
 <t>
    When the end user terminates the service session, or when the
    graceful service termination described in <xref target="sec-5.6"/> takes place,
@@ -1511,7 +1511,7 @@ End User         (CC Client)
   ]]></artwork>
 </figure>
 </section>
-<section anchor="sec-5.5" title="  Server-Initiated Credit Re-Authorization">
+<section anchor="sec-5.5" title="Server-Initiated Credit Re-Authorization">
 <t>
    The Diameter credit-control application supports server-initiated
    re-authorization.  The credit-control server MAY optionally initiate
@@ -1591,7 +1591,7 @@ End User         (CC Client)
    AVP in the RAR message in addition to the Session-Id AVP.
 </t>
 </section>
-<section anchor="sec-5.6" title="  Graceful Service Termination">
+<section anchor="sec-5.6" title="Graceful Service Termination">
 <t>
    When the user's account runs out of money, the user may not be
    allowed to compile additional chargeable events.  However, the home
@@ -1732,7 +1732,7 @@ End User        Service Element         AAA Server          CC Server
   |         :         |                    |                    |
    ]]></artwork>
 </figure>
-<section anchor="sec-5.6.1" title="  Terminate Action">
+<section anchor="sec-5.6.1" title="Terminate Action">
 <t>
    The Final-Unit-Indication AVP or the QoS-Final-Unit-Indication AVP with 
    Final-Unit-Action TERMINATE does not include any other information.  When the
@@ -1747,7 +1747,7 @@ End User        Service Element         AAA Server          CC Server
    the request is set to the value TERMINATION_REQUEST.
 </t>
 </section>
-<section anchor="sec-5.6.2" title="  Redirect Action">
+<section anchor="sec-5.6.2" title="Redirect Action">
 <t>
    The Final-Unit-Indication AVP or the QoS-Final-Unit-Indication AVP with 
    Final-Unit-Action REDIRECT indicates to the service element supporting this 
@@ -1841,7 +1841,7 @@ End User        Service Element         AAA Server          CC Server
    example of this case is illustrated in <xref target="app-a"/>.
 </t>
 </section>
-<section anchor="sec-5.6.3" title="  Restrict Access Action">
+<section anchor="sec-5.6.3" title="Restrict Access Action">
 <t>
    A Final-Unit-Indication AVP with the Final-Unit-Action RESTRICT_ACCESS 
    indicates to the device supporting this action that, upon consumption of 
@@ -1899,7 +1899,7 @@ End User        Service Element         AAA Server          CC Server
    action.
 </t>
 </section>
-<section anchor="sec-5.6.4" title="  Usage of the Server-Initiated Credit Re-Authorization">
+<section anchor="sec-5.6.4" title="Usage of the Server-Initiated Credit Re-Authorization">
 <t>
    Once the subscriber replenishes the account, she presumably expects
    all the restrictions placed by the graceful termination procedure to
@@ -1922,7 +1922,7 @@ End User        Service Element         AAA Server          CC Server
 </t>
 </section>
 </section>
-<section anchor="sec-5.7" title="  Failure Procedures">
+<section anchor="sec-5.7" title="Failure Procedures">
 <t>
    The Credit-Control-Failure-Handling AVP (CCFH), as described in this
    section, determines the behavior of the credit-control client in
@@ -2059,7 +2059,7 @@ End User        Service Element         AAA Server          CC Server
 </t>
   </section>
 </section>
-<section anchor="sec-6" title="  One Time Event">
+<section anchor="sec-6" title="One Time Event">
 <t>
    The one-time event is used when there is no need to maintain any
    state in the Diameter credit-control server; for example, enquiring
@@ -2095,7 +2095,7 @@ End User        Service Element        AAA Server        CC Server
    be sent from the service element directly to the credit-control
    server.
 </t>
-<section anchor="sec-6.1" title="  Service Price Enquiry">
+<section anchor="sec-6.1" title="Service Price Enquiry">
 <t>
    The credit-control client may need to know the price of the services
    event.  Services offered by application service providers whose
@@ -2124,7 +2124,7 @@ End User        Service Element        AAA Server        CC Server
    Credit-Control-Answer message.
 </t>
 </section>
-<section anchor="sec-6.2" title="  Balance Check">
+<section anchor="sec-6.2" title="Balance Check">
 <t>
    The Diameter credit-control client may only have to verify that the
    end user's account balance covers the cost of a certain service
@@ -2151,7 +2151,7 @@ End User        Service Element        AAA Server        CC Server
    Credit-Control-Answer message.
 </t>
 </section>
-<section anchor="sec-6.3" title="  Direct Debiting">
+<section anchor="sec-6.3" title="Direct Debiting">
 <t>
    There are certain service events for which service execution is
    always successful in the service environment.  The delay between the
@@ -2210,7 +2210,7 @@ End User        Service Element        AAA Server        CC Server
    of the requested service.
 </t>
 </section>
-<section anchor="sec-6.4" title="  Refund">
+<section anchor="sec-6.4" title="Refund">
 <t>
    Some services may refund service units to the end user's account; for
    example, gaming services.
@@ -2238,7 +2238,7 @@ End User        Service Element        AAA Server        CC Server
    amount of refunded unit.
 </t>
 </section>
-<section anchor="sec-6.5" title="  Failure Procedure">
+<section anchor="sec-6.5" title="Failure Procedure">
 <t>
    Failover to an alternative credit-control server is allowed for a one
    time event, as the server is not maintaining session states.  For
@@ -2339,7 +2339,7 @@ End User        Service Element        AAA Server        CC Server
 </t>
 </section>
 </section>
-<section anchor="sec-7" title="  Credit-Control Application State Machine">
+<section anchor="sec-7" title="Credit-Control Application State Machine">
 <t>
    This section defines the credit-control application state machine.
 </t>
@@ -2828,7 +2828,7 @@ End User        Service Element        AAA Server        CC Server
     <c>Idle</c>
   </texttable>
 </section>
-<section anchor="sec-8" title="  Credit-Control AVPs">
+<section anchor="sec-8" title="Credit-Control AVPs">
 <t>
    This section defines the credit-control AVPs that are specific to
    Diameter credit-control application and that MAY be included in the
@@ -2976,7 +2976,7 @@ User-Equipment    XXX  8.57   OctetString|    |  M  |  V |
 Value-Digits      447  8.10   Integer64  | M  |     |  V |
 Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 ]]></artwork></figure>
-<section anchor="sec-8.1" title="  CC-Correlation-Id AVP">
+<section anchor="sec-8.1" title="CC-Correlation-Id AVP">
 <t>
    The CC-Correlation-Id AVP (AVP Code 411) is of type OctetString and
    contains information to correlate credit-control requests generated
@@ -2987,7 +2987,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t><t>
 </t>
 </section>
-<section anchor="sec-8.2" title="  CC-Request-Number AVP">
+<section anchor="sec-8.2" title="CC-Request-Number AVP">
 <t>
    The CC-Request-Number AVP (AVP Code 415) is of type Unsigned32 and
    identifies this request within one session.  As Session-Id AVPs are
@@ -3000,7 +3000,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    for TERMINATION_REQUEST is one more than for the last UPDATE_REQUEST.
 </t>
 </section>
-<section anchor="sec-8.3" title="  CC-Request-Type AVP">
+<section anchor="sec-8.3" title="CC-Request-Type AVP">
 <t>
    The CC-Request-Type AVP (AVP Code 416) is of type Enumerated and
    contains the reason for sending the credit-control request message.
@@ -3039,7 +3039,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       when CC-Request-Type is set to EVENT_REQUEST.
 </t>
 </section>
-<section anchor="sec-8.4" title="  CC-Session-Failover AVP">
+<section anchor="sec-8.4" title="CC-Session-Failover AVP">
 <t>
    The CC-Session-Failover AVP (AVP Code 418) is type of Enumerated and
    contains information as to whether moving the credit-control message
@@ -3073,7 +3073,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       forwarded to alternative server.
 </t>
 </section>
-<section anchor="sec-8.5" title="  CC-Sub-Session-Id AVP">
+<section anchor="sec-8.5" title="CC-Sub-Session-Id AVP">
 <t>
    The CC-Sub-Session-Id AVP (AVP Code 419) is of type Unsigned64 and
    contains the credit-control sub-session identifier.  The combination
@@ -3083,7 +3083,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    sub-sessions are in use.
 </t>
 </section>
-<section anchor="sec-8.6" title="  Check-Balance-Result AVP">
+<section anchor="sec-8.6" title="Check-Balance-Result AVP">
 <t>
    The Check Balance Result AVP (AVP Code 422) is of type Enumerated and
    contains the result of the balance check.  This AVP is applicable
@@ -3102,7 +3102,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       service.
 </t>
 </section>
-<section anchor="sec-8.7" title="  Cost-Information AVP">
+<section anchor="sec-8.7" title="Cost-Information AVP">
 <t>
    The Cost-Information AVP (AVP Code 423) is of type Grouped, and it is
    used to return the cost information of a service, which the credit-control
@@ -3144,7 +3144,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
     </figure>
 </section>
-<section anchor="sec-8.8" title="  Unit-Value AVP">
+<section anchor="sec-8.8" title="Unit-Value AVP">
 <t>
    Unit-Value AVP is of type Grouped (AVP Code 445) and specifies the
    units as decimal value.  The Unit-Value is a value with an exponent;
@@ -3166,14 +3166,14 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.9" title="  Exponent AVP">
+<section anchor="sec-8.9" title="Exponent AVP">
 <t>
    Exponent AVP is of type Integer32 (AVP Code 429) and contains the
    exponent value to be applied for the Value-Digit AVP within the
    Unit-Value AVP.
 </t>
 </section>
-<section anchor="sec-8.10" title="  Value-Digits AVP">
+<section anchor="sec-8.10" title="Value-Digits AVP">
 <t>
    The Value-Digits AVP is of type Integer64 (AVP Code 447) and contains
    the significant digits of the number.  If decimal values are needed
@@ -3183,7 +3183,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    indicated with the Exponent AVP set to -2.
 </t>
 </section>
-<section anchor="sec-8.11" title="  Currency-Code AVP">
+<section anchor="sec-8.11" title="Currency-Code AVP">
 <t>
    The Currency-Code AVP (AVP Code 425) is of type Unsigned32 and
    contains a currency code that specifies in which currency the values
@@ -3191,7 +3191,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    using the numeric values defined in the ISO 4217 standard <xref target="ISO4217"/>.
 </t>
 </section>
-<section anchor="sec-8.12" title="  Cost-Unit AVP">
+<section anchor="sec-8.12" title="Cost-Unit AVP">
 <t>
    The Cost-Unit AVP (AVP Code 424) is of type UTF8String, and it is
    used to display a human readable string to the end user.  It
@@ -3201,7 +3201,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    megabytes, etc.
 </t>
 </section>
-<section anchor="sec-8.13" title="  Credit-Control AVP">
+<section anchor="sec-8.13" title="Credit-Control AVP">
 <t>
    The Credit-Control AVP (AVP Code 426) is of type Enumerated and MUST
    be included in AA requests when the service element has
@@ -3228,7 +3228,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       request sent to perform the first interrogation.
 </t>
 </section>
-<section anchor="sec-8.14" title="  Credit-Control-Failure-Handling AVP">
+<section anchor="sec-8.14" title="Credit-Control-Failure-Handling AVP">
 <t>
    The Credit-Control-Failure-Handling AVP (AVP Code 427) is of type
    Enumerated.  The credit-control client uses information in this AVP
@@ -3276,7 +3276,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       can't be delivered.
 </t>
 </section>
-<section anchor="sec-8.15" title="  Direct-Debiting-Failure-Handling AVP">
+<section anchor="sec-8.15" title="Direct-Debiting-Failure-Handling AVP">
 <t>
    The Direct-Debiting-Failure-Handling AVP (AVP Code 428) is of type
    Enumerated.  The credit-control client uses information in this AVP
@@ -3308,7 +3308,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       can't be delivered, and the request should be deleted.
 </t>
 </section>
-<section anchor="sec-8.16" title="  Multiple-Services-Credit-Control AVP">
+<section anchor="sec-8.16" title="Multiple-Services-Credit-Control AVP">
 <t>
    Multiple-Services-Credit-Control AVP (AVP Code 456) is of type
    Grouped and contains the AVPs related to the independent credit-control
@@ -3381,7 +3381,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.17" title="  Granted-Service-Unit AVP">
+<section anchor="sec-8.17" title="Granted-Service-Unit AVP">
 <t>
    Granted-Service-Unit AVP (AVP Code 431) is of type Grouped and
    contains the amount of units that the Diameter credit-control client
@@ -3411,7 +3411,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.18" title="  Requested-Service-Unit AVP">
+<section anchor="sec-8.18" title="Requested-Service-Unit AVP">
 <t>
    The Requested-Service-Unit AVP (AVP Code 437) is of type Grouped and
    contains the amount of requested units specified by the Diameter
@@ -3436,7 +3436,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.19" title="  Used-Service-Unit AVP">
+<section anchor="sec-8.19" title="Used-Service-Unit AVP">
 <t>
    The Used-Service-Unit AVP is of type Grouped (AVP Code 446) and
    contains the amount of used units measured from the point when the
@@ -3464,7 +3464,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.20" title="  Tariff-Time-Change AVP">
+<section anchor="sec-8.20" title="Tariff-Time-Change AVP">
 <t>
    The Tariff-Time-Change AVP (AVP Code 451) is of type Time.  It is
    sent from the server to the client and includes the time in seconds
@@ -3482,13 +3482,13 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    Omission of this AVP means that no tariff change is to be reported.
 </t>
 </section>
-<section anchor="sec-8.21" title="  CC-Time AVP">
+<section anchor="sec-8.21" title="CC-Time AVP">
 <t>
    The CC-Time AVP (AVP Code 420) is of type Unsigned32 and indicates
    the length of the requested, granted, or used time in seconds.
 </t>
 </section>
-<section anchor="sec-8.22" title="  CC-Money AVP">
+<section anchor="sec-8.22" title="CC-Money AVP">
 <t>
    The CC-Money AVP (AVP Code 413) is of type Grouped and specifies the
    monetary amount in the given currency.  The Currency-Code AVP SHOULD
@@ -3504,28 +3504,28 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.23" title="  CC-Total-Octets AVP">
+<section anchor="sec-8.23" title="CC-Total-Octets AVP">
 <t>
    The CC-Total-Octets AVP (AVP Code 421) is of type Unsigned64 and
    contains the total number of requested, granted, or used octets
    regardless of the direction (sent or received).
 </t>
 </section>
-<section anchor="sec-8.24" title="  CC-Input-Octets AVP">
+<section anchor="sec-8.24" title="CC-Input-Octets AVP">
 <t>
    The CC-Input-Octets AVP (AVP Code 412) is of type Unsigned64 and
    contains the number of requested, granted, or used octets that can
    be/have been received from the end user.
 </t>
 </section>
-<section anchor="sec-8.25" title="  CC-Output-Octets AVP">
+<section anchor="sec-8.25" title="CC-Output-Octets AVP">
 <t>
    The CC-Output-Octets AVP (AVP Code 414) is of type Unsigned64 and
    contains the number of requested, granted, or used octets that can
    be/have been sent to the end user.
 </t>
 </section>
-<section anchor="sec-8.26" title="  CC-Service-Specific-Units AVP">
+<section anchor="sec-8.26" title="CC-Service-Specific-Units AVP">
 <t>
    The CC-Service-Specific-Units AVP (AVP Code 417) is of type
    Unsigned64 and specifies the number of service-specific units (e.g.,
@@ -3535,7 +3535,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    Multiple-Services-Credit-Control AVP is used).
 </t>
 </section>
-<section anchor="sec-8.27" title="  Tariff-Change-Usage AVP">
+<section anchor="sec-8.27" title="Tariff-Change-Usage AVP">
 <t>
    The Tariff-Change-Usage AVP (AVP Code 452) is of type Enumerated and
    defines whether units are used before or after a tariff change, or
@@ -3581,7 +3581,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       Used-Service-Unit AVP.
 </t>
 </section>
-<section anchor="sec-8.28" title="  Service-Identifier AVP">
+<section anchor="sec-8.28" title="Service-Identifier AVP">
 <t>
    The Service-Identifier AVP is of type Unsigned32 (AVP Code 439) and
    contains the identifier of a service.  The specific service the
@@ -3591,7 +3591,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    A usage example of this AVP is illustrated in <xref target="app-a9"/>.
 </t>
 </section>
-<section anchor="sec-8.29" title="  Rating-Group AVP">
+<section anchor="sec-8.29" title="Rating-Group AVP">
 <t>
    The Rating-Group AVP is of type Unsigned32 (AVP Code 432) and
    contains the identifier of a rating group.  All the services subject
@@ -3602,7 +3602,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    A usage example of this AVP is illustrated in <xref target="app-a9"/>.
 </t>
 </section>
-<section anchor="sec-8.30" title="  G-S-U-Pool-Reference AVP">
+<section anchor="sec-8.30" title="G-S-U-Pool-Reference AVP">
 <t>
    The G-S-U-Pool-Reference AVP (AVP Code 457) is of type Grouped.  It
    is used in the Credit-Control-Answer message, and associates the
@@ -3633,13 +3633,13 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.31" title="  G-S-U-Pool-Identifier AVP">
+<section anchor="sec-8.31" title="G-S-U-Pool-Identifier AVP">
 <t>
    The G-S-U-Pool-Identifier AVP (AVP Code 453) is of type Unsigned32
    and identifies a credit pool within the session.
 </t>
 </section>
-<section anchor="sec-8.32" title="  CC-Unit-Type AVP">
+<section anchor="sec-8.32" title="CC-Unit-Type AVP">
 <t>
    The CC-Unit-Type AVP (AVP Code 454) is of type Enumerated and
    specifies the type of units considered to be pooled into a credit
@@ -3656,7 +3656,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       SERVICE-SPECIFIC-UNITS       5
 ]]></artwork></figure>
 </section>
-<section anchor="sec-8.33" title="  Validity-Time AVP">
+<section anchor="sec-8.33" title="Validity-Time AVP">
 <t>
    The Validity-Time AVP is of type Unsigned32 (AVP Code 448).  It is
    sent from the credit-control server to the credit-control client.
@@ -3677,7 +3677,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    interrogation is sent to the server.
 </t>
 </section>
-<section anchor="sec-8.34" title="  Final-Unit-Indication AVP">
+<section anchor="sec-8.34" title="Final-Unit-Indication AVP">
 <t>
    The Final-Unit-Indication AVP (AVP Code 430) is of type Grouped and
    indicates that the Granted-Service-Unit AVP in the Credit-Control-Answer,
@@ -3749,7 +3749,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.35" title="  Final-Unit-Action AVP">
+<section anchor="sec-8.35" title="Final-Unit-Action AVP">
 <t>
    The Final-Unit-Action AVP (AVP Code 449) is of type Enumerated and
    indicates to the credit-control client the action to be taken when
@@ -3784,7 +3784,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       (e.g. QoS) may be deployed on the packets matching the filters.
 </t>
 </section>
-<section anchor="sec-8.36" title="  Restriction-Filter-Rule AVP">
+<section anchor="sec-8.36" title="Restriction-Filter-Rule AVP">
 <t>
    The Restriction-Filter-Rule AVP (AVP Code 438) is of type
    IPFilterRule and provides filter rules corresponding to services that
@@ -3795,7 +3795,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    Credit-Control-Answer message or in an AA answer message.
 </t>
 </section>
-<section anchor="sec-8.37" title="  Redirect-Server AVP">
+<section anchor="sec-8.37" title="Redirect-Server AVP">
 <t>
    The Redirect-Server AVP (AVP Code 434) is of type Grouped and
    contains the address information of the redirect server (e.g., HTTP
@@ -3814,7 +3814,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.38" title="  Redirect-Address-Type AVP">
+<section anchor="sec-8.38" title="Redirect-Address-Type AVP">
 <t>
    The Redirect-Address-Type AVP (AVP Code 433) is of type Enumerated
    and defines the address type of the address given in the
@@ -3844,7 +3844,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       Identifier, as defined in <xref target="RFC3261"/>.
 </t>
 </section>
-<section anchor="sec-8.39" title="  Redirect-Server-Address AVP">
+<section anchor="sec-8.39" title="Redirect-Server-Address AVP">
 <t>
    The Redirect-Server-Address AVP (AVP Code 435) is of type UTF8String
    and defines the address of the redirect server (e.g., HTTP redirect
@@ -3852,7 +3852,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    the account cannot cover the service cost.
 </t>
 </section>
-<section anchor="sec-8.40" title="  Multiple-Services-Indicator AVP">
+<section anchor="sec-8.40" title="Multiple-Services-Indicator AVP">
 <t>
    The Multiple-Services-Indicator AVP (AVP Code 455) is of type
    Enumerated and indicates whether the Diameter credit-control client
@@ -3878,7 +3878,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       within a (sub-)session.
 </t>
 </section>
-<section anchor="sec-8.41" title="  Requested-Action AVP">
+<section anchor="sec-8.41" title="Requested-Action AVP">
 <t>
    The Requested-Action AVP (AVP Code 436) is of type Enumerated and
    contains the requested action being sent by Credit-Control-Request
@@ -3919,7 +3919,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       the Cost-Information AVP in the Credit-Control-Answer Command.
 </t>
 </section>
-<section anchor="sec-8.42" title="  Service-Context-Id AVP">
+<section anchor="sec-8.42" title="Service-Context-Id AVP">
 <t>
    The Service-Context-Id AVP is of type UTF8String (AVP Code 461) and
    contains a unique identifier of the Diameter credit-control service
@@ -3953,7 +3953,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    RECOMMENDED in order to make Service-Context-Id globally available.
 </t>
 </section>
-<section anchor="sec-8.43" title="  Service-Parameter-Info AVP">
+<section anchor="sec-8.43" title="Service-Parameter-Info AVP">
 <t>
    The Service-Parameter-Info AVP (AVP Code 440) is of type Grouped and
    contains service-specific information used for price calculation or
@@ -3981,7 +3981,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.44" title="  Service-Parameter-Type AVP">
+<section anchor="sec-8.44" title="Service-Parameter-Type AVP">
 <t>
    The Service-Parameter-Type AVP is of type Unsigned32 (AVP Code 441)
    and defines the type of the service event specific parameter (e.g.,
@@ -3995,13 +3995,13 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    associated with the service parameter type.
 </t>
 </section>
-<section anchor="sec-8.45" title="  Service-Parameter-Value AVP">
+<section anchor="sec-8.45" title="Service-Parameter-Value AVP">
 <t>
    The Service-Parameter-Value AVP is of type OctetString (AVP Code 442)
    and contains the value of the service parameter type.
 </t>
 </section>
-<section anchor="sec-8.46" title="  Subscription-Id AVP">
+<section anchor="sec-8.46" title="Subscription-Id AVP">
 <t>
    The Subscription-Id AVP (AVP Code 443) is used to identify the end
    user's subscription and is of type Grouped.  The Subscription-Id AVP
@@ -4019,7 +4019,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.47" title="  Subscription-Id-Type AVP">
+<section anchor="sec-8.47" title="Subscription-Id-Type AVP">
 <t>
    The Subscription-Id-Type AVP (AVP Code 450) is of type Enumerated,
    and it is used to determine which type of identifier is carried by
@@ -4058,14 +4058,14 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       The Identifier is a credit-control server private identifier.
 </t>
 </section>
-<section anchor="sec-8.48" title="  Subscription-Id-Data AVP">
+<section anchor="sec-8.48" title="Subscription-Id-Data AVP">
 <t>
    The Subscription-Id-Data AVP (AVP Code 444) is used to identify the
    end user and is of type UTF8String.  The Subscription-Id-Type AVP
    defines which type of identifier is used.
 </t>
 </section>
-<section anchor="sec-8.49" title="  User-Equipment-Info AVP">
+<section anchor="sec-8.49" title="User-Equipment-Info AVP">
 <t>
    The User-Equipment-Info AVP (AVP Code 458) is of type Grouped and
    allows the credit-control client to indicate the identity and
@@ -4083,7 +4083,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.50" title="  User-Equipment-Info-Type AVP">
+<section anchor="sec-8.50" title="User-Equipment-Info-Type AVP">
 <t>
    The User-Equipment-Info-Type AVP is of type Enumerated  (AVP Code
    459) and defines the type of user equipment information contained in
@@ -4117,14 +4117,14 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       documentation.
 </t>
 </section>
-<section anchor="sec-8.51" title="  User-Equipment-Info-Value AVP">
+<section anchor="sec-8.51" title="User-Equipment-Info-Value AVP">
 <t>
    The User-Equipment-Info-Value AVP (AVP Code 460) is of type
    OctetString.  The User-Equipment-Info-Type AVP defines which type of
    identifier is used.
 </t>
 </section>
-<section anchor="sec-8.52" title="  User-Equipment-Info-Extension AVP">
+<section anchor="sec-8.52" title="User-Equipment-Info-Extension AVP">
 <t>
    The User-Equipment-Info-Extension AVP (AVP Code TBD1) is of type Grouped and
    allows the credit-control client to indicate the identity and
@@ -4150,7 +4150,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.53" title="  User-Equipment-Info-IMEISV AVP">
+<section anchor="sec-8.53" title="User-Equipment-Info-IMEISV AVP">
 <t>
    The User-Equipment-Info-IMEISV (AVP Code TBD2) is of type
    OctetString. The User-Equipment-Info-IMEISV AVP contains the International 
@@ -4158,14 +4158,14 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    IMEISV format according to 3GPP TS 23.003 <xref target="TGPPIMEI"/>.
 </t>
 </section>
-<section anchor="sec-8.54" title="  User-Equipment-Info-MAC AVP">
+<section anchor="sec-8.54" title="User-Equipment-Info-MAC AVP">
 <t>
    The User-Equipment-Info-MAC (AVP Code TBD3) is of type
    OctetString. The User-Equipment-Info-MAC AVP contains the 48-bit MAC 
    address is formatted as described in <xref target="RFC3580"/>.
 </t>
 </section>
-<section anchor="sec-8.55" title="  User-Equipment-Info-EUI64 AVP">
+<section anchor="sec-8.55" title="User-Equipment-Info-EUI64 AVP">
 <t>
    The User-Equipment-Info-EUI64 (AVP Code TBD4) is of type
    OctetString. The UUser-Equipment-Info-EUI64 AVP contains the 64-bit 
@@ -4173,7 +4173,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    as defined in <xref target="EUI64"/>.
 </t>
 </section>
-<section anchor="sec-8.56" title="  User-Equipment-Info-ModifiedEUI64 AVP">
+<section anchor="sec-8.56" title="User-Equipment-Info-ModifiedEUI64 AVP">
 <t>
    The User-Equipment-Info-ModifiedEUI64 (AVP Code TBD5) is of type
    OctetString. There are a number of types of terminals that have identifiers
@@ -4183,7 +4183,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    documentation. The User-Equipment-Info-ModifiedEUI64 AVP contains such identifiers.
 </t>
 </section>
-<section anchor="sec-8.57" title="  User-Equipment-Info-IMEI AVP">
+<section anchor="sec-8.57" title="User-Equipment-Info-IMEI AVP">
 <t>
    The User-Equipment-Info-IMEI (AVP Code TBD6) is of type OctetString. 
    The User-Equipment-Info-IMEI AVP contains the International Mobile Equipment 
@@ -4191,7 +4191,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    according to 3GPP TS 23.003 <xref target="TGPPIMEI"/>.
 </t>
 </section>
-<section anchor="sec-8.58" title="  Subscription-Id-Extension AVP">
+<section anchor="sec-8.58" title="Subscription-Id-Extension AVP">
 <t>
    The Subscription-Id-Extension AVP (AVP Code TBD7) is used to identify the end
    user's subscription and is of type Grouped.  The Subscription-Id-Extension 
@@ -4218,7 +4218,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.59" title="  Subscription-Id-E164 AVP">
+<section anchor="sec-8.59" title="Subscription-Id-E164 AVP">
 <t>
    The Subscription-Id-E164 (AVP Code TBD8) is of type UTF8String. 
    The Subscription-Id-E164 AVP contains the international E.164 format 
@@ -4226,7 +4226,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    <xref target="E164"/> and <xref target="CE164"/>.
 </t>
 </section>
-<section anchor="sec-8.60" title="  Subscription-Id-IMSI AVP">
+<section anchor="sec-8.60" title="Subscription-Id-IMSI AVP">
 <t>
    The Subscription-Id-IMSI (AVP Code TBD9) is of type UTF8String. 
    The Subscription-Id-IMSI AVP contains the international IMSI format, 
@@ -4234,28 +4234,28 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    <xref target="E212"/> and <xref target="CE212"/>.
 </t>
 </section>
-<section anchor="sec-8.61" title="  Subscription-Id-SIP-URI AVP">
+<section anchor="sec-8.61" title="Subscription-Id-SIP-URI AVP">
 <t>
    The Subscription-Id-SIP-URI (AVP Code TBD10) is of type UTF8String. 
    The Subscription-Id-SIP-URI AVP contains the identifier in the form of a SIP 
    URI, as defined in <xref target="RFC3261"/>.
 </t>
 </section>
-<section anchor="sec-8.62" title="  Subscription-Id-NAI AVP">
+<section anchor="sec-8.62" title="Subscription-Id-NAI AVP">
 <t>
    The Subscription-Id-NAI (AVP Code TBD11) is of type UTF8String. 
    The Subscription-Id-NAI AVP contains the identifier in the form of a 
    Network Access Identifier, as defined in <xref target="RFC2486"/>.
 </t>
 </section>
-<section anchor="sec-8.63" title="  Subscription-Id-Private AVP">
+<section anchor="sec-8.63" title="Subscription-Id-Private AVP">
 <t>
    The Subscription-Id-Private (AVP Code TBD12) is of type UTF8String. 
    The Subscription-Id-Private AVP contains a credit-control server private 
    identifier.
 </t>
 </section>
-<section anchor="sec-8.64" title="  Redirect-Server-Extension AVP">
+<section anchor="sec-8.64" title="Redirect-Server-Extension AVP">
 <t>
    The Redirect-Server-Extension AVP (AVP Code TBD13) is of type Grouped and
    contains the address information of the redirect server (e.g., HTTP
@@ -4283,7 +4283,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.65" title="  Redirect-Address-IPv4Address AVP">
+<section anchor="sec-8.65" title="Redirect-Address-IPv4Address AVP">
 <t>
    The Redirect-Address-IPv4Address AVP (AVP Code TBD14) is of type UTF8String
    and defines the address of the redirect server with which the end user is to 
@@ -4292,7 +4292,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    as defined in <xref target="RFC0791"/>.
 </t>
 </section>
-<section anchor="sec-8.66" title="  Redirect-Address-IPv6Address AVP">
+<section anchor="sec-8.66" title="Redirect-Address-IPv6Address AVP">
 <t>
    The Redirect-Address-IPv6Address AVP (AVP Code TBD15) is of type UTF8String
    and defines the address of the redirect server with which the end user is to 
@@ -4302,7 +4302,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    according to <xref target="RFC5952"/>.
 </t>
 </section>
-<section anchor="sec-8.67" title="  Redirect-Address-URL AVP">
+<section anchor="sec-8.67" title="Redirect-Address-URL AVP">
 <t>
    The Redirect-Address-URL AVP (AVP Code TBD16) is of type UTF8String
    and defines the address of the redirect server with which the end user is to 
@@ -4311,7 +4311,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    as defined in <xref target="RFC1738"/>.
 </t>
 </section>
-<section anchor="sec-8.68" title="  Redirect-Address-SIP-URI AVP">
+<section anchor="sec-8.68" title="Redirect-Address-SIP-URI AVP">
 <t>
    The Redirect-Address-SIP-URI AVP (AVP Code TBD17) is of type UTF8String
    and defines the address of the redirect server with which the end user is to 
@@ -4320,7 +4320,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    as defined in <xref target="RFC3261"/>.
 </t>
 </section>
-<section anchor="sec-8.69" title="  QoS-Final-Unit-Indication AVP">
+<section anchor="sec-8.69" title="QoS-Final-Unit-Indication AVP">
 <t>
    The QoS-Final-Unit-Indication AVP (AVP Code TBD18) is of type Grouped and
    indicates that the Granted-Service-Unit AVP in the Credit-Control-Answer,
@@ -4399,7 +4399,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       </figure>
 </section>
 </section>
-<section anchor="sec-9" title="  Result Code AVP Values">
+<section anchor="sec-9" title="Result Code AVP Values">
 <t>
    This section defines new Result-Code AVP <xref target="RFC6733"/> values that must
    be supported by all Diameter implementations that conform to this
@@ -4410,7 +4410,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    message.  A rejected Credit-Control-Request message SHOULD cause the
    user's session to be terminated.
 </t>
-<section anchor="sec-9.1" title="  Transient Failures">
+<section anchor="sec-9.1" title="Transient Failures">
 <t>
    Errors that fall within the transient failures category are used to
    inform a peer that the request could not be satisfied at the time it
@@ -4436,7 +4436,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       CCR contained used-service-units they are deducted, if possible.
 </t>
 </section>
-<section anchor="sec-9.2" title="  Permanent Failures">
+<section anchor="sec-9.2" title="Permanent Failures">
 <t>
    Errors that fall within the permanent failure category are used to
    inform the peer that the request failed and should not be attempted
@@ -4460,7 +4460,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t>
 </section>
 </section>
-<section anchor="sec-10" title="  AVP Occurrence Table">
+<section anchor="sec-10" title="AVP Occurrence Table">
 <t>
    The following table presents the AVPs defined in this document and
    specifies in which Diameter messages they MAY or MAY NOT be present.
@@ -4480,7 +4480,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       1+    At least one instance of the AVP MUST be present in the
             message.
 ]]></artwork></figure>
-<section anchor="sec-10.1" title="  Credit-Control AVP Table">
+<section anchor="sec-10.1" title="Credit-Control AVP Table">
 <t>
    The table in this section is used to represent which credit-control
    applications specific AVPs defined in this document are to be present
@@ -4542,7 +4542,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
          ------------------------------|-----+-----+
 ]]></artwork></figure>
 </section>
-<section anchor="sec-10.2" title="  Re-Auth-Request/Answer AVP Table">
+<section anchor="sec-10.2" title="Re-Auth-Request/Answer AVP Table">
 <t>
    This section defines AVPs that are specific to the Diameter credit-control
    application and that MAY be included in the Diameter
@@ -4567,7 +4567,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </figure>
 </section>
 </section>
-<section anchor="sec-11" title="  RADIUS/Diameter Credit-Control Interworking Model">
+<section anchor="sec-11" title="RADIUS/Diameter Credit-Control Interworking Model">
 <t>
    This section defines the basic principles for the Diameter credit-control/RADIUS
    prepaid inter-working model; that is, a message
@@ -4688,7 +4688,7 @@ Service Element         Translation Agent
       |                        |                        |
 ]]></artwork></figure>
 </section>
-<section anchor="sec-12" title="  IANA Considerations">
+<section anchor="sec-12" title="IANA Considerations">
 <t>
    This section contains the namespaces that have either been created in
    this specification, or the values assigned to existing namespaces
@@ -4699,35 +4699,35 @@ Service Element         Translation Agent
    the IESG.  Initially, such Expert discussions take place on the AAA
    WG mailing list.
 </t>
-<section anchor="sec-12.1" title="  Application Identifier">
+<section anchor="sec-12.1" title="Application Identifier">
 <t>
    This specification assigns the value 4, 'Diameter Credit Control', to
    the Application Identifier namespace defined in <xref target="RFC6733"/>.  See
    <xref target="sec-1.3"/> for more information.
 </t>
 </section>
-<section anchor="sec-12.2" title="  Command Codes">
+<section anchor="sec-12.2" title="Command Codes">
 <t>
    This specification uses the value 272 from the Command code namespace
    defined in <xref target="RFC6733"/> for the Credit-Control-Request (CCR) and
    Credit-Control-Answer (CCA) commands.
 </t>
 </section>
-<section anchor="sec-12.3" title="  AVP Codes">
+<section anchor="sec-12.3" title="AVP Codes">
 <t>
    This specification assigns the values 411 - 461 from the AVP code
    namespace defined in <xref target="RFC6733"/>.  See <xref target="sec-8"/> for the assignment of
    the namespace in this specification.
 </t>
 </section>
-<section anchor="sec-12.4" title="  Result-Code AVP Values">
+<section anchor="sec-12.4" title="Result-Code AVP Values">
 <t>
    This specification assigns the values 4010, 4011, 4012, 5030, 5031
    from the Result-Code AVP value namespace defined in <xref target="RFC6733"/>.  See
    <xref target="sec-9"/> for the assignment of the namespace in this specification.
 </t>
 </section>
-<section anchor="sec-12.5" title="  CC-Request-Type AVP">
+<section anchor="sec-12.5" title="CC-Request-Type AVP">
 <t>
    As defined in <xref target="sec-8.3"/>, the CC-Request-Type AVP includes
    Enumerated type values 1 - 4.  IANA has created and is maintaining a
@@ -4735,7 +4735,7 @@ Service Element         Translation Agent
    assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.6" title="  CC-Session-Failover AVP">
+<section anchor="sec-12.6" title="CC-Session-Failover AVP">
 <t>
    As defined in <xref target="sec-8.4"/>, the CC-Failover-Supported AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
@@ -4743,7 +4743,7 @@ Service Element         Translation Agent
    assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.7" title="  CC-Unit-Type AVP">
+<section anchor="sec-12.7" title="CC-Unit-Type AVP">
 <t>
    As defined in <xref target="sec-8.32"/>, the CC-Unit-Type AVP includes Enumerated
    type values 0 - 5.  IANA has created and is maintaining a namespace
@@ -4751,7 +4751,7 @@ Service Element         Translation Agent
    Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.8" title="  Check-Balance-Result AVP">
+<section anchor="sec-12.8" title="Check-Balance-Result AVP">
 <t>
    As defined in <xref target="sec-8.6"/>, the Check-Balance-Result AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
@@ -4759,7 +4759,7 @@ Service Element         Translation Agent
    assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.9" title="  Credit-Control AVP">
+<section anchor="sec-12.9" title="Credit-Control AVP">
 <t>
    As defined in <xref target="sec-8.13"/>, the Credit-Control AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
@@ -4767,7 +4767,7 @@ Service Element         Translation Agent
    assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.10" title="  Credit-Control-Failure-Handling AVP">
+<section anchor="sec-12.10" title="Credit-Control-Failure-Handling AVP">
 <t>
    As defined in <xref target="sec-8.14"/>, the Credit-Control-Failure-Handling AVP
    includes Enumerated type values 0 - 2.  IANA has created and is
@@ -4775,7 +4775,7 @@ Service Element         Translation Agent
    available for assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.11" title="  Direct-Debiting-Failure-Handling AVP">
+<section anchor="sec-12.11" title="Direct-Debiting-Failure-Handling AVP">
 <t>
    As defined in <xref target="sec-8.15"/>, the Direct-Debiting-Failure-Handling AVP
    includes Enumerated type values 0 - 1.  IANA has created and is
@@ -4783,7 +4783,7 @@ Service Element         Translation Agent
    available for assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.12" title="  Final-Unit-Action AVP">
+<section anchor="sec-12.12" title="Final-Unit-Action AVP">
 <t>
    As defined in <xref target="sec-8.35"/>, the Final-Unit-Action AVP includes
    Enumerated type values 0 - 2.  IANA has created and is maintaining a
@@ -4791,7 +4791,7 @@ Service Element         Translation Agent
    assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.13" title="  Multiple-Services-Indicator AVP">
+<section anchor="sec-12.13" title="Multiple-Services-Indicator AVP">
 <t>
    As defined in <xref target="sec-8.40"/>, the Multiple-Services-Indicator AVP
    includes Enumerated type values 0 - 1.  IANA has created and is
@@ -4799,7 +4799,7 @@ Service Element         Translation Agent
    available for assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.14" title="  Redirect-Address-Type AVP">
+<section anchor="sec-12.14" title="Redirect-Address-Type AVP">
 <t>
    As defined in <xref target="sec-8.38"/>, the Redirect-Address-Type AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
@@ -4807,7 +4807,7 @@ Service Element         Translation Agent
    assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.15" title="  Requested-Action AVP">
+<section anchor="sec-12.15" title="Requested-Action AVP">
 <t>
    As defined in <xref target="sec-8.41"/>, the Requested-Action AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
@@ -4815,7 +4815,7 @@ Service Element         Translation Agent
    assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.16" title="  Subscription-Id-Type AVP">
+<section anchor="sec-12.16" title="Subscription-Id-Type AVP">
 <t>
    As defined in <xref target="sec-8.47"/>, the Subscription-Id-Type AVP  includes
    Enumerated type values 0 - 4.  IANA has created and is maintaining a
@@ -4823,7 +4823,7 @@ Service Element         Translation Agent
    assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.17" title="   Tariff-Change-Usage AVP">
+<section anchor="sec-12.17" title="Tariff-Change-Usage AVP">
 <t>
    As defined in <xref target="sec-8.27"/>, the Tariff-Change-Usage AVP includes
    Enumerated type values 0 - 2.  IANA has created and is maintaining a
@@ -4831,7 +4831,7 @@ Service Element         Translation Agent
    assignment by a Designated Expert <xref target="RFC2434"/>.
 </t>
 </section>
-<section anchor="sec-12.18" title="   User-Equipment-Info-Type AVP">
+<section anchor="sec-12.18" title="User-Equipment-Info-Type AVP">
 <t>
    As defined in <xref target="sec-8.50"/>, the User-Equipment-Info-Type AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
@@ -4840,7 +4840,7 @@ Service Element         Translation Agent
 </t>
 </section>
 </section>
-<section anchor="sec-13" title="  Credit-Control Application Related Parameters">
+<section anchor="sec-13" title="Credit-Control Application Related Parameters">
 <t>
    Tx timer
 </t><t>
@@ -4874,7 +4874,7 @@ Service Element         Translation Agent
       and in <xref target="sec-6.5"/> for the Direct-Debiting-Failure-Handling.
 </t>
 </section>
-<section anchor="sec-14" title="  Security Considerations">
+<section anchor="sec-14" title="Security Considerations">
 <t>
    The Diameter base protocol <xref target="RFC6733"/> requires that each Diameter
    implementation use underlying security; i.e., TLS/TCP, DTLS/SCTP or IPsec.  These
@@ -4924,7 +4924,7 @@ Service Element         Translation Agent
    that third-party proxies will not modify the credit-control commands
    or AVP values.
 </t>
-<section anchor="sec-14.1" title="  Direct Connection with Redirects">
+<section anchor="sec-14.1" title="Direct Connection with Redirects">
 <t>
    A Diameter credit-control agent cannot always know whether agents
    between it and the end user's Diameter credit-control server are
