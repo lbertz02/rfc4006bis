@@ -3445,7 +3445,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    the session, from the point when the previous measurement ended.
    Note: The values reported in a Used-Service-Unit AVP does not necessarily 
    have a relation to the grant provided in a Granted-Service-Unit AVP, 
-   e.g. the value in this AVP may exceed the value in the grant.
+   e.g., the value in this AVP may exceed the value in the grant.
 </t><t>
    The Used-Service-Unit AVP is defined as follows (per the
    grouped-avp-def of <xref target="RFC6733"/>):
@@ -3729,7 +3729,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t><t>
    If the type of Final-Unit-Action AVP is set to RESTRICT_ACCESS or REDIRECT 
    and the classification of the restricted traffic cannot be expressed using 
-   IPFilterRule, or different actions (e.g. QoS) than just allowiung QoS needs 
+   IPFilterRule, or different actions (e.g., QoS) than just allowiung QoS needs 
    to be enforced traffic, then the QoS-Final-Unit-Indication AVP SHOULD be 
    used instead of the Final-Unit-Indication AVP. However, if the credit control
    server wants to preserve backward compatibility with credit-control clients 
@@ -3782,7 +3782,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       (see <xref target="sec-5.6.3"/>). In the case that Restriction-Filter-Rule AVP is used,
       all the packets matching the filters MUST be allowed. In the case that 
       Filter-Rule AVP or Filter-Id AVP are used, other actions 
-      (e.g. QoS) may be deployed on the packets matching the filters.
+      (e.g., QoS) may be deployed on the packets matching the filters.
 </t>
 </section>
 <section anchor="sec-8.36" title="Restriction-Filter-Rule AVP">
@@ -4357,18 +4357,18 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    Credit-Control-Answer message if the user is also allowed to access other 
    services that are not accessible through the address given in the 
    Redirect-Server-Extension AVP or if the access to these services needs to be
-   limited in some way (e.g. QoS).
+   limited in some way (e.g., QoS).
 </t><t>
    If the QoS-Final-Unit-Action AVP is set to RESTRICT_ACCESS, either the
    Filter-Rule AVP or the Filter-Id AVP SHOULD be present.
 </t><t>
    The Filter-Rule AVP is defined in <xref target="RFC5777"/>.  The Filter-Rule 
-   AVP can be used to defines a specific condition and action combination. If 
+   AVP can be used to define a specific condition and action combination. If 
    used only with traffic conditions, it should define which traffic should 
    allowed when no more service units are granted. However, if QoS or treatment
-   information exists in the AVP, these actions should be executed. E.g. 
-   limiting the allowed traffic with certain QoS. When multiple Filter-Rule AVP 
-   exists, precedence should be determined as defined in <xref target="RFC5777"/>.
+   information exists in the AVP, these actions should be executed. E.g.,
+   limiting the allowed traffic with certain QoS. When multiple Filter-Rule AVPs
+   exist, precedence should be determined as defined in <xref target="RFC5777"/>.
 </t><t>
    The Filter-Id AVP is defined in <xref target="RFC7155"/>.  The Filter-Id AVP can be
    used to reference an IP filter list installed in the access device by
