@@ -522,8 +522,8 @@
                                  [ Check-Balance-Result ]
                                  [ Credit-Control-Failure-Handling ]
                                  [ Direct-Debiting-Failure-Handling ]
-                                 [ Validity-Time]
-                                *[ Redirect-Host]
+                                 [ Validity-Time ]
+                                *[ Redirect-Host ]
                                  [ Redirect-Host-Usage ]
                                  [ Redirect-Max-Cache-Time ]
                                 *[ Proxy-Info ]
@@ -689,7 +689,7 @@
    values of the Service-Context-Id be coordinated via an informational
    RFC or other permanent and readily available reference.  The
    specification of another cooperative standardization body (e.g.,
-   3GPP, OMA, and 3GPP2) SHOULD be used.  However, private services may
+   3GPP, OMA, or 3GPP2) SHOULD be used.  However, private services may
    be deployed that are subject to agreements between providers of the
    credit-control server and client.  In this case, vendor specific AVPs
    can be used.
@@ -754,7 +754,7 @@
 <t>
    For a session-based credit-control, several interrogations are
    needed: the first, intermediate (optional) and the final
-   interrogations.  This is illustrated in 
+   interrogations.  This is illustrated in
    <xref target="first_interrogation"/> and
    <xref target="first_interrogation_auth"/>.
 </t>
@@ -879,7 +879,7 @@
    allocated to a pool by means of the Multiple-Services-Credit-Control
    AVP, the quotas remain independent objects that can be re-authorized
    independently at any time.  Quotas can also be given independent
-   result codes, validity times, and Final-Unit-Indications 
+   result codes, validity times, and Final-Unit-Indications
    or QoS-Final-Unit-Indications.
 </t>
 <t>
@@ -1089,12 +1089,12 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
 <t>
    The Event-Timestamp AVP SHOULD be included in the request and
    contains the time when the service event is requested in the service
-   element.  The Subscription-Id AVP or the Subscription-Id-Extension AVP 
-   SHOULD be included to identify the end user in the credit-control server.  
-   The credit-control client MAY include the User-Equipment-Info AVP or 
-   User-Equipment-Info-Extension AVP so that the credit-control server has some 
-   indication of the type and capabilities of the end user access device. 
-   How the credit-control server uses this information is outside the scope 
+   element.  The Subscription-Id AVP or the Subscription-Id-Extension AVP
+   SHOULD be included to identify the end user in the credit-control server.
+   The credit-control client MAY include the User-Equipment-Info AVP or
+   User-Equipment-Info-Extension AVP so that the credit-control server has some
+   indication of the type and capabilities of the end user access device.
+   How the credit-control server uses this information is outside the scope
    of this document.
 </t>
 <t>
@@ -1135,9 +1135,9 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
 </t>
 <t>
    The Credit-Control-Answer message MAY also include the Final-Unit-Indication
-   AVP or the QoS-Final-Unit-Indication AVP to indicate that the answer 
-   message contains the final units for the service.  After the end user has 
-   consumed these units, the Diameter credit-control-client MUST behave as 
+   AVP or the QoS-Final-Unit-Indication AVP to indicate that the answer
+   message contains the final units for the service.  After the end user has
+   consumed these units, the Diameter credit-control-client MUST behave as
    described in <xref target="sec-5.6"/>.
 </t>
 <t>
@@ -1401,10 +1401,10 @@ End User          (CC Client)           AAA Server          CC Server
    rating-group, or a pool within the (sub)session.
 </t><t>
    The CC-Request-Type AVP is set to the value UPDATE_REQUEST in the
-   intermediate request message.  The Subscription-Id AVP or 
-   Subscription-Id-Extension AVP SHOULD be included in the intermediate 
-   message to identify the end user in the credit-control server.  
-   The Service-Context-Id AVP indicates the service specific document 
+   intermediate request message.  The Subscription-Id AVP or
+   Subscription-Id-Extension AVP SHOULD be included in the intermediate
+   message to identify the end user in the credit-control server.
+   The Service-Context-Id AVP indicates the service specific document
    applicable to the request.
 </t><t>
    The Requested-Service-Unit AVP MAY contain the new amount of
@@ -1435,8 +1435,8 @@ End User          (CC Client)           AAA Server          CC Server
 </t><t>
    The Credit-Control-Answer message MAY also include the Final-Unit-Indication
    AVP or the QoS-Final-Unit-Indication AVP to indicate that the answer
-   message contains the final units for the service.  After the end user has 
-   consumed these units, the Diameter credit-control-client MUST behave as 
+   message contains the final units for the service.  After the end user has
+   consumed these units, the Diameter credit-control-client MUST behave as
    described in <xref target="sec-5.6"/>.
 </t><t>
    There can be several intermediate interrogations within a session.
@@ -1603,7 +1603,7 @@ End User         (CC Client)
    This section defines the optional graceful service termination
    feature that MAY be supported by the credit-control server.
    Credit-control client implementations MUST support the Final-Unit-Indication AVP or
-   QoS-Final-Unit-Indication AVP with at least the teardown of the ongoing 
+   QoS-Final-Unit-Indication AVP with at least the teardown of the ongoing
    service session once the subscriber has consumed all the final granted units.
 </t><t>
    Where independent credit-control of multiple services in a single
@@ -1636,16 +1636,16 @@ End User         (CC Client)
    <xref target="app-a7"/>.
 </t><t>
    The credit-control server MAY initiate the graceful service
-   termination by including the Final-Unit-Indication AVP or the 
-   QoS-Final-Unit-Indication AVP in the Credit-Control-Answer to indicate that 
+   termination by including the Final-Unit-Indication AVP or the
+   QoS-Final-Unit-Indication AVP in the Credit-Control-Answer to indicate that
    the message contains the final units for the service.
 </t><t>
    When the credit-control client receives the Final-Unit-Indication AVP or the
-   QoS-Final-Unit-Indication AVP in the answer from the server, its behavior 
-   depends on the value indicated in the Final-Unit-Action AVP.  The server may 
+   QoS-Final-Unit-Indication AVP in the answer from the server, its behavior
+   depends on the value indicated in the Final-Unit-Action AVP.  The server may
    request the following actions: TERMINATE, REDIRECT, or RESTRICT_ACCESS.
 </t><t>
-   A following figure illustrates the graceful service termination
+   The following figure illustrates the graceful service termination
    procedure described in the following sub-sections.
    <vspace blankLines="24"/>
 </t>
@@ -1701,11 +1701,11 @@ End User        Service Element         AAA Server          CC Server
   ]]></artwork>
 </figure>
 <t>
-   In addition, the credit-control server MAY reply with Final-Unit-Indication 
-   AVP or QoS-Final-Unit-Indication AVP holding a G-S-U AVP with a zero grant, 
-   indicating that the service SHOULD be terminated immediately, and no further 
-   reporting is required. A following figure illustrates a graceful service 
-   termination procedure that applies immediatly after receiving a zero grant.
+   In addition, the credit-control server MAY reply with Final-Unit-Indication
+   AVP or QoS-Final-Unit-Indication AVP holding a G-S-U AVP with a zero grant,
+   indicating that the service SHOULD be terminated immediately, and no further
+   reporting is required. A following figure illustrates a graceful service
+   termination procedure that applies immediately after receiving a zero grant.
 </t>
 <figure title="Optional immediate graceful service termination procedure" anchor="immediate_graceful_termination">
   <artwork><![CDATA[
@@ -1734,46 +1734,46 @@ End User        Service Element         AAA Server          CC Server
 </figure>
 <section anchor="sec-5.6.1" title="Terminate Action">
 <t>
-   The Final-Unit-Indication AVP or the QoS-Final-Unit-Indication AVP with 
+   The Final-Unit-Indication AVP or the QoS-Final-Unit-Indication AVP with
    Final-Unit-Action TERMINATE does not include any other information.  When the
-   subscriber has consumed the final granted units, the service element MUST 
+   subscriber has consumed the final granted units, the service element MUST
    terminate the service.  This is the default handling applicable whenever the
    credit-control client receives an unsupported Final-Unit-Action value
    and MUST be supported by all the Diameter credit-control client
    implementations conforming to this specification.  A final Credit-Control-Request
    message to the credit-control server MUST be sent if
    the Final-Unit-Indication AVP or the QoS-Final-Unit-Indication AVP indicating
-   action TERMINATE was present at command level.  The CC-Request-Type AVP in 
+   action TERMINATE was present at command level.  The CC-Request-Type AVP in
    the request is set to the value TERMINATION_REQUEST.
 </t>
 </section>
 <section anchor="sec-5.6.2" title="Redirect Action">
 <t>
-   The Final-Unit-Indication AVP or the QoS-Final-Unit-Indication AVP with 
-   Final-Unit-Action REDIRECT indicates to the service element supporting this 
-   action that, upon consumption of the final granted units, the user MUST be 
-   re-directed to the address specified in the Redirect-Server AVP or 
+   The Final-Unit-Indication AVP or the QoS-Final-Unit-Indication AVP with
+   Final-Unit-Action REDIRECT indicates to the service element supporting this
+   action that, upon consumption of the final granted units, the user MUST be
+   re-directed to the address specified in the Redirect-Server AVP or
    Redirect-Server-Extension AVP as follows.
 </t><t>
-   The credit-control server sends the Redirect-Server AVP or 
-   Redirect-Server-Extension AVP in the Credit-Control-Answer message.  
-   In such a case, the service element MUST redirect or connect the user to the 
+   The credit-control server sends the Redirect-Server AVP or
+   Redirect-Server-Extension AVP in the Credit-Control-Answer message.
+   In such a case, the service element MUST redirect or connect the user to the
    destination specified in the Redirect-Server AVP or Redirect-Server-Extension
    AVP, if possible.  When the end user is redirected (by using protocols others
-   than Diameter) to the specified server or connected to the top-up server, 
-   an additional authorization (and possibly authentication) may be needed 
-   before the subscriber can replenish the account; however, 
+   than Diameter) to the specified server or connected to the top-up server,
+   an additional authorization (and possibly authentication) may be needed
+   before the subscriber can replenish the account; however,
    this is out of the scope of this specification.
 </t><t>
-   In addition to the Redirect-Server AVP or Redirect-Server-Extension AVP, 
-   the credit-control server MAY include one or more Restriction-Filter-Rule 
-   AVPs, one or more Filter-Rule AVPs, or one or more Filter-Id AVPs in the 
-   Credit-Control-Answer message to enable the user to access other services 
-   (for example, zero-rated services). In such a case, the access device MUST 
-   drop all the packets not matching the IP filters specified in the 
+   In addition to the Redirect-Server AVP or Redirect-Server-Extension AVP,
+   the credit-control server MAY include one or more Restriction-Filter-Rule
+   AVPs, one or more Filter-Rule AVPs, or one or more Filter-Id AVPs in the
+   Credit-Control-Answer message to enable the user to access other services
+   (for example, zero-rated services). In such a case, the access device MUST
+   drop all the packets not matching the IP filters specified in the
    Restriction-Filter-Rule AVPs, Filter-Rule AVPs or Filter-Id AVPs. If other
-   are indicated in the Filter-Rule AVPs or Filter-Id AVPs, these SHOULD be 
-   performed as well. In addition, if possible, redirect the user to the 
+   are indicated in the Filter-Rule AVPs or Filter-Id AVPs, these SHOULD be
+   performed as well. In addition, if possible, redirect the user to the
    destination specified in the Redirect-Server AVP or Redirect-Server-Extension AVP.
 </t><t>
    An entity other than the credit-control server may provision the
@@ -1825,7 +1825,7 @@ End User        Service Element         AAA Server          CC Server
    Validity-Time and may send a spontaneous update (a new Credit-Control-Request)
    if the service element can determine, for instance,
    that communication between the end user and the top-up server took
-   place.  An example of this is given in 
+   place.  An example of this is given in
    <xref target="app-a8"/> (<xref target="flow8"/>).
 </t><t>
    Note that the credit-control server may already have initiated the
@@ -1834,8 +1834,8 @@ End User        Service Element         AAA Server          CC Server
    performed.  In this case, the subscriber can be offered a chance to
    replenish the account and continue the service.  The credit-control
    client receives a Credit-Control-Answer or service specific
-   authorization answer with the Final-Unit-Indication or the 
-   QoS-Final-Unit-Indication AVP and Validity-Time AVPs but no 
+   authorization answer with the Final-Unit-Indication or the
+   QoS-Final-Unit-Indication AVP and Validity-Time AVPs but no
    Granted-Service-Unit AVP.  It immediately starts the graceful
    service termination without sending any message to the server.  An
    example of this case is illustrated in <xref target="app-a"/>.
@@ -1843,26 +1843,26 @@ End User        Service Element         AAA Server          CC Server
 </section>
 <section anchor="sec-5.6.3" title="Restrict Access Action">
 <t>
-   A Final-Unit-Indication AVP with the Final-Unit-Action RESTRICT_ACCESS 
-   indicates to the device supporting this action that, upon consumption of 
-   the final granted units, the user's access MUST be restricted according to 
-   the IP packet filters given in the Restriction-Filter-Rule AVP(s) or 
+   A Final-Unit-Indication AVP with the Final-Unit-Action RESTRICT_ACCESS
+   indicates to the device supporting this action that, upon consumption of
+   the final granted units, the user's access MUST be restricted according to
+   the IP packet filters given in the Restriction-Filter-Rule AVP(s) or
    according to the IP packet filters identified by the Filter-Id AVP(s). The
    credit-control server SHOULD include either the Restriction-Filter-Rule
    AVP or the Filter-Id AVP in the Credit-Control-Answer message.
 </t><t>
-   A QoS-Final-Unit-Indication AVP with the Final-Unit-Action RESTRICT_ACCESS 
-   indicates to the device supporting this action that, upon consumption of 
-   the final granted units, the actions specified in Filter-Rule AVP(s) MUST be 
+   A QoS-Final-Unit-Indication AVP with the Final-Unit-Action RESTRICT_ACCESS
+   indicates to the device supporting this action that, upon consumption of
+   the final granted units, the actions specified in Filter-Rule AVP(s) MUST be
    deployed on the traffic according to the classifiers in the Filter-Rule AVP(s).
-   If Filter-Id AVP(s) are provided in the Credit-Control-Answer 
-   message, the credit control client MUST restrict the traffic according to the 
-   IP packet filters identified by the Filter-Id AVP(s). The credit-control 
-   server SHOULD include either the Filter-Rule AVP or the 
+   If Filter-Id AVP(s) are provided in the Credit-Control-Answer
+   message, the credit control client MUST restrict the traffic according to the
+   IP packet filters identified by the Filter-Id AVP(s). The credit-control
+   server SHOULD include either the Filter-Rule AVP or the
    Filter-Id AVP in the Credit-Control-Answer message.
 </t><t>
-   If both Final-Unit-Indication AVP and QoS-Final-Unit-Indication AVP exist in 
-   the Credit-Control-Answer message, a credit control client which supports 
+   If both Final-Unit-Indication AVP and QoS-Final-Unit-Indication AVP exist in
+   the Credit-Control-Answer message, a credit control client which supports
    the QoS-Final-Unit-Indication AVP SHOULD follow the directives included in it.
 </t><t>
    An entity other than the credit-control server may provision the
@@ -1884,7 +1884,7 @@ End User        Service Element         AAA Server          CC Server
    presumably need not send any additional filter.  Therefore, it is
    RECOMMENDED that credit-control server implementations supporting the
    graceful service termination be configurable for sending the
-   Restriction-Filter-Rule AVP, the Filter-Rule AVP, the Filter-Id AVP, 
+   Restriction-Filter-Rule AVP, the Filter-Rule AVP, the Filter-Id AVP,
    or none of the above.
 </t><t>
    When the final granted units have been consumed, the credit-control
@@ -1942,7 +1942,7 @@ End User        Service Element         AAA Server          CC Server
    Accounting-Realtime-Required and Credit-Control-Failure-Handling
    AVPs, different safety levels can be built.  For example, by choosing
    a Credit-Control-Failure-Handling AVP equal to CONTINUE for the
-   credit-control flow and a Accounting-Realtime-Required AVP equal to
+   credit-control flow and an Accounting-Realtime-Required AVP equal to
    DELIVER_AND_GRANT for the accounting flow, the service can be granted
    to the end user even if the connection to the credit-control server
    is down, as long as the accounting server is able to collect the
@@ -2016,7 +2016,7 @@ End User        Service Element         AAA Server          CC Server
 </t><t>
    If the Credit-Control-Failure-Handling AVP is set to the value
    CONTINUE or RETRY_AND_TERMINATE, the service will be granted to the
-   end user when the timer Tx expires.  An answer message with granted 
+   end user when the timer Tx expires.  An answer message with granted
    units may arrive later if the base protocol transport failover
    occurred in the path to the credit-control server.  (The Twinit
    default value is 3 times more than the Tx recommended value.) The
@@ -2070,7 +2070,7 @@ End User        Service Element         AAA Server          CC Server
    The one time event can be used when the credit-control client wants
    to know the cost of the service event or to check the account balance
    without any credit-reservation.  It can also be used for refunding
-   service units on the user's account or for direct debiting withouts
+   service units on the user's account or for direct debiting without
   any credit-reservation.  The one time event is shown in <xref target="onetimeevent" format="default"/>.
 </t>
   <figure title="One time event" anchor="onetimeevent">
@@ -2137,8 +2137,8 @@ End User        Service Element        AAA Server        CC Server
    A Diameter credit-control client requesting the balance check MUST
    set the CC-Request-Type AVP equal to EVENT_REQUEST, include a
    Requested-Action AVP set to CHECK_BALANCE, and include the
-   Subscription-Id AVP or Subscription-Id-Extension AVP in order to identify 
-   the end user in the credit-control server.  The Service-Context-Id AVP 
+   Subscription-Id AVP or Subscription-Id-Extension AVP in order to identify
+   the end user in the credit-control server.  The Service-Context-Id AVP
    indicates the service specific document applicable to the request.
 </t>
 <t>
@@ -2166,9 +2166,9 @@ End User        Service Element        AAA Server        CC Server
 <t>
    In the Credit-Control-Request message, the CC-Request-Type is set to
    the value EVENT_REQUEST and the Requested-Action AVP is set to
-   DIRECT_DEBITING.  The Subscription-Id AVP or Subscription-Id-Extension AVP 
-   SHOULD be included to identify the end user in the credit-control server.  
-   The Event-Timestamp AVP SHOULD be included in the request and contain the 
+   DIRECT_DEBITING.  The Subscription-Id AVP or Subscription-Id-Extension AVP
+   SHOULD be included to identify the end user in the credit-control server.
+   The Event-Timestamp AVP SHOULD be included in the request and contain the
    time when the service event is requested in the service element.  The
    Service-Context-Id AVP indicates the service specific document
    applicable to the request.
@@ -2218,9 +2218,9 @@ End User        Service Element        AAA Server        CC Server
 <t>
    The credit-control client MUST set CC-Request-Type to the value
    EVENT_REQUEST and the Requested-Action AVP to REFUND_ACCOUNT in the
-   Credit-Control-Request message.  The Subscription-Id AVP or 
-   Subscription-Id-Extension AVP SHOULD be included to identify the end user in 
-   the credit-control server.  The Service-Context-Id AVP indicates the service 
+   Credit-Control-Request message.  The Subscription-Id AVP or
+   Subscription-Id-Extension AVP SHOULD be included to identify the end user in
+   the credit-control server.  The Service-Context-Id AVP indicates the service
    specific document applicable to the request.
 </t>
 <t>
@@ -2506,7 +2506,7 @@ End User        Service Element        AAA Server        CC Server
     <c>Idle</c>
 
     <c>PendingI</c>
-    <c>Failure to send, or temporary error and CCFH equal to TERMINATEor to RETRY_AND_TERMINATE</c>
+    <c>Failure to send, or temporary error and CCFH equal to TERMINATE or to RETRY_AND_TERMINATE</c>
     <c>Terminate end user's service</c>
     <c>Idle</c>
 
@@ -2889,7 +2889,7 @@ Exponent          429  8.9    Integer32  | M  |     |  V |
 Final-Unit-Action 449  8.35   Enumerated | M  |     |  V |
 Final-Unit-       430  8.34   Grouped    | M  |     |  V |
   Indication                             |    |     |    |
-QoS-Final-Unit-   XXX  8.69   Grouped    |    |  M  |  V |
+QoS-Final-Unit-  TBD18 8.69   Grouped    |    |  M  |  V |
   Indication                             |    |     |    |
 Granted-Service-  431  8.17   Grouped    | M  |     |  V |
   Unit                                   |    |     |    |
@@ -2907,15 +2907,15 @@ Redirect-Address  433  8.38   Enumerated | M  |     |  V |
 Redirect-Server   434  8.37   Grouped    | M  |     |  V |
 Redirect-Server   435  8.39   UTF8String | M  |     |  V |
   -Address                               |    |     |    |
-Redirect-Server   XXX  8.64   Grouped    |    |  M  |  V |
+Redirect-Server  TBD13 8.64   Grouped    |    |  M  |  V |
   -Extension                             |    |     |    |
-Redirect-Address  XXX  8.65   UTF8String |    |  M  |  V |
+Redirect-Address TBD14 8.65   UTF8String |    |  M  |  V |
   -IPv4Address                           |    |     |    |
-Redirect-Address  XXX  8.66   UTF8String |    |  M  |  V |
+Redirect-Address TBD15 8.66   UTF8String |    |  M  |  V |
   -IPv6Address                           |    |     |    |
-Redirect-Address  XXX  8.67   UTF8String |    |  M  |  V |
+Redirect-Address TBD16 8.67   UTF8String |    |  M  |  V |
   -URL                                   |    |     |    |
-Redirect-Address  XXX  8.68   UTF8String |    |  M  |  V |
+Redirect-Address TBD17 8.68   UTF8String |    |  M  |  V |
   -SIP-URI                               |    |     |    |
 Requested-Action  436  8.41   Enumerated | M  |     |  V |
 Requested-Service 437  8.18   Grouped    | M  |     |  V |
@@ -2937,17 +2937,17 @@ Subscription-Id   444  8.48   UTF8String | M  |     |  V |
   -Data                                  |    |     |    |
 Subscription-Id   450  8.47   Enumerated | M  |     |  V |
   -Type                                  |    |     |    |
-Subscription-Id   XXX  8.58   Grouped    |    |  M  |  V |
+Subscription-Id  TBD7  8.58   Grouped    |    |  M  |  V |
   -Extension                             |    |     |    |
-Subscription-Id   XXX  8.59   UTF8String |    |  M  |  V |
+Subscription-Id  TBD8  8.59   UTF8String |    |  M  |  V |
   -E164                                  |    |     |    |
-Subscription-Id   XXX  8.60   UTF8String |    |  M  |  V |
+Subscription-Id  TBD9  8.60   UTF8String |    |  M  |  V |
   -IMSI                                  |    |     |    |
-Subscription-Id   XXX  8.61   UTF8String |    |  M  |  V |
+Subscription-Id  TBD10 8.61   UTF8String |    |  M  |  V |
   -SIP-URI                               |    |     |    |
-Subscription-Id   XXX  8.62   UTF8String |    |  M  |  V |
+Subscription-Id  TBD11 8.62   UTF8String |    |  M  |  V |
   -NAI                                   |    |     |    |
-Subscription-Id   XXX  8.63   UTF8String |    |  M  |  V |
+Subscription-Id  TBD12 8.63   UTF8String |    |  M  |  V |
   -Private                               |    |     |    |
 Tariff-Change     452  8.27   Enumerated | M  |     |  V |
   -Usage                                 |    |     |    |
@@ -2961,17 +2961,17 @@ User-Equipment    459  8.50   Enumerated |    |  M  |  V |
   -Info-Type                             |    |     |    |
 User-Equipment    460  8.51   OctetString|    |  M  |  V |
   -Info-Value                            |    |     |    |
-User-Equipment    XXX  8.52   Grouped    |    |  M  |  V |
+User-Equipment   TBD1  8.52   Grouped    |    |  M  |  V |
   -Info-Extension                        |    |     |    |
-User-Equipment    XXX  8.53   OctetString|    |  M  |  V |
+User-Equipment   TBD2  8.53   OctetString|    |  M  |  V |
   -Info-IMEISV                           |    |     |    |
-User-Equipment    XXX  8.54   OctetString|    |  M  |  V |
-  -Info-MAC                              |    |     |    |  
-User-Equipment    XXX  8.55   OctetString|    |  M  |  V |
-  -Info-EUI64                            |    |     |    |  
-User-Equipment    XXX  8.56   OctetString|    |  M  |  V |
+User-Equipment   TBD3  8.54   OctetString|    |  M  |  V |
+  -Info-MAC                              |    |     |    |
+User-Equipment   TBD4  8.55   OctetString|    |  M  |  V |
+  -Info-EUI64                            |    |     |    |
+User-Equipment   TBD5  8.56   OctetString|    |  M  |  V |
   -Info-ModifiedEUI64                    |    |     |    |
-User-Equipment    XXX  8.57   OctetString|    |  M  |  V |
+User-Equipment   TBD6  8.57   OctetString|    |  M  |  V |
   -Info-IMEI                             |    |     |    |
 Value-Digits      447  8.10   Integer64  | M  |     |  V |
 Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
@@ -3058,7 +3058,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    FAILOVER_NOT_SUPPORTED          0
 </t><t>
       When the CC-Session-Failover AVP is set to FAILOVER_NOT_SUPPORTED,
-      the credit-control message stream MUST NOT to be moved to an
+      the credit-control message stream MUST NOT be moved to an
       alternative destination in the case of communication failure.
       This is the default behavior if the AVP isn't included in the
       reply from the authorization or credit-control server.
@@ -3070,7 +3070,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       destination in the case of communication failure.  Moving the
       credit-control message stream to a backup server MAY require that
       information related to the credit-control session should also be
-      forwarded to alternative server.
+      forwarded to an alternative server.
 </t>
 </section>
 <section anchor="sec-8.5" title="CC-Sub-Session-Id AVP">
@@ -3338,10 +3338,9 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    in which new quota is requested.  If the credit-control client does
    not include the Requested-Service-Unit AVP in a request command,
    because for instance, it has determined that the end-user terminated
-</t><t>
    the service, the server MUST debit the used amount from the user's
    account but MUST NOT return a new quota in the corresponding answer.
-   The Validity-Time, Result-Code, and Final-Unit-Indication  or 
+   The Validity-Time, Result-Code, and Final-Unit-Indication  or
    QoS-Final-Unit-Indication AVPs MAY be present in an answer command as defined
    in <xref target="sec-5.1.2"/> and <xref target="sec-5.6"/>
    for the graceful service termination.
@@ -3443,8 +3442,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    contains the amount of used units measured from the point when the
    service became active or, if interim interrogations are used during
    the session, from the point when the previous measurement ended.
-   Note: The values reported in a Used-Service-Unit AVP does not necessarily 
-   have a relation to the grant provided in a Granted-Service-Unit AVP, 
+   Note: The values reported in a Used-Service-Unit AVP does not necessarily
+   have a relation to the grant provided in a Granted-Service-Unit AVP,
    e.g., the value in this AVP may exceed the value in the grant.
 </t><t>
    The Used-Service-Unit AVP is defined as follows (per the
@@ -3724,16 +3723,16 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t><t>
    If the type of Final-Unit-Action AVP is set to REDIRECT and the type of
    server is not one of the types in the Redirect-Server-Type AVP, then the
-   QoS-Final-Unit-Indication AVP SHOULD be used together with the 
+   QoS-Final-Unit-Indication AVP SHOULD be used together with the
    Redirect-Server-Extension AVP instead of the Final-Unit-Indication AVP.
 </t><t>
-   If the type of Final-Unit-Action AVP is set to RESTRICT_ACCESS or REDIRECT 
-   and the classification of the restricted traffic cannot be expressed using 
-   IPFilterRule, or different actions (e.g., QoS) than just allowiung QoS needs 
-   to be enforced traffic, then the QoS-Final-Unit-Indication AVP SHOULD be 
+   If the type of Final-Unit-Action AVP is set to RESTRICT_ACCESS or REDIRECT
+   and the classification of the restricted traffic cannot be expressed using
+   IPFilterRule, or different actions (e.g., QoS) than just allowiung QoS needs
+   to be enforced traffic, then the QoS-Final-Unit-Indication AVP SHOULD be
    used instead of the Final-Unit-Indication AVP. However, if the credit control
-   server wants to preserve backward compatibility with credit-control clients 
-   that support only <xref target="RFC4006"/>, the Final-Unit-Indication AVP 
+   server wants to preserve backward compatibility with credit-control clients
+   that support only <xref target="RFC4006"/>, the Final-Unit-Indication AVP
    SHOULD be used together with the Filter-Id AVP.
 </t><t>
    The Final-Unit-Indication AVP is defined as follows (per the
@@ -3769,19 +3768,19 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    REDIRECT                        1
 </t><t>
       The service element MUST redirect the user to the address
-      specified in the Redirect-Server-Address AVP or one of the AVPs included 
+      specified in the Redirect-Server-Address AVP or one of the AVPs included
       in the Redirect-Server-Extension AVP.  The redirect action
       is defined in <xref target="sec-5.6.2"/>.
 </t><t>
    RESTRICT_ACCESS                 2
 </t><t>
       The access device MUST restrict the user access according to the
-      IP packet filters defined in the Restriction-Filter-Rule AVP, the 
-      Filter-Rule AVP or according to the IP packet filters identified by the 
+      IP packet filters defined in the Restriction-Filter-Rule AVP, the
+      Filter-Rule AVP or according to the IP packet filters identified by the
       Filter-Id AVP.  All the packets not matching the filters MUST be dropped
       (see <xref target="sec-5.6.3"/>). In the case that Restriction-Filter-Rule AVP is used,
-      all the packets matching the filters MUST be allowed. In the case that 
-      Filter-Rule AVP or Filter-Id AVP are used, other actions 
+      all the packets matching the filters MUST be allowed. In the case that
+      Filter-Rule AVP or Filter-Id AVP are used, other actions
       (e.g., QoS) may be deployed on the packets matching the filters.
 </t>
 </section>
@@ -4106,7 +4105,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t><t>
    EUI64                           2
 </t><t>
-      The 64-bit identifier used to identify hardware instance of the
+      The 64-bit identifier used to identify the hardware instance of the
       product, as defined in <xref target="EUI64"/>.
 </t><t>
    MODIFIED_EUI64                  3
@@ -4130,10 +4129,10 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    The User-Equipment-Info-Extension AVP (AVP Code TBD1) is of type Grouped and
    allows the credit-control client to indicate the identity and
    capability of the terminal the subscriber is using for the connection
-   to network. If the type of the equipment is one of the types listed in the 
-   User-Equipment-Info-Type AVP, then the credit-control client SHOULD send the 
-   information in the User-Equipment-Info AVP, in addition to or instead of the 
-   User-Equipment-Info-Extension AVP. This is in order to preserve backward 
+   to network. If the type of the equipment is one of the types listed in the
+   User-Equipment-Info-Type AVP, then the credit-control client SHOULD send the
+   information in the User-Equipment-Info AVP, in addition to or instead of the
+   User-Equipment-Info-Extension AVP. This is in order to preserve backward
    compatibility with credit-control servers that support only RFC4006.
 </t><t>
    It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
@@ -4154,23 +4153,23 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <section anchor="sec-8.53" title="User-Equipment-Info-IMEISV AVP">
 <t>
    The User-Equipment-Info-IMEISV (AVP Code TBD2) is of type
-   OctetString. The User-Equipment-Info-IMEISV AVP contains the International 
-   Mobile Equipment Identifier and Software Version in the international 
+   OctetString. The User-Equipment-Info-IMEISV AVP contains the International
+   Mobile Equipment Identifier and Software Version in the international
    IMEISV format according to 3GPP TS 23.003 <xref target="TGPPIMEI"/>.
 </t>
 </section>
 <section anchor="sec-8.54" title="User-Equipment-Info-MAC AVP">
 <t>
    The User-Equipment-Info-MAC (AVP Code TBD3) is of type
-   OctetString. The User-Equipment-Info-MAC AVP contains the 48-bit MAC 
+   OctetString. The User-Equipment-Info-MAC AVP contains the 48-bit MAC
    address is formatted as described in <xref target="RFC3580"/>.
 </t>
 </section>
 <section anchor="sec-8.55" title="User-Equipment-Info-EUI64 AVP">
 <t>
    The User-Equipment-Info-EUI64 (AVP Code TBD4) is of type
-   OctetString. The UUser-Equipment-Info-EUI64 AVP contains the 64-bit 
-   identifier used to identify hardware instance of the product, 
+   OctetString. The UUser-Equipment-Info-EUI64 AVP contains the 64-bit
+   identifier used to identify the hardware instance of the product,
    as defined in <xref target="EUI64"/>.
 </t>
 </section>
@@ -4178,7 +4177,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <t>
    The User-Equipment-Info-ModifiedEUI64 (AVP Code TBD5) is of type
    OctetString. There are a number of types of terminals that have identifiers
-   other than IMEI, IEEE 802 MACs, or EUI-64. These identifiers can be 
+   other than IMEI, IEEE 802 MACs, or EUI-64. These identifiers can be
    converted to modified EUI-64 format as described in <xref target="RFC4291"/>
    or by using some other methods referred to in the service-specific
    documentation. The User-Equipment-Info-ModifiedEUI64 AVP contains such identifiers.
@@ -4186,22 +4185,22 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.57" title="User-Equipment-Info-IMEI AVP">
 <t>
-   The User-Equipment-Info-IMEI (AVP Code TBD6) is of type OctetString. 
-   The User-Equipment-Info-IMEI AVP contains the International Mobile Equipment 
-   Identifier in the international IMEI format 
+   The User-Equipment-Info-IMEI (AVP Code TBD6) is of type OctetString.
+   The User-Equipment-Info-IMEI AVP contains the International Mobile Equipment
+   Identifier in the international IMEI format
    according to 3GPP TS 23.003 <xref target="TGPPIMEI"/>.
 </t>
 </section>
 <section anchor="sec-8.58" title="Subscription-Id-Extension AVP">
 <t>
    The Subscription-Id-Extension AVP (AVP Code TBD7) is used to identify the end
-   user's subscription and is of type Grouped.  The Subscription-Id-Extension 
-   AVP conatains an included AVP holding the subscription identifier itself. 
-   The type of this included AVP indicates the type of the subscription 
-   identifier. If the type of the identifier is one of the types listed in the 
-   Subscription-Id-Type AVP, then the credit-control client SHOULD send the 
-   information in the Subscription-Id AVP, in addition to or instead of the 
-   Subscription-Id-Extension AVP. This is in order to preserve backward 
+   user's subscription and is of type Grouped.  The Subscription-Id-Extension
+   AVP contains an included AVP holding the subscription identifier itself.
+   The type of this included AVP indicates the type of the subscription
+   identifier. If the type of the identifier is one of the types listed in the
+   Subscription-Id-Type AVP, then the credit-control client SHOULD send the
+   information in the Subscription-Id AVP, in addition to or instead of the
+   Subscription-Id-Extension AVP. This is in order to preserve backward
    compatibility with credit-control servers that support only RFC4006.
 </t><t>
    It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
@@ -4221,38 +4220,38 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </section>
 <section anchor="sec-8.59" title="Subscription-Id-E164 AVP">
 <t>
-   The Subscription-Id-E164 (AVP Code TBD8) is of type UTF8String. 
-   The Subscription-Id-E164 AVP contains the international E.164 format 
-   (e.g., MSISDN), according to the ITU-T E.164 numbering plan defined in 
+   The Subscription-Id-E164 (AVP Code TBD8) is of type UTF8String.
+   The Subscription-Id-E164 AVP contains the international E.164 format
+   (e.g., MSISDN), according to the ITU-T E.164 numbering plan defined in
    <xref target="E164"/> and <xref target="CE164"/>.
 </t>
 </section>
 <section anchor="sec-8.60" title="Subscription-Id-IMSI AVP">
 <t>
-   The Subscription-Id-IMSI (AVP Code TBD9) is of type UTF8String. 
-   The Subscription-Id-IMSI AVP contains the international IMSI format, 
-   according to the ITU-T E.212 numbering plan as defined in 
+   The Subscription-Id-IMSI (AVP Code TBD9) is of type UTF8String.
+   The Subscription-Id-IMSI AVP contains the international IMSI format,
+   according to the ITU-T E.212 numbering plan as defined in
    <xref target="E212"/> and <xref target="CE212"/>.
 </t>
 </section>
 <section anchor="sec-8.61" title="Subscription-Id-SIP-URI AVP">
 <t>
-   The Subscription-Id-SIP-URI (AVP Code TBD10) is of type UTF8String. 
-   The Subscription-Id-SIP-URI AVP contains the identifier in the form of a SIP 
+   The Subscription-Id-SIP-URI (AVP Code TBD10) is of type UTF8String.
+   The Subscription-Id-SIP-URI AVP contains the identifier in the form of a SIP
    URI, as defined in <xref target="RFC3261"/>.
 </t>
 </section>
 <section anchor="sec-8.62" title="Subscription-Id-NAI AVP">
 <t>
-   The Subscription-Id-NAI (AVP Code TBD11) is of type UTF8String. 
-   The Subscription-Id-NAI AVP contains the identifier in the form of a 
+   The Subscription-Id-NAI (AVP Code TBD11) is of type UTF8String.
+   The Subscription-Id-NAI AVP contains the identifier in the form of a
    Network Access Identifier, as defined in <xref target="RFC2486"/>.
 </t>
 </section>
 <section anchor="sec-8.63" title="Subscription-Id-Private AVP">
 <t>
-   The Subscription-Id-Private (AVP Code TBD12) is of type UTF8String. 
-   The Subscription-Id-Private AVP contains a credit-control server private 
+   The Subscription-Id-Private (AVP Code TBD12) is of type UTF8String.
+   The Subscription-Id-Private AVP contains a credit-control server private
    identifier.
 </t>
 </section>
@@ -4262,12 +4261,12 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    contains the address information of the redirect server (e.g., HTTP
    redirect server, SIP Server) with which the end user is to be
    connected when the account cannot cover the service cost.  It MUST be
-   present inside the QoS-Final-Unit-Indication AVP when the Final-Unit-Action 
-   AVP is set to REDIRECT. If the type of the redirect server is one of the 
+   present inside the QoS-Final-Unit-Indication AVP when the Final-Unit-Action
+   AVP is set to REDIRECT. If the type of the redirect server is one of the
    types listed in the Redirect-Address-Type AVP, then the credit-control server
-   SHOULD send the information in the Redirect-Server AVP, in addition to or 
-   instead of the Redirect-Server-Extension AVP. This is in order to preserve 
-   backward compatibility with credit-control clients that support 
+   SHOULD send the information in the Redirect-Server AVP, in addition to or
+   instead of the Redirect-Server-Extension AVP. This is in order to preserve
+   backward compatibility with credit-control clients that support
    only <xref target="RFC4006"/>.
 </t><t>
    It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
@@ -4287,37 +4286,37 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <section anchor="sec-8.65" title="Redirect-Address-IPv4Address AVP">
 <t>
    The Redirect-Address-IPv4Address AVP (AVP Code TBD14) is of type UTF8String
-   and defines the address of the redirect server with which the end user is to 
+   and defines the address of the redirect server with which the end user is to
    be connected when the account cannot cover the service cost. When the address
-   type of the redirect server is in the form of "dotted-decimal" IPv4 address, 
+   type of the redirect server is in the form of "dotted-decimal" IPv4 address,
    as defined in <xref target="RFC0791"/>.
 </t>
 </section>
 <section anchor="sec-8.66" title="Redirect-Address-IPv6Address AVP">
 <t>
    The Redirect-Address-IPv6Address AVP (AVP Code TBD15) is of type UTF8String
-   and defines the address of the redirect server with which the end user is to 
+   and defines the address of the redirect server with which the end user is to
    be connected when the account cannot cover the service cost. When the address
    type is in the form of IPv6 address, as defined in <xref target="RFC4291"/>.
-   The address is a text representation of the address 
+   The address is a text representation of the address
    according to <xref target="RFC5952"/>.
 </t>
 </section>
 <section anchor="sec-8.67" title="Redirect-Address-URL AVP">
 <t>
    The Redirect-Address-URL AVP (AVP Code TBD16) is of type UTF8String
-   and defines the address of the redirect server with which the end user is to 
+   and defines the address of the redirect server with which the end user is to
    be connected when the account cannot cover the service cost. When the address
-   type is in the form of Uniform Resource Locator, 
+   type is in the form of Uniform Resource Locator,
    as defined in <xref target="RFC1738"/>.
 </t>
 </section>
 <section anchor="sec-8.68" title="Redirect-Address-SIP-URI AVP">
 <t>
    The Redirect-Address-SIP-URI AVP (AVP Code TBD17) is of type UTF8String
-   and defines the address of the redirect server with which the end user is to 
+   and defines the address of the redirect server with which the end user is to
    be connected when the account cannot cover the service cost. When the address
-   type is in the form of SIP Uniform Resource Identifier, 
+   type is in the form of SIP Uniform Resource Identifier,
    as defined in <xref target="RFC3261"/>.
 </t>
 </section>
@@ -4352,21 +4351,21 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    be present.
 </t><t>
    If the Final-Unit-Action AVP is set to REDIRECT at least the
-   Redirect-Server-Extension AVP MUST be present.  
-   The Filter-Rule AVP or the Filter-Id AVP MAY be present in the 
-   Credit-Control-Answer message if the user is also allowed to access other 
-   services that are not accessible through the address given in the 
+   Redirect-Server-Extension AVP MUST be present.
+   The Filter-Rule AVP or the Filter-Id AVP MAY be present in the
+   Credit-Control-Answer message if the user is also allowed to access other
+   services that are not accessible through the address given in the
    Redirect-Server-Extension AVP or if the access to these services needs to be
    limited in some way (e.g., QoS).
 </t><t>
    If the QoS-Final-Unit-Action AVP is set to RESTRICT_ACCESS, either the
    Filter-Rule AVP or the Filter-Id AVP SHOULD be present.
 </t><t>
-   The Filter-Rule AVP is defined in <xref target="RFC5777"/>.  The Filter-Rule 
-   AVP can be used to define a specific condition and action combination. If 
-   used only with traffic conditions, it should define which traffic should 
+   The Filter-Rule AVP is defined in <xref target="RFC5777"/>.  The Filter-Rule
+   AVP can be used to define a specific condition and action combination. If
+   used only with traffic conditions, it should define which traffic should
    allowed when no more service units are granted. However, if QoS or treatment
-   information exists in the AVP, these actions should be executed. E.g.,
+   information exists in the AVP, these actions should be executed, e.g.,
    limiting the allowed traffic with certain QoS. When multiple Filter-Rule AVPs
    exist, precedence should be determined as defined in <xref target="RFC5777"/>.
 </t><t>
@@ -4375,13 +4374,13 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    means other than the Diameter credit-control application, e.g.,
    locally configured or configured by another entity.
 </t><t>
-   If the type of Final-Unit-Action AVP is set TERMINATE, or set to 
-   RESTRICT_ACCESS and the action required is allow only traffic that could be 
-   classified using an IPFilterRule, or set to REDIRECT of a type which is one 
-   of the types in the Redirect-Address-Type AVP,then the credit-control server 
-   SHOULD send the information in the Final-Unit-Indication AVP, in addition to 
+   If the type of Final-Unit-Action AVP is set TERMINATE, or set to
+   RESTRICT_ACCESS and the action required is allow only traffic that could be
+   classified using an IPFilterRule, or set to REDIRECT of a type which is one
+   of the types in the Redirect-Address-Type AVP, then the credit-control server
+   SHOULD send the information in the Final-Unit-Indication AVP, in addition to
    or instead of the QoS-Final-Unit-Indication AVP. This is in order to preserve
-   backward compatibility with credit-control clients that support 
+   backward compatibility with credit-control clients that support
    only <xref target="RFC4006"/>.
 </t><t>
    The QoS-Final-Unit-Indication AVP is defined as follows (per the
@@ -5045,9 +5044,9 @@ Service Element         Translation Agent
      &RFC3580;
 
      &RFC4006;
-     
+
      &RFC5777;
-     
+
     <reference anchor="EUI64" target="http://standards.ieee.org/regauth/oui/tutorials/EUI64.html ">
        <front>
          <title>"Guidelines for 64-bit Global Identifier (EUI-64)
