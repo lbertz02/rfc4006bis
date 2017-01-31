@@ -3364,19 +3364,19 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t>
 <figure>
         <artwork><![CDATA[
-      Multiple-Services-Credit-Control ::= < AVP Header: 456 >
-                                           [ Granted-Service-Unit ]
-                                           [ Requested-Service-Unit ]
-                                          *[ Used-Service-Unit ]
-                                           [ Tariff-Change-Usage ]
-                                          *[ Service-Identifier ]
-                                           [ Rating-Group ]
-                                          *[ G-S-U-Pool-Reference ]
-                                           [ Validity-Time ]
-                                           [ Result-Code ]
-                                           [ Final-Unit-Indication ]
-                                           [ QoS-Final-Unit-Indication ]
-                                          *[ AVP ]
+ Multiple-Services-Credit-Control ::= < AVP Header: 456 >
+                                     [ Granted-Service-Unit ]
+                                     [ Requested-Service-Unit ]
+                                    *[ Used-Service-Unit ]
+                                     [ Tariff-Change-Usage ]
+                                    *[ Service-Identifier ]
+                                     [ Rating-Group ]
+                                    *[ G-S-U-Pool-Reference ]
+                                     [ Validity-Time ]
+                                     [ Result-Code ]
+                                     [ Final-Unit-Indication ]
+                                     [ QoS-Final-Unit-Indication ]
+                                    *[ AVP ]
 ]]>
         </artwork>
       </figure>
@@ -4139,13 +4139,13 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t>
       <figure>
 <artwork><![CDATA[
-      User-Equipment-Info-Extension ::= < AVP Header: TBD1 >
-                                 [ User-Equipment-Info-IMEISV ]
-                                 [ User-Equipment-Info-MAC ]
-                                 [ User-Equipment-Info-EUI64 ]
-                                 [ User-Equipment-Info-ModifiedEUI64 ]
-                                 [ User-Equipment-Info-IMEI ]
-                                *[ AVP ]
+    User-Equipment-Info-Extension ::= < AVP Header: TBD1 >
+                               [ User-Equipment-Info-IMEISV ]
+                               [ User-Equipment-Info-MAC ]
+                               [ User-Equipment-Info-EUI64 ]
+                               [ User-Equipment-Info-ModifiedEUI64 ]
+                               [ User-Equipment-Info-IMEI ]
+                              *[ AVP ]
 ]]>
         </artwork>
       </figure>
