@@ -1771,10 +1771,11 @@ End User        Service Element         AAA Server          CC Server
    Credit-Control-Answer message to enable the user to access other services
    (for example, zero-rated services). In such a case, the access device MUST
    drop all the packets not matching the IP filters specified in the
-   Restriction-Filter-Rule AVPs, Filter-Rule AVPs or Filter-Id AVPs. If other
-   are indicated in the Filter-Rule AVPs or Filter-Id AVPs, these SHOULD be
-   performed as well. In addition, if possible, redirect the user to the
-   destination specified in the Redirect-Server AVP or Redirect-Server-Extension AVP.
+   Restriction-Filter-Rule AVPs, Filter-Rule AVPs or Filter-Id AVPs. If  
+   enforcement actions other than allowing the packets (e.g., QoS), are indicated
+   in the Filter-Rule AVPs or Filter-Id AVPs, they SHOULD be performed as well. 
+   In addition, if possible, to redirecting the user to the destination specified
+   in the Redirect-Server AVP or Redirect-Server-Extension AVP.
 </t><t>
    An entity other than the credit-control server may provision the
    access device with appropriate IP packet filters to be used in
@@ -1853,8 +1854,8 @@ End User        Service Element         AAA Server          CC Server
 </t><t>
    A QoS-Final-Unit-Indication AVP with the Final-Unit-Action RESTRICT_ACCESS
    indicates to the device supporting this action that, upon consumption of
-   the final granted units, the actions specified in Filter-Rule AVP(s) MUST be
-   deployed on the traffic according to the classifiers in the Filter-Rule AVP(s).
+   the final granted units, the actions specified in Filter-Rule AVP(s) MUST 
+   restrict the traffic according to the classifiers in the Filter-Rule AVP(s).
    If Filter-Id AVP(s) are provided in the Credit-Control-Answer
    message, the credit control client MUST restrict the traffic according to the
    IP packet filters identified by the Filter-Id AVP(s). The credit-control
@@ -4134,6 +4135,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    information in the User-Equipment-Info AVP, in addition to or instead of the
    User-Equipment-Info-Extension AVP. This is in order to preserve backward
    compatibility with credit-control servers that support only RFC4006.
+   Exactly one AVP MUST be included inside the User-Equipment-Info-Extension AVP.
 </t><t>
    It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
 </t>
@@ -4202,6 +4204,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    information in the Subscription-Id AVP, in addition to or instead of the
    Subscription-Id-Extension AVP. This is in order to preserve backward
    compatibility with credit-control servers that support only RFC4006.
+   Exactly one AVP MUST be included inside the Subscription-Id-Extension AVP.
 </t><t>
    It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
 </t>
@@ -4268,6 +4271,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    instead of the Redirect-Server-Extension AVP. This is in order to preserve
    backward compatibility with credit-control clients that support
    only <xref target="RFC4006"/>.
+   Exactly only one AVP MUST be included inside the Redirect-Server-Extension AVP.
 </t><t>
    It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
 </t>
