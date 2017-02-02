@@ -920,12 +920,12 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
 </figure>
 <t>
    If independent credit-control of multiple services is used, the
-   validity-time and final-unit-indication SHOULD be present either in
-   the Multiple-Services-Credit-Control AVP(s) or at command level as
-   single AVPs.  However, the Result-Code AVP MAY be present both on the
-   command level and within the Multiple-Services-Credit-Control AVP.
-   If the Result-Code on the command level indicates a value other than
-   SUCCESS, then the Result-Code on command level takes precedence over
+   Validity-Time AVP and Final-Unit-Indication AVP or QoS-Final-Unit-Indication AVP
+   SHOULD be present either in the Multiple-Services-Credit-Control AVP(s) or at
+   command level as single AVPs.  However, the Result-Code AVP MAY be present 
+   both on the command level and within the Multiple-Services-Credit-Control AVP.
+   If the Result-Code AVP on the command level indicates a value other than
+   SUCCESS, then the Result-Code AVP on command level takes precedence over
    any included in the Multiple-Services-Credit-Control AVP.
 </t>
 <t>
