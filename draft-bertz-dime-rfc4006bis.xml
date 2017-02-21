@@ -5967,6 +5967,10 @@ End User         Service Element                           CC Server
     <t>Clarify that values in Used-Service-Unit AVP may exceed Granted-Service-Unit AVP (<xref target="sec-8.19"/>).</t>
     <t>Clarify that IPv6 representation in Redirect-Address-Type AVP conforms to RFC5952 (<xref target="sec-8.38"/>).</t>
     <t>Describe immediate graceful service termination procedure (in <xref target="sec-5.6"/>).</t>
+    <t>Add extensible User-Equipment-Info-Extension AVP and included types (from <xref target="sec-8.52"/> to <xref target="sec-8.57"/>).</t>
+    <t>Add extensible Subscription-Id-Extension AVP and included types (from <xref target="sec-8.58"/> to <xref target="sec-8.63"/>).</t>
+    <t>Add extensible Redirect-Server-Extension AVP and included types (from <xref target="sec-8.64"/> to <xref target="sec-8.68"/>).</t>
+    <t>Add extensible QoS-Final-Unit-Indication AVP (in <xref target="sec-8.69"/>).</t>
   </list>
   </t>
 </section>
