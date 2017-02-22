@@ -922,7 +922,7 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
    If independent credit-control of multiple services is used, the
    Validity-Time AVP and Final-Unit-Indication AVP or QoS-Final-Unit-Indication AVP
    SHOULD be present either in the Multiple-Services-Credit-Control AVP(s) or at
-   command level as single AVPs.  However, the Result-Code AVP MAY be present 
+   command level as single AVPs.  However, the Result-Code AVP MAY be present
    both on the command level and within the Multiple-Services-Credit-Control AVP.
    If the Result-Code AVP on the command level indicates a value other than
    SUCCESS, then the Result-Code AVP on command level takes precedence over
@@ -1771,9 +1771,9 @@ End User        Service Element         AAA Server          CC Server
    Credit-Control-Answer message to enable the user to access other services
    (for example, zero-rated services). In such a case, the access device MUST
    drop all the packets not matching the IP filters specified in the
-   Restriction-Filter-Rule AVPs, Filter-Rule AVPs or Filter-Id AVPs. If  
+   Restriction-Filter-Rule AVPs, Filter-Rule AVPs or Filter-Id AVPs. If
    enforcement actions other than allowing the packets (e.g., QoS), are indicated
-   in the Filter-Rule AVPs or Filter-Id AVPs, they SHOULD be performed as well. 
+   in the Filter-Rule AVPs or Filter-Id AVPs, they SHOULD be performed as well.
    In addition, if possible, to redirecting the user to the destination specified
    in the Redirect-Server AVP or Redirect-Server-Extension AVP.
 </t><t>
@@ -1854,7 +1854,7 @@ End User        Service Element         AAA Server          CC Server
 </t><t>
    A QoS-Final-Unit-Indication AVP with the Final-Unit-Action RESTRICT_ACCESS
    indicates to the device supporting this action that, upon consumption of
-   the final granted units, the actions specified in Filter-Rule AVP(s) MUST 
+   the final granted units, the actions specified in Filter-Rule AVP(s) MUST
    restrict the traffic according to the classifiers in the Filter-Rule AVP(s).
    If Filter-Id AVP(s) are provided in the Credit-Control-Answer
    message, the credit control client MUST restrict the traffic according to the
@@ -4199,17 +4199,17 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    user's subscription and is of type Grouped.  The Subscription-Id-Extension
    AVP contains an included AVP holding the subscription identifier itself.
    The type of this included AVP indicates the type of the subscription
-   identifier. The existing identifier types are listed in the 
-   Subscription-Id-Type AVP. For each existing identifier type there is a 
-   separate sub-AVP corresponding to it. If a new identifier type is required a 
+   identifier. The existing identifier types are listed in the
+   Subscription-Id-Type AVP. For each existing identifier type there is a
+   separate sub-AVP corresponding to it. If a new identifier type is required a
    corresponding new sub-AVP SHOULD be defined.
 </t><t>
    If full backward compatibility with <xref target="RFC4006"/> is required, then
-   the Subscription-Id AVP MUST be used to carry out identifier types listed in 
-   the Subscription-Id-Type AVP. While Subscription-Id-Extension AVP MUST be 
-   used only for newly defined identifier types. If full backward compatibility 
-   with <xref target="RFC4006"/> is not required, then the Subscription-Id-Extension 
-   AVP MAY be used to carry out the existing identifier types. In this case, 
+   the Subscription-Id AVP MUST be used to carry out identifier types listed in
+   the Subscription-Id-Type AVP. While Subscription-Id-Extension AVP MUST be
+   used only for newly defined identifier types. If full backward compatibility
+   with <xref target="RFC4006"/> is not required, then the Subscription-Id-Extension
+   AVP MAY be used to carry out the existing identifier types. In this case,
    Subscription-Id-Extension AVP MAY be sent together with Subscription-Id AVP.
 </t><t>
    Exactly one sub-AVP MUST be included inside the Subscription-Id-Extension AVP.
@@ -4888,15 +4888,13 @@ Service Element         Translation Agent
 </section>
 <section anchor="sec-14" title="Security Considerations">
 <t>
-   The Diameter base protocol <xref target="RFC6733"/> requires that each Diameter
-   implementation use underlying security; i.e., TLS/TCP, DTLS/SCTP or IPsec.  These
-   mechanisms are believed to provide sufficient protection under the
-   normal Internet threat model; that is, assuming that the authorized
-   nodes engaging in the protocol have not been compromised, but that
-   the attacker has complete control over the communication channels
-   between them.  This includes eavesdropping, message modification,
-   insertion, and man-in-the-middle and replay attacks.  Note also that
-   this application includes a mechanism for application layer replay
+   Security considerations regarding the Diameter protocol itself are
+   discussed in [RFC6733].  Use of this application of Diameter MUST
+   take into consideration the security issues and requirements of the
+   base protocol.
+</t>
+<t>
+   This application includes a mechanism for application layer replay
    protection by means of the Session-Id from <xref target="RFC6733"/> and
    CC-Request-Number, which is specified in this document.  The Diameter
    credit-control application is often used within one domain, and there
@@ -4936,7 +4934,7 @@ Service Element         Translation Agent
    that third-party proxies will not modify the credit-control commands
    or AVP values.
 </t>
-<section anchor="sec-14.1" title="Direct Connection with Redirects">
+<section anchor="sec-14.2" title="Direct Connection with Redirects">
 <t>
    A Diameter credit-control agent cannot always know whether agents
    between it and the end user's Diameter credit-control server are
@@ -5971,6 +5969,7 @@ End User         Service Element                           CC Server
     <t>Add extensible Subscription-Id-Extension AVP and included types (from <xref target="sec-8.58"/> to <xref target="sec-8.63"/>).</t>
     <t>Add extensible Redirect-Server-Extension AVP and included types (from <xref target="sec-8.64"/> to <xref target="sec-8.68"/>).</t>
     <t>Add extensible QoS-Final-Unit-Indication AVP (in <xref target="sec-8.69"/>).</t>
+    <t>Updated Security Section to include language consistent with structues of latest base protocol specification.</t>
   </list>
   </t>
 </section>
