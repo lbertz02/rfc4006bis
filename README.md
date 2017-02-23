@@ -37,6 +37,7 @@ When ready to submit create a new file under the 'versions' folder. Do NOT udpat
 The following revisions are present in the 'versions' directory:
 
 - [draft-ietf-dime-rfc4006bis-00](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-00) - Initial Version (WG Accepted) - Sept 2016
+- [draft-ietf-dime-rfc4006bis-01](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-01) - Many working group inputs - Feb 23, 2017
 )
 
 
