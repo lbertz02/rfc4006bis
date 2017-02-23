@@ -425,7 +425,7 @@
 </t>
 <texttable anchor="table_command_codes" title="Credit-Control Commands">
   <ttcol align="left">Command-Name</ttcol>
-  <ttcol align="left">Abrrev.</ttcol>
+  <ttcol align="left">Abrev.</ttcol>
   <ttcol align="left">Code</ttcol>
   <ttcol align="left">Reference</ttcol>
   <c>Credit-Control-Request</c><c>CCR</c><c>272</c><c>3.1</c>
@@ -610,7 +610,7 @@
    been temporarily prevented.  The usage of the Credit-Control-Failure-Handling
    AVP and the Direct-Debiting-Failure-Handling AVP
    allows flexibility, as failure handling for the credit-control
-   session and one time event direct debiting may be different.
+   session and one-time event direct debiting may be different.
 </t>
 <section anchor="sec-4.1" title="Service-Specific Rating Input and Interoperability">
 <t>
@@ -1904,7 +1904,7 @@ End User        Service Element         AAA Server          CC Server
 <t>
    Once the subscriber replenishes the account, she presumably expects
    all the restrictions placed by the graceful termination procedure to
-   be removed immediately and unlimited service' access to be resumed.
+   be removed immediately and unlimited service access to be resumed.
    For the best user experience, the credit-control server
    implementation MAY support the server-initiated credit re-authorization
    (see <xref target="sec-5.5"/>).  In such a case, upon the successful
@@ -2068,11 +2068,11 @@ End User        Service Element         AAA Server          CC Server
    that the user has been authenticated and authorized beforehand.
 </t>
 <t>
-   The one time event can be used when the credit-control client wants
+   The one-time event can be used when the credit-control client wants
    to know the cost of the service event or to check the account balance
    without any credit-reservation.  It can also be used for refunding
    service units on the user's account or for direct debiting without
-  any credit-reservation.  The one time event is shown in <xref target="onetimeevent" format="default"/>.
+  any credit-reservation.  The one-time event is shown in <xref target="onetimeevent" format="default"/>.
 </t>
   <figure title="One time event" anchor="onetimeevent">
   <artwork><![CDATA[
@@ -2092,7 +2092,7 @@ End User        Service Element        AAA Server        CC Server
     </artwork>
     </figure>
 <t>
-   In environments such as the 3GPP architecture, the one time event can
+   In environments such as the 3GPP architecture, the one-time event can
    be sent from the service element directly to the credit-control
    server.
 </t>
@@ -2497,7 +2497,7 @@ End User        Service Element        AAA Server        CC Server
     <c>PendingI</c>
 
     <c>PendingI</c>
-    <c>Successful CC intial answer received</c>
+    <c>Successful CC initial answer received</c>
     <c>Stop Tx</c>
     <c>Open</c>
 
@@ -3729,7 +3729,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t><t>
    If the type of Final-Unit-Action AVP is set to RESTRICT_ACCESS or REDIRECT
    and the classification of the restricted traffic cannot be expressed using
-   IPFilterRule, or different actions (e.g., QoS) than just allowiung QoS needs
+   IPFilterRule, or different actions (e.g., QoS) than just allowing QoS needs
    to be enforced traffic, then the QoS-Final-Unit-Indication AVP SHOULD be
    used instead of the Final-Unit-Indication AVP. However, if the credit control
    server wants to preserve backward compatibility with credit-control clients
@@ -3924,7 +3924,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <t>
    The Service-Context-Id AVP is of type UTF8String (AVP Code 461) and
    contains a unique identifier of the Diameter credit-control service
-   specific document that applies to the request (as defined in section
+   specific document that applies to the request (as defined in
    <xref target="sec-4.1.2"/>).  This is an identifier allocated by the service provider, by
    the service element manufacturer, or by a standardization body, and
    MUST uniquely identify a given Diameter credit-control service
@@ -5969,7 +5969,7 @@ End User         Service Element                           CC Server
     <t>Add extensible Subscription-Id-Extension AVP and included types (from <xref target="sec-8.58"/> to <xref target="sec-8.63"/>).</t>
     <t>Add extensible Redirect-Server-Extension AVP and included types (from <xref target="sec-8.64"/> to <xref target="sec-8.68"/>).</t>
     <t>Add extensible QoS-Final-Unit-Indication AVP (in <xref target="sec-8.69"/>).</t>
-    <t>Updated Security Section to include language consistent with structues of latest base protocol specification.</t>
+    <t>Updated Security Section to include language consistent with structures of latest base protocol specification.</t>
   </list>
   </t>
 </section>
