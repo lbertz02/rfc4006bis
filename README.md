@@ -31,10 +31,10 @@ quetsion have been resolved by looking at the older versions.
 The option adopted here is the 3rd one.  It does require some management on the part of the version submitter.
 
 ### VERSION Submission
-When ready to submit create a new file under the submitted folder. Do NOT udpate the master file. Once submitted please update this document as well.
+When ready to submit create a new file under the 'versions' folder. Do NOT udpate the master file. Once submitted please update this document as well.
 
 ## Versions (under release directory)
-The following revisions are present in the release director:
+The following revisions are present in the 'versions' directory:
 
 - [draft-ietf-dime-rfc4006bis-00](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-00) - Initial Version (WG Accepted) - Sept 2016
 )
