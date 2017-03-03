@@ -3648,12 +3648,12 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    means other than the Diameter credit-control application, e.g.,
    locally configured or configured by another entity.
 </t><t>
-   If the type of Final-Unit-Action AVP is set to REDIRECT and the type of
-   server is not one of the types in the Redirect-Server-Type AVP, then the
+   If the Final-Unit-Action AVP is set to REDIRECT and the type of
+   server is not one of the enumerations in the Redirect-Address-Type AVP, then the
    QoS-Final-Unit-Indication AVP SHOULD be used together with the
    Redirect-Server-Extension AVP instead of the Final-Unit-Indication AVP.
 </t><t>
-   If the type of Final-Unit-Action AVP is set to RESTRICT_ACCESS or REDIRECT
+   If the Final-Unit-Action AVP is set to RESTRICT_ACCESS or REDIRECT
    and the classification of the restricted traffic cannot be expressed using
    IPFilterRule, or different actions (e.g., QoS) than just allowing QoS needs
    to be enforced traffic, then the QoS-Final-Unit-Indication AVP SHOULD be
