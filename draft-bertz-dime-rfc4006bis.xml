@@ -4056,7 +4056,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    The User-Equipment-Info-Extension AVP (AVP Code TBD1) is of type Grouped and
    allows the credit-control client to indicate the identity and
    capability of the terminal the subscriber is using for the connection
-   to network. If the type of the equipment is one of the types listed in the
+   to network. If the type of the equipment is one of the enumerated types of
    User-Equipment-Info-Type AVP, then the credit-control client SHOULD send the
    information in the User-Equipment-Info AVP, in addition to or instead of the
    User-Equipment-Info-Extension AVP. This is in order to preserve backward
@@ -4123,16 +4123,17 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <t>
    The Subscription-Id-Extension AVP (AVP Code TBD7) is used to identify the end
    user's subscription and is of type Grouped.  The Subscription-Id-Extension
-   AVP contains an included AVP holding the subscription identifier itself.
+   group AVP MUST include an AVP holding the subscription identifier.
    The type of this included AVP indicates the type of the subscription
-   identifier. The existing identifier types are listed in the
-   Subscription-Id-Type AVP. For each existing identifier type there is a
-   separate sub-AVP corresponding to it. If a new identifier type is required a
-   corresponding new sub-AVP SHOULD be defined.
+   identifier. 
+   For each of the enumerated values of the Subscription-Id-Type AVP, there
+   is a corresponding sub-AVP for use within the Subscription-Id-Extension group AVP.
+   If a new identifier type is required a corresponding new sub-AVP SHOULD be defined
+   for use within the Subscription-Id-Extension group AVP.
 </t><t>
    If full backward compatibility with <xref target="RFC4006"/> is required, then
-   the Subscription-Id AVP MUST be used to carry out identifier types listed in
-   the Subscription-Id-Type AVP, while the Subscription-Id-Extension AVP MUST be
+   the Subscription-Id AVP MUST be used to indicate identifier types enumerated in
+   the Subscription-Id-Type AVP, whereas the Subscription-Id-Extension AVP MUST be
    used only for newly defined identifier types. If full backward compatibility
    with <xref target="RFC4006"/> is not required, then the Subscription-Id-Extension
    AVP MAY be used to carry out the existing identifier types. In this case,
