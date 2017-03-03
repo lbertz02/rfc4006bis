@@ -4815,7 +4815,7 @@ Service Element         Translation Agent
 <section anchor="sec-14" title="Security Considerations">
 <t>
    Security considerations regarding the Diameter protocol itself are
-   discussed in [RFC6733].  Use of this application of Diameter MUST
+   discussed in <xref target="RFC6733"/>.  Use of this application of Diameter MUST
    take into consideration the security issues and requirements of the
    base protocol.
 </t>
