@@ -3757,7 +3757,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    IPv6 Address                    1
 </t><t>
       The address type is in the form of IPv6 address, as defined in
-      <xref target="RFC4291"/>.  The address is a text representation of the address
+      <xref target="RFC4291"/>.  The address SHOULD conform to the text representation of the address
       according to <xref target="RFC5952"/>.
 </t><t>
    URL                             2
@@ -4201,7 +4201,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    connected when the account cannot cover the service cost.  It MUST be
    present inside the QoS-Final-Unit-Indication AVP when the Final-Unit-Action
    AVP is set to REDIRECT. If the type of the redirect server is one of the
-   types listed in the Redirect-Address-Type AVP, then the credit-control server
+   enumerated values of the Redirect-Address-Type AVP, then the credit-control server
    SHOULD send the information in the Redirect-Server AVP, in addition to or
    instead of the Redirect-Server-Extension AVP. This is in order to preserve
    backward compatibility with credit-control clients that support
@@ -4225,27 +4225,27 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <section anchor="sec-8.65" title="Redirect-Address-IPv4Address AVP">
 <t>
    The Redirect-Address-IPv4Address AVP (AVP Code TBD14) is of type UTF8String
-   and defines the address of the redirect server with which the end user is to
-   be connected when the account cannot cover the service cost. When the address
-   type of the redirect server is in the form of "dotted-decimal" IPv4 address,
+   and defines the IPv4 address of the redirect server with which the end user is to
+   be connected when the account cannot cover the service cost. The encoding
+   of the redirect server address is in the text form of "dotted-decimal" IPv4 address,
    as defined in <xref target="RFC0791"/>.
 </t>
 </section>
 <section anchor="sec-8.66" title="Redirect-Address-IPv6Address AVP">
 <t>
    The Redirect-Address-IPv6Address AVP (AVP Code TBD15) is of type UTF8String
-   and defines the address of the redirect server with which the end user is to
-   be connected when the account cannot cover the service cost. When the address
-   type is in the form of IPv6 address, as defined in <xref target="RFC4291"/>.
-   The address is a text representation of the address
-   according to <xref target="RFC5952"/>.
+   and defines the IPv6 address of the redirect server with which the end user is to
+   be connected when the account cannot cover the service cost. The encoding
+   of the IPv6 address is a text representation of the address, as defined in <xref target="RFC4291"/>.
+   The encoding SHOULD conform to the recommendation for IPv6 text representation
+   in <xref target="RFC5952"/>.
 </t>
 </section>
 <section anchor="sec-8.67" title="Redirect-Address-URL AVP">
 <t>
    The Redirect-Address-URL AVP (AVP Code TBD16) is of type UTF8String
    and defines the address of the redirect server with which the end user is to
-   be connected when the account cannot cover the service cost. When the address
+   be connected when the account cannot cover the service cost. The address
    type is in the form of Uniform Resource Locator,
    as defined in <xref target="RFC1738"/>.
 </t>
@@ -4254,7 +4254,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <t>
    The Redirect-Address-SIP-URI AVP (AVP Code TBD17) is of type UTF8String
    and defines the address of the redirect server with which the end user is to
-   be connected when the account cannot cover the service cost. When the address
+   be connected when the account cannot cover the service cost. The address
    type is in the form of SIP Uniform Resource Identifier,
    as defined in <xref target="RFC3261"/>.
 </t>
