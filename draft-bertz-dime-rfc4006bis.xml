@@ -351,7 +351,7 @@
 </t>
 <texttable anchor="table_command_codes" title="Credit-Control Commands">
   <ttcol align="left">Command-Name</ttcol>
-  <ttcol align="left">Abrev.</ttcol>
+  <ttcol align="left">Abbrev.</ttcol>
   <ttcol align="left">Code</ttcol>
   <ttcol align="left">Reference</ttcol>
   <c>Credit-Control-Request</c><c>CCR</c><c>272</c><c>3.1</c>
