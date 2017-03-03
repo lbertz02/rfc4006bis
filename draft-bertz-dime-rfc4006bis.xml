@@ -4296,7 +4296,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    Redirect-Server-Extension AVP or if the access to these services needs to be
    limited in some way (e.g., QoS).
 </t><t>
-   If the QoS-Final-Unit-Action AVP is set to RESTRICT_ACCESS, either the
+   If the Final-Unit-Action AVP is set to RESTRICT_ACCESS, either the
    Filter-Rule AVP or the Filter-Id AVP SHOULD be present.
 </t><t>
    The Filter-Rule AVP is defined in <xref target="RFC5777"/>.  The Filter-Rule
@@ -4312,7 +4312,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    means other than the Diameter credit-control application, e.g.,
    locally configured or configured by another entity.
 </t><t>
-   If the type of Final-Unit-Action AVP is set TERMINATE, or set to
+   If the Final-Unit-Action AVP is set to TERMINATE, or set to
    RESTRICT_ACCESS and the action required is allow only traffic that could be
    classified using an IPFilterRule, or set to REDIRECT of a type which is one
    of the types in the Redirect-Address-Type AVP, then the credit-control server
