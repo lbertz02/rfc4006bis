@@ -1792,7 +1792,9 @@ End User        Service Element         AAA Server          CC Server
 </t><t>
    If both Final-Unit-Indication AVP and QoS-Final-Unit-Indication AVP exist in
    the Credit-Control-Answer message, a credit control client which supports
-   the QoS-Final-Unit-Indication AVP SHOULD follow the directives included in it.
+   the QoS-Final-Unit-Indication AVP SHOULD follow the directives included in
+   the QoS-Final-Unit-Indication AVP and SHOULD ignore the
+   Final-Unit-Indication AVP.
 </t><t>
    An entity other than the credit-control server may provision the
    access device with appropriate IP packet filters to be used in
