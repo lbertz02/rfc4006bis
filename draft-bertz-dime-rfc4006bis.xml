@@ -1776,7 +1776,8 @@ End User        Service Element         AAA Server          CC Server
    the IP packet filters given in the Restriction-Filter-Rule AVP(s) or
    according to the IP packet filters identified by the Filter-Id AVP(s). The
    credit-control server SHOULD include either the Restriction-Filter-Rule
-   AVP or the Filter-Id AVP in the Credit-Control-Answer message.
+   AVP or the Filter-Id AVP in the Final-Unit-Indication group AVP of the 
+   Credit-Control-Answer message.
 </t><t>
    A QoS-Final-Unit-Indication AVP with the Final-Unit-Action RESTRICT_ACCESS
    indicates to the device supporting this action that, upon consumption of
@@ -1786,7 +1787,8 @@ End User        Service Element         AAA Server          CC Server
    message, the credit control client MUST restrict the traffic according to the
    IP packet filters identified by the Filter-Id AVP(s). The credit-control
    server SHOULD include either the Filter-Rule AVP or the
-   Filter-Id AVP in the Credit-Control-Answer message.
+   Filter-Id AVP in the QoS-Final-Unit-Indication group AVP of the
+   Credit-Control-Answer message.
 </t><t>
    If both Final-Unit-Indication AVP and QoS-Final-Unit-Indication AVP exist in
    the Credit-Control-Answer message, a credit control client which supports
