@@ -4073,7 +4073,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
                                [ User-Equipment-Info-EUI64 ]
                                [ User-Equipment-Info-ModifiedEUI64 ]
                                [ User-Equipment-Info-IMEI ]
-                              *[ AVP ]
+                               [ AVP ]
 ]]>
         </artwork>
       </figure>
@@ -4151,7 +4151,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
                           [ Subscription-Id-SIP-URI ]
                           [ Subscription-Id-NAI ]
                           [ Subscription-Id-Private ]
-                         *[ AVP ]
+                          [ AVP ]
 ]]>
         </artwork>
       </figure>
@@ -4206,7 +4206,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    instead of the Redirect-Server-Extension AVP. This is in order to preserve
    backward compatibility with credit-control clients that support
    only <xref target="RFC4006"/>.
-   Exactly only one AVP MUST be included inside the Redirect-Server-Extension AVP.
+   Exactly one AVP MUST be included inside the Redirect-Server-Extension AVP.
 </t><t>
    It is defined as follows (per the grouped-avp-def of <xref target="RFC6733"/>):
 </t>
@@ -4217,7 +4217,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
                           [ Redirect-Address-IPv6Address ]
                           [ Redirect-Address-URL ]
                           [ Redirect-Address-SIP-URI ]
-                         *[ AVP ]
+                          [ AVP ]
 ]]>
         </artwork>
       </figure>
