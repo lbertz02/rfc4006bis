@@ -3633,8 +3633,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    always be present if the Final-Unit-Indication AVP is included in a
    command.
 </t><t>
-   If the Final-Unit-Action AVP is set to TERMINATE, no other AVPs MUST
-   be present.
+   If the Final-Unit-Action AVP is set to TERMINATE, the
+   Final-Unit-Indication group MUST NOT contain any other AVPs.
 </t><t>
    If the Final-Unit-Action AVP is set to REDIRECT at least the
    Redirect-Server AVP MUST be present.  The Restriction-Filter-Rule AVP
@@ -4288,8 +4288,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    always be present if the QoS-Final-Unit-Indication AVP is included in a
    command.
 </t><t>
-   If the Final-Unit-Action AVP is set to TERMINATE, no other AVPs MUST
-   be present.
+   If the Final-Unit-Action AVP is set to TERMINATE, the
+   QoS-Final-Unit-Indication group MUST NOT contain any other AVPs.
 </t><t>
    If the Final-Unit-Action AVP is set to REDIRECT at least the
    Redirect-Server-Extension AVP MUST be present.
