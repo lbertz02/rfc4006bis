@@ -3759,7 +3759,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    IPv6 Address                    1
 </t><t>
       The address type is in the form of IPv6 address, as defined in
-      <xref target="RFC4291"/>.  The address SHOULD conform to the text representation of the address
+      <xref target="RFC4291"/>.  The address MUST conform to the text representation of the address
       according to <xref target="RFC5952"/>.
 </t><t>
    URL                             2
@@ -4239,7 +4239,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    and defines the IPv6 address of the redirect server with which the end user is to
    be connected when the account cannot cover the service cost. The encoding
    of the IPv6 address is a text representation of the address, as defined in <xref target="RFC4291"/>.
-   The encoding SHOULD conform to the recommendation for IPv6 text representation
+   The encoding MUST conform to the recommendation for IPv6 text representation
    in <xref target="RFC5952"/>.
 </t>
 </section>
