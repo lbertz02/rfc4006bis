@@ -2604,7 +2604,7 @@ End User        Service Element        AAA Server        CC Server
   </texttable>
 <t>
 </t>
-  <texttable title="CLIENT, EVENT BASED">
+  <texttable anchor="table_client_event" title="CLIENT, EVENT BASED">
     <ttcol align="left">State</ttcol>
     <ttcol align="left">Event</ttcol>
     <ttcol align="left">Action</ttcol>
@@ -2707,7 +2707,7 @@ End User        Service Element        AAA Server        CC Server
   </texttable>
 <t>
 </t>
-<texttable title="SERVER, SESSION AND EVENT BASED">
+<texttable anchor="table_server_session_event" title="SERVER, SESSION AND EVENT BASED">
     <ttcol align="left">State</ttcol>
     <ttcol align="left">Event</ttcol>
     <ttcol align="left">Action</ttcol>
