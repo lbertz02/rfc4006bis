@@ -3701,13 +3701,12 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    RESTRICT_ACCESS                 2
 </t><t>
       The access device MUST restrict the user access according to the
-      IP packet filters defined in the Restriction-Filter-Rule AVP, the
-      Filter-Rule AVP or according to the IP packet filters identified by the
-      Filter-Id AVP.  All the packets not matching the filters MUST be dropped
-      (see <xref target="sec-5.6.3"/>). In the case that Restriction-Filter-Rule AVP is used,
-      all the packets matching the filters MUST be allowed. In the case that
-      Filter-Rule AVP or Filter-Id AVP are used, other actions
-      (e.g., QoS) may be deployed on the packets matching the filters.
+      filter AVPs contained in the applied grouped AVP: according to
+      IP packet filters defined in the Restriction-Filter-Rule AVP,
+      according to the packet classifier filters defined in Filter-Rule AVP,
+      or according to the packet filters identified by the Filter-Id AVP.
+      All the packets not matching any filters MUST be dropped
+      (see <xref target="sec-5.6.3"/>).
 </t>
 </section>
 <section anchor="sec-8.36" title="Restriction-Filter-Rule AVP">
