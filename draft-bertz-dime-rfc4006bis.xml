@@ -2449,7 +2449,7 @@ End User        Service Element        AAA Server        CC Server
     <c>PendingI</c>
     <c>Tx expired and CCFH equal to CONTINUE or to RETRY_AND_TERMINATE</c>
     <c>Grant service to end user</c>
-    <c>Idle</c>
+    <c>PendingI</c>
 
     <c>PendingI</c>
     <c>CC initial answer received with result code END_USER_SERVICE_DENIED or USER_UNKNOWN</c>
@@ -2491,7 +2491,7 @@ End User        Service Element        AAA Server        CC Server
 
     <c>Open</c>
     <c>Granted unit elapses and no final unit indication received</c>
-    <c>Send CC update req.</c>
+    <c>Send CC update req., start Tx</c>
     <c>PendingU</c>
 
     <c>Open</c>
@@ -2559,7 +2559,7 @@ End User        Service Element        AAA Server        CC Server
 
     <c>PendingU</c>
     <c>CC update answer received with result code equal to CREDIT_CONTROL_NOT_APPLICABLE</c>
-    <c>Terminate end user's service</c>
+    <c>Grant service to end user</c>
     <c>Idle</c>
 
     <c>PendingU</c>
@@ -2621,8 +2621,8 @@ End User        Service Element        AAA Server        CC Server
     <c>PendingB</c>
 
     <c>PendingE</c>
+    <c>Successful CC event answer received</c>
     <c>Grant service to end user</c>
-    <c>Send stored request</c>
     <c>Idle</c>
 
     <c>PendingE</c>
@@ -2661,11 +2661,6 @@ End User        Service Element        AAA Server        CC Server
     <c>Idle</c>
 
     <c>PendingE</c>
-    <c>Failure to send; requested action DIRECT_DEBITING; DDFH equal to TERMINATE_OR_BUFFER</c>
-    <c>Store request with T-flag</c>
-    <c>Idle</c>
-
-    <c>PendingE</c>
     <c>Temporary error; requested action DIRECT_DEBITING; DDFH equal to TERMINATE_OR_BUFFER; Tx expired</c>
     <c>Store request</c>
     <c>Idle</c>
@@ -2690,17 +2685,17 @@ End User        Service Element        AAA Server        CC Server
     <c>Store request</c>
     <c>Idle</c>
 
-    <c>PendingE</c>
+    <c>PendingB</c>
     <c>Successful CC answer received</c>
     <c>Delete request</c>
     <c>Idle</c>
 
-    <c>PendingE</c>
+    <c>PendingB</c>
     <c>Failed CC answer received</c>
     <c>Delete request</c>
     <c>Idle</c>
 
-    <c>PendingE</c>
+    <c>PendingB</c>
     <c>Failure to send or temporary error</c>
     <c></c>
     <c>Idle</c>
