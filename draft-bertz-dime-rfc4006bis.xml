@@ -2815,7 +2815,7 @@ Exponent          429  8.9    Integer32  | M  |     |  V |
 Final-Unit-Action 449  8.35   Enumerated | M  |     |  V |
 Final-Unit-       430  8.34   Grouped    | M  |     |  V |
   Indication                             |    |     |    |
-QoS-Final-Unit-  TBD18 8.69   Grouped    |    |  M  |  V |
+QoS-Final-Unit-  TBD17 8.68   Grouped    |    |  M  |  V |
   Indication                             |    |     |    |
 Granted-Service-  431  8.17   Grouped    | M  |     |  V |
   Unit                                   |    |     |    |
@@ -2835,13 +2835,11 @@ Redirect-Server   435  8.39   UTF8String | M  |     |  V |
   -Address                               |    |     |    |
 Redirect-Server  TBD13 8.64   Grouped    |    |  M  |  V |
   -Extension                             |    |     |    |
-Redirect-Address TBD14 8.65   UTF8String |    |  M  |  V |
-  -IPv4Address                           |    |     |    |
+Redirect-Address TBD14 8.65   Address    |    |  M  |  V |
+  -IPAddress                             |    |     |    |
 Redirect-Address TBD15 8.66   UTF8String |    |  M  |  V |
-  -IPv6Address                           |    |     |    |
-Redirect-Address TBD16 8.67   UTF8String |    |  M  |  V |
   -URL                                   |    |     |    |
-Redirect-Address TBD17 8.68   UTF8String |    |  M  |  V |
+Redirect-Address TBD16 8.67   UTF8String |    |  M  |  V |
   -SIP-URI                               |    |     |    |
 Requested-Action  436  8.41   Enumerated | M  |     |  V |
 Requested-Service 437  8.18   Grouped    | M  |     |  V |
@@ -4211,8 +4209,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <figure>
         <artwork><![CDATA[
       Redirect-Server-Extension ::= < AVP Header: TBD13 >
-                          [ Redirect-Address-IPv4Address ]
-                          [ Redirect-Address-IPv6Address ]
+                          [ Redirect-Address-IPAddress ]
                           [ Redirect-Address-URL ]
                           [ Redirect-Address-SIP-URI ]
                           [ AVP ]
@@ -4220,46 +4217,38 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
         </artwork>
       </figure>
 </section>
-<section anchor="sec-8.65" title="Redirect-Address-IPv4Address AVP">
+<section anchor="sec-8.65" title="Redirect-Address-IPAddress AVP">
 <t>
-   The Redirect-Address-IPv4Address AVP (AVP Code TBD14) is of type UTF8String
-   and defines the IPv4 address of the redirect server with which the end user is to
-   be connected when the account cannot cover the service cost. The encoding
-   of the redirect server address is in the text form of "dotted-decimal" IPv4 address,
-   as defined in <xref target="RFC0791"/>.
+   The Redirect-Address-IPAddress AVP (AVP Code TBD14) is of type Address
+   and defines the IPv4 or IPv6 address of the redirect server with which the end user is to
+   be connected when the account cannot cover the service cost.
+</t>
+<t>
+   When encoded as an IPv6 address in 16 bytes, the IPv4-mapped IPv6
+   format <xref target="RFC4291"/> MAY be used to indicate an IPv4 address.
 </t>
 </section>
-<section anchor="sec-8.66" title="Redirect-Address-IPv6Address AVP">
+<section anchor="sec-8.66" title="Redirect-Address-URL AVP">
 <t>
-   The Redirect-Address-IPv6Address AVP (AVP Code TBD15) is of type UTF8String
-   and defines the IPv6 address of the redirect server with which the end user is to
-   be connected when the account cannot cover the service cost. The encoding
-   of the IPv6 address is a text representation of the address, as defined in <xref target="RFC4291"/>.
-   The encoding MUST conform to the recommendation for IPv6 text representation
-   in <xref target="RFC5952"/>.
-</t>
-</section>
-<section anchor="sec-8.67" title="Redirect-Address-URL AVP">
-<t>
-   The Redirect-Address-URL AVP (AVP Code TBD16) is of type UTF8String
+   The Redirect-Address-URL AVP (AVP Code TBD15) is of type UTF8String
    and defines the address of the redirect server with which the end user is to
    be connected when the account cannot cover the service cost. The address
    type is in the form of Uniform Resource Locator,
    as defined in <xref target="RFC1738"/>.
 </t>
 </section>
-<section anchor="sec-8.68" title="Redirect-Address-SIP-URI AVP">
+<section anchor="sec-8.67" title="Redirect-Address-SIP-URI AVP">
 <t>
-   The Redirect-Address-SIP-URI AVP (AVP Code TBD17) is of type UTF8String
+   The Redirect-Address-SIP-URI AVP (AVP Code TBD16) is of type UTF8String
    and defines the address of the redirect server with which the end user is to
    be connected when the account cannot cover the service cost. The address
    type is in the form of SIP Uniform Resource Identifier,
    as defined in <xref target="RFC3261"/>.
 </t>
 </section>
-<section anchor="sec-8.69" title="QoS-Final-Unit-Indication AVP">
+<section anchor="sec-8.68" title="QoS-Final-Unit-Indication AVP">
 <t>
-   The QoS-Final-Unit-Indication AVP (AVP Code TBD18) is of type Grouped and
+   The QoS-Final-Unit-Indication AVP (AVP Code TBD17) is of type Grouped and
    indicates that the Granted-Service-Unit AVP in the Credit-Control-Answer,
    or in the AA answer, contains the final units for the
    service.  After these units have expired, the Diameter credit-control
@@ -4325,7 +4314,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t>
 <figure>
         <artwork><![CDATA[
-      QoS-Final-Unit-Indication ::= < AVP Header: TBD18 >
+      QoS-Final-Unit-Indication ::= < AVP Header: TBD17 >
                                 { Final-Unit-Action }
                                *[ Filter-Rule ]
                                *[ Filter-Id ]
@@ -5892,8 +5881,8 @@ End User         Service Element                           CC Server
     <t>Describe immediate graceful service termination procedure (in <xref target="sec-5.6"/>).</t>
     <t>Add extensible User-Equipment-Info-Extension AVP and included types (from <xref target="sec-8.52"/> to <xref target="sec-8.57"/>).</t>
     <t>Add extensible Subscription-Id-Extension AVP and included types (from <xref target="sec-8.58"/> to <xref target="sec-8.63"/>).</t>
-    <t>Add extensible Redirect-Server-Extension AVP and included types (from <xref target="sec-8.64"/> to <xref target="sec-8.68"/>).</t>
-    <t>Add extensible QoS-Final-Unit-Indication AVP (in <xref target="sec-8.69"/>).</t>
+    <t>Add extensible Redirect-Server-Extension AVP and included types (from <xref target="sec-8.64"/> to <xref target="sec-8.67"/>).</t>
+    <t>Add extensible QoS-Final-Unit-Indication AVP (in <xref target="sec-8.68"/>).</t>
     <t>Updated Security Section to include language consistent with structures of latest base protocol specification.</t>
   </list>
   </t>
