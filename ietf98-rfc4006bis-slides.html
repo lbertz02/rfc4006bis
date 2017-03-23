@@ -1,0 +1,97 @@
+<html>
+<head>
+<style>
+.page {
+   page-break-after: always;
+   border-top-style: solid;
+ }
+.mono {
+   font-family: monospace;
+}
+#titlePage {
+   text-align: center;
+}
+h1 {
+    font-size: 30pt;
+}
+h2 {
+    font-size: 26pt;
+}
+h3 {
+    font-size: 20pt;
+}
+ul {
+    font-size: 24pt;
+}
+li {
+    padding-bottom: 12pt;
+}
+pre {
+    font-size: 16pt;
+}
+</style>
+</head>
+<body>
+<div class="page" id="titlePage" style="padding-top:5%">
+<h1>Diameter Credit-Control Application RFC4006bis</h1>
+<h1>draft-bertz-dime-rfc4006bis-02</h1>
+<h3>Editors: L. Bertz, D. Dolson, Y. Lifshitz</h3>
+<h2>IETF 98</h2>
+<h3>Presenter: David Dolson</h3>
+</div>
+
+<div class="page">
+<h1>Changes from RFC4006 (Appendix C)</h1>
+<ul>
+    <li>Update references to obsolete RFC 3588 to refer to RFC 6733.</li>
+    <li>Update references to obsolete RFC 4005 to refer to RFC 7155.</li>
+    <li>Update references to current 3GPP documents.</li>
+    <li>Update AVP per Errata ID 3329.</li>
+    <li>Update reference to "IPsec or TLS" to be "TLS/TCP, DTLS/SCTP or IPsec".</li>
+    <li>Remove Encr column from AVP flag rules.</li>
+    <li>Updated Security Section to include language consistent with structures of latest base protocol specification.</li>
+</ul>
+</div>
+
+<div class="page">
+<h1>Changes from RFC4006 (Appendix C) (cont. 1)</h1>
+<ul>
+    <li>Clarify that RESTRICT_ACCESS action applies after consumption of final granted units (Section 5.6.3).</li>
+    <li>Clarify that values in Used-Service-Unit AVP may exceed Granted-Service-Unit AVP (Section 8.19).</li>
+    <li>Clarify Filter-Rule AVP in Restrict Access Action.</li>
+    <li>Clarify that IPv6 representation in Redirect-Address-Type AVP conforms to RFC5952 (Section 8.38).</li>
+    <li>Describe immediate graceful service termination procedure (Section 5.6).</li>
+</ul>
+</div>
+
+<div class="page">
+<h1>Changes from RFC4006 (Appendix C) (cont. 2)</h1>
+<h2>New extensible groups</h2>
+<ul>
+    <li>Add extensible User-Equipment-Info-Extension AVP and included types (Sections 8.52 to 8.57).</li>
+    <ul>
+      <li>Now supports IMEI.</li>
+    </ul>
+    <li>Add extensible Subscription-Id-Extension AVP and included types (Sections 8.58 to 8.63).</li>
+    <li>Add extensible Redirect-Server-Extension AVP and included types (Sections 8.64 to 8.67).</li>
+    <li>Add extensible QoS-Final-Unit-Indication AVP (Section 8.68).</li>
+    <ul>
+      <li>Ability to use Filter-Rule AVP with Final-Unit-Indication.</li>
+    </ul>
+</ul>
+</div>
+
+<div class="page">
+<h1>Request Working-Group Last Call</h1>
+<ul>
+<li>The editors believe all issues have been addressed.</li>
+<li>Contribute at: 
+  <a class="mono" style="font-size:22pt" href="https://github.com/lbertz02/rfc4006bis">
+     https://github.com/lbertz02/rfc4006bis</a></li>
+</ul>
+</div>
+
+
+
+</body>
+</html>
