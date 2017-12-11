@@ -3196,7 +3196,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       temporary failures, provided that a failover procedure is
       supported in the credit-control server and the credit-control
       client, and that an alternative server is available.  Otherwise,
-      the service SHOULD not be granted when the credit-control messages
+      the service SHOULD NOT be granted when the credit-control messages
       can't be delivered.
 </t>
 </section>
