@@ -31,7 +31,7 @@
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 
-<rfc category="std" docName="draft-ietf-dime-rfc4006bis-05" ipr="pre5378Trust200902">
+<rfc category="std" docName="draft-ietf-dime-rfc4006bis-05" ipr="pre5378Trust200902" obsoletes="4006">
 
 
  <front>
