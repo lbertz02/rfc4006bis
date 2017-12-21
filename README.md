@@ -2,7 +2,7 @@
 
 This project serves as a basis for RFC 4006 XML file and a proposed BIS.
 The most recent upload to IETF is at
-https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-02 .
+https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-05 .
 
 
 # Getting Started
@@ -41,4 +41,5 @@ The following revisions are present in the 'versions' directory:
 - [draft-ietf-dime-rfc4006bis-02](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-02) - Editorial fixes and clarifications - Mar 9, 2017
 - [draft-ietf-dime-rfc4006bis-03](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-03) - Replace RFC2486 with RFC7542 - May 11, 2017
 - [draft-ietf-dime-rfc4006bis-04](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-04) - Fixing ID nits prior to publication.
+- [draft-ietf-dime-rfc4006bis-05](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-05) - Fixing more ID nits.
 
