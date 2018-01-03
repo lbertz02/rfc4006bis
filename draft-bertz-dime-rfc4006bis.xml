@@ -95,7 +95,7 @@
    implement real-time credit-control for a variety of end user services
    such as network access, Session Initiation Protocol (SIP) services,
    messaging services, and download services. The Diameter Credit-Control application
-   as defined in this document obsoletes <xref target="RFC4006"/>, and it must be supported by all new
+   as defined in this document obsoletes RFC4006, and it must be supported by all new
    Diameter Credit-Control Application implementations.
 </t>
    </abstract>
