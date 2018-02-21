@@ -4899,67 +4899,70 @@ Service Element         Translation Agent
    deals with subscribers and their actions, extra care should be taken regarding 
    the privacy of the subscribers. In terms of <xref target="RFC6973"/>, 
    both the credit-control client and credit-control server are intermediary entities,
-   where the subscribers' privacy may be compromised even if no security issues exists, 
+   wherein the subscribers' privacy may be compromised even if no security issues exists, 
    and only authorized entities have access to the privacy-sensitive information.
 </t>
 <section anchor="sec-15.1" title="Privacy Sensitive AVPs">
 <t>
-   Following AVPs contains privacy-sensitive information at different levels:
-</t><t>
-   1. CC-Correlation-Id AVP: may contain privacy-sensitive information as the service-provider may encode 
+   The following AVPs contain privacy-sensitive information at different levels:
+<list style="numbers">
+<t>
+   CC-Correlation-Id AVP: may contain privacy-sensitive information as the service-provider may encode 
    personal information that helps it correlate different subscriptions and access technologies
 </t><t>
-   2. Check-Balance-Result AVP: contains information on the balance status of the subscriber
+   Check-Balance-Result AVP: contains information on the balance status of the subscriber
 </t><t>
-   3. Cost-Information AVP: grouped AVP which contains privacy-sensitive information in its sub-AVPs
+   Cost-Information AVP: grouped AVP which contains privacy-sensitive information in its sub-AVPs
 </t><t>
-   4. Currency-Code AVP: contains information on the subscriber's locale
+   Currency-Code AVP: contains information on the subscriber's locale
 </t><t>
-   5. Cost-Unit AVP: contains privacy-sensitive information, as a human readable format of the Cost-Information AVP
+   Cost-Unit AVP: contains privacy-sensitive information, as a human readable format of the Cost-Information AVP
 </t><t>
-   6. Multiple-Services-Credit-Control AVP: grouped AVP which contains sensitive information in its sub-AVPs
+   Multiple-Services-Credit-Control AVP: grouped AVP which contains sensitive information in its sub-AVPs
 </t><t>
-   7. Granted-Service-Unit AVP: grouped AVP which contains sensitive information in its sub-AVPs
+   Granted-Service-Unit AVP: grouped AVP which contains sensitive information in its sub-AVPs
 </t><t>
-   8. Requested-Service-Unit AVP: grouped AVP which contains sensitive information in its sub-AVPs
+   Requested-Service-Unit AVP: grouped AVP which contains sensitive information in its sub-AVPs
 </t><t>
-   9. Used-Service-Unit AVP: grouped AVP which contains sensitive information in its sub-AVPs
+   Used-Service-Unit AVP: grouped AVP which contains sensitive information in its sub-AVPs
 </t><t>
-   10. CC-Money AVP: grouped AVP which contains information on the subscriber's locale
+   1CC-Money AVP: grouped AVP which contains information on the subscriber's locale
 </t><t>
-   11. Service-Identifier AVP: may contain privacy-sensitive information about the subscriber's internet activity
+   Service-Identifier AVP: may contain privacy-sensitive information about the subscriber's internet activity
 </t><t>
-   12. Rating-Group AVP: may contain privacy-sensitive information about the subscriber's internet activity
+   Rating-Group AVP: may contain privacy-sensitive information about the subscriber's internet activity
 </t><t>
-   13. Final-Unit-Indication AVP: grouped AVP which contains sensitive information in its sub-AVPs
+   Final-Unit-Indication AVP: grouped AVP which contains sensitive information in its sub-AVPs
 </t><t>
-   14. Restriction-Filter-Rule AVP: the information inside IPFilterRule may be used to derive 
-   privacy-sensitive information on the subscriber
+   Restriction-Filter-Rule AVP: the information inside IPFilterRule may be used to infer
+   services used by the subscriber
 </t><t>
-   15. Redirect-Server AVP, Redirect-Server-Extension AVP: grouped AVPs which contains privacy-sensitive 
+   Redirect-Server AVP, Redirect-Server-Extension AVP: grouped AVPs which contains privacy-sensitive 
    information in its sub-AVPs
 </t><t>
-   16. Redirect-Server-Address AVP: the service-provider may embed personal information on the subscriber in 
+   Redirect-Server-Address AVP: the service-provider may embed personal information on the subscriber in 
    the URL/I (e.g. to create a personalized message). Similar AVPs are: Redirect-Address-URL, Redirect-Address-SIP-URI
 </t><t>
-   17. Service-Context-Id AVP: depending with how the service-provider use it, it may contain privacy-sensitive information 
+   Service-Context-Id AVP: depending with how the service-provider use it, it may contain privacy-sensitive information 
    about the service (e.g. access technology)
 </t><t>
-   18. Service-Parameter-Info AVP: depending with how the service-provider use it, it may contain privacy-sensitive information 
+   Service-Parameter-Info AVP: depending with how the service-provider use it, it may contain privacy-sensitive information 
    about the subscriber (e.g. location)
 </t><t>
-   19. Subscription-Id, Subscription-Id-Extension AVP: grouped AVPs which contains the identity of the subscriber
+   Subscription-Id, Subscription-Id-Extension AVP: grouped AVPs which contains the identity of the subscriber
 </t><t>
-   20. Subscription-Id-Data AVP: contains the identity of the subscriber. Similar AVPs are: Subscription-Id-E164,
+   Subscription-Id-Data AVP: contains the identity of the subscriber. Similar AVPs are: Subscription-Id-E164,
    Subscription-Id-IMSI, Subscription-Id-SIP-URI, Subscription-Id-NAI, Subscription-Id-Private
 </t><t>
-   21. User-Equipment-Info AVP, User-Equipment-Info-Extension AVP: grouped AVPs which contains the identity of 
+   User-Equipment-Info AVP, User-Equipment-Info-Extension AVP: grouped AVPs which contains the identity of 
    the device of the subscriber
 </t><t>
-   22. User-Equipment-Info-Value AVP: contains the identity of the device of the subscriber. Similar AVPs are: 
+   User-Equipment-Info-Value AVP: contains the identity of the device of the subscriber. Similar AVPs are: 
    User-Equipment-Info-IMEISV, User-Equipment-Info-MAC, User-Equipment-Info-EUI64, User-Equipment-Info-ModifiedEUI64, User-Equipment-Info-IMEI
 </t><t>
-   23. QoS-Final-Unit-Indication AVP: grouped AVP which may contains privacy-sensitive information in its sub-AVPs (e.g IPFilterRule, redirect address)
+   QoS-Final-Unit-Indication AVP: grouped AVP which may contains privacy-sensitive information in its sub-AVPs (e.g IPFilterRule, redirect address)
+</t>
+</list>
 </t>
 <t>
    Note that some AVPs which used in this document are defined in <xref target="RFC6973"/> and may contain privacy-sensitive information.
@@ -4971,32 +4974,39 @@ Service Element         Translation Agent
    Due to the nature of the credit control application, some personal data and identity  
    must be stored in both credit-control client and credit control server. This, however, 
    could be minimized by following some guidelines:
-</t><t>
-   1. Data stored in the credit-control client does not need to be persisted across sessions. 
+  <list style="numbers">
+   <t>
+   Data stored in the credit-control client does not need to be persisted across sessions. 
    All data could be deleted once the session and, and reconstructed once a new session is initialized. 
    Note that, while the credit-control server is usually owned by the service provider with 
    which the subscriber already has some direct legal or business relationship 
    (where privacy level could be agreed upon), this is not always true for the credit-control client, 
    that may be owned by a third-party.
-</t><t>
-   2. Some information about the subscriber has to be stored in persistent storage in the credit-control 
+   </t><t>
+   Some information about the subscriber has to be stored in persistent storage in the credit-control 
    server (e.g. identity, balance), however, per transaction information does not have to be stored in 
    persistent storage, and may be deleted once the sessions ends.
-</t><t>
-   3. In some cases, per transaction information has to be stored on the credit-control server, 
+   </t><t>
+   In some cases, per transaction information has to be stored on the credit-control server, 
    client, or both, for regulatory or auditability reasons. In this case, some guidelines should be followed:
-</t><t>
-   3a. Data retention SHOULD not exceed the required maximums
-</t><t>
-   3b. Transaction information SHOULD be aggregated as much as possible. 
-   E.g. prefer information per sessions vs. information per rating-group; 
-   prefer hourly byte summary vs. per transaction byte counts.
-</t><t>
-   3c. If not strictly needed, the more sensitive information (E.g. location, equipment type) 
-   SHOULD be filtered out from such logs. Such information is often used to make rating decisions, 
-   and in this case, the rating decision should be logged instead of the data used to make them
-</t><t>
-   3d. The credit-control server SHOULD be preferred over the credit-control client in such a case
+   <list style="letters">
+    <t>
+    Data retention SHOULD NOT exceed the required durations
+    </t><t>
+    Transaction information SHOULD be aggregated as much as possible.  E.g.
+    prefer information per sessions vs. information per rating-group; prefer
+    hourly byte summary vs. per transaction byte counts.
+    </t><t>
+    If not strictly needed, the more sensitive information (E.g. location,
+    equipment type) SHOULD be filtered out from such logs. Such information is
+    often used to make rating decisions, and in this case, the rating decision
+    should be logged instead of the data used to make them
+    </t><t>
+    The credit-control server SHOULD be preferred over the credit-control client in such a case
+    </t>
+   </list>
+   </t>
+  </list>
 </t>
 </section>
 <section anchor="sec-15.3" title="Diameter Agents">
@@ -5006,7 +5016,7 @@ Service Element         Translation Agent
    AVPs holding such information, as listed in <xref target="sec-15.1"/>. 
 </t>
 <t>
-   In some cases, the Diameter agent, must have access into privacy-sensitive AVPs, in order to take
+   In some cases, the Diameter agent requires access into privacy-sensitive AVPs, in order to take
    correct routing decisions, or even modify the content of these AVPs. In such a case it is RECOMMENDED
    to anonymize the identity of the subscriber, and encrypt any other AVP not used by the agent and can be
    used to identify the subscriber.
@@ -6019,6 +6029,7 @@ End User         Service Element                           CC Server
     <t>Add extensible QoS-Final-Unit-Indication AVP (in <xref target="sec-8.68"/>).</t>
     <t>Updated Security Section to include language consistent with structures of latest base protocol specification.</t>
     <t>Update references to obsolete RFC 5226 to refer to RFC 8126, and resulting updates to <xref target="sec-12"/>.</t>
+    <t>Add section on Privacy Considerations.</t>
   </list>
   </t>
 </section>
