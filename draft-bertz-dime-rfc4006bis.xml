@@ -4912,33 +4912,16 @@ Service Element         Translation Agent
 </t><t>
    Check-Balance-Result AVP: contains information on the balance status of the subscriber
 </t><t>
-   Cost-Information AVP: grouped AVP which contains privacy-sensitive information in its sub-AVPs
-</t><t>
    Currency-Code AVP: contains information on the subscriber's locale
 </t><t>
    Cost-Unit AVP: contains privacy-sensitive information, as a human readable format of the Cost-Information AVP
-</t><t>
-   Multiple-Services-Credit-Control AVP: grouped AVP which contains sensitive information in its sub-AVPs
-</t><t>
-   Granted-Service-Unit AVP: grouped AVP which contains sensitive information in its sub-AVPs
-</t><t>
-   Requested-Service-Unit AVP: grouped AVP which contains sensitive information in its sub-AVPs
-</t><t>
-   Used-Service-Unit AVP: grouped AVP which contains sensitive information in its sub-AVPs
-</t><t>
-   1CC-Money AVP: grouped AVP which contains information on the subscriber's locale
 </t><t>
    Service-Identifier AVP: may contain privacy-sensitive information about the subscriber's internet activity
 </t><t>
    Rating-Group AVP: may contain privacy-sensitive information about the subscriber's internet activity
 </t><t>
-   Final-Unit-Indication AVP: grouped AVP which contains sensitive information in its sub-AVPs
-</t><t>
    Restriction-Filter-Rule AVP: the information inside IPFilterRule may be used to infer
    services used by the subscriber
-</t><t>
-   Redirect-Server AVP, Redirect-Server-Extension AVP: grouped AVPs which contains privacy-sensitive 
-   information in its sub-AVPs
 </t><t>
    Redirect-Server-Address AVP: the service-provider may embed personal information on the subscriber in 
    the URL/I (e.g. to create a personalized message). Similar AVPs are: Redirect-Address-URL, Redirect-Address-SIP-URI
@@ -4949,13 +4932,8 @@ Service Element         Translation Agent
    Service-Parameter-Info AVP: depending with how the service-provider use it, it may contain privacy-sensitive information 
    about the subscriber (e.g. location)
 </t><t>
-   Subscription-Id, Subscription-Id-Extension AVP: grouped AVPs which contains the identity of the subscriber
-</t><t>
    Subscription-Id-Data AVP: contains the identity of the subscriber. Similar AVPs are: Subscription-Id-E164,
    Subscription-Id-IMSI, Subscription-Id-SIP-URI, Subscription-Id-NAI, Subscription-Id-Private
-</t><t>
-   User-Equipment-Info AVP, User-Equipment-Info-Extension AVP: grouped AVPs which contains the identity of 
-   the device of the subscriber
 </t><t>
    User-Equipment-Info-Value AVP: contains the identity of the device of the subscriber. Similar AVPs are: 
    User-Equipment-Info-IMEISV, User-Equipment-Info-MAC, User-Equipment-Info-EUI64, User-Equipment-Info-ModifiedEUI64, User-Equipment-Info-IMEI
@@ -4965,30 +4943,31 @@ Service Element         Translation Agent
 </list>
 </t>
 <t>
-   Note that some AVPs which used in this document are defined in <xref target="RFC6973"/> and may contain privacy-sensitive information.
+   Note that some AVPs which are used in this document are defined in <xref target="RFC6733"/> and may contain privacy-sensitive information.
    These AVPs are not listed above.
 </t>
 </section>
 <section anchor="sec-15.2" title="Data Minimization">
 <t>
-   Due to the nature of the credit control application, some personal data and identity  
+   Due to the nature of the credit control application, some personal data and identity information 
    must be stored in both credit-control client and credit control server. This, however, 
-   could be minimized by following some guidelines:
+   could be minimized by following these guidelines:
   <list style="numbers">
    <t>
    Data stored in the credit-control client does not need to be persisted across sessions. 
-   All data could be deleted once the session and, and reconstructed once a new session is initialized. 
+   All data could be deleted once the session end, and reconstructed once a new session is initialized. 
    Note that, while the credit-control server is usually owned by the service provider with 
    which the subscriber already has some direct legal or business relationship 
    (where privacy level could be agreed upon), this is not always true for the credit-control client, 
    that may be owned by a third-party.
    </t><t>
    Some information about the subscriber has to be stored in persistent storage in the credit-control 
-   server (e.g. identity, balance), however, per transaction information does not have to be stored in 
-   persistent storage, and may be deleted once the sessions ends.
+   server (e.g. identity, balance), however, per transaction information does not have to be stored in persistent storage,
+   and per session information may be deleted from persistent storage once the session ends.
    </t><t>
    In some cases, per transaction information has to be stored on the credit-control server, 
-   client, or both, for regulatory or auditability reasons. In this case, some guidelines should be followed:
+   client, or both, for regulatory, auditability or debugging reasons. However, this could be minimized by
+   following these guidelines:
    <list style="letters">
     <t>
     Data retention SHOULD NOT exceed the required durations
@@ -5002,7 +4981,8 @@ Service Element         Translation Agent
     often used to make rating decisions, and in this case, the rating decision
     should be logged instead of the data used to make them
     </t><t>
-    The credit-control server SHOULD be preferred over the credit-control client in such a case
+    The credit-control server SHOULD be preferred over the credit-control client as the place
+    where per transaction information is stored, if needed. This is due to the reasons explained in 1.
     </t>
    </list>
    </t>
