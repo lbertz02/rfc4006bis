@@ -4983,18 +4983,18 @@ Service Element         Translation Agent
 <section anchor="sec-15.3" title="Diameter Agents">
 <t>
    Diameter agents, as described in <xref target="RFC6733"/>, may be owned by third-parties. If end-to-end 
-   security is supported between credit-control client and credit-control server, it can use it to encrypt
-   privacy-sensitive AVPs (as listed in <xref target="sec-15.1"/>), and prevent from such information from 
+   security is supported between credit-control client and credit-control server, the operator can use it to encrypt
+   privacy-sensitive AVPs (as listed in <xref target="sec-15.1"/>), and prevent such information from 
    leaking into the agent. 
 </t>
 <t>
-   In some cases, the Diameter agent needss access into privacy-sensitive AVPs, in order to take
+   In some cases, the Diameter agent needs access into privacy-sensitive AVPs, in order to take
    correct routing decisions, or even modify the content of these AVPs. For example, a proxy agent may 
    need to look into the Subscription-Id-IMSI AVP, in order to extract the mobile country and network codes 
    of the user, and use them to lookup the destination to which the request should be routed 
    (see: section 2.8.2 in <xref target="RFC6733"/>). In such a case, the credit-control client and credit-control 
-   server may use a mechanism that would allow them to anonymize the identity of the subscriber, as well as a mechanism 
-   to encrypt other AVP not used by the agent.
+   server may use a mechanism that anonymizes the identity of the subscriber, as well as a mechanism 
+   to encrypt other AVPs not used by the agent.
 </t>
 </section>
 </section>
