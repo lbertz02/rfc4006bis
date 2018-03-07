@@ -483,7 +483,7 @@
    reserves a suitable amount of money from the user's account, and
    returns the corresponding amount of credit resources.  Note that
    credit resources may not imply actual monetary credit; credit
-   resources may be granted to the credit control client in the form of
+   resources may be granted to the credit-control client in the form of
    units (e.g., data volume or time) to be metered.
 </t>
   <t>
@@ -499,7 +499,7 @@
    accomplished with session based credit-control that includes the
    first interrogation, possible intermediate interrogations, and the
    final interrogation.  For session based credit-control, both the
-   credit control client and the credit-control server are required to
+   credit-control client and the credit-control server are required to
    maintain credit-control session state.  Session based credit-control
    is described in more detail, with more variations, in <xref target="sec-5"/>.
 </t>
@@ -1471,7 +1471,7 @@ End User         (CC Client)
    message.
 </t><t>
    If a credit re-authorization is not already ongoing (i.e., the
-   credit-control session is in Open state), a credit control client
+   credit-control session is in Open state), a credit-control client
    that receives an RAR message with Session-Id equal to a currently
    active credit-control session MUST acknowledge the request by sending
    the Re-Auth-Answer (RAA) message and MUST initiate the credit
@@ -1789,14 +1789,14 @@ End User        Service Element         AAA Server          CC Server
    the final granted units, the actions specified in Filter-Rule AVP(s) MUST
    restrict the traffic according to the classifiers in the Filter-Rule AVP(s).
    If Filter-Id AVP(s) are provided in the Credit-Control-Answer
-   message, the credit control client MUST restrict the traffic according to the
+   message, the credit-control client MUST restrict the traffic according to the
    IP packet filters identified by the Filter-Id AVP(s). The credit-control
    server SHOULD include either the Filter-Rule AVP or the
    Filter-Id AVP in the QoS-Final-Unit-Indication group AVP of the
    Credit-Control-Answer message.
 </t><t>
    If both Final-Unit-Indication AVP and QoS-Final-Unit-Indication AVP exist in
-   the Credit-Control-Answer message, a credit control client which supports
+   the Credit-Control-Answer message, a credit-control client which supports
    the QoS-Final-Unit-Indication AVP SHOULD follow the directives included in
    the QoS-Final-Unit-Indication AVP and SHOULD ignore the
    Final-Unit-Indication AVP.
@@ -2939,7 +2939,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    INITIAL_REQUEST                 1
 </t><t>
       An Initial request is used to initiate a credit-control session,
-      and contains credit control information that is relevant to the
+      and contains credit-control information that is relevant to the
       initiation.
 </t><t>
    UPDATE_REQUEST                  2
@@ -3659,7 +3659,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    and the classification of the restricted traffic cannot be expressed using
    IPFilterRule, or different actions (e.g., QoS) than just allowing traffic needs
    to be enforced, then the QoS-Final-Unit-Indication AVP SHOULD be
-   used instead of the Final-Unit-Indication AVP. However, if the credit control
+   used instead of the Final-Unit-Indication AVP. However, if the credit-control
    server wants to preserve backward compatibility with credit-control clients
    that support only <xref target="RFC4006"/>, the Final-Unit-Indication AVP
    SHOULD be used together with the Filter-Id AVP.
@@ -4514,7 +4514,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    protocols.  An AAA server (usually the home AAA server) may
    act as a Translation Agent and as a Diameter credit-control client
    for service elements that use credit-control mechanisms other than
-   Diameter credit control for instance, RADIUS prepaid.  In this case,
+   Diameter credit-control for instance, RADIUS prepaid.  In this case,
    the home AAA server contacts the Diameter credit-control server as
    part of the authorization process.  The interworking architecture is
    illustrated <xref target="se_with_translation" format="default"/>, and interworking flow in <xref target="diam_rad_prepaid_flow" format="default"/>.  In a
@@ -4895,11 +4895,11 @@ Service Element         Translation Agent
 </section>
 <section anchor="sec-15" title="Privacy Considerations">
 <t>
-   As the Diameter protocol, and especially credit control application, 
+   As the Diameter protocol, and especially credit-control application, 
    deals with subscribers and their actions, extra care should be taken regarding 
    the privacy of the subscribers. In terms of <xref target="RFC6973"/>, 
    both the credit-control client and credit-control server are intermediary entities,
-   wherein the subscribers' privacy may be compromised even if no security issues exists, 
+   wherein the subscribers' privacy may be compromised even if no security issues exist, 
    and only authorized entities have access to the privacy-sensitive information.
 </t>
 <section anchor="sec-15.1" title="Privacy Sensitive AVPs">
@@ -4908,37 +4908,39 @@ Service Element         Translation Agent
 <list style="numbers">
 <t>
    CC-Correlation-Id AVP: may contain privacy-sensitive information as the service-provider may encode 
-   personal information that helps it correlate different subscriptions and access technologies
+   personal information that helps it correlate different subscriptions and access technologies.
 </t><t>
-   Check-Balance-Result AVP: contains information on the balance status of the subscriber
+   Check-Balance-Result AVP: contains information on the balance status of the subscriber.
 </t><t>
-   Currency-Code AVP: contains information on the subscriber's locale
+   Currency-Code AVP: contains information on the subscriber's locale.
 </t><t>
-   Cost-Unit AVP: contains privacy-sensitive information, as a human readable format of the Cost-Information AVP
+   Cost-Unit AVP: contains privacy-sensitive information, as a human readable format of the Cost-Information AVP.
 </t><t>
-   Service-Identifier AVP: may contain privacy-sensitive information about the subscriber's internet activity
+   Service-Identifier AVP: may contain privacy-sensitive information about the subscriber's internet activity.
 </t><t>
-   Rating-Group AVP: may contain privacy-sensitive information about the subscriber's internet activity
+   Rating-Group AVP: may contain privacy-sensitive information about the subscriber's internet activity.
 </t><t>
    Restriction-Filter-Rule AVP: the information inside IPFilterRule may be used to infer
-   services used by the subscriber
+   services used by the subscriber.
 </t><t>
    Redirect-Server-Address AVP: the service-provider may embed personal information on the subscriber in 
-   the URL/I (e.g. to create a personalized message). Similar AVPs are: Redirect-Address-URL, Redirect-Address-SIP-URI
+   the URL/I (e.g. to create a personalized message). However, the service-provider may anonymise the subscriber's
+   identity instead in the URL/I, and let the redirect server query the information directly.  Similar AVPs are: 
+   Redirect-Address-URL, Redirect-Address-SIP-URI.
 </t><t>
-   Service-Context-Id AVP: depending with how the service-provider use it, it may contain privacy-sensitive information 
-   about the service (e.g. access technology)
+   Service-Context-Id AVP: depending with how the service-provider uses it, it may contain privacy-sensitive information 
+   about the service (e.g. in a 3GPP network Service-Context-Id AVP has a different value for: Packet Switching, SMS and MMS etc.)
 </t><t>
-   Service-Parameter-Info AVP: depending with how the service-provider use it, it may contain privacy-sensitive information 
-   about the subscriber (e.g. location)
+   Service-Parameter-Info AVP: depending with how the service-provider uses it, it may contain privacy-sensitive information 
+   about the subscriber (e.g. location).
 </t><t>
    Subscription-Id-Data AVP: contains the identity of the subscriber. Similar AVPs are: Subscription-Id-E164,
-   Subscription-Id-IMSI, Subscription-Id-SIP-URI, Subscription-Id-NAI, Subscription-Id-Private
+   Subscription-Id-IMSI, Subscription-Id-SIP-URI, Subscription-Id-NAI, Subscription-Id-Private.
 </t><t>
    User-Equipment-Info-Value AVP: contains the identity of the device of the subscriber. Similar AVPs are: 
-   User-Equipment-Info-IMEISV, User-Equipment-Info-MAC, User-Equipment-Info-EUI64, User-Equipment-Info-ModifiedEUI64, User-Equipment-Info-IMEI
+   User-Equipment-Info-IMEISV, User-Equipment-Info-MAC, User-Equipment-Info-EUI64, User-Equipment-Info-ModifiedEUI64, User-Equipment-Info-IMEI.
 </t><t>
-   QoS-Final-Unit-Indication AVP: grouped AVP which may contains privacy-sensitive information in its sub-AVPs (e.g IPFilterRule, redirect address)
+   QoS-Final-Unit-Indication AVP: grouped AVP which may contains privacy-sensitive information in its sub-AVPs (e.g IPFilterRule, redirect address).
 </t>
 </list>
 </t>
@@ -4949,8 +4951,8 @@ Service Element         Translation Agent
 </section>
 <section anchor="sec-15.2" title="Data Minimization">
 <t>
-   Due to the nature of the credit control application, some personal data and identity information 
-   must be stored in both credit-control client and credit control server. This, however, 
+   Due to the nature of the credit-control application, some personal data and identity information 
+   must be stored in both credit-control client and credit-control server. This, however, 
    could be minimized by following these guidelines:
   <list style="numbers">
    <t>
@@ -4970,19 +4972,17 @@ Service Element         Translation Agent
    following these guidelines:
    <list style="letters">
     <t>
-    Data retention SHOULD NOT exceed the required durations
+    Data retention does not need to exceed the required duration.
     </t><t>
-    Transaction information SHOULD be aggregated as much as possible.  E.g.
-    prefer information per sessions vs. information per rating-group; prefer
-    hourly byte summary vs. per transaction byte counts.
+    Transaction information could be aggregated in some cases. E.g. prefer information per sessions over
+    information per rating-group; prefer hourly byte summary over per transaction byte counts.
     </t><t>
-    If not strictly needed, the more sensitive information (E.g. location,
-    equipment type) SHOULD be filtered out from such logs. Such information is
-    often used to make rating decisions, and in this case, the rating decision
-    should be logged instead of the data used to make them
+    If not strictly needed, the more sensitive information (E.g. location, equipment type) could be 
+    filtered out of such logs. This information is often used to make rating decisions, 
+    and in this case, the rating decision should be logged instead of the data used to make them.
     </t><t>
-    The credit-control server SHOULD be preferred over the credit-control client as the place
-    where per transaction information is stored, if needed. This is due to the reasons explained in 1.
+    Due to the reasons explained in 1, the credit-control server would be a preferred location for storing
+    such transaction information, instead of the credit-control client
     </t>
    </list>
    </t>
@@ -4991,15 +4991,19 @@ Service Element         Translation Agent
 </section>
 <section anchor="sec-15.3" title="Diameter Agents">
 <t>
-   Diameter agents, as described in <xref target="RFC6733"/>, may be owned by third-parties. 
-   To prevent from privacy sensitive information from leaking into them, it is RECOMMENDED to encrypt
-   AVPs holding such information, as listed in <xref target="sec-15.1"/>. 
+   Diameter agents, as described in <xref target="RFC6733"/>, may be owned by third-parties. If end-to-end 
+   security is supported between credit-control client and credit-control server, it can use it to encrypt
+   privacy-sensitive AVPs (as listed in <xref target="sec-15.1"/>), and prevent from such information from 
+   leaking into the agent. 
 </t>
 <t>
-   In some cases, the Diameter agent requires access into privacy-sensitive AVPs, in order to take
-   correct routing decisions, or even modify the content of these AVPs. In such a case it is RECOMMENDED
-   to anonymize the identity of the subscriber, and encrypt any other AVP not used by the agent and can be
-   used to identify the subscriber.
+   In some cases, the Diameter agent needss access into privacy-sensitive AVPs, in order to take
+   correct routing decisions, or even modify the content of these AVPs. For example, a proxy agent may 
+   need to look into the Subscription-Id-IMSI AVP, in order to extract the mobile country and network codes 
+   of the user, and use them to lookup the destination to which the request should be routed 
+   (see: section 2.8.2 in <xref target="RFC6733"/>). In such a case, the credit-control client and credit-control 
+   server may use a mechanism that would allow them to anonymize the identity of the subscriber, as well as a mechanism 
+   to encrypt other AVP not used by the agent.
 </t>
 </section>
 </section>
