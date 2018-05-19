@@ -32,7 +32,7 @@
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 
-<rfc category="std" docName="draft-ietf-dime-rfc4006bis-07" ipr="pre5378Trust200902" obsoletes="4006">
+<rfc category="std" docName="draft-ietf-dime-rfc4006bis-08" ipr="pre5378Trust200902" obsoletes="4006">
 
 
  <front>
@@ -4646,6 +4646,35 @@ Service Element         Translation Agent
 <t>
    See <xref target="sec-8"/> for the assignment of the namespace in this specification.
 </t>
+<t>
+  This document describes new AVP codes beyond those described in RFC4006.
+  IANA is requested to allocated codes for the AVPs defined in the following
+  <xref target="table_iana_avp_codes"/>.
+</t>
+
+<texttable anchor="table_iana_avp_codes" title="Requested AVP Assignments">
+  <ttcol align="left">Attribute Name</ttcol>
+  <ttcol align="left">Code</ttcol>
+  <ttcol align="left">Defined in section</ttcol>
+  <c>User-Equipment-Info-Extension</c><c>TBD1</c><c>8.52</c>
+  <c>User-Equipment-Info-IMEISV</c><c>TBD2</c><c>8.53</c>
+  <c>User-Equipment-Info-MAC</c><c>TBD3</c><c>8.54</c>
+  <c>User-Equipment-Info-EUI64</c><c>TBD4</c><c>8.55</c>
+  <c>User-Equipment-Info-ModifiedEUI64</c><c>TBD5</c><c>8.56</c>
+  <c>User-Equipment-Info-IMEI</c><c>TBD6</c><c>8.57</c>
+  <c>Subscription-Id-Extension</c><c>TBD7</c><c>8.58</c>
+  <c>Subscription-Id-E164</c><c>TBD8</c><c>8.59</c>
+  <c>Subscription-Id-IMSI</c><c>TBD9</c><c>8.60</c>
+  <c>Subscription-Id-SIP-URI</c><c>TBD10</c><c>8.61</c>
+  <c>Subscription-Id-NAI</c><c>TBD11</c><c>8.62</c>
+  <c>Subscription-Id-Private</c><c>TBD12</c><c>8.63</c>
+  <c>Redirect-Server-Extension</c><c>TBD13</c><c>8.64</c>
+  <c>Redirect-Address-IPAddress</c><c>TBD14</c><c>8.65</c>
+  <c>Redirect-Address-URL</c><c>TBD15</c><c>8.66</c>
+  <c>Redirect-Address-SIP-URI</c><c>TBD16</c><c>8.67</c>
+  <c>QoS-Final-Unit-Indication</c><c>TBD17</c><c>8.68</c>
+</texttable>
+
 </section>
 <section anchor="sec-12.4" title="Result-Code AVP Values">
 <t>
