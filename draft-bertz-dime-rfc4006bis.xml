@@ -133,7 +133,7 @@
 	   are services such as gaming and advertising that may credit as well
 	   as debit a user account.
 	</t><t>
-	   The other Diameter applications provide service specific
+	   The other Diameter applications provide service-specific
 	   authorization, and they do not provide credit authorization for
 	   prepaid users.  The credit authorization shall be generic and
 	   applicable to all the service environments required to support
@@ -165,14 +165,14 @@
          Authentication, Authorization, and Accounting
          </t>
          <t hangText="AA answer">
-         AA answer generically refers to a service specific authorization and
-         authentication answer.  AA answer commands are defined in service
-           specific authorization applications, e.g., <xref target="RFC7155"/> and <xref target="RFC4004"/>.
+         AA answer generically refers to a service-specific authorization and
+         authentication answer.  AA answer commands are defined in service-specific 
+         authorization applications, e.g., <xref target="RFC7155"/> and <xref target="RFC4004"/>.
          </t>
          <t hangText="AA request">
-         AA request generically refers to a service specific authorization and
-         authentication request.  AA request commands are defined in service
-         specific authorization applications e.g., <xref target="RFC7155"/> and <xref target="RFC4004"/>.
+         AA request generically refers to a service-specific authorization and
+         authentication request.  AA request commands are defined in service-specific 
+         authorization applications e.g., <xref target="RFC7155"/> and <xref target="RFC4004"/>.
          </t>
          <t hangText="Credit-control">
          Credit-control is a mechanism that directly interacts in real-time
@@ -617,7 +617,7 @@
 </section>
 <section anchor="sec-4.1.2" title="Service-Specific Documentation">
 <t>
-   The service specific rating input AVPs, the contents of the Service-Parameter-Info
+   The service-specific rating input AVPs, the contents of the Service-Parameter-Info
    AVP or Service-Context-Id AVP (defined in <xref target="sec-8.42"/>)
    are not within the scope of this document. To facilitate interoperability,
    it is RECOMMENDED that the rating input and the values of the
@@ -629,19 +629,19 @@
    this case, vendor specific AVPs can be used.
 </t>
   <t>
-   This specification, together with the above service specific
-   documents, governs the credit-control message.  Service specific
+   This specification, together with the above service-specific
+   documents, governs the credit-control message.  service-specific
    documents define which existing AVPs or new AVPs are used as input to
    the rating process (i.e., those that do not define new credit-control
    applications), and thus have to be included in the Credit-Control-Request
    command by a Diameter credit-control client supporting a
    given service as *[AVP].  Should Service-Parameter-Info be used, then
-   the service specific document MUST specify the exact content of this
+   the service-specific document MUST specify the exact content of this
    grouped AVP.
 </t>
   <t>
    The Service-Context-Id AVP MUST be included at the command level of a
-   Credit-Control Request to identify the service specific document that
+   Credit-Control Request to identify the service-specific document that
    applies to the request.  The specific service or rating group the
    request relates to is uniquely identified by the combination of
    Service-Context-Id and Service-Identifier or Rating-Group.
@@ -650,7 +650,7 @@
 <section anchor="sec-4.1.3" title="Handling of Unsupported/Incorrect Rating Input">
 <t>
    Diameter credit-control implementations are required to support the
-   Mandatory rating AVPs defined in service specific documentation of
+   Mandatory rating AVPs defined in service-specific documentation of
    the services they support, according to the 'M' bit rules in
    <xref target="RFC6733"/>.
 </t>
@@ -669,7 +669,7 @@
 </section>
 <section anchor="sec-4.1.4" title="RADIUS Vendor-Specific Rating Attributes">
 <t>
-   When service specific documents include RADIUS vendor specific
+   When service-specific documents include RADIUS vendor specific
    attributes that could be used as input in the rating process, the
    rules described in <xref target="RFC7155"/> for formatting the Diameter AVP MUST be
    followed.
@@ -714,16 +714,16 @@
    are in use.
 </t>
 <t>
-   Note that the service element might send a service specific
+   Note that the service element might send a service-specific
    re-authorization message to the AAA server due to expiration of the
    authorization-lifetime during an ongoing credit-control session.
-   However, the service specific re-authorization does not influence the
+   However, the service-specific re-authorization does not influence the
    credit authorization that is ongoing between the credit-control
    client and credit-control server, as credit authorization is
    controlled by the burning rate of the granted quota.
 </t>
 <t>
-   If service specific re-authorization fails, the user will be
+   If service-specific re-authorization fails, the user will be
    disconnected, and the credit-control client MUST send a final
    interrogation to the credit-control server.
 </t>
@@ -1015,9 +1015,9 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
    multiple services, the Service-Identifier AVP or the Rating-Group AVP
    within the Multiple-Services-Credit-Control AVP always indicates the
    service concerned.  Additional service event information to be rated
-   MAY be sent as service specific AVPs or MAY be sent within the
+   MAY be sent as service-specific AVPs or MAY be sent within the
    Service-Parameter-Info AVP at command level.  The Service-Context-Id
-   AVP indicates the service specific document applicable to the
+   AVP indicates the service-specific document applicable to the
    request.
 </t>
 <t>
@@ -1046,7 +1046,7 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
    new Credit-Control-Request MUST be sent to the credit-control server.
    If several unit types are sent in the Answer message, the credit-control
    client MUST handle each unit type separately.  The type of
-   the Granted-Service-Unit AVP can be time, volume, service specific,
+   the Granted-Service-Unit AVP can be time, volume, service-specific,
    or money, depending on the type of service event.  The unit type(s)
    SHOULD NOT be changed within an ongoing credit-control session.
 </t>
@@ -1079,7 +1079,7 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
    interrogation to be used in different network architectures.  The
    first approach uses credit-control messages after the user's
    authorization and authentication takes place.  The second approach
-   uses service specific authorization messages to perform the first
+   uses service-specific authorization messages to perform the first
    interrogation during the user's authorization/authentication phase,
    and credit-control messages for the intermediate and final
    interrogations.  If an implementation of the credit-control client
@@ -1184,7 +1184,7 @@ End User        Service Element        AAA Server         CC Server
    authorization/authentication command to perform the first
    interrogation toward the home Diameter AAA server.  The Auth-Application-Id
    is set to the appropriate value, as defined in the
-   relevant service specific authorization/authentication application
+   relevant service-specific authorization/authentication application
    document (e.g., <xref target="RFC7155"/>, <xref target="RFC4004"/>).  The home Diameter AAA server
    authenticates/authorizes the subscriber and determines whether
    credit-control is required.
@@ -1204,7 +1204,7 @@ End User        Service Element        AAA Server         CC Server
    The Diameter AAA server supporting credit-control is required to send
    the Credit-Control-Request command (CCR) defined in this document to
    the credit-control server.  The Diameter AAA server populates the CCR
-   based on service specific AVPs used for input to the rating process,
+   based on service-specific AVPs used for input to the rating process,
    and possibly on credit-control AVPs received in the AA request.  The
    credit-control server will reserve money from the user's account,
    will rate the request and will send a Credit-Control-Answer message
@@ -1240,9 +1240,9 @@ End User        Service Element        AAA Server         CC Server
    <xref target="sec-8.2"/>).
 </t>
 <t>
-   If service specific re-authorization is performed (i.e.,
+   If service-specific re-authorization is performed (i.e.,
    authorization-lifetime expires), the credit-control client MUST add
-   to the service specific re-authorization request the Credit-Control
+   to the service-specific re-authorization request the Credit-Control
    AVP with a value set to RE_AUTHORIZATION to indicate that the
    credit-control server MUST NOT be contacted.  When session based
    credit-control is used for the subscriber, a constant credit-control
@@ -1338,7 +1338,7 @@ End User          (CC Client)           AAA Server          CC Server
    intermediate request message.  The Subscription-Id AVP or
    Subscription-Id-Extension AVP SHOULD be included in the intermediate
    message to identify the end user in the credit-control server.
-   The Service-Context-Id AVP indicates the service specific document
+   The Service-Context-Id AVP indicates the service-specific document
    applicable to the request.
 </t><t>
    The Requested-Service-Unit AVP MAY contain the new amount of
@@ -1383,7 +1383,7 @@ End User          (CC Client)           AAA Server          CC Server
    the Diameter credit-control client MUST send a final Credit-Control-Request
    message to the credit-control server.  The CC-Request-Type
    AVP is set to the value TERMINATION_REQUEST.  The Service-Context-Id
-   AVP indicates the service specific document applicable to the
+   AVP indicates the service-specific document applicable to the
    request.
 </t><t>
    The Event-Timestamp AVP SHOULD be included in the request and
@@ -1767,13 +1767,12 @@ End User        Service Element         AAA Server          CC Server
    above-described process for the first interrogation.  However, the
    user's account might be empty when this first interrogation is
    performed.  In this case, the subscriber can be offered a chance to
-   replenish the account and continue the service.  The credit-control
-   client receives a Credit-Control-Answer or service specific
-   authorization answer with the Final-Unit-Indication or the
-   QoS-Final-Unit-Indication AVP and Validity-Time AVPs but no
-   Granted-Service-Unit AVP.  It immediately starts the graceful
-   service termination without sending any message to the server.  An
-   example of this case is illustrated in <xref target="app-a"/>.
+   replenish the account and continue the service.  When the credit-control
+   client receives (either at session or service-specific level) a
+   Final-Unit-Indication or the AVP or QoS-Final-Unit-Indication AVP,
+   together with Validity-Time AVPs, but without Granted-Service-Unit AVP,
+   it immediately starts the graceful service termination without sending 
+   any message to the server.  An example of this case is illustrated in <xref target="app-a"/>.
 </t>
 </section>
 <section anchor="sec-5.6.3" title="Restrict Access Action">
@@ -2048,9 +2047,9 @@ End User        Service Element        AAA Server        CC Server
    Requested-Action AVP set to PRICE_ENQUIRY, and set the requested
    service event information into the Service-Identifier AVP in the
    Credit-Control-Request message.  Additional service event information
-   may be sent as service specific AVPs or within the Service-Parameter-Info
-   AVP.  The Service-Context-Id AVP indicates the service
-   specific document applicable to the request.
+   may be sent as service-specific AVPs or within the Service-Parameter-Info
+   AVP.  The Service-Context-Id AVP indicates the service-specific 
+   document applicable to the request.
 </t>
 <t>
    The credit-control server calculates the cost of the requested
@@ -2078,7 +2077,7 @@ End User        Service Element        AAA Server        CC Server
    Requested-Action AVP set to CHECK_BALANCE, and include the
    Subscription-Id AVP or Subscription-Id-Extension AVP in order to identify
    the end user in the credit-control server.  The Service-Context-Id AVP
-   indicates the service specific document applicable to the request.
+   indicates the service-specific document applicable to the request.
 </t>
 <t>
    The credit-control server makes the balance check, but it does not
@@ -2109,7 +2108,7 @@ End User        Service Element        AAA Server        CC Server
    SHOULD be included to identify the end user in the credit-control server.
    The Event-Timestamp AVP SHOULD be included in the request and contain the
    time when the service event is requested in the service element.  The
-   Service-Context-Id AVP indicates the service specific document
+   Service-Context-Id AVP indicates the service-specific document
    applicable to the request.
 </t>
 <t>
@@ -2119,7 +2118,7 @@ End User        Service Element        AAA Server        CC Server
    know the cost of the service event, the Requested-Service-Unit AVP
    MAY contain the number of requested service events.  The Service-Identifier
    AVP always indicates the service concerned.  Additional
-   service event information to be rated MAY be sent as service specific
+   service event information to be rated MAY be sent as service-specific
    AVPs or within the Service-Parameter-Info AVP.
 </t>
 <t>
@@ -2134,8 +2133,8 @@ End User        Service Element        AAA Server        CC Server
    Credit-Control-Answer message to the Diameter credit-control client.
    The Granted-Service-Unit AVP contains the amount of service units
    that the Diameter credit-control client can provide to the end user.
-   The type of the Granted-Service-Unit can be time, volume, service
-   specific, or money, depending on the type of service event.
+   The type of the Granted-Service-Unit can be time, volume, service-specific,
+   or money, depending on the type of service event.
 </t>
 <t>
    If the credit-control server determines that no credit-control is
@@ -2159,8 +2158,8 @@ End User        Service Element        AAA Server        CC Server
    EVENT_REQUEST and the Requested-Action AVP to REFUND_ACCOUNT in the
    Credit-Control-Request message.  The Subscription-Id AVP or
    Subscription-Id-Extension AVP SHOULD be included to identify the end user in
-   the credit-control server.  The Service-Context-Id AVP indicates the service
-   specific document applicable to the request.
+   the credit-control server.  The Service-Context-Id AVP indicates the service-specific
+   document applicable to the request.
 </t>
 <t>
    The Diameter credit-control client MAY include the monetary amount to
@@ -2168,7 +2167,7 @@ End User        Service Element        AAA Server        CC Server
    AVP always indicates the concerned service.  If the
    Diameter credit-control client does not know the monetary amount to
    be refunded, in addition to the Service-Identifier AVP it MAY send
-   service specific AVPs or the Service-Parameter-Info AVP containing
+   service-specific AVPs or the Service-Parameter-Info AVP containing
    additional service event information to be rated.
 </t>
 <t>
@@ -2914,7 +2913,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    contains information to correlate credit-control requests generated
    for different components of the service; e.g., transport and service
    level.  The one who allocates the Service-Context-Id (i.e., unique
-   identifier of a service specific document) is also responsible for
+   identifier of a service-specific document) is also responsible for
    defining the content and encoding of the CC-Correlation-Id AVP.
 </t><t>
 </t>
@@ -3854,12 +3853,12 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <section anchor="sec-8.42" title="Service-Context-Id AVP">
 <t>
    The Service-Context-Id AVP is of type UTF8String (AVP Code 461) and
-   contains a unique identifier of the Diameter credit-control service
-   specific document that applies to the request (as defined in
+   contains a unique identifier of the Diameter credit-control service-specific 
+   document that applies to the request (as defined in
    <xref target="sec-4.1.2"/>).  This is an identifier allocated by the service provider, by
    the service element manufacturer, or by a standardization body, and
-   MUST uniquely identify a given Diameter credit-control service
-   specific document.  The format of the Service-Context-Id is:
+   MUST uniquely identify a given Diameter credit-control service-specific
+   document.  The format of the Service-Context-Id is:
 </t><t>
    "service-context" "@" "domain"
 </t><t>
@@ -3918,7 +3917,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    The Service-Parameter-Type AVP is of type Unsigned32 (AVP Code 441)
    and defines the type of the service event specific parameter (e.g.,
    it can be the end-user location or service name).  The different
-   parameters and their types are service specific, and the meanings of
+   parameters and their types are service-specific, and the meanings of
    these parameters are not defined in this document.  Whoever allocates
    the Service-Context-Id (i.e., unique identifier of a service-specific
    document) is also responsible for assigning Service-Parameter-Type
@@ -5270,7 +5269,7 @@ End User          (CC Client)         AAA Server           CC Server
    Credit-Control-Answer (9).  The message is forwarded to the NAS (10).
    During the ongoing credit-control session, the authorization lifetime
    expires, and the authorization/authentication client in the NAS
-   performs service specific re-authorization to the home Diameter AAA
+   performs service-specific re-authorization to the home Diameter AAA
    server, as usual.  The credit-control client populates the AAR with
    the Credit-Control AVP set to RE_AUTHORIZATION, indicating that the
    credit-control server shall not be contacted, as the credit
@@ -5749,16 +5748,16 @@ End-User         (CC Client)          AAA Server    Server    Server
    The user logs on to the network (1).  The Diameter NAS sends a
    Diameter AA-Request to the home Diameter AAA server.  The credit-control
    client populates the AAR with the Credit-Control AVP set to
-   CREDIT_AUTHORIZATION, and service specific AVPs are included, as
-   usual <xref target="RFC7155"/>.  The home Diameter AAA server performs service
-   specific Authentication and Authorization, as usual.  The home
+   CREDIT_AUTHORIZATION, and service-specific AVPs are included, as
+   usual <xref target="RFC7155"/>.  The home Diameter AAA server performs service-specific 
+   Authentication and Authorization, as usual.  The home
    Diameter AAA server determines that the user has a prepaid
    subscription and notices from the Credit-Control AVP that the NAS has
    credit-control capabilities.  It sends a Diameter Credit-Control-Request
    with CC-Request-Type set to INITIAL_REQUEST to the Diameter
    credit-control server to perform credit authorization (3) and to
    establish a credit-control session.  (The home Diameter AAA server
-   may forward service specific AVPs received from the NAS as input for
+   may forward service-specific AVPs received from the NAS as input for
    the rating process.)  The Diameter credit-control server checks the
    end user's account balance, determines that the account cannot cover
    the cost of the service, and initiates the graceful service
