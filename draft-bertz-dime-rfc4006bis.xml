@@ -623,15 +623,14 @@
 <t>
    The service specific rating input AVPs, the contents of the Service-Parameter-Info
    AVP or Service-Context-Id AVP (defined in <xref target="sec-8.42"/>)
-   are not within the scope of this document.  To facilitate
-   interoperability, it is RECOMMENDED that the rating input and the
-   values of the Service-Context-Id be coordinated via an informational
-   RFC or other permanent and readily available reference.  The
-   specification of another cooperative standardization body (e.g.,
-   3GPP, OMA, or 3GPP2) SHOULD be used.  However, private services may
-   be deployed that are subject to agreements between providers of the
-   credit-control server and client.  In this case, vendor specific AVPs
-   can be used.
+   are not within the scope of this document. To facilitate interoperability,
+   it is RECOMMENDED that the rating input and the values of the
+   Service-Context-Id be coordinated via an informational RFC or other
+   permanent and readily available reference, preferably, of another
+   cooperative standardization body (e.g., 3GPP, OMA, or 3GPP2). However,
+   private services may be deployed that are subject to agreements
+   between providers of the credit-control server and client.  In
+   this case, vendor specific AVPs can be used.
 </t>
   <t>
    This specification, together with the above service specific
@@ -4248,7 +4247,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    and defines the address of the redirect server with which the end user is to
    be connected when the account cannot cover the service cost. The address
    type is in the form of Uniform Resource Locator,
-   as defined in <xref target="RFC3986"/>.
+   as defined in <xref target="RFC3986"/>.  Note that individual URL schemes may restrict the
+   contents of the UTF8String.
 </t>
 </section>
 <section anchor="sec-8.67" title="Redirect-Address-SIP-URI AVP">
@@ -4889,9 +4889,10 @@ Service Element         Translation Agent
    Sometimes simply delaying the credit-control messages can cause
    disturbances in the credit-control client or server.
 </t><t>
-   Even without any modification to the messages, an adversary can eavesdrop 
-   on transactions that contain privacy-sensitive information about the user.  
-   Also, by monitoring the credit-control messages one can collect information about the
+    Even without any modification to the messages, an adversary that
+    can eavesdrop on transactions can obtain privacy-sensitive
+    information. Also, by monitoring the credit-control messages one
+    can collect information about the
    credit-control server's billing models and business relationships.
 </t><t>
    When third-party relays or proxy are involved, the hop-by-hop
@@ -6082,6 +6083,9 @@ End User         Service Element                           CC Server
     <t>Added note that at least one of the Redirect-Server and Redirect-Server-Extension AVPs MUST be present wen F-U-Action AVP was set to REDIRECT (2 changes) to improve clarity in AVP defintions.</t>
     <t>Added disclaimers and refund note in Sectino B.3 consistent wiht B.4</t>
     <t>"Tx" is not mentioned without the the terms 'timer' or 'timeout'</t>
+    <t>Section 14 - clarified text that TLS/IPsec can ensure security/privacy in some cases</t>
+    <t>Added note for Redirect-Address-URL that individual URL schemes may restrict the
+        contents of the UTF8String.</t>
   </list>
   </t>
 </section>
