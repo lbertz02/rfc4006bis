@@ -174,12 +174,6 @@
          authentication request.  AA request commands are defined in service
          specific authorization applications e.g., <xref target="RFC7155"/> and <xref target="RFC4004"/>.
          </t>
-         <t hangText="Attribute-Value Pair (AVP)">
-             From <xref target="RFC6733"/>, An AVP includes a header and is
-                 used to encapsulate protocol-specific data (e.g., routing
-                 information) as well as authentication, authorization, or
-                 accounting information.
-         </t>
          <t hangText="Credit-control">
          Credit-control is a mechanism that directly interacts in real-time
          with an account and controls or monitors the charges related to the
@@ -302,8 +296,8 @@
   <t>
    When an end user requests services such as SIP or messaging, the
    request is typically forwarded to a service element (e.g., SIP Proxy)
-   in the user's home realm.  In some cases it might be possible that
-   the service element in the local realm can offer services to the
+   in the user's home realm as defined in <xref target="RFC6733"/>.  In some cases it might be possible that
+   the service element in the local realm <xref target="RFC6733"/> can offer services to the
    end user; however, a commercial agreement must exist between the
    local realm and the home realm.  Network access is an example of
    a service offered in the local realm where the NAS, through an AAA
@@ -387,6 +381,8 @@
    The Auth-Application-Id MUST be set to the value 4, indicating the
    Diameter credit-control application.
 </t>
+  <t>The CCR is extensible via the inclusion of one or more Attribute
+      Value Pairs (AVPs).</t>
   <t>
    Message Format
 </t>
@@ -489,7 +485,7 @@
   <t>
    In the first model, the credit-control server rates the request,
    reserves a suitable amount of money from the user's account, and
-   returns the corresponding amount of reserved credit resources.  Note that
+   returns the amount of credit reserved.  Note that
    credit resources may not imply actual monetary credit; credit
    resources may be granted to the credit-control client in the form of
    units (e.g., data volume or time) to be metered.
@@ -775,7 +771,7 @@
 </t>
 <t>
    For time based services, the quota is continuously consumed at the
-   regular rate of 60 seconds per minute.  At the time when credit
+   regular rate of 60 seconds per minute (ignoring leap seconds).  At the time when credit
    resources are allocated, the server already knows how many units will
    be consumed before the tariff time change and how many units will be
    consumed afterward.  Similarly, the server can determine the units
@@ -1177,7 +1173,7 @@ End User        Service Element        AAA Server         CC Server
   ]]></artwork>
 </figure>
 </section>
-<section anchor="sec-5.2.2" title="Authorization Messages for First Interrogation">
+<section anchor="sec-5.2.2" title="First Interrogation Included with Authorization Messages">
 <t>
    The Diameter credit-control client in the service element MUST
    actively co-operate with the authorization/authentication client in
@@ -6077,7 +6073,6 @@ End User         Service Element                           CC Server
     <t>Noted applicability of RFC 6733 Section 13.3 to AVPs in privacy-sensitive AVP section.</t>
     <t>ALL appearances of "Diameter base protocol" now reference <xref target="RFC6733"/></t>
     <t>Added 'Such anonymized information must not allow personal information or the subscriber's identity to be easily guessed.' to Redirect-Server-Address AVP discussion in Section 15.1</t>
-    <t>An AVP definition (which copies a portion of the AVP definition from <xref target="RFC6733"/> has been added to the terminology section.</t>
     <t> "local realm" and "home realm" replace "visited domain" and "home domain" respectively.</t>
     <t>Improved language regarding failure handling in Section 4.1.</t>
     <t>Added note that at least one of the Redirect-Server and Redirect-Server-Extension AVPs MUST be present wen F-U-Action AVP was set to REDIRECT (2 changes) to improve clarity in AVP defintions.</t>
@@ -6086,6 +6081,11 @@ End User         Service Element                           CC Server
     <t>Section 14 - clarified text that TLS/IPsec can ensure security/privacy in some cases</t>
     <t>Added note for Redirect-Address-URL that individual URL schemes may restrict the
         contents of the UTF8String.</t>
+    <t>In Section 5.1.1 noted that 60 seconds per minute here ignore leap seconds.</t>
+    <t>Changed title of Section 5.2.2 to align with title in 5.2.1.</t>
+    <t>On first usage of home and local realm made note of RFC 6733.</t>
+    <t>Added AVP acronym expansion on its first use.</t>
+    <t>Section 4 clarified that server returns the amount of credit reserved.</t>
   </list>
   </t>
 </section>
