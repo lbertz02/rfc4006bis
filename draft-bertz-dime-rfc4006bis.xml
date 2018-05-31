@@ -22,6 +22,7 @@
 <!ENTITY RFC5777 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5777.xml">
 <!ENTITY RFC7423 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7423.xml">
 <!ENTITY RFC6973 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6973.xml">
+<!ENTITY RFC8174 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8174.xml">
 ]>
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt"?>
 <?rfc toc="yes" ?>
@@ -117,7 +118,7 @@
 	   wireless and wire line based networks.
 	</t>
   <t>
-	   In next generation wireless networks, additional functionality is
+	   In mobile networks, additional functionality is
 	   required beyond that specified in the Diameter base protocol.  For
 	   example, the 3GPP Charging and Billing requirements <xref target="TGPPCHARG"/> state
 	   that an application must be able to rate service information in
@@ -148,9 +149,12 @@
 	</t>
 
      <section title="Requirements Language">
-       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-         "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-         document are to be interpreted as described in <xref target="RFC2119"/>.
+       <t>
+           The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+           NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+           "MAY", and "OPTIONAL" in this document are to be interpreted as
+           described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they
+           appear in all capitals, as shown here.
        </t>
      </section>
 
@@ -479,7 +483,7 @@
   <t>
    In the first model, the credit-control server rates the request,
    reserves a suitable amount of money from the user's account, and
-   returns the corresponding amount of credit resources.  Note that
+   returns the corresponding amount of reserved credit resources.  Note that
    credit resources may not imply actual monetary credit; credit
    resources may be granted to the credit-control client in the form of
    units (e.g., data volume or time) to be metered.
@@ -731,7 +735,7 @@
    update request and report the used quota to the credit-control server.
    It is up to the credit-control server to determine
    the value of the Validity-Time to be used for consumption of the
-   granted service units.  If the Validity-Time is used, its value
+   granted service unit(s) (G-S-U).  If the Validity-Time is used, its value
    SHOULD be given as input to set the session supervision timer Tcc
    (the session supervision timer MAY be set to two times the value of
    the Validity-Time, as defined in <xref target="sec-13"/>).  Since credit-control
@@ -1871,7 +1875,7 @@ End User        Service Element         AAA Server          CC Server
    AVP to determine what to do if the sending of accounting records to
    the accounting server has been temporarily prevented, as defined in
    <xref target="RFC6733"/>.  It is RECOMMENDED that the client complement the
-   credit-control failure procedures with backup accounting flow toward
+   credit-control failure procedures with a backup accounting flow toward
    an accounting server.  By using different combinations of
    Accounting-Realtime-Required and Credit-Control-Failure-Handling
    AVPs, different safety levels can be built.  For example, by choosing
@@ -1918,7 +1922,7 @@ End User        Service Element         AAA Server          CC Server
    credit-control sessions with a possibly available secondary
    credit-control server.
 </t><t>
-   The AAA transport profile <xref target="RFC3539"/> defines the application layer
+   The AAA transport profile <xref target="RFC3539"/> defines an application layer
    watchdog algorithm that enables failover from a peer that has failed
    and is controlled by a watchdog timer (Tw) defined in <xref target="RFC3539"/>.
    The recommended default initial value for Tw (Twinit) is 30 seconds.
@@ -4930,6 +4934,8 @@ Service Element         Translation Agent
    and only authorized entities have access to the privacy-sensitive information.
 </t>
 <section anchor="sec-15.1" title="Privacy Sensitive AVPs">
+<t>The privacy-sensitive AVPs listed in this section MUST NOT be sent across non-trusted networks or Diameter agents without end-to-end authentication and confidentiality protection, as described in <xref target="RFC6733"/> section 13.3.
+</t>
 <t>
    The following AVPs contain privacy-sensitive information at different levels:
 <list style="numbers">
@@ -5133,6 +5139,8 @@ Service Element         Translation Agent
      </reference>
 
      &RFC7423;
+     
+     &RFC8174;
 
    </references>
 
@@ -6041,6 +6049,10 @@ End User         Service Element                           CC Server
     <t>Updated Security Section to include language consistent with structures of latest base protocol specification.</t>
     <t>Update references to obsolete RFC 5226 to refer to RFC 8126, and resulting updates to <xref target="sec-12"/>.</t>
     <t>Add section on Privacy Considerations.</t>
+    <t>Language updated from RFC 2119 updated to RFC 8174.</t>
+    <t>Added G-S-U acronym the first time 'granted service unit' mentioned.</t>
+    <t>Changed 'next generation wireless networks' to 'mobile networks'.</t>
+    <t>Noted applicability of RFC 6733 Section 13.3 to AVPs in privacy-sensitive AVP section.</t>
   </list>
   </t>
 </section>
