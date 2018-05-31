@@ -537,10 +537,10 @@
    one-time event.  Session state is not maintained.
 </t>
   <t>
-   A flexible credit-control application specific failure handling is
-   defined in which the home service provider can model the credit-control
-   client behavior according to its own credit risk management
-   policy.
+   Flexible failure handling, specific to the credit-control, is
+   defined in the application. This allows the the service provider
+   to control the credit-control client behavior according to its own
+   risk management policy.
 </t>
   <t>
    The Credit-Control-Failure-Handling AVP and the Direct-Debiting-Failure-Handling
@@ -3644,8 +3644,9 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    If the Final-Unit-Action AVP is set to TERMINATE, the
    Final-Unit-Indication group MUST NOT contain any other AVPs.
 </t><t>
-   If the Final-Unit-Action AVP is set to REDIRECT at least the
-   Redirect-Server AVP MUST be present.  The Restriction-Filter-Rule AVP
+    If the Final-Unit-Action AVP is set to REDIRECT at least one of the
+    Redirect-Server and Redirect-Server-Extension AVPs MUST be present.
+   The Restriction-Filter-Rule AVP
    or the Filter-Id AVP MAY be present in the Credit-Control-Answer
    message if the user is also allowed to access other services that are
    not accessible through the address given in the Redirect-Server AVP.
@@ -4289,8 +4290,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    If the Final-Unit-Action AVP is set to TERMINATE, the
    QoS-Final-Unit-Indication group MUST NOT contain any other AVPs.
 </t><t>
-   If the Final-Unit-Action AVP is set to REDIRECT at least the
-   Redirect-Server-Extension AVP MUST be present.
+    If the Final-Unit-Action AVP is set to REDIRECT at least one of the
+    Redirect-Server and Redirect-Server-Extension AVPs MUST be present.
    The Filter-Rule AVP or the Filter-Id AVP MAY be present in the
    Credit-Control-Answer message if the user is also allowed to access other
    services that are not accessible through the address given in the
@@ -6063,6 +6064,8 @@ End User         Service Element                           CC Server
     <t>Added 'Such anonymized information must not allow personal information or the subscriber's identity to be easily guessed.' to Redirect-Server-Address AVP discussion in Section 15.1</t>
     <t>An AVP definition (which copies a portion of the AVP definition from <xref target="RFC6733"/> has been added to the terminology section.</t>
     <t> "local realm" and "home realm" replace "visited domain" and "home domain" respectively.</t>
+    <t>Improved language regarding failure handling in Section 4.1.</t>
+    <t>Added note that at least one of the Redirect-Server and Redirect-Server-Extension AVPs MUST be present wen F-U-Action AVP was set to REDIRECT (2 changes) to improve clarity in AVP defintions.</t>
   </list>
   </t>
 </section>
