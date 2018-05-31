@@ -3957,8 +3957,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    the Subscription-Id AVP.
 </t><t>
    This specification defines the following subscription identifiers.
-   However, new Subscription-Id-Type values can be assigned by an IANA
-   designated expert, as defined in <xref target="sec-12"/>.  A server MUST implement
+   However, new Subscription-Id-Type values can be assigned by IANA
+   as defined in <xref target="sec-12"/>.  A server MUST implement
    all the Subscription-Id-Types required to perform credit
    authorization for the services it supports, including possible future
    values.  Unknown or unsupported Subscription-Id-Types MUST be treated
@@ -4022,7 +4022,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t><t>
    This specification defines the following user equipment types.
    However, new User-Equipment-Info-Type values can be assigned by an
-   IANA designated expert, as defined in <xref target="sec-12"/>.
+   IANA as defined in <xref target="sec-12"/>.
 </t><t>
    IMEISV                          0
 </t><t>
@@ -4235,6 +4235,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    When encoded as an IPv6 address in 16 bytes, the IPv4-mapped IPv6
    format <xref target="RFC4291"/> MAY be used to indicate an IPv4 address.
 </t>
+<t>The interpretation of Redirect-Address-IPAddress by the Diameter
+    Credit-control Client is a matter of local policy.</t>
 </section>
 <section anchor="sec-8.66" title="Redirect-Address-URL AVP">
 <t>
@@ -4625,15 +4627,10 @@ Service Element         Translation Agent
 </section>
 <section anchor="sec-12" title="IANA Considerations">
 <t>
-   This section contains the namespaces that have either been created in
-   this specification, or the values assigned to existing namespaces
-   managed by IANA.
-</t><t>
-   In the subsections below, when we speak about review by a Designated
-   Expert, please note that the designated expert will be assigned by
-   the IESG.  Initially, such Expert discussions take place on the AAA
-   WG mailing list.
-</t>
+    This document uses several registries that were originally created in
+    <xref target="RFC4006"/> or the values assigned to existing namespaces
+   managed by IANA. IANA [SHALL update/has updated] these to reference this
+    document.  The registries and their allocation policies are below.</t>
 <section anchor="sec-12.1" title="Application Identifier">
 <t>
    This specification assigns the value 4, 'Diameter Credit Control', to
@@ -4653,8 +4650,8 @@ Service Element         Translation Agent
    See <xref target="sec-8"/> for the assignment of the namespace in this specification.
 </t>
 <t>
-  This document describes new AVP codes beyond those described in RFC4006.
-  IANA is requested to allocated codes for the AVPs defined in the following
+  This document describes new AVP codes beyond those described in <xref target="RFC4006"/>.
+  IANA is requested to allocate codes for the AVPs defined in the following
   <xref target="table_iana_avp_codes"/>.
 </t>
 
@@ -4693,8 +4690,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.3"/>, the CC-Request-Type AVP includes
    Enumerated type values 1 - 4.  IANA has created and is maintaining a
-   namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   namespace for this AVP. The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4702,8 +4699,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.4"/>, the CC-Failover-Supported AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
-   namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4711,8 +4708,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.32"/>, the CC-Unit-Type AVP includes Enumerated
    type values 0 - 5.  IANA has created and is maintaining a namespace
-   for this AVP.  All remaining values are available for assignment by a
-   Designated Expert <xref target="RFC8126"/>, under the
+   for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4720,8 +4717,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.6"/>, the Check-Balance-Result AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
-   namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4729,8 +4726,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.13"/>, the Credit-Control AVP includes
    Enumerated type values 0 - 1.  IANA has created and is maintaining a
-   namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4738,8 +4735,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.14"/>, the Credit-Control-Failure-Handling AVP
    includes Enumerated type values 0 - 2.  IANA has created and is
-   maintaining a namespace for this AVP.  All remaining values are
-   available for assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   maintaining a namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4747,8 +4744,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.15"/>, the Direct-Debiting-Failure-Handling AVP
    includes Enumerated type values 0 - 1.  IANA has created and is
-   maintaining a namespace for this AVP.  All remaining values are
-   available for assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   maintaining a namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4756,8 +4753,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.35"/>, the Final-Unit-Action AVP includes
    Enumerated type values 0 - 2.  IANA has created and is maintaining a
-   namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4765,8 +4762,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.40"/>, the Multiple-Services-Indicator AVP
    includes Enumerated type values 0 - 1.  IANA has created and is
-   maintaining a namespace for this AVP.  All remaining values are
-   available for assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   maintaining a namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4774,8 +4771,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.38"/>, the Redirect-Address-Type AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
-   namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4783,8 +4780,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.41"/>, the Requested-Action AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
-   namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4792,8 +4789,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.47"/>, the Subscription-Id-Type AVP  includes
    Enumerated type values 0 - 4.  IANA has created and is maintaining a
-   namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4801,8 +4798,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.27"/>, the Tariff-Change-Usage AVP includes
    Enumerated type values 0 - 2.  IANA has created and is maintaining a
-   namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -4810,8 +4807,8 @@ Service Element         Translation Agent
 <t>
    As defined in <xref target="sec-8.50"/>, the User-Equipment-Info-Type AVP includes
    Enumerated type values 0 - 3.  IANA has created and is maintaining a
-   namespace for this AVP.  All remaining values are available for
-   assignment by a Designated Expert <xref target="RFC8126"/>, under the
+   namespace for this AVP.  The definition of new values
+   is subject to the Specification Required policy <xref target="RFC8126"/> and
    conditions for enumerated values described in <xref target="RFC7423"/> Section 5.6.
 </t>
 </section>
@@ -6068,24 +6065,6 @@ End User         Service Element                           CC Server
     <t>Update references to obsolete RFC 5226 to refer to RFC 8126, and resulting updates to <xref target="sec-12"/>.</t>
     <t>Add section on Privacy Considerations.</t>
     <t>Language updated from RFC 2119 updated to RFC 8174.</t>
-    <t>Added G-S-U acronym the first time 'granted service unit' mentioned.</t>
-    <t>Changed 'next generation wireless networks' to 'mobile networks'.</t>
-    <t>Noted applicability of RFC 6733 Section 13.3 to AVPs in privacy-sensitive AVP section.</t>
-    <t>ALL appearances of "Diameter base protocol" now reference <xref target="RFC6733"/></t>
-    <t>Added 'Such anonymized information must not allow personal information or the subscriber's identity to be easily guessed.' to Redirect-Server-Address AVP discussion in Section 15.1</t>
-    <t> "local realm" and "home realm" replace "visited domain" and "home domain" respectively.</t>
-    <t>Improved language regarding failure handling in Section 4.1.</t>
-    <t>Added note that at least one of the Redirect-Server and Redirect-Server-Extension AVPs MUST be present wen F-U-Action AVP was set to REDIRECT (2 changes) to improve clarity in AVP defintions.</t>
-    <t>Added disclaimers and refund note in Sectino B.3 consistent wiht B.4</t>
-    <t>"Tx" is not mentioned without the the terms 'timer' or 'timeout'</t>
-    <t>Section 14 - clarified text that TLS/IPsec can ensure security/privacy in some cases</t>
-    <t>Added note for Redirect-Address-URL that individual URL schemes may restrict the
-        contents of the UTF8String.</t>
-    <t>In Section 5.1.1 noted that 60 seconds per minute here ignore leap seconds.</t>
-    <t>Changed title of Section 5.2.2 to align with title in 5.2.1.</t>
-    <t>On first usage of home and local realm made note of RFC 6733.</t>
-    <t>Added AVP acronym expansion on its first use.</t>
-    <t>Section 4 clarified that server returns the amount of credit reserved.</t>
   </list>
   </t>
 </section>
