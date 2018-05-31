@@ -119,7 +119,7 @@
 	</t>
   <t>
 	   In mobile networks, additional functionality is
-	   required beyond that specified in the Diameter base protocol.  For
+	   required beyond that specified in the Diameter base protocol <xref target="RFC6733"/>.  For
 	   example, the 3GPP Charging and Billing requirements <xref target="TGPPCHARG"/> state
 	   that an application must be able to rate service information in
 	   real-time.  In addition, it is necessary to check that the end user's
@@ -290,7 +290,7 @@
    the billing functionality.  The credit-control server and AAA server
    in this architecture model are logical entities.  The real
    configuration can combine them into a single host.  The credit-control
-   protocol is the Diameter base protocol with the Diameter
+   protocol is the Diameter base protocol <xref target="RFC6733"/> with the Diameter
    credit-control application.
 </t>
   <t>
@@ -1929,7 +1929,7 @@ End User        Service Element         AAA Server          CC Server
    Twinit may be set as low as 6 seconds; however, according to
    <xref target="RFC3539"/>, setting too low a value for Twinit is likely to result in
    an increased probability of duplicates, as well as an increase in
-   spurious failover and failback attempts.  The Diameter base protocol
+   spurious failover and failback attempts.  The Diameter base protocol <xref target="RFC6733"/>
    is common to several different types of Diameter AAA applications
    that may be run in the same service element.  Therefore, tuning the
    timer Twinit to a lower value in order to satisfy the requirements of
@@ -4956,9 +4956,9 @@ Service Element         Translation Agent
    Restriction-Filter-Rule AVP: the information inside IPFilterRule may be used to infer
    services used by the subscriber.
 </t><t>
-   Redirect-Server-Address AVP: the service-provider may embed personal information on the subscriber in 
+   Redirect-Server-Address AVP: the service-provider might embed personal information on the subscriber in
    the URL/I (e.g. to create a personalized message). However, the service-provider may anonymise the subscriber's
-   identity instead in the URL/I, and let the redirect server query the information directly.  Similar AVPs are: 
+   identity instead in the URL/I, and let the redirect server query the information directly. Such anonymized information must not allow personal information or the subscriber's identity to be easily guessed. Similar AVPs are:
    Redirect-Address-URL, Redirect-Address-SIP-URI.
 </t><t>
    Service-Context-Id AVP: depending with how the service-provider uses it, it may contain privacy-sensitive information 
@@ -6053,6 +6053,8 @@ End User         Service Element                           CC Server
     <t>Added G-S-U acronym the first time 'granted service unit' mentioned.</t>
     <t>Changed 'next generation wireless networks' to 'mobile networks'.</t>
     <t>Noted applicability of RFC 6733 Section 13.3 to AVPs in privacy-sensitive AVP section.</t>
+    <t>ALL appearances of "Diameter base protocol" now reference <xref target="RFC6733"/></t>
+    <t>Added 'Such anonymized information must not allow personal information or the subscriber's identity to be easily guessed.' to Redirect-Server-Address AVP discussion in Section 15.1</t>
   </list>
   </t>
 </section>
