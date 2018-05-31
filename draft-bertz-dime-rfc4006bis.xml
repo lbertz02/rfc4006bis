@@ -1703,13 +1703,12 @@ End User        Service Element         AAA Server          CC Server
    the credit-control server MAY include one or more Restriction-Filter-Rule
    AVPs, one or more Filter-Rule AVPs, or one or more Filter-Id AVPs in the
    Credit-Control-Answer message to enable the user to access other services
-   (for example, zero-rated services). In such a case, the access device MUST
-   drop all the packets not matching the IP filters specified in the
-   Restriction-Filter-Rule AVPs, Filter-Rule AVPs or Filter-Id AVPs. If
-   enforcement actions other than allowing the packets (e.g., QoS), are indicated
-   in the Filter-Rule AVPs or Filter-Id AVPs, they SHOULD be performed as well.
-   In addition, if possible, to redirecting the user to the destination specified
-   in the Redirect-Server AVP or Redirect-Server-Extension AVP.
+   (for example, zero-rated services).  In such a case, the access device
+   MUST treat all packets according to the Restriction-Filter-Rule AVPs,
+   Filter-Rules AVPs and the rules referred to by the Filter-Id AVP.
+   After treatment is applied according to these rules, all traffic that has
+   not been dropped or already forwarded MUST be redirected to the destination
+   specified in the Redirect-Server AVP or Redirect-Server-Extension AVP.
 </t><t>
    An entity other than the credit-control server may provision the
    access device with appropriate IP packet filters to be used in
