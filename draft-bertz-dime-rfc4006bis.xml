@@ -630,7 +630,7 @@
 </t>
   <t>
    This specification, together with the above service-specific
-   documents, governs the credit-control message.  service-specific
+   documents, governs the credit-control message.  Service-specific
    documents define which existing AVPs or new AVPs are used as input to
    the rating process (i.e., those that do not define new credit-control
    applications), and thus have to be included in the Credit-Control-Request
@@ -4032,7 +4032,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 </t><t>
    MAC                             1
 </t><t>
-      The 48-bit MAC address is formatted as described in <xref target="RFC3580"/>.
+      The 48-bit MAC address is formatted as described in section 3.21 of <xref target="RFC3580"/>.
 </t><t>
    EUI64                           2
 </t><t>
@@ -4094,7 +4094,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <t>
    The User-Equipment-Info-MAC (AVP Code TBD3) is of type
    OctetString. The User-Equipment-Info-MAC AVP contains the 48-bit MAC
-   address is formatted as described in <xref target="RFC3580"/>.
+   address is formatted as described in section 4.1.7.8 of <xref target="RFC5777"/>.
 </t>
 </section>
 <section anchor="sec-8.55" title="User-Equipment-Info-EUI64 AVP">
@@ -6060,6 +6060,7 @@ End User         Service Element                           CC Server
     <t>Clarify that IPv6 representation in Redirect-Address-Type AVP conforms to RFC5952 (<xref target="sec-8.38"/>).</t>
     <t>Describe immediate graceful service termination procedure (in <xref target="sec-5.6"/>).</t>
     <t>Add extensible User-Equipment-Info-Extension AVP and included types (from <xref target="sec-8.52"/> to <xref target="sec-8.57"/>).</t>
+    <t>Define binary MAC formatting in User-Equipment-Info-MAC instead of the textual formatting in User-Equipment-Info-Data when type is MAC.</t>
     <t>Add extensible Subscription-Id-Extension AVP and included types (from <xref target="sec-8.58"/> to <xref target="sec-8.63"/>).</t>
     <t>Add extensible Redirect-Server-Extension AVP and included types (from <xref target="sec-8.64"/> to <xref target="sec-8.67"/>).</t>
     <t>Add extensible QoS-Final-Unit-Indication AVP (in <xref target="sec-8.68"/>).</t>
