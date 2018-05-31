@@ -981,7 +981,7 @@ Service-Id a Service-Id b Service-Id c Service-Id d.....Service-Id z
    timer (<xref target="sec-13"/>) every time a CCR message with the value
    UPDATE_REQUEST is sent while they are in PendingU state.  When
    answers to all pending messages are received, the state machine moves
-   to OPEN state, and Tx is stopped.  Naturally, the action performed
+   to OPEN state, and Tx timer is stopped.  Naturally, the action performed
    when a problem for the session is detected according to <xref target="sec-5.7"/>
    affects all the ongoing services (e.g., failover to a backup server
    if possible affect all the CCR messages with the value UPDATE_REQUEST
@@ -1944,26 +1944,26 @@ End User        Service Element         AAA Server          CC Server
    prepaid services, however, the end user expects an answer from the
    network in a reasonable time.  Thus, the Diameter credit-control
    client will react faster than would the underlying base protocol.
-   Therefore this specification defines the timer Tx that is used by the
+   Therefore this specification defines the Tx timer that is used by the
    credit-control client (as defined in <xref target="sec-13"/>) to supervise the
-   communication with the credit-control server.  When the timer Tx
+   communication with the credit-control server.  When the Tx timer
    elapses, the credit-control client takes an action to the end user
    according to the Credit-Control-Failure-Handling AVP.
 </t><t>
-   When Tx expires, the Diameter credit-control client always terminates
+   When Tx timer expires, the Diameter credit-control client always terminates
    the service if the Credit-Control-Failure-Handling (CCFH) AVP is set
    to the value TERMINATE.  The credit-control session may be moved to
    an alternative server only if a protocol error DIAMETER_TOO_BUSY or
-   DIAMETER_UNABLE_TO_DELIVER is received before Tx expires.  Therefore,
+   DIAMETER_UNABLE_TO_DELIVER is received before Tx timer expires.  Therefore,
    the value TERMINATE is not appropriate if proper failover behavior is
    desired.
 </t><t>
    If the Credit-Control-Failure-Handling AVP is set to the value
    CONTINUE or RETRY_AND_TERMINATE, the service will be granted to the
-   end user when the timer Tx expires.  An answer message with granted
+   end user when the Tx timer expires.  An answer message with granted
    units may arrive later if the base protocol transport failover
    occurred in the path to the credit-control server.  (The Twinit
-   default value is 3 times more than the Tx recommended value.) The
+   default value is 3 times more than the Tx timeout recommended value.) The
    credit-control client SHOULD grant the service to the end user, start
    monitoring the resource usage, and wait for the possible late answer
    until the timeout of the request (e.g., 120 seconds).  If the request
@@ -2202,7 +2202,7 @@ End User        Service Element        AAA Server        CC Server
 <t>
    When the credit-control client detects a communication failure with
    the credit-control server, its behavior depends on the requested
-   action.  The timer Tx (as defined in <xref target="sec-13"/>) is used in the
+   action.  The Tx timer (as defined in <xref target="sec-13"/>) is used in the
    credit-control client to supervise the communication with the
    credit-control server.
 </t>
@@ -2246,7 +2246,7 @@ End User        Service Element        AAA Server        CC Server
    delivered and messages are not buffered.
 </t>
 <t>
-   If the timer Tx expires, the credit-control client MUST continue the
+   If the Tx timer expires, the credit-control client MUST continue the
    service and wait for a possible late answer.  If the request times
    out, the credit-control client re-transmits the request (marked with
    T-flag) to a backup credit-control server, if possible.  If the
@@ -2392,17 +2392,17 @@ End User        Service Element        AAA Server        CC Server
 
     <c>Idle</c>
     <c>Client or device requests access/service</c>
-    <c>Send AA request with added CC AVPs, start Tx</c>
+    <c>Send AA request with added CC AVPs, start Tx timer</c>
     <c>PendingI</c>
 
 
     <c>PendingI</c>
     <c>Successful AA req. answer received</c>
-    <c>Grant service to end user, stop Tx</c>
+    <c>Grant service to end user, stop Tx timer</c>
     <c>Open</c>
 
     <c>PendingI</c>
-    <c>Tx expired </c>
+    <c>Tx timer expired </c>
     <c>Disconnect user/dev</c>
     <c>Idle</c>
 
@@ -2436,12 +2436,12 @@ End User        Service Element        AAA Server        CC Server
 
     <c>Idle</c>
     <c>Client or device requests access/service </c>
-    <c>Send CC initial req., start Tx</c>
+    <c>Send CC initial req., start Tx timer</c>
     <c>PendingI</c>
 
     <c>PendingI</c>
     <c>Successful CC initial answer received</c>
-    <c>Stop Tx</c>
+    <c>Stop Tx timer</c>
     <c>Open</c>
 
     <c>PendingI</c>
@@ -2455,12 +2455,12 @@ End User        Service Element        AAA Server        CC Server
     <c>Idle</c>
 
     <c>PendingI</c>
-    <c>Tx expired and CCFH equal to TERMINATE </c>
+    <c>Tx timer expired and CCFH equal to TERMINATE </c>
     <c>Terminate end user's service</c>
     <c>Idle</c>
 
     <c>PendingI</c>
-    <c>Tx expired and CCFH equal to CONTINUE or to RETRY_AND_TERMINATE</c>
+    <c>Tx timer expired and CCFH equal to CONTINUE or to RETRY_AND_TERMINATE</c>
     <c>Grant service to end user</c>
     <c>PendingI</c>
 
@@ -2504,7 +2504,7 @@ End User        Service Element        AAA Server        CC Server
 
     <c>Open</c>
     <c>Granted unit elapses and no final unit indication received</c>
-    <c>Send CC update req., start Tx</c>
+    <c>Send CC update req., start Tx timer</c>
     <c>PendingU</c>
 
     <c>Open</c>
@@ -2514,7 +2514,7 @@ End User        Service Element        AAA Server        CC Server
 
     <c>Open</c>
     <c>Change in rating condition in queue</c>
-    <c>Send CC update req., Start Tx</c>
+    <c>Send CC update req., Start Tx timer</c>
     <c>PendingU</c>
 
     <c>Open</c>
@@ -2524,7 +2524,7 @@ End User        Service Element        AAA Server        CC Server
 
     <c>Open</c>
     <c>Change in rating condition or Validity-Time elapses</c>
-    <c>Send CC update req., Start Tx</c>
+    <c>Send CC update req., Start Tx timer</c>
     <c>PendingU</c>
 
     <c>Open</c>
@@ -2534,13 +2534,13 @@ End User        Service Element        AAA Server        CC Server
 
     <c>Open</c>
     <c>RAR received</c>
-    <c>Send RAA followed by CC update req., start Tx</c>
+    <c>Send RAA followed by CC update req., start Tx timer</c>
     <c>PendingU</c>
     <!-- Why is the 'start' in the above column not captilized? -->
 
     <c>PendingU</c>
     <c>Successful CC update answer received</c>
-    <c>Stop Tx</c>
+    <c>Stop Tx timer</c>
     <c>Open</c>
 
     <c>PendingU</c>
@@ -2554,12 +2554,12 @@ End User        Service Element        AAA Server        CC Server
     <c>Idle</c>
 
     <c>PendingU</c>
-    <c>Tx expired and CCFH equal to TERMINATE </c>
+    <c>Tx timer expired and CCFH equal to TERMINATE </c>
     <c>Terminate end user's service</c>
     <c>Idle</c>
 
     <c>PendingU</c>
-    <c>Tx expired and CCFH equal to CONTINUE or to RETRY_AND_TERMINATE</c>
+    <c>Tx timer expired and CCFH equal to CONTINUE or to RETRY_AND_TERMINATE</c>
     <c>Grant service to end user</c>
     <c>PendingU</c>
 
@@ -2625,7 +2625,7 @@ End User        Service Element        AAA Server        CC Server
 
     <c>Idle</c>
     <c>Client or device requests a one-time service</c>
-    <c>Send CC event req., Start Tx</c>
+    <c>Send CC event req., Start Tx timer</c>
     <c>PendingE</c>
 
     <c>Idle</c>
@@ -2639,12 +2639,12 @@ End User        Service Element        AAA Server        CC Server
     <c>Idle</c>
 
     <c>PendingE</c>
-    <c>Failure to send, temporary error, failed CC event answer received, or Tx expired; requested action CHECK_BALANCE or PRICE_ENQUIRY</c>
+    <c>Failure to send, temporary error, failed CC event answer received, or Tx timer expired; requested action CHECK_BALANCE or PRICE_ENQUIRY</c>
     <c>Indicate service error</c>
     <c>Idle</c>
 
     <c>PendingE</c>
-    <c>CC event answer received with result code END_USER_SERVICE_DENIED or USER_UNKNOWN and Tx running</c>
+    <c>CC event answer received with result code END_USER_SERVICE_DENIED or USER_UNKNOWN and Tx timer running</c>
     <c>Terminate end user's service</c>
     <c>Idle</c>
 
@@ -2659,12 +2659,12 @@ End User        Service Element        AAA Server        CC Server
     <c>Idle</c>
 
     <c>PendingE</c>
-    <c>Failed CC event answer received or temporary error; requested action DIRECT_DEBITING; DDFH equal to TERMINATE_OR_BUFFER and Tx running</c>
+    <c>Failed CC event answer received or temporary error; requested action DIRECT_DEBITING; DDFH equal to TERMINATE_OR_BUFFER and Tx timer running</c>
     <c>Terminate end user's service</c>
     <c>Idle</c>
 
     <c>PendingE</c>
-    <c>Tx expired; requested action DIRECT_DEBITING</c>
+    <c>Tx timer expired; requested action DIRECT_DEBITING</c>
     <c>Grant service to end user</c>
     <c>PendingE</c>
 
@@ -2674,12 +2674,12 @@ End User        Service Element        AAA Server        CC Server
     <c>Idle</c>
 
     <c>PendingE</c>
-    <c>Temporary error; requested action DIRECT_DEBITING; DDFH equal to TERMINATE_OR_BUFFER; Tx expired</c>
+    <c>Temporary error; requested action DIRECT_DEBITING; DDFH equal to TERMINATE_OR_BUFFER; Tx timer expired</c>
     <c>Store request</c>
     <c>Idle</c>
 
     <c>PendingE</c>
-    <c>Failed answer or answer received with result code END_USER_SERVICE DENIED or USER_UNKNOWN; requested action DIRECT_DEBITING; Tx expired</c>
+    <c>Failed answer or answer received with result code END_USER_SERVICE DENIED or USER_UNKNOWN; requested action DIRECT_DEBITING; Tx timer expired</c>
     <c></c>
     <c>Idle</c>
 
@@ -2689,7 +2689,7 @@ End User        Service Element        AAA Server        CC Server
     <c>Idle</c>
 
     <c>PendingE</c>
-    <c>Failure to send or Tx expired; requested action REFUND_ACCOUNT</c>
+    <c>Failure to send or Tx timer expired; requested action REFUND_ACCOUNT</c>
     <c>Store request with T-flag</c>
     <c>Idle</c>
 
@@ -5415,6 +5415,14 @@ A           (CC Client)     Server           B        CC Server
              |                |                |                |
     ]]></artwork>
       </figure>
+    <t>
+        This is an example of Diameter credit-control for direct debiting
+        using the Multimedia Messaging Service environment.  Although the
+        flow focuses on illustrating the usage of credit-control messages,
+        the MMS signaling is inaccurate, and the diagram is not by any means
+        an attempt to define any service provider's MMS configuration or
+        billing model.
+    </t>
 <t>
    A credit-control flow for Multimedia Messaging Services is shown in
    <xref target="flow3"/>.  The sender is charged as soon as the messaging server
@@ -5434,6 +5442,12 @@ A           (CC Client)     Server           B        CC Server
    message (4).  The MMS Server notifies the recipient about the new MMS
    (5), and end user B retrieves the message from the MMS message store
    (6),(7).
+</t>
+<t>
+    Note that the transfer of the MMS message can take an extended time
+    and can fail, in which case a recovery action is needed.  The MMS
+    server should return the already debited units to the user's account
+    by using the REFUND action described in <xref target="sec-6.4"/>.
 </t>
   </section>
   <section anchor="app-a4" title="Flow IV">
@@ -6066,6 +6080,8 @@ End User         Service Element                           CC Server
     <t> "local realm" and "home realm" replace "visited domain" and "home domain" respectively.</t>
     <t>Improved language regarding failure handling in Section 4.1.</t>
     <t>Added note that at least one of the Redirect-Server and Redirect-Server-Extension AVPs MUST be present wen F-U-Action AVP was set to REDIRECT (2 changes) to improve clarity in AVP defintions.</t>
+    <t>Added disclaimers and refund note in Sectino B.3 consistent wiht B.4</t>
+    <t>"Tx" is not mentioned without the the terms 'timer' or 'timeout'</t>
   </list>
   </t>
 </section>
