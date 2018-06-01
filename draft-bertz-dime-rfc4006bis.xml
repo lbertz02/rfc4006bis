@@ -1768,7 +1768,7 @@ End User        Service Element         AAA Server          CC Server
    performed.  In this case, the subscriber can be offered a chance to
    replenish the account and continue the service.  When the credit-control
    client receives (either at session or service-specific level) a
-   Final-Unit-Indication or the AVP or QoS-Final-Unit-Indication AVP,
+   Final-Unit-Indication AVP or QoS-Final-Unit-Indication AVP,
    together with Validity-Time AVPs, but without Granted-Service-Unit AVP,
    it immediately starts the graceful service termination without sending 
    any message to the server.  An example of this case is illustrated in <xref target="app-a"/>.
