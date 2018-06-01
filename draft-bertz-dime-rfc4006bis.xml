@@ -144,8 +144,8 @@
 	   service (e.g., Network Access Server, SIP Proxy, and Application
 	   Server) and a credit-control server.
 	</t><t>
-	   The scope of this specification is the credit authorization.  Service
-	   specific authorization and authentication is out of the scope.
+           The scope of this specification is the credit authorization.
+           Service-specific authorization and authentication is out of scope.
 	</t>
 
      <section title="Requirements Language">
@@ -626,7 +626,7 @@
    cooperative standardization body (e.g., 3GPP, OMA, or 3GPP2). However,
    private services may be deployed that are subject to agreements
    between providers of the credit-control server and client.  In
-   this case, vendor specific AVPs can be used.
+   this case, vendor-specific AVPs can be used.
 </t>
   <t>
    This specification, together with the above service-specific
@@ -669,7 +669,7 @@
 </section>
 <section anchor="sec-4.1.4" title="RADIUS Vendor-Specific Rating Attributes">
 <t>
-   When service-specific documents include RADIUS vendor specific
+   When service-specific documents include RADIUS vendor-specific
    attributes that could be used as input in the rating process, the
    rules described in <xref target="RFC7155"/> for formatting the Diameter AVP MUST be
    followed.
@@ -796,7 +796,7 @@
    resources in both the credit-control client and the credit-control
    server.  For instance, during one network access session the end user
    may use several http-services subject to different access cost.  The
-   network access specific attributes such as the quality of service
+   network-access-specific attributes such as the quality of service
    (QoS) are common to all the services carried within the access
    bearer, but the cost of the bearer may vary depending on its content.
 </t>
@@ -1180,7 +1180,7 @@ End User        Service Element        AAA Server         CC Server
    the construction of the AA request by adding appropriate credit-control AVPs.
    The credit-control client MUST add the Credit-Control
    AVP to indicate credit-control capabilities and MAY add other
-   relevant credit-control specific AVPs to the proper
+   relevant credit-control-specific AVPs to the proper
    authorization/authentication command to perform the first
    interrogation toward the home Diameter AAA server.  The Auth-Application-Id
    is set to the appropriate value, as defined in the
@@ -1209,8 +1209,8 @@ End User        Service Element        AAA Server         CC Server
    credit-control server will reserve money from the user's account,
    will rate the request and will send a Credit-Control-Answer message
    to the home Diameter AAA server.  The answer message includes the
-   Granted-Service-Unit AVP(s) and MAY include other credit-control
-   specific AVPs, as appropriate.  Additionally, the credit-control
+   Granted-Service-Unit AVP(s) and MAY include other credit-control-specific
+   AVPs, as appropriate.  Additionally, the credit-control
    server MAY set the Validity-Time and MAY include the
    Credit-Control-Failure-Handling AVP and the Direct-Debiting-Failure-Handling AVP to
    determine what to do if the sending of credit-control messages to the
@@ -1220,12 +1220,12 @@ End User        Service Element        AAA Server         CC Server
    Upon receiving the Credit-Control-Answer message from the credit-control
    server, the home Diameter AAA server will populate the AA
    answer with the received credit-control AVPs and with the appropriate
-   service attributes according to the authorization/authentication
-   specific application (e.g., <xref target="RFC7155"/>, <xref target="RFC4004"/>).  It will then
+   service attributes according to the authorization/authentication-specific
+   application (e.g., <xref target="RFC7155"/>, <xref target="RFC4004"/>).  It will then
    forward the packet to the credit-control client.  If the home
    Diameter AAA server receives a credit-control reject message, it will
    simply generate an appropriate authorization reject message to the
-   credit-control client, including the credit-control specific error
+   credit-control client, including the credit-control-specific error
    code.
 </t>
 <t>
@@ -1407,7 +1407,7 @@ End User          (CC Client)           AAA Server          CC Server
    If the user logs off during an ongoing credit-control session, or if
    some other reason causes the user to become logged off (e.g., final-unit
    indication causes user logoff according to local policy), the
-   service element, according to application specific policy, may send a
+   service element, according to application-specific policy, may send a
    Session-Termination-Request (STR) to the home Diameter AAA server as
   usual <xref target="RFC6733"/>.  <xref target="disconnect"/> illustrates the case when the final-unit
    indication causes user logoff upon consumption of the final granted
@@ -4420,7 +4420,7 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
 <section anchor="sec-10.1" title="Credit-Control AVP Table">
 <t>
    The table in this section is used to represent which credit-control
-   applications specific AVPs defined in this document are to be present
+   application-specific AVPs defined in this document are to be present
    in the credit-control messages.
 </t>
 <figure><artwork align="left"><![CDATA[
@@ -5301,7 +5301,7 @@ A           (CC Client)     Server           B        CC Server
 :              :                             :              :
 |(1)  INVITE   |                                            :
 |------------->|
-|              |(2)  CCR (Initial, SIP specific AVP)        |
+|              |(2)  CCR (Initial, SIP-specific AVP)        |
 |              |------------------------------------------->|
 |              |(3)  CCA (Granted-Units)                    |
 |              |<-------------------------------------------|
@@ -5391,7 +5391,7 @@ A           (CC Client)     Server           B        CC Server
              |(1) Send MMS    |                |                |
              |--------------->|                |                |
              |                |(2)  CCR (event, DIRECT_DEBITING,|
-             |                |          MMS specific AVP)      |
+             |                |          MMS-specific AVP)      |
              |                |-------------------------------->|
              |                |(3)  CCA (Granted-Units)         |
              |                |<--------------------------------|
@@ -5451,7 +5451,7 @@ A           (CC Client)     Server           B        CC Server
              |(1) Send MMS    |                |                |
              |--------------->|                |                |
              |                |(2)  CCR (event, CHECK_BALANCE,  |
-             |                |          MMS specific AVP)      |
+             |                |          MMS-specific AVP)      |
              |                |-------------------------------->|
              |                |(3)  CCA (ENOUGH_CREDIT)         |
              |                |<--------------------------------|
@@ -5463,7 +5463,7 @@ A           (CC Client)     Server           B        CC Server
              |                |(6) Retrieve MMS|                |
              |                |<---------------|                |
              |                |(7)  CCR (event, DIRECT_DEBITING,|
-             |                |          MMS specific AVP)      |
+             |                |          MMS-specific AVP)      |
              |                |-------------------------------->|
              |                |(8)  CCA (Granted-Units)         |
              |                |<--------------------------------|
@@ -5526,7 +5526,7 @@ A           (CC Client)     Server           B        CC Server
              |(1)INVITE B(SDP)|                |                |
              |--------------->|                |                |
              |                |(2)  CCR (event, PRICE_ENQUIRY,  |
-             |                |          SIP specific AVPs)     |
+             |                |          SIP-specific AVPs)     |
              |                |-------------------------------->|
              |                |(3)  CCA (Cost-Information)      |
              |                |<--------------------------------|
@@ -5565,7 +5565,7 @@ A           (CC Client)     Server           B        CC Server
    determines that the user is subscribed to AoC service and sends a
    Diameter Credit-Control-Request (EVENT_REQUEST with Requested-Action:
    PRICE_ENQUIRY) to the Diameter credit-control server (2).  The
-   Credit-Control-Request contains SIP specific AVPs derived from the
+   Credit-Control-Request contains SIP-specific AVPs derived from the
    SIP signaling, describing the requested service (e.g., calling party,
    called party, Session Description Protocol attributes).  The Diameter
    credit-control server determines the cost of the service and returns
@@ -5817,7 +5817,7 @@ End User         Service Element                           CC Server
                    (CC client)
   |(1)User logon      |                                         |
   |------------------>|(2)CCR(initial, Service-Id access,       |
-  |                   |        Access specific AVPs,            |
+  |                   |        Access-specific AVPs,            |
   |                   |        Multiple-Service-Indicator)      |
   |                   |---------------------------------------->|
   |                   |(3)CCA(Multiple-Services-CC (            |
@@ -5926,7 +5926,7 @@ End User         Service Element                           CC Server
    credit-control of multiple services within the session by including
    the Multiple-Service-Indicator AVP.  The Diameter credit-control
    server checks the end user's account balance, with rating information
-   received from the client (i.e., Service-Id and access specific AVPs),
+   received from the client (i.e., Service-Id and access-specific AVPs),
    rates the request, and reserves credit from the end user's account.
    Suppose that the server reserves $5 and determines that the cost is
    $1/MB.  It then returns to the service element a Credit-Control-Answer
