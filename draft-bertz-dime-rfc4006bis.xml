@@ -4923,6 +4923,33 @@ Service Element         Translation Agent
    discussed more widely in <xref target="RFC4072"/>, Section 8.
 </t>
 </section>
+<section anchor="sec-14.2" title="Application Level Redirects">
+<t>
+    This document includes a redirection facility in <xref target="sec-5.6.2"/>,
+    whereby the service provider can redirect (in an application-specific way) 
+    the end user to an alternate location when their credits have expired.  This is
+    useful in that it allows for the user to return to normal service quickly, 
+    but also exposes additional risks and attack surface.  In particular, 
+    this redirection can potentially occur at an arbitrary point in a user's session, 
+    potentially without any additional contextual confirmation available 
+    to the user that the redirection is driven by the network.  This lack of 
+    confirmation matters, because, in many application protocols, the communication
+    peer is also capable of inducing redirection. When the peer is an attacker, 
+    the redirection can be to an attacker-controlled site. In particular, 
+    such sites may be "phishing" sites designed to appear similar to legitimate 
+    payment sites in an attempt to obtain users' payment information for fraudulent uses. 
+    When users become used to such redirection, they may have difficulty distinguishing such
+    attacks from legitimate redirections.
+</t>
+<t>
+    Because of the potentially harmful consequences of arbitrary redirection by an 
+    attacker (such as to phishing sites), it is important for service providers to be aware 
+    of that risk and assure their users are aware of it as well. Service providers should 
+    follow industry best practices for the specific application layer protocol to reduce 
+    the chances that such attacks could be mistaken for legitimate redirection. The details
+    of such practice are out of scope for this document.
+</t>
+</section>
 </section>
 <section anchor="sec-15" title="Privacy Considerations">
 <t>
@@ -4958,7 +4985,11 @@ Service Element         Translation Agent
 </t><t>
    Redirect-Server-Address AVP: the service-provider might embed personal information on the subscriber in
    the URL/I (e.g. to create a personalized message). However, the service-provider may anonymise the subscriber's
-   identity instead in the URL/I, and let the redirect server query the information directly. Such anonymized information must not allow personal information or the subscriber's identity to be easily guessed. Similar AVPs are:
+   identity instead in the URL/I, and let the redirect server query the information directly. Such anonymized 
+   information must not allow personal information or the subscriber's identity to be easily guessed. Furthermore, 
+   the service-provider should treat the URL/I schema itself as confidential, and make sure it cannot be inferred 
+   from observation of the traffic, or due to its trivial structure. This, may allow an adversary to query/modify 
+   personal information even without knowing the subscriber's identity. Similar AVPs are: 
    Redirect-Address-URL, Redirect-Address-SIP-URI.
 </t><t>
    Service-Context-Id AVP: depending with how the service-provider uses it, it may contain privacy-sensitive information 
