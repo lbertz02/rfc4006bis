@@ -4988,7 +4988,7 @@ Service Element         Translation Agent
    identity instead in the URL/I, and let the redirect server query the information directly. Such anonymized 
    information must not allow personal information or the subscriber's identity to be easily guessed. Furthermore, 
    the service-provider should treat the URL/I schema itself as confidential, and make sure it cannot be inferred 
-   from observation of the traffic, or due to its trivial structure. This, may allow an adversary to query/modify 
+   from observation of the traffic, or due to its trivial structure. A trivial structure could allow an adversary to query/modify 
    personal information even without knowing the subscriber's identity. Similar AVPs are: 
    Redirect-Address-URL, Redirect-Address-SIP-URI.
 </t><t>
