@@ -3763,6 +3763,12 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       <xref target="RFC4291"/>.  The address MUST conform to the text representation of the address
       according to <xref target="RFC5952"/>.
 </t><t>
+    Because RFC5952 is more restrictive than the RFC3513 format required by
+    RFC4006, some legacy implementations may not be compliant with the new
+    requirements. Accordingly, implementations receiving this AVP MAY be
+    liberal in the textual IPv6 representations that are accepted without
+    raising an error.
+</t><t>
    URL                             2
 </t><t>
       The address type is in the form of Uniform Resource Locator, as
