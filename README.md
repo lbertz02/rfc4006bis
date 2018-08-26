@@ -2,7 +2,7 @@
 
 This project serves as a basis for RFC 4006 XML file and a proposed BIS.
 The most recent upload to IETF is at
-https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-08 .
+https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-11 .
 
 
 # Getting Started
@@ -32,6 +32,7 @@ The option adopted here is the 3rd one.  It does require some management on the 
 
 ### VERSION Submission
 When ready to submit create a new file under the 'versions' folder. Do NOT udpate the master file. Once submitted please update this document as well.
+Submission is done via this page: https://datatracker.ietf.org/submit/. Please consult the idnits tool before submission, however, some nits may be accpetable.
 
 ## Versions (under release directory)
 The following revisions are present in the 'versions' directory:
@@ -45,4 +46,5 @@ The following revisions are present in the 'versions' directory:
 - [draft-ietf-dime-rfc4006bis-06](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-06) - Fixing more ID nits.
 - [draft-ietf-dime-rfc4006bis-07](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-07) - Fixing more ID nits.
 - [draft-ietf-dime-rfc4006bis-08](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-08) - Fixing more ID nits.
+- [draft-ietf-dime-rfc4006bis-11](https://tools.ietf.org/html/draft-ietf-dime-rfc4006bis-11) - Fixing more ID nits.
 

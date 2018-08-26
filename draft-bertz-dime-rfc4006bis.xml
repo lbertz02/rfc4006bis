@@ -33,7 +33,7 @@
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 
-<rfc category="std" docName="draft-ietf-dime-rfc4006bis-10" ipr="pre5378Trust200902" obsoletes="4006">
+<rfc category="std" docName="draft-ietf-dime-rfc4006bis-11" ipr="pre5378Trust200902" obsoletes="4006">
 
 
  <front>
@@ -3763,8 +3763,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
       <xref target="RFC4291"/>.  The address MUST conform to the text representation of the address
       according to <xref target="RFC5952"/>.
 </t><t>
-    Because RFC5952 is more restrictive than the RFC3513 format required by
-    RFC4006, some legacy implementations may not be compliant with the new
+    Because <xref target="RFC5952"/> is more restrictive than the RFC3513 format required by
+    <xref target="RFC4006"/>, some legacy implementations may not be compliant with the new
     requirements. Accordingly, implementations receiving this AVP MAY be
     liberal in the textual IPv6 representations that are accepted without
     raising an error.
@@ -4293,8 +4293,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    If the Final-Unit-Action AVP is set to TERMINATE, the
    QoS-Final-Unit-Indication group MUST NOT contain any other AVPs.
 </t><t>
-    If the Final-Unit-Action AVP is set to REDIRECT at least one of the
-    Redirect-Server and Redirect-Server-Extension AVPs MUST be present.
+   If the Final-Unit-Action AVP is set to REDIRECT then the 
+   Redirect-Server-Extension AVPs MUST be present.
    The Filter-Rule AVP or the Filter-Id AVP MAY be present in the
    Credit-Control-Answer message if the user is also allowed to access other
    services that are not accessible through the address given in the
