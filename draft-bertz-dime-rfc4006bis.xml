@@ -33,7 +33,7 @@
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
 
-<rfc category="std" docName="draft-ietf-dime-rfc4006bis-11" ipr="pre5378Trust200902" obsoletes="4006">
+<rfc category="std" docName="draft-ietf-dime-rfc4006bis-12" ipr="pre5378Trust200902" obsoletes="4006">
 
 
  <front>
@@ -2935,7 +2935,8 @@ Validity-Time     448  8.33   Unsigned32 | M  |     |  V |
    The CC-Request-Type AVP (AVP Code 416) is of type Enumerated and
    contains the reason for sending the credit-control request message.
    It MUST be present in all Credit-Control-Request messages.  The
-   following values are defined for the CC-Request-Type AVP:
+   following values are defined for the CC-Request-Type AVP 
+   (The value of zero is reserved):
 </t><t>
    INITIAL_REQUEST                 1
 </t><t>
